@@ -1,0 +1,67 @@
+<div class="grid align__item">
+
+  <div class="register">
+  <h2>Sign Up</h2>
+
+<!--  <form class="form" [formGroup]="registerForm" (ngSubmit)="onSave()">-->
+  <form class="form" [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+    <div class="form__field">
+      <input
+          placeholder="firstname"
+          type="text"
+          formControlName="lastName"
+      />
+    </div>
+
+    <div class="form__field">
+      <input
+        placeholder="lastname"
+        type="text"
+        formControlName="lastName"
+      />
+    </div>
+
+    <div class="form__field">
+      <input
+        type="email"
+        formControlName="email"
+        placeholder="info@mailaddress.com"
+      />
+    </div>
+
+    <div class="form__field">
+      <input
+        type="text"
+        formControlName="email"
+        placeholder="phone number"
+      />
+    </div>
+
+    <p>Choose Roles:</p>
+    <div class="form__field">
+      <mat-chip-list selectable multiple>
+        <mat-chip
+          #c="matChip"
+          *ngFor="let role of roleList"
+          [value]="role"
+          (click)="toggleSelection(c, role)"
+        >
+          {{role.roleName}}
+        </mat-chip>
+      </mat-chip-list>
+    </div>
+
+    <div class="form__field">
+      <button class="btn btn-primary custom-btn" type="submit">Sign up</button>
+    </div>
+
+<!--    <button mat-raised-button disabled type="submit"  [disabled]="!registerForm.valid" color="accent">Register</button>-->
+
+
+  </form>
+
+    <p>Already have an account? <a href="/login">Log in</a></p>
+
+  </div>
+
+</div>
