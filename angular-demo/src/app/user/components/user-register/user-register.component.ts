@@ -31,28 +31,21 @@ export class UserRegisterComponent implements OnInit {
 ];
 
  //  roleList: Role[];
+  selectedRoles: Role[] = [];
 
   toggleSelection(chip: MatChip, role: Role) {
     chip.toggleSelected();
-    // const rolesControl = this.registerForm.value.roles;
-    const rolesControl = this.roleList;
+    const index = this.selectedRoles.indexOf(role);
 
-    if (rolesControl) {
-      // const selectedRoles = rolesControl.value as Role[];
-
-      if (chip.selected) {
-        //selectedRoles.push(role);
-        this.roleList.push(role);
-      } else {
-        //const index = selectedRoles.indexOf(role);
-        const index = this.roleList.indexOf(role);
-        if (index >= 0) {
-          //selectedRoles.splice(index, 1);
-          this.roleList.splice(index, 1);
-        }
-      }
-      // rolesControl.setValue(selectedRoles);
+    if (chip.selected && index === -1) {
+      this.selectedRoles.push(role);
+    } else if (!chip.selected && index !== -1) {
+      this.selectedRoles.splice(index, 1);
     }
+  }
+
+  isSelected(role: Role): boolean {
+    return this.roleList.indexOf(role) !== -1;
   }
 
   onSave() {
@@ -68,18 +61,5 @@ export class UserRegisterComponent implements OnInit {
 
   get f() {
     return this.registerForm.controls;
-  }
-
-  onSubmit() {
-    this.submitted = true;
-
-    if (this.registerForm.invalid) {
-      return;
-    }
-    const password1 = this.registerForm.value.password;
-    const confirmPassword = this.registerForm.value.confirmPassword;
-
-    let passA = document.getElementById("passwordAlert");
-
   }
 }

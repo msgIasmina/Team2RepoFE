@@ -1,10 +1,9 @@
 <div class="grid align__item">
 
   <div class="register">
-  <h2>Sign Up</h2>
+  <h2>Register User</h2>
 
-<!--  <form class="form" [formGroup]="registerForm" (ngSubmit)="onSave()">-->
-  <form class="form" [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+  <form class="form" [formGroup]="registerForm" (ngSubmit)="onSave()">
     <div class="form__field">
       <input
           placeholder="firstname"
@@ -45,6 +44,7 @@
           *ngFor="let role of roleList"
           [value]="role"
           (click)="toggleSelection(c, role)"
+          [ngClass]="{'selected-chip': isSelected(role)}"
         >
           {{role.roleName}}
         </mat-chip>

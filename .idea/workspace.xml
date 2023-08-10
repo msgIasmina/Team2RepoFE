@@ -4,8 +4,15 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="770d2d89-e173-4c19-9235-d14d4ffbfbd8" name="Changes" comment="deleting gitignore file and updating the other gitignore file.">
+    <list default="true" id="770d2d89-e173-4c19-9235-d14d4ffbfbd8" name="Changes" comment="addig another gitignore file">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/angular-demo/src/app/app.component.css" beforeDir="false" afterPath="$PROJECT_DIR$/angular-demo/src/app/app.component.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/angular-demo/src/app/app.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/angular-demo/src/app/app.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/angular-demo/src/app/login/components/login/login.component.css" beforeDir="false" afterPath="$PROJECT_DIR$/angular-demo/src/app/login/components/login/login.component.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/angular-demo/src/app/login/components/login/login.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/angular-demo/src/app/login/components/login/login.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/angular-demo/src/app/login/components/login/login.component.spec.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/angular-demo/src/app/user/components/user-register/user-register.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/angular-demo/src/app/user/components/user-register/user-register.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/angular-demo/src/app/user/components/user-register/user-register.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/angular-demo/src/app/user/components/user-register/user-register.component.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -46,7 +53,7 @@
     "ASKED_ADD_EXTERNAL_FILES": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "C:/Users/vrencl/Documents/frontEnd",
+    "last_opened_file_path": "C:/Users/vrencl/Documents/Alpha Games/MSG-main/MSG-main/frontend",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -71,6 +78,7 @@
       <workItem from="1691653614606" duration="67000" />
       <workItem from="1691659026457" duration="53000" />
       <workItem from="1691668660006" duration="2124000" />
+      <workItem from="1691672187577" duration="3543000" />
     </task>
     <task id="LOCAL-00001" summary="adding Hello!">
       <option name="closed" value="true" />
@@ -96,7 +104,15 @@
       <option name="project" value="LOCAL" />
       <updated>1691672011665</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="addig another gitignore file">
+      <option name="closed" value="true" />
+      <created>1691672212343</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1691672212343</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -107,6 +123,7 @@
     <MESSAGE value="adding Hello!" />
     <MESSAGE value="adding gitignore file" />
     <MESSAGE value="deleting gitignore file and updating the other gitignore file." />
-    <option name="LAST_COMMIT_MESSAGE" value="deleting gitignore file and updating the other gitignore file." />
+    <MESSAGE value="addig another gitignore file" />
+    <option name="LAST_COMMIT_MESSAGE" value="addig another gitignore file" />
   </component>
 </project>
