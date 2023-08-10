@@ -1,6 +1,13 @@
 # Created by https://www.toptal.com/developers/gitignore/api/windows,linux,macos,java,java-web,intellij,intellij+all,intellij+iml,eclipse,maven
 # Edit at https://www.toptal.com/developers/gitignore?templates=windows,linux,macos,java,java-web,intellij,intellij+all,intellij+iml,eclipse,maven
-
+node_modules
+typings
+server/**/*.js
+server/**/*.js.map
+client/**/*.js
+client/**/*.js.map
+/npm-debug.log
+.env
 ### Eclipse ###
 .metadata
 bin/
@@ -12,6 +19,7 @@ tmp/
 local.properties
 .settings/
 .loadpath
+.idea
 .recommenders
 
 # External tool builders
