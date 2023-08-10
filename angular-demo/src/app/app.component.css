@@ -4,11 +4,19 @@
   width: 100%;
 }
 
-.nav {
+/* .nav {
   display: flex;
   align-items: center;
   justify-content: center;
   padding: 16px 0;
+} */
+
+nav {
+  display: flex;
+  justify-content: space-between;
+  padding: 1rem; /* You can adjust the padding value as needed */
+  background-color: #86efac; /* Replace with the desired color */
+  color: #FFF; /* White text color */
 }
 
 header{
