@@ -24,8 +24,8 @@ export class UserRegisterComponent implements OnInit {
   submitted = false;
 
   roleList: Role[] = [
-    {roleName: "soething"},
-    {roleName: "soething"},
+    {roleName: "1"},
+    {roleName: "2"},
     {roleName: "soething"},
     {roleName: "soething"},
 ];
