@@ -16,7 +16,7 @@ export class UserRegisterComponent implements OnInit {
   registerForm = this.fb.group({
     firstName: ['', Validators.required],
     lastName: ['', Validators.required],
-    email: ['', Validators.email],
+    email: ['', Validators.required, Validators.email],
     phone: ['', Validators.pattern(/^(00407|07|\+407)\d{8}$/)],
     roles: ['', Validators.required],
     // campaign: ['', Validators]
@@ -44,12 +44,36 @@ export class UserRegisterComponent implements OnInit {
     }
   }
 
+  /* Error Messages */
+    showFirstNameError(): boolean {
+      const firstNameControl = this.registerForm.get('firstName');
+      return this.submitted && firstNameControl?.hasError('required') || false;
+    }
+
+  showLastNameError(): boolean {
+    const lastNameControl = this.registerForm.get('lastName');
+    return this.submitted && lastNameControl?.hasError('required') || false;
+  }
+
+  showEmailError(): boolean {
+    const emailControl = this.registerForm.get('email');
+    return this.submitted && emailControl?.hasError('required') || false;
+  }
+
+
+
   isSelected(role: Role): boolean {
     return this.roleList.indexOf(role) !== -1;
   }
 
   onSave() {
-    console.log(this.registerForm.value);
+    this.submitted = true;
+    if (this.registerForm.valid) {
+      // Handle form submission here
+      console.log(this.registerForm.value);
+    }else{
+      console.log("ERROR: registerForm is not valid");
+    }
   }
 
   constructor(private fb: FormBuilder, private roleService: RoleService) {

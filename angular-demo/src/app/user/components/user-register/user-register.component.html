@@ -8,9 +8,9 @@
       <input
           placeholder="firstname"
           type="text"
-          formControlName="lastName"
+          formControlName="firstName"
       />
-      <div *ngIf="registerForm.get('firstName')?.invalid && (registerForm.get('firstName')?.dirty || registerForm.get('firstName')?.touched)">
+      <div *ngIf="showFirstNameError()">
         <div class="error-message">First name is required</div>
       </div>
     </div>
@@ -21,14 +21,20 @@
         type="text"
         formControlName="lastName"
       />
+      <div *ngIf="showLastNameError()">
+        <div class="error-message">Last name is required</div>
+      </div>
     </div>
 
     <div class="form__field">
       <input
+        placeholder="info@mailaddress.com"
         type="email"
         formControlName="email"
-        placeholder="info@mailaddress.com"
       />
+      <div *ngIf="showEmailError()">
+        <div class="error-message">Email is required</div>
+      </div>
     </div>
 
     <div class="form__field">
