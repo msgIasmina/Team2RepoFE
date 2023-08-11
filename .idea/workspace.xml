@@ -6,6 +6,8 @@
   <component name="ChangeListManager">
     <list default="true" id="770d2d89-e173-4c19-9235-d14d4ffbfbd8" name="Changes" comment="Enhancements have been implemented to improve the visual presentation of the registration and login pages through modifications to their respective HTML and CSS. Additionally, a comprehensive refinement of the application-wide styling has been executed by integrating CSS adjustments within the app component. Notably, the registration &quot;chips&quot; functionality has been rectified, ensuring seamless and accurate operation.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/angular-demo/src/app/login/models/login-response.ts" beforeDir="false" afterPath="$PROJECT_DIR$/angular-demo/src/app/login/models/login-response.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/angular-demo/src/app/login/services/login.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/angular-demo/src/app/login/services/login.service.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -46,7 +48,7 @@
     "ASKED_ADD_EXTERNAL_FILES": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "C:/Users/vrencl/Documents/frontEnd/angular-demo",
+    "last_opened_file_path": "T:/50_WORKSPACES/Team2Repo",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -73,6 +75,7 @@
       <workItem from="1691668660006" duration="2124000" />
       <workItem from="1691672187577" duration="3822000" />
       <workItem from="1691735279797" duration="50000" />
+      <workItem from="1691759972791" duration="1240000" />
     </task>
     <task id="LOCAL-00001" summary="adding Hello!">
       <option name="closed" value="true" />
