@@ -426,5 +426,4 @@ $RECYCLE.BIN/
 *_BASE_*.txt
 *_LOCAL_*.txt
 *_REMOTE_*.txt
-package-lock.json
 workspace.xml
