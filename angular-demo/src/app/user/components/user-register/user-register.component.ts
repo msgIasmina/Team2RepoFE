@@ -58,6 +58,7 @@ export class UserRegisterComponent implements OnInit {
   }
 
   onSave() {
+      //TODO: validare + trimitere spre backend
     this.submitted = true;
     if (this.registerForm.valid) {
       // Handle form submission here
