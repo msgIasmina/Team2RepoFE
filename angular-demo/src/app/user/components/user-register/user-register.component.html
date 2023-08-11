@@ -10,6 +10,9 @@
           type="text"
           formControlName="lastName"
       />
+      <div *ngIf="registerForm.get('firstName')?.invalid && (registerForm.get('firstName')?.dirty || registerForm.get('firstName')?.touched)">
+        <div class="error-message">First name is required</div>
+      </div>
     </div>
 
     <div class="form__field">
