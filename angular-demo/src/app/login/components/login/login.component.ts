@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {AbstractControl, FormBuilder, FormControl, FormGroup, ValidatorFn, Validators} from "@angular/forms";
 import {LoginRequest} from "../../models/login-request";
 import {LoginService} from "../../services/login.service";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-login',
@@ -18,9 +19,13 @@ export class LoginComponent implements OnInit {
 
 
   constructor(private fb: FormBuilder,
-              private loginService: LoginService) { }
+              private loginService: LoginService, private router:Router) { }
 
   ngOnInit(): void {
+  }
+
+  checkIfFirst(str:string|null):boolean{
+    return str === "true";
   }
 
   onLogin() {
@@ -33,6 +38,20 @@ export class LoginComponent implements OnInit {
     const loginRequest = new LoginRequest(username,password);
 
     this.loginService.login(loginRequest);
+
+    //let bool =localStorage.getItem("firstLogin")
+    let bool="true";
+
+
+    try {
+      if (this.checkIfFirst(bool)) {
+        this.router.navigate(['/firstLogin']);
+      } else {
+        this.router.navigate(['/homepage']);
+      }
+    } catch (error) {
+      console.error('Error during navigation:', error);
+    }
 
     localStorage.setItem('role',"admin")
   }

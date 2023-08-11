@@ -19,6 +19,7 @@ import {Interceptor} from "./util/interceptors/interceptor";
 import {RoleGuard} from "./util/Roleguard";
 import {MatChipsModule} from "@angular/material/chips";
 import { MatIconModule } from '@angular/material/icon';
+import { LoginRoutingModule } from './login/login-routing.module';
 
 @NgModule({
   declarations: [
@@ -41,6 +42,7 @@ import { MatIconModule } from '@angular/material/icon';
     FormsModule,
     MatChipsModule,
     MatIconModule,
+    LoginRoutingModule,
   ],
   providers: [
     LoginService, {provide: HTTP_INTERCEPTORS, useClass: Interceptor, multi: true},RoleGuard

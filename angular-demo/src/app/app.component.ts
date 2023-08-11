@@ -11,9 +11,9 @@ export class AppComponent {
   title = 'untitled5';
 
   users: User[] = [
-    new User(1, 'user1', 'user_email1@yahoo.com', '1234'),
-    new User(2, 'user2', 'user_email2@yahoo.com', '1234'),
-    new User(3, 'user3', 'user_email3@yahoo.com', '1234')
+    new User(1, 'user_email1@yahoo.com', 'pass1', 'user1',false, true, 'f1','l1'),
+    new User(2, 'user_email2@yahoo.com', 'pass2', 'user2', false, false, 'f2','l2'),
+    new User(3, 'user_email3@yahoo.com', 'pass3', 'user3', false, false, 'f3','l3')
   ];
 
   donations: Donation[] = [

@@ -22,7 +22,8 @@ export class LoginService {
 
   login(loginRequest: LoginRequest): void {
     this.http.post<LoginResponse>(this.url, loginRequest).subscribe((loginResponse: LoginResponse) =>
-      localStorage.setItem("token", loginResponse.accessToken)
+    {localStorage.setItem("token", loginResponse.accessToken);
+     localStorage.setItem("firstLogin",String(loginResponse.newUser))}
     );
   }
 

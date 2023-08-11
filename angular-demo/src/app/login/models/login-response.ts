@@ -4,6 +4,7 @@ export class LoginResponse{
     public id: number,
     public username: string,
     public email: string,
+    public newUser :boolean,
     public roles: string[]
   ) {
   }
