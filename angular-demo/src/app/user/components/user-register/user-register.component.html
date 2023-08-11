@@ -51,17 +51,17 @@
         <mat-chip
           #c="matChip"
           *ngFor="let role of roleList"
-          [value]="role"
+          [value]="role.name"
           (click)="toggleSelection(c, role)"
           [ngClass]="{'selected-chip': isSelected(role)}"
         >
-          {{role.roleName}}
+          {{role.name}}
         </mat-chip>
       </mat-chip-list>
     </div>
 
     <div class="form__field">
-      <button class="btn btn-primary custom-btn" type="submit">Sign up</button>
+      <button class="btn btn-primary custom-btn" type="submit">Submit user</button>
     </div>
 
 <!--    <button mat-raised-button disabled type="submit"  [disabled]="!registerForm.valid" color="accent">Register</button>-->
@@ -69,7 +69,7 @@
 
   </form>
 
-    <p>Already have an account? <a href="/login">Log in</a></p>
+<!--    <p>Already have an account? <a href="/login">Log in</a></p>-->
 
   </div>
 

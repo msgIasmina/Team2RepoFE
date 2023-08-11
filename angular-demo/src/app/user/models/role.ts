@@ -1,3 +1,7 @@
+import {ERole} from "./ERole";
+import {Permission} from "./permission";
+
 export class Role {
-  constructor(public roleName: string) {}
+  constructor(public name: ERole,
+              public permissions: Permission[]) {}
 }

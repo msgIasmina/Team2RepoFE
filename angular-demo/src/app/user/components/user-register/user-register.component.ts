@@ -1,9 +1,7 @@
-import {Component, Input, OnInit} from '@angular/core';
-import {AbstractControl, FormBuilder, FormControl, FormGroup, ValidatorFn, Validators} from "@angular/forms";
-import {HttpClient} from "@angular/common/http";
+import {Component, OnInit} from '@angular/core';
+import {FormBuilder, Validators} from "@angular/forms";
 import {Role} from "../../models/role";
 import {MatChip} from "@angular/material/chips";
-import {UserService} from "../../services/user-service.service";
 import {RoleService} from "../../services/role.service";
 
 @Component({
@@ -23,15 +21,8 @@ export class UserRegisterComponent implements OnInit {
   })
   submitted = false;
 
-  roleList: Role[] = [
-    {roleName: "1"},
-    {roleName: "2"},
-    {roleName: "soething"},
-    {roleName: "soething"},
-];
-
- //  roleList: Role[];
   selectedRoles: Role[] = [];
+   roleList: Role[];
 
   toggleSelection(chip: MatChip, role: Role) {
     chip.toggleSelected();
@@ -80,10 +71,13 @@ export class UserRegisterComponent implements OnInit {
   }
   ngOnInit(): void {
     //this.roleService.loadRoles().subscribe();
-    //this.roleService.getRoles().subscribe((roles) => this.roleList = roles);
+    this.roleService.getRoles().subscribe((roles) => this.roleList = roles);
+    console.log(this.roleList);
   }
 
   get f() {
     return this.registerForm.controls;
   }
+
+
 }
