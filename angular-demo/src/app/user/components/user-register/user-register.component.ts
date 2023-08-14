@@ -12,23 +12,19 @@ import {UserService} from "../../services/user-service.service";
   styleUrls: ['./user-register.component.css']
 })
 export class UserRegisterComponent implements OnInit {
-  // userFirstName: string = '';
-  // userLastName: string = '';
-  // userEmailAddress: string = '';
-  // userMobileNumber: string = '';
 
-  //TODO: send selected roles to backend
+  selectedRoles: Role[] = [];
+
+
   registerForm = this.fb.group({
     firstName: ['', Validators.required],
     lastName: ['', Validators.required],
     email: ['', Validators.required, Validators.email],
-    mobileNumber: ['', Validators.pattern(/^(00407|07|\+407)\d{8}$/)],
-    roles: ['', Validators.required],
-    // campaign: ['', Validators]
+    mobileNumber: ['', Validators.pattern(/^(00407|07|\+407)\d{8}$/)]
   })
   submitted = false;
 
-  selectedRoles: Role[] = [];
+
   roleList: Role[];
 
   toggleSelection(chip: MatChip, role: Role) {
@@ -59,28 +55,43 @@ export class UserRegisterComponent implements OnInit {
   }
 
 
+  // get selectedRolesIDs(): number[] {
+  //   return this.selectedRoles.map(role => role.id);
+  // }
+
   isSelected(role: Role): boolean {
     return this.roleList.indexOf(role) !== -1;
   }
 
   onSave() {
-
     this.submitted = true;
     const firstName = this.registerForm.get('firstName')?.value;
     const lastName = this.registerForm.get('lastName')?.value;
     const email = this.registerForm.get('email')?.value;
     const mobileNumber = this.registerForm.get('mobileNumber')?.value;
-    const roles = this.registerForm.get('roles')?.value;
+    //const roles: number[] = this.registerForm.get('roles')?.value;
+    //const rolesIDs:number[] = this.selectedRolesIDs;
+    const rolesIDs: number[] = this.selectedRoles.map(role => role.id)
 
-    const newUser = new User(firstName,lastName,email,mobileNumber,roles)
+    const newUser: User = {
+      firstName,
+      lastName,
+      email,
+      mobileNumber,
+      rolesIDs
+    };
 
-    this.userService.saveUser(newUser).subscribe(() => this.userService.loadUsers());
-    console.log(this.registerForm.value);
+    //const newUser = new User(firstName, lastName, email, mobileNumber, rolesIDs)
 
-
+    this.userService.saveUser(newUser).subscribe(() => {
+      this.userService.loadUsers();
+      this.registerForm.reset();
+      this.selectedRoles = [];
+    });
   }
 
-  constructor(private fb: FormBuilder, private roleService: RoleService,
+  constructor(private fb: FormBuilder,
+              private roleService: RoleService,
               private userService: UserService) {
   }
 

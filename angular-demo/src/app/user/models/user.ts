@@ -9,7 +9,7 @@ export class User {
     public email: string,
     public mobileNumber: string,
     // public password: string,
-    public roles: Role[],
+    public rolesIDs: number[],
     // public campaigns: Campaign[]
   ) {
   }

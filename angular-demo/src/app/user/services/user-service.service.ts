@@ -13,6 +13,7 @@ export class UserService {
   ){}
 
   url:string = "http://localhost:8080/users";
+  url2:string = "http://localhost:8080/users/register";
 
   userList$: BehaviorSubject<User[]> = new BehaviorSubject<User[]>([]);
 
@@ -33,7 +34,7 @@ export class UserService {
     var header = {
       headers: new HttpHeaders()
         .set("Authorization", localStorage.getItem("token") ?? '')}
-    return this.http.post<User>(this.url,newUser,header)
+    return this.http.post<User>(this.url2,newUser,header)
     }
   }
 
