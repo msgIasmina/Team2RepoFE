@@ -7,14 +7,14 @@ import { HttpClient, HttpHeaders } from "@angular/common/http";
   providedIn: 'root'
 })
 export class UserService {
-  url: string = "http://localhost:8080/users";
+  constructor(
+    private http: HttpClient
+  ){}
+
+  url:string = "http://localhost:8080/users";
+  url2:string = "http://localhost:8080/users/register";
 
   userList$: BehaviorSubject<User[]> = new BehaviorSubject<User[]>([]);
-
-  constructor(
-    private http: HttpClient,
-  ) {
-  }
 
   loadUsers(page: number, size: number): Observable<User[]> {
     var header = {
@@ -30,6 +30,12 @@ export class UserService {
     return this.userList$.asObservable();
   }
 
+  saveUser(newUser:User):Observable<User>{
+    var header = {
+      headers: new HttpHeaders()
+        .set("Authorization", localStorage.getItem("token") ?? '')}
+    return this.http.post<User>(this.url2,newUser,header)
+    }
   updateUser(user: User): Observable<User> {
     var header = {
       headers: new HttpHeaders()
@@ -40,10 +46,10 @@ export class UserService {
 
   toggleActivation(user: User): Observable<User> {
     const url = `${this.url}/${user.id}/activation`;
-  
+
     const header = new HttpHeaders()
       .set("Authorization", localStorage.getItem("token") ?? '');
-  
+
     return this.http.put<User>(url, null, { headers: header });
   }
 }

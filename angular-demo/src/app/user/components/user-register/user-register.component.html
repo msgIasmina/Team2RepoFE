@@ -1,16 +1,18 @@
 <div class="grid align__item">
 
   <div class="register">
-  <h2>Sign Up</h2>
+  <h2>Register User</h2>
 
-<!--  <form class="form" [formGroup]="registerForm" (ngSubmit)="onSave()">-->
-  <form class="form" [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+  <form class="form" [formGroup]="registerForm" (ngSubmit)="onSave()">
     <div class="form__field">
       <input
           placeholder="firstname"
           type="text"
-          formControlName="lastName"
+          formControlName="firstName"
       />
+      <div *ngIf="showFirstNameError()">
+        <div class="error-message">First name is required</div>
+      </div>
     </div>
 
     <div class="form__field">
@@ -19,20 +21,26 @@
         type="text"
         formControlName="lastName"
       />
+      <div *ngIf="showLastNameError()">
+        <div class="error-message">Last name is required</div>
+      </div>
     </div>
 
     <div class="form__field">
       <input
-        type="email"
-        formControlName="email"
         placeholder="info@mailaddress.com"
+        type="text"
+        formControlName="email"
       />
+      <div *ngIf="showEmailError()">
+        <div class="error-message">Email is required</div>
+      </div>
     </div>
 
     <div class="form__field">
       <input
         type="text"
-        formControlName="email"
+        formControlName="mobileNumber"
         placeholder="phone number"
       />
     </div>
@@ -43,16 +51,17 @@
         <mat-chip
           #c="matChip"
           *ngFor="let role of roleList"
-          [value]="role"
+          [value]="role.name"
           (click)="toggleSelection(c, role)"
+          [ngClass]="{'selected-chip': isSelected(role)}"
         >
-          {{role.roleName}}
+          {{role.name}}
         </mat-chip>
       </mat-chip-list>
     </div>
 
     <div class="form__field">
-      <button class="btn btn-primary custom-btn" type="submit">Sign up</button>
+      <button class="btn btn-primary custom-btn" type="submit">Submit user</button>
     </div>
 
 <!--    <button mat-raised-button disabled type="submit"  [disabled]="!registerForm.valid" color="accent">Register</button>-->
@@ -60,7 +69,7 @@
 
   </form>
 
-    <p>Already have an account? <a href="/login">Log in</a></p>
+<!--    <p>Already have an account? <a href="/login">Log in</a></p>-->
 
   </div>
 
