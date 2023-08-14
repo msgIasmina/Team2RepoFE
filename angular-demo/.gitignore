@@ -2,6 +2,18 @@
 # Edit at https://www.toptal.com/developers/gitignore?templates=windows,linux,macos,java,java-web,intellij,intellij+all,intellij+iml,eclipse,maven
 
 ### Eclipse ###
+/node_modules
+.idea/
+.angular/
+.vscode/
+typings
+server/**/*.js
+server/**/*.js.map
+client/**/*.js
+client/**/*.js.map
+/npm-debug.log
+.env
+
 .metadata
 bin/
 tmp/
