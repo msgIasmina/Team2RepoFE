@@ -54,12 +54,13 @@ export class UserListComponent implements OnInit {
         this.loadUsersAndRefresh();
       });
     });
-
-  toggleActivation(userToToggle: User) {
-    this.activatedRoute.params.subscribe(() => {
-      this.userService.toggleActivation(userToToggle).subscribe(() => {
-        this.loadUsersAndRefresh();
-      });
-    });
   }
+
+    toggleActivation(userToToggle: User) {
+      this.activatedRoute.params.subscribe(() => {
+        this.userService.toggleActivation(userToToggle).subscribe(() => {
+          this.loadUsersAndRefresh();
+        });
+      });
+    }
 }
