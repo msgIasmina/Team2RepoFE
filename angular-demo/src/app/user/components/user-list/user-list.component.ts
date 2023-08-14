@@ -20,7 +20,7 @@ export class UserListComponent implements OnInit {
     this.userService.getUsers().subscribe((users) => this.userList = users);
   }
 
-  editUser(userToEdit: User) {
-    this.userService.updateUser(userToEdit).subscribe( ()=> this.userService.loadUsers());
-  }
+  // editUser(userToEdit: User) {
+  //   this.userService.updateUser(userToEdit).subscribe( ()=> this.userService.loadUsers());
+  // }
 }

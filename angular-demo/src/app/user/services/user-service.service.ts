@@ -8,6 +8,10 @@ import {Role} from "../models/role";
   providedIn: 'root'
 })
 export class UserService {
+  constructor(
+    private http: HttpClient
+  ){}
+
   url:string = "http://localhost:8080/users";
 
   userList$: BehaviorSubject<User[]> = new BehaviorSubject<User[]>([]);
@@ -25,15 +29,20 @@ export class UserService {
     return this.userList$.asObservable();
   }
 
-  updateUser(user:User):Observable<User>{
+  saveUser(newUser:User):Observable<User>{
     var header = {
       headers: new HttpHeaders()
-        .set("Authorization", localStorage.getItem("token") ??'')}
-    return this.http.put<User>(this.url+`/` +`${user.id}`,user,header);
+        .set("Authorization", localStorage.getItem("token") ?? '')}
+    return this.http.post<User>(this.url,newUser,header)
+    }
   }
 
-  constructor(
-    private http: HttpClient
-  ) {
-  }
-}
+  // updateUser(user:User):Observable<User>{
+  //   var header = {
+  //     headers: new HttpHeaders()
+  //       .set("Authorization", localStorage.getItem("token") ??'')}
+  //   return this.http.put<User>(this.url+`/` +`${user.id}`,user,header);
+  // }
+
+
+

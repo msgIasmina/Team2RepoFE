@@ -2,6 +2,8 @@ import {ERole} from "./ERole";
 import {Permission} from "./permission";
 
 export class Role {
-  constructor(public name: ERole,
-              public permissions: Permission[]) {}
+  constructor(public id: number,
+              public name: ERole,
+              public permissions: Permission[]) {
+  }
 }
