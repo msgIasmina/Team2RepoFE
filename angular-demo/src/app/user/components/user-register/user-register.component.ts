@@ -17,6 +17,7 @@ export class UserRegisterComponent implements OnInit {
   // userEmailAddress: string = '';
   // userMobileNumber: string = '';
 
+  //TODO: send selected roles to backend
   registerForm = this.fb.group({
     firstName: ['', Validators.required],
     lastName: ['', Validators.required],
