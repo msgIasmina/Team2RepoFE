@@ -1,8 +1,7 @@
 import { Injectable } from '@angular/core';
 import { User } from "../models/user";
-import { BehaviorSubject, Observable, of, switchMap, tap } from "rxjs";
+import { BehaviorSubject, Observable, catchError, tap, throwError } from "rxjs";
 import { HttpClient, HttpHeaders } from "@angular/common/http";
-import { ActivatedRoute, Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
@@ -12,8 +11,12 @@ export class UserService {
 
   userList$: BehaviorSubject<User[]> = new BehaviorSubject<User[]>([]);
 
+  constructor(
+    private http: HttpClient,
+  ) {
+  }
+
   loadUsers(page: number, size: number): Observable<User[]> {
-    //url = `http://localhost:8080/users/${page}/${size}`;
     var header = {
       headers: new HttpHeaders()
         .set("Authorization", localStorage.getItem("token") ?? '')
@@ -21,8 +24,6 @@ export class UserService {
     return this.http.get<User[]>(`${this.url}/${page}/${size}`, header).pipe(
       tap(users => this.userList$.next(users))
     );
-
-
   }
 
   getUsers(): Observable<User[]> {
@@ -37,9 +38,12 @@ export class UserService {
     return this.http.put<User>(this.url + `/` + `${user.id}`, user, header);
   }
 
-  constructor(
-    private http: HttpClient,
-    private activatedRoute: ActivatedRoute
-  ) {
+  toggleActivation(user: User): Observable<User> {
+    const url = `${this.url}/${user.id}/activation`;
+  
+    const header = new HttpHeaders()
+      .set("Authorization", localStorage.getItem("token") ?? '');
+  
+    return this.http.put<User>(url, null, { headers: header });
   }
 }
