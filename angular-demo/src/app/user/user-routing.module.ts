@@ -11,13 +11,12 @@ const routes: Routes = [
   {path:'users',
     children:[
       {path:':page/:size', component:UserListComponent},
-      {path:'details',component: UserDetailsComponent}
+      {path:':id',component: UserDetailsComponent}
     ],
     canActivate: [RoleGuard],
     data:{role:'admin'}
 
   },
-// { path: 'users/:id', component: UserDetailsComponent},
   { path: 'register', component: UserRegisterComponent},
 
 ]

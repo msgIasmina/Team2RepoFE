@@ -1,5 +1,5 @@
 <ul *ngFor="let user of userList">
   <li>
-    <app-user [user]="user" (editUser)="editUser($event)"></app-user>
+    <app-user [user]="user" (userAction)="handleUserAction($event)"></app-user>
   </li>
 </ul>
