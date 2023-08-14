@@ -1,11 +1,12 @@
 export class LoginResponse{
   constructor(
-    public accessToken: string,
-    public id: number,
-    public username: string,
-    public email: string,
-    public newUser :boolean,
-    public roles: string[]
-  ) {
-  }
+    public token:string,
+    public type:string,
+    public permissions:string[],
+    public newUser:boolean,
+    public disabled:boolean,
+    public id?:number,
+    public username?:string,
+    public email?:string
+  ) {}
 }

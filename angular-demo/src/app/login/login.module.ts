@@ -7,6 +7,7 @@ import { FirstLoginComponent } from './components/first-login/first-login.compon
 import {MatButtonModule} from "@angular/material/button";
 
 
+import {LoginRoutingModule} from "./login-routing.module";
 
 @NgModule({
   declarations: [
@@ -16,6 +17,7 @@ import {MatButtonModule} from "@angular/material/button";
   imports: [
     CommonModule,
     ReactiveFormsModule,
+    LoginRoutingModule,
     MatButtonModule
   ], providers: [
     LoginService
