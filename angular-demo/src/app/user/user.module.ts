@@ -5,12 +5,15 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {HttpClientModule} from '@angular/common/http';
 import {UserDetailsComponent} from './components/user-details/user-details.component';
 import {UserRoutingModule} from "./user-routing.module";
+import {UserRegisterComponent} from "./components/user-register/user-register.component";
+import {MatChipsModule} from "@angular/material/chips";
 
 
 @NgModule({
   declarations: [
     UserListComponent,
-    UserDetailsComponent
+    UserDetailsComponent,
+    UserRegisterComponent
   ],
   exports: [
     UserListComponent
@@ -20,7 +23,8 @@ import {UserRoutingModule} from "./user-routing.module";
     FormsModule,
     HttpClientModule,
     UserRoutingModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MatChipsModule
   ]
 })
 export class UserModule { }
