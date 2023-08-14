@@ -84,7 +84,6 @@ export class UserRegisterComponent implements OnInit {
     //const newUser = new User(firstName, lastName, email, mobileNumber, rolesIDs)
 
     this.userService.saveUser(newUser).subscribe(() => {
-      this.userService.loadUsers();
       this.registerForm.reset();
       this.selectedRoles = [];
     });
