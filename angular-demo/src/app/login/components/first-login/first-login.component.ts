@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {AbstractControl, FormBuilder, Validators} from "@angular/forms";
+import {UserService} from "../../../user/services/user-service.service";
 
 @Component({
   selector: 'app-first-login',
@@ -21,7 +22,7 @@ export class FirstLoginComponent implements OnInit {
     ],
   });
 
-  constructor(private fb: FormBuilder) { }
+  constructor(private fb: FormBuilder, private userService:UserService) { }
 
   validateSpecialChar(control: AbstractControl): { [key: string]: boolean } | null {
     const specialCharRegex = /[!@#$%^&*(),.?":{}|<>]/;
@@ -51,7 +52,12 @@ export class FirstLoginComponent implements OnInit {
   }
 
   onSave(){
-    //salvat new password si setat newUser pe fals
+    const password=this.passwdForm.get('password')?.value;
+    const userId:string|null=localStorage.getItem("userId");
+
+    this.userService.firstLoginUpdate(userId, password).subscribe();
+
+
   }
 
 }

@@ -32,7 +32,7 @@ export class LoginComponent implements OnInit {
           window.alert("can't log in")
         }else{
           if(response.newUser){
-            window.alert("new user");
+            this.router.navigate(['/firstLogin']);
           }
         }
       },

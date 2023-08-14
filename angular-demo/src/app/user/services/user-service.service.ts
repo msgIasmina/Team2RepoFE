@@ -37,6 +37,14 @@ export class UserService {
     return this.http.put<User>(this.url + `/` + `${user.id}`, user, header);
   }
 
+  firstLoginUpdate(id:string|null, pd:string): Observable<User>{
+    var header = {
+      headers: new HttpHeaders()
+        .set("Authorization", localStorage.getItem("token") ?? '')
+    }
+    return this.http.put<User>(this.url + `/` + id +"/firstLogin", {password:pd}, header);
+  }
+
   constructor(
     private http: HttpClient,
     private activatedRoute: ActivatedRoute
