@@ -1,5 +1,30 @@
-<ul *ngFor="let user of userList">
-  <li>
-    <app-user [user]="user" (userAction)="handleUserAction($event)"></app-user>
-  </li>
-</ul>
+
+  <p></p>
+  <h2>List of Users</h2>
+
+  <div class="table-wrapper">
+    <table class="fl-table">
+      <thead>
+        <tr>
+          <th>First Name</th>
+          <th>Email</th>
+          <th>Active</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let user of userList">
+          <td>{{ user.firstName }}</td>
+          <td>{{ user.email }}</td>
+          <mat-icon class="icon" [ngClass]="{ 'active-icon': user.active, 'inactive-icon': !user.active }">
+            {{ user.active ? 'check_circle' : 'cancel' }}
+          </mat-icon>
+<!--          <td>{{ user.active }}</td>-->
+          <td>
+            <app-user [user]="user"></app-user>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+

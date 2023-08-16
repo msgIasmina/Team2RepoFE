@@ -7,6 +7,8 @@ import {UserDetailsComponent} from './components/user-details/user-details.compo
 import {UserRoutingModule} from "./user-routing.module";
 import {UserRegisterComponent} from "./components/user-register/user-register.component";
 import {MatChipsModule} from "@angular/material/chips";
+import {MatButtonModule} from "@angular/material/button";
+import {MatIconModule} from "@angular/material/icon";
 
 
 @NgModule({
@@ -24,7 +26,9 @@ import {MatChipsModule} from "@angular/material/chips";
     HttpClientModule,
     UserRoutingModule,
     ReactiveFormsModule,
-    MatChipsModule
+    MatChipsModule,
+    MatButtonModule,
+    MatIconModule
   ]
 })
 export class UserModule { }

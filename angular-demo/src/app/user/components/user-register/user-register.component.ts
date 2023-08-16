@@ -15,7 +15,6 @@ export class UserRegisterComponent implements OnInit {
 
   selectedRoles: Role[] = [];
 
-
   registerForm = this.fb.group({
     firstName: ['', Validators.required],
     lastName: ['', Validators.required],
@@ -54,23 +53,21 @@ export class UserRegisterComponent implements OnInit {
     return this.submitted && emailControl?.hasError('required') || false;
   }
 
-
-  // get selectedRolesIDs(): number[] {
-  //   return this.selectedRoles.map(role => role.id);
-  // }
+  showRolesError(): boolean {
+    return this.submitted && this.selectedRoles.length === 0;
+  }
 
   isSelected(role: Role): boolean {
     return this.roleList.indexOf(role) !== -1;
   }
 
   onSave() {
+    console.log("onSave called");
     this.submitted = true;
     const firstName = this.registerForm.get('firstName')?.value;
     const lastName = this.registerForm.get('lastName')?.value;
     const email = this.registerForm.get('email')?.value;
     const mobileNumber = this.registerForm.get('mobileNumber')?.value;
-    //const roles: number[] = this.registerForm.get('roles')?.value;
-    //const rolesIDs:number[] = this.selectedRolesIDs;
     const rolesIDs: number[] = this.selectedRoles.map(role => role.id)
 
     const newUser: User = {
@@ -80,8 +77,6 @@ export class UserRegisterComponent implements OnInit {
       mobileNumber,
       rolesIDs
     };
-
-    //const newUser = new User(firstName, lastName, email, mobileNumber, rolesIDs)
 
     this.userService.saveUser(newUser).subscribe(() => {
       this.registerForm.reset();
@@ -95,13 +90,8 @@ export class UserRegisterComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    //this.roleService.loadRoles().subscribe();
     this.roleService.getRoles().subscribe((roles) => this.roleList = roles);
     console.log(this.roleList);
-  }
-
-  get f() {
-    return this.registerForm.controls;
   }
 
 
