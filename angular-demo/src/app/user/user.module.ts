@@ -8,6 +8,7 @@ import {UserRoutingModule} from "./user-routing.module";
 import {UserRegisterComponent} from "./components/user-register/user-register.component";
 import {MatChipsModule} from "@angular/material/chips";
 import { UpdateUserComponent } from './components/update-user/update-user.component';
+import { UserFromComponent } from './components/user-from/user-from.component';
 
 
 @NgModule({
@@ -15,7 +16,8 @@ import { UpdateUserComponent } from './components/update-user/update-user.compon
     UserListComponent,
     UserDetailsComponent,
     UserRegisterComponent,
-    UpdateUserComponent
+    UpdateUserComponent,
+    UserFromComponent
   ],
   exports: [
     UserListComponent

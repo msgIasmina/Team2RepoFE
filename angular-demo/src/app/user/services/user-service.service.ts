@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { User } from "../models/user";
 import { BehaviorSubject, Observable, catchError, tap, throwError } from "rxjs";
 import { HttpClient, HttpHeaders } from "@angular/common/http";
+import {UserPlaceholder} from "../models/UserPlaceholder";
 
 @Injectable({
   providedIn: 'root'
@@ -36,12 +37,20 @@ export class UserService {
         .set("Authorization", localStorage.getItem("token") ?? '')}
     return this.http.post<User>(this.url2,newUser,header)
     }
-  updateUser(user: User): Observable<User> {
+  updateUser(user: User): Observable<string> {
     var header = {
       headers: new HttpHeaders()
         .set("Authorization", localStorage.getItem("token") ?? '')
     }
-    return this.http.put<User>(this.url + `/` + `${user.id}`, user, header);
+    return this.http.put<string>(this.url + `/` + `${user.id}`,user,header);
+  }
+
+  findUserById(id:number):Observable<UserPlaceholder>{
+    var header = {
+      headers: new HttpHeaders()
+        .set("Authorization", localStorage.getItem("token") ?? '')
+    }
+    return this.http.get<UserPlaceholder>(`${this.url}/${id}`,header);
   }
 
   toggleActivation(user: User): Observable<User> {

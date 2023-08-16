@@ -5,7 +5,6 @@ import {BasePageComponent} from "./management/components/base-page/base-page.com
 
 
 const routes: Routes = [
- /* { path: 'management', component:BasePageComponent},*/
   { path: '', redirectTo: 'login', pathMatch: 'full'},
   { path: '**', redirectTo: 'login', pathMatch: 'full'}
 ];

@@ -5,10 +5,10 @@ export class User {
               public email: string,
               public mobileNumber: string,
               public rolesIDs: number[],
+              public id?: number,
               public active?: boolean,
               public newUser?: boolean,
               public username?: string,
-              public id?: number,
               public password?: string) {
   }
 }
