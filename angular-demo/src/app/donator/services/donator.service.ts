@@ -38,4 +38,12 @@ export class DonatorService {
     return this.http.post<User>(this.url,newDonator,header)
     // return this.http.post<User>(this.url2,newDonator,header)
   }
+
+  deleteDonator(donator: Donator){
+    var header = {
+      headers: new HttpHeaders()
+        .set("Authorization", localStorage.getItem("token") ?? '')}
+    return this.http.delete(`${this.url}/${donator.id}`,header)
+  }
+
 }

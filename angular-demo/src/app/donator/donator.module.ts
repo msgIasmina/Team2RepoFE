@@ -4,8 +4,6 @@ import { DonatorRegisterComponent } from './components/donator-register/donator-
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {DonatorRoutingModule} from "./donator-routing.module";
 
-
-
 @NgModule({
   declarations: [
     DonatorRegisterComponent

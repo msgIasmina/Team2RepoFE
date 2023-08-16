@@ -1,0 +1,27 @@
+<p></p>
+<h2>List of Donators</h2>
+
+<div class="table-wrapper">
+  <table class="fl-table">
+    <thead>
+    <tr>
+      <th>First Name</th>
+      <th>Additional Name</th>
+      <th>Last Name</th>
+      <th>Maiden Name</th>
+      <th>Actions</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let donator of donatorList">
+      <td>{{ donator.firstName }}</td>
+      <td>{{ donator.additionalName }}</td>
+      <td>{{ donator.lastName }}</td>
+      <td>{{ donator.maidenName }}</td>
+      <td>
+        <app-donator-details [donator]="donator"></app-donator-details>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+</div>

@@ -9,10 +9,15 @@ import {LoginService} from "./login/services/login.service";
 import {Interceptor} from "./util/interceptors/interceptor";
 import {RoleGuard} from "./util/Roleguard";
 import {ManagementModule} from "./management/management.module";
+import { DonatorDetailsComponent } from './donator/components/donator-details/donator-details.component';
+import { DonatorListComponent } from './donator/components/donator-list/donator-list.component';
+import {MatButtonModule} from "@angular/material/button";
 
 @NgModule({
   declarations: [
     AppComponent,
+    DonatorDetailsComponent,
+    DonatorListComponent,
   ],
   imports: [
     BrowserModule,
@@ -20,7 +25,8 @@ import {ManagementModule} from "./management/management.module";
     LoginModule,
     ManagementModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    MatButtonModule
   ],
   providers: [
     LoginService, {provide: HTTP_INTERCEPTORS, useClass: Interceptor, multi: true},RoleGuard
