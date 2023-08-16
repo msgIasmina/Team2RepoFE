@@ -1,5 +1,7 @@
 <div>
-  {{user.firstName}}, {{user.email}}, {{user.id}}, {{user.active}}
-  <button (click)="onEditClicked(user)">Edit</button>
-  <button (click)="onToggleActivationClicked(user)">{{ user.active ? 'Delete' : 'Activate' }}</button>
+  <button mat-raised-button color="accent" (click)="onEditClicked(user)">Edit</button>
+  <button mat-raised-button [color]="user.active ? 'warn' : 'primary'" (click)="onToggleActivationClicked(user)">
+    <mat-icon>{{ user.active ? 'delete' : 'check_circle' }}</mat-icon>
+    {{ user.active ? 'Delete' : 'Activate' }}
+  </button>
 </div>

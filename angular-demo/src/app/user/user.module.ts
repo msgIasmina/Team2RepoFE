@@ -9,6 +9,8 @@ import {UserRegisterComponent} from "./components/user-register/user-register.co
 import {MatChipsModule} from "@angular/material/chips";
 import { UpdateUserComponent } from './components/update-user/update-user.component';
 import { UserFromComponent } from './components/user-from/user-from.component';
+import {MatButtonModule} from "@angular/material/button";
+import {MatIconModule} from "@angular/material/icon";
 
 
 @NgModule({
@@ -28,7 +30,9 @@ import { UserFromComponent } from './components/user-from/user-from.component';
     HttpClientModule,
     UserRoutingModule,
     ReactiveFormsModule,
-    MatChipsModule
+    MatChipsModule,
+    MatButtonModule,
+    MatIconModule
   ]
 })
 export class UserModule { }
