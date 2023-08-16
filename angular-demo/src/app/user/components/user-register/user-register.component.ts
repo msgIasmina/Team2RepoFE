@@ -1,8 +1,10 @@
-import {Component,OnInit} from '@angular/core';
-import {FormBuilder,Validators} from "@angular/forms";
+import {Component, OnInit} from '@angular/core';
+import {FormBuilder, Validators} from "@angular/forms";
 import {Role} from "../../models/role";
 import {MatChip} from "@angular/material/chips";
 import {RoleService} from "../../services/role.service";
+import {User} from "../../models/user";
+import {UserService} from "../../services/user-service.service";
 
 @Component({
   selector: 'app-user-register',
@@ -11,72 +13,96 @@ import {RoleService} from "../../services/role.service";
 })
 export class UserRegisterComponent implements OnInit {
 
+  selectedRoles: Role[] = [];
+
+
   registerForm = this.fb.group({
     firstName: ['', Validators.required],
     lastName: ['', Validators.required],
-    email: ['', Validators.email],
-    phone: ['', Validators.pattern(/^(00407|07|\+407)\d{8}$/)],
-    roles: ['', Validators.required],
+    email: ['', Validators.required, Validators.email],
+    mobileNumber: ['', Validators.pattern(/^(00407|07|\+407)\d{8}$/)]
   })
   submitted = false;
 
-  roleList: Role[] = [
-    {roleName: "soething"},
-    {roleName: "soething"},
-    {roleName: "soething"},
-    {roleName: "soething"},
-];
 
- //  roleList: Role[];
+  roleList: Role[];
 
   toggleSelection(chip: MatChip, role: Role) {
     chip.toggleSelected();
-    // const rolesControl = this.registerForm.value.roles;
-    const rolesControl = this.roleList;
+    const index = this.selectedRoles.indexOf(role);
 
-    if (rolesControl) {
-      // const selectedRoles = rolesControl.value as Role[];
-
-      if (chip.selected) {
-        //selectedRoles.push(role);
-        this.roleList.push(role);
-      } else {
-        //const index = selectedRoles.indexOf(role);
-        const index = this.roleList.indexOf(role);
-        if (index >= 0) {
-          //selectedRoles.splice(index, 1);
-          this.roleList.splice(index, 1);
-        }
-      }
-      // rolesControl.setValue(selectedRoles);
+    if (chip.selected && index === -1) {
+      this.selectedRoles.push(role);
+    } else if (!chip.selected && index !== -1) {
+      this.selectedRoles.splice(index, 1);
     }
   }
 
-  onSave() {
-    console.log(this.registerForm.value);
+  /* Error Messages */
+  showFirstNameError(): boolean {
+    const firstNameControl = this.registerForm.get('firstName');
+    return this.submitted && firstNameControl?.hasError('required') || false;
   }
 
-  constructor(private fb: FormBuilder, private roleService: RoleService) {
+  showLastNameError(): boolean {
+    const lastNameControl = this.registerForm.get('lastName');
+    return this.submitted && lastNameControl?.hasError('required') || false;
   }
+
+  showEmailError(): boolean {
+    const emailControl = this.registerForm.get('email');
+    return this.submitted && emailControl?.hasError('required') || false;
+  }
+
+
+  // get selectedRolesIDs(): number[] {
+  //   return this.selectedRoles.map(role => role.id);
+  // }
+
+  isSelected(role: Role): boolean {
+    return this.roleList.indexOf(role) !== -1;
+  }
+
+  onSave() {
+    this.submitted = true;
+    const firstName = this.registerForm.get('firstName')?.value;
+    const lastName = this.registerForm.get('lastName')?.value;
+    const email = this.registerForm.get('email')?.value;
+    const mobileNumber = this.registerForm.get('mobileNumber')?.value;
+    //const roles: number[] = this.registerForm.get('roles')?.value;
+    //const rolesIDs:number[] = this.selectedRolesIDs;
+    const rolesIDs: number[] = this.selectedRoles.map(role => role.id)
+
+    const newUser: User = {
+      firstName,
+      lastName,
+      email,
+      mobileNumber,
+      rolesIDs
+    };
+
+    //const newUser = new User(firstName, lastName, email, mobileNumber, rolesIDs)
+
+    this.userService.saveUser(newUser).subscribe(() => {
+      this.registerForm.reset();
+      this.selectedRoles = [];
+    });
+  }
+
+  constructor(private fb: FormBuilder,
+              private roleService: RoleService,
+              private userService: UserService) {
+  }
+
   ngOnInit(): void {
     //this.roleService.loadRoles().subscribe();
-    //this.roleService.getRoles().subscribe((roles) => this.roleList = roles);
+    this.roleService.getRoles().subscribe((roles) => this.roleList = roles);
+    console.log(this.roleList);
   }
 
   get f() {
     return this.registerForm.controls;
   }
 
-  onSubmit() {
-    this.submitted = true;
 
-    if (this.registerForm.invalid) {
-      return;
-    }
-    const password1 = this.registerForm.value.password;
-    const confirmPassword = this.registerForm.value.confirmPassword;
-
-    let passA = document.getElementById("passwordAlert");
-
-  }
 }
