@@ -7,13 +7,15 @@ import {UserDetailsComponent} from './components/user-details/user-details.compo
 import {UserRoutingModule} from "./user-routing.module";
 import {UserRegisterComponent} from "./components/user-register/user-register.component";
 import {MatChipsModule} from "@angular/material/chips";
+import { UpdateUserComponent } from './components/update-user/update-user.component';
 
 
 @NgModule({
   declarations: [
     UserListComponent,
     UserDetailsComponent,
-    UserRegisterComponent
+    UserRegisterComponent,
+    UpdateUserComponent
   ],
   exports: [
     UserListComponent

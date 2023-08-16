@@ -1,9 +1,7 @@
-import {Component, Input, OnInit} from '@angular/core';
-import {AbstractControl, FormBuilder, FormControl, FormGroup, ValidatorFn, Validators} from "@angular/forms";
-import {HttpClient} from "@angular/common/http";
+import {Component,OnInit} from '@angular/core';
+import {FormBuilder,Validators} from "@angular/forms";
 import {Role} from "../../models/role";
 import {MatChip} from "@angular/material/chips";
-import {UserService} from "../../services/user-service.service";
 import {RoleService} from "../../services/role.service";
 
 @Component({
@@ -19,7 +17,6 @@ export class UserRegisterComponent implements OnInit {
     email: ['', Validators.email],
     phone: ['', Validators.pattern(/^(00407|07|\+407)\d{8}$/)],
     roles: ['', Validators.required],
-    // campaign: ['', Validators]
   })
   submitted = false;
 

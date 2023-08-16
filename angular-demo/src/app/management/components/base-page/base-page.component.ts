@@ -18,9 +18,8 @@ export class BasePageComponent implements OnInit {
     this.service.logout().subscribe(
       response => {
         localStorage.clear();
-        this.router.parseUrl("/login")
-      },
-      error => window.alert("Couldn't logout")
+        this.router.navigate(['/login'])
+      }
     )
   }
 
