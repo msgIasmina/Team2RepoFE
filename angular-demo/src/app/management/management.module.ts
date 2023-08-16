@@ -5,13 +5,15 @@ import {ManagementRoutingModule} from "./management-routing.module";
 import {MatToolbarModule} from "@angular/material/toolbar";
 import {LoginGuard} from "./utils/utils/login-guard";
 import {LogoutService} from "./services/logout.service";
+import {CampaignsModule} from "../campaigns/campaigns.module";
 
 @NgModule({
   declarations: [BasePageComponent],
   imports: [
     CommonModule,
     ManagementRoutingModule,
-    MatToolbarModule
+    MatToolbarModule,
+    CampaignsModule
   ],
   providers:[LoginGuard,LogoutService]
 })
