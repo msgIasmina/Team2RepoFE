@@ -4,9 +4,8 @@ import {RouterModule, Routes} from "@angular/router";
 import {DonatorRegisterComponent} from "./components/donator-register/donator-register.component";
 
 const routes: Routes = [
-  {path: 'register-donator', component: DonatorRegisterComponent}
+  {path: 'register', component: DonatorRegisterComponent}
 ]
-//TODO: rutare la management?
 
 @NgModule({
   declarations: [],

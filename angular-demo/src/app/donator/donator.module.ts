@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { DonatorRegisterComponent } from './components/donator-register/donator-register.component';
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
+import {DonatorRoutingModule} from "./donator-routing.module";
 
 
 
@@ -12,7 +13,8 @@ import {FormsModule, ReactiveFormsModule} from "@angular/forms";
   imports: [
     CommonModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    DonatorRoutingModule
   ]
 })
 export class DonatorModule { }
