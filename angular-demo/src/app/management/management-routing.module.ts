@@ -12,6 +12,9 @@ const routes: Routes = [
         loadChildren: () => import('../user/user.module').then(m => m.UserModule)
       },
       {path:"campaigns",component:CampaignComponent}
+      {path:"donators",
+        loadChildren: () => import('../donator/donator.module').then(m => m.DonatorModule)
+      }
     ],
     canActivate:[LoginGuard]
   }

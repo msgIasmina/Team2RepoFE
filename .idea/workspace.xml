@@ -5,17 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="770d2d89-e173-4c19-9235-d14d4ffbfbd8" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/angular-demo/node_modules/__ngcc_entry_points__.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/angular-demo/src/app/app.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/angular-demo/src/app/app.component.html" afterDir="false" />
-    </list>
-    <list default="true" id="770d2d89-e173-4c19-9235-d14d4ffbfbd8" name="Changes" comment="Enhancements have been implemented to improve the visual presentation of the registration and login pages through modifications to their respective HTML and CSS. Additionally, a comprehensive refinement of the application-wide styling has been executed by integrating CSS adjustments within the app component. Notably, the registration &quot;chips&quot; functionality has been rectified, ensuring seamless and accurate operation.">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/angular-demo/src/app/user/components/user-register/user-register.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/angular-demo/src/app/user/components/user-register/user-register.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/angular-demo/src/app/user/components/user-register/user-register.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/angular-demo/src/app/user/components/user-register/user-register.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/angular-demo/src/app/user/models/user.ts" beforeDir="false" afterPath="$PROJECT_DIR$/angular-demo/src/app/user/models/user.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/angular-demo/src/app/user/services/user-service.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/angular-demo/src/app/user/services/user-service.service.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/angular-demo/src/app/app-routing.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/angular-demo/src/app/app-routing.module.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/angular-demo/src/app/donator/components/donator-register/donator-register.component.css" beforeDir="false" afterPath="$PROJECT_DIR$/angular-demo/src/app/donator/components/donator-register/donator-register.component.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/angular-demo/src/app/donator/components/donator-register/donator-register.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/angular-demo/src/app/donator/components/donator-register/donator-register.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/angular-demo/src/app/donator/donator-routing.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/angular-demo/src/app/donator/donator-routing.module.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/angular-demo/src/app/donator/donator.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/angular-demo/src/app/donator/donator.module.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -53,11 +48,10 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
     "ASKED_ADD_EXTERNAL_FILES": "true",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "T:/40_MVN_REPO/Team2RepoFE",
     "last_opened_file_path": "C:/Users/vrencl/Documents/frontEnd/angular-demo",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
@@ -65,7 +59,7 @@
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
     "settings.editor.selected.configurable": "MavenSettings",
-    "ts.external.directory.path": "C:\\Users\\vrencl\\Documents\\TRAINING\\Team2RepoFE\\angular-demo\\node_modules\\typescript\\lib",
+    "ts.external.directory.path": "T:\\40_MVN_REPO\\Team2RepoFE\\angular-demo\\node_modules\\typescript\\lib",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
