@@ -7,6 +7,7 @@ import {UserDetailsComponent} from './components/user-details/user-details.compo
 import {UserRoutingModule} from "./user-routing.module";
 import {UserRegisterComponent} from "./components/user-register/user-register.component";
 import {MatChipsModule} from "@angular/material/chips";
+import {UserService} from "./services/user-service.service";
 
 
 @NgModule({
@@ -16,7 +17,7 @@ import {MatChipsModule} from "@angular/material/chips";
     UserRegisterComponent
   ],
   exports: [
-    UserListComponent
+    //UserService ::should be deleted
   ],
   imports: [
     CommonModule,

@@ -44,6 +44,14 @@ export class UserService {
     return this.http.put<User>(this.url + `/` + `${user.id}`, user, header);
   }
 
+  firstLoginUpdate(id:string|null, pd:string): Observable<User>{
+    var header = {
+      headers: new HttpHeaders()
+        .set("Authorization", localStorage.getItem("token") ?? '')
+    }
+    return this.http.put<User>(this.url + `/` + id +"/firstLogin", {password:pd}, header);
+  }
+
   toggleActivation(user: User): Observable<User> {
     const url = `${this.url}/${user.id}/activation`;
 
@@ -51,5 +59,6 @@ export class UserService {
       .set("Authorization", localStorage.getItem("token") ?? '');
 
     return this.http.put<User>(url, null, { headers: header });
+
   }
 }

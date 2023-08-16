@@ -11,6 +11,8 @@ export class LoginService {
 
   url: string = "http://localhost:8080/auth/login";
 
+  // @ts-ignore
+  loginResponse: BehaviorSubject<LoginResponse> = new BehaviorSubject<LoginResponse>([]);
 
   constructor(
     private http: HttpClient
@@ -36,5 +38,6 @@ export class LoginService {
       catchError(this.handleError)
     );
   }
+
 
 }
