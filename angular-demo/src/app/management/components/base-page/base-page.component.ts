@@ -7,12 +7,8 @@ import {LogoutService} from "../../services/logout.service";
   templateUrl: './base-page.component.html',
   styleUrls: ['./base-page.component.css']
 })
-export class BasePageComponent implements OnInit {
-
+export class BasePageComponent{
   constructor(private router:Router,private service:LogoutService) { }
-
-  ngOnInit(): void {
-  }
 
   logout(){
     this.service.logout().subscribe(

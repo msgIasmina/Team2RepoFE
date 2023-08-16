@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {User} from "../../models/user";
-import {ActivatedRoute, Router} from "@angular/router";
+import {ActivatedRoute} from "@angular/router";
 import {UserService} from "../../services/user-service.service";
 
 @Component({
@@ -12,6 +12,7 @@ export class UpdateUserComponent implements OnInit{
 
   user:User;
   id:number;
+  update:string="update"
   constructor (private activatedRoute: ActivatedRoute,private userService:UserService) {
   }
 
@@ -26,9 +27,7 @@ export class UpdateUserComponent implements OnInit{
       this.id = +params['id'];
       this.userService.findUserById(this.id).subscribe(
         placeholder => {
-          let roles: number[] = [];
-          placeholder.roles.forEach(role => roles.push(role.id));
-          this.user = new User(placeholder.firstName, placeholder.lastName, placeholder.email, placeholder.mobileNumber, roles,placeholder.id);
+          this.user = placeholder
         })
     })
   }

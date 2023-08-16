@@ -10,7 +10,17 @@ import {RoleService} from "../../services/role.service";
   templateUrl: './user-from.component.html',
   styleUrls: ['./user-from.component.css']
 })
+
 export class UserFromComponent implements OnInit {
+
+  @Output()
+  submitEvent:EventEmitter<User> = new EventEmitter<User>();
+  @Input()
+  placeholder:User;
+  @Input()
+  functionality:string
+  submitted = false;
+  roleList: Role[];
   selectedRoles: Role[] = [];
   registerForm = this.fb.group({
     firstName: ['', Validators.required],
@@ -18,19 +28,10 @@ export class UserFromComponent implements OnInit {
     email: ['', Validators.required, Validators.email],
     mobileNumber: ['', Validators.pattern(/^(00407|07|\+407)\d{8}$/)]
   })
-  submitted = false;
-  @Output()
-  submitEvent:EventEmitter<User> = new EventEmitter<User>();
-  @Input()
-  placeholder:User;
-
-
-  roleList: Role[];
 
   toggleSelection(chip: MatChip, role: Role) {
     chip.toggleSelected();
     const index = this.selectedRoles.indexOf(role);
-
     if (chip.selected && index === -1) {
       this.selectedRoles.push(role);
     } else if (!chip.selected && index !== -1) {
@@ -39,18 +40,21 @@ export class UserFromComponent implements OnInit {
   }
 
   showFirstNameError(): boolean {
-    const firstNameControl = this.registerForm.get('firstName')?.value;
-    return this.submitted && firstNameControl?.hasError('required') || false;
+    const firstNameControl = this.registerForm.get('firstName');
+    let isRegistration:boolean = this.functionality==="register";
+    return this.submitted && firstNameControl?.hasError('required') && isRegistration || false;
   }
 
   showLastNameError(): boolean {
-    const lastNameControl = this.registerForm.get('lastName')?.value;
-    return this.submitted && lastNameControl?.hasError('required') || false;
+    const lastNameControl = this.registerForm.get('lastName');
+    let isRegistration:boolean = this.functionality==="register";
+    return this.submitted && lastNameControl?.hasError('required') && isRegistration|| false;
   }
 
   showEmailError(): boolean {
-    const emailControl = this.registerForm.get('email')?.value;
-    return this.submitted && emailControl?.hasError('required') || false;
+    const emailControl = this.registerForm.get('email');
+    let isRegistration:boolean = this.functionality==="register";
+    return this.submitted && emailControl?.hasError('required') && isRegistration || false;
   }
 
   isSelected(role: Role): boolean {
@@ -64,17 +68,35 @@ export class UserFromComponent implements OnInit {
     const email = this.registerForm.get('email')?.value;
     const mobileNumber = this.registerForm.get('mobileNumber')?.value;
     const rolesIDs: number[] = this.selectedRoles.map(role => role.id)
-    let id = this.placeholder.id
-    const newUser: User = {
+    let newUser:User ={
       firstName,
       lastName,
       email,
       mobileNumber,
       rolesIDs,
-      id
     };
-    console.log(newUser)
-    this.submitEvent.emit(newUser);
+    if (this.functionality === "update"){
+        newUser.id=this.placeholder.id;
+        newUser.active = this.placeholder.active;
+        newUser.newUser = this.placeholder.newUser;
+        newUser.firstName = firstName === "" ? this.placeholder.firstName :firstName;
+        newUser.lastName = lastName === "" ? this.placeholder.lastName :lastName;
+        newUser.email = email === "" ? this.placeholder.email :email;
+        newUser.mobileNumber = mobileNumber === "" ? this.placeholder.mobileNumber : mobileNumber;
+        newUser.roles = this.selectedRoles
+        newUser.rolesIDs= undefined
+    }
+    if(this.selectedRoles===[]){
+      window.alert("you cannot" + this.functionality + "without a role")
+    }else {
+      if(this.functionality === "register"){
+        if(this.registerForm.valid){
+          this.submitEvent.emit(newUser)
+        }
+      }else{
+        this.submitEvent.emit(newUser);
+      }
+    }
     this.registerForm.reset();
     this.selectedRoles = [];
   }
@@ -86,12 +108,7 @@ export class UserFromComponent implements OnInit {
   ngOnInit(): void {
     this.roleService.getRoles().subscribe((roles) => {
       this.roleList = roles;
-      this.placeholder.rolesIDs.forEach(id=>{
-        let role:Role|undefined = roles.find(role => role.id === id);
-        if(role !== undefined){
-          this.selectedRoles.push(role);
-        }
-      })
+      this.selectedRoles = this.placeholder.roles as Role[];
     });
   }
 

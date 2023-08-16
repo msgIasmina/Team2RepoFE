@@ -1,9 +1,7 @@
 import { Injectable } from '@angular/core';
 import { User } from "../models/user";
-import { BehaviorSubject, Observable, catchError, tap, throwError } from "rxjs";
+import { BehaviorSubject, Observable,tap} from "rxjs";
 import { HttpClient, HttpHeaders } from "@angular/common/http";
-import {UserPlaceholder} from "../models/UserPlaceholder";
-
 @Injectable({
   providedIn: 'root'
 })
@@ -13,7 +11,7 @@ export class UserService {
   ){}
 
   url:string = "http://localhost:8080/users";
-  url2:string = "http://localhost:8080/users/register";
+  url2:string = "http://localhost:8080/users";
 
   userList$: BehaviorSubject<User[]> = new BehaviorSubject<User[]>([]);
 
@@ -40,17 +38,20 @@ export class UserService {
   updateUser(user: User): Observable<string> {
     var header = {
       headers: new HttpHeaders()
-        .set("Authorization", localStorage.getItem("token") ?? '')
+        .set("Authorization", localStorage.getItem("token") ?? ''),
     }
-    return this.http.put<string>(this.url + `/` + `${user.id}`,user,header);
+    let id = user.id
+    user.id = undefined
+    console.log(user)
+    return this.http.put<string>(this.url + `/` + id,user,header);
   }
 
-  findUserById(id:number):Observable<UserPlaceholder>{
+  findUserById(id:number):Observable<User>{
     var header = {
       headers: new HttpHeaders()
         .set("Authorization", localStorage.getItem("token") ?? '')
     }
-    return this.http.get<UserPlaceholder>(`${this.url}/${id}`,header);
+    return this.http.get<User>(`${this.url}/${id}`,header);
   }
 
   toggleActivation(user: User): Observable<User> {
