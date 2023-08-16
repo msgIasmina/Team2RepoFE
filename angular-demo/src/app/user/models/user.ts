@@ -1,7 +1,14 @@
 export class User {
-  constructor(public id: number,
-              public username: string,
+  constructor(
+              public firstName: string,
+              public lastName: string,
               public email: string,
-              public password: string) {
+              public mobileNumber: string,
+              public rolesIDs: number[],
+              public active?: boolean,
+              public newUser?: boolean,
+              public username?: string,
+              public id?: number,
+              public password?: string) {
   }
 }

@@ -137,3 +137,7 @@ a {
   background-size: 1.5rem;
   background-position: 1rem 50%;
 }
+
+.error-message{
+  color: red;
+}

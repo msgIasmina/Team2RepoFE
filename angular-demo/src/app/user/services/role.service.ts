@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import {BehaviorSubject, Observable, tap} from "rxjs";
-import {User} from "../models/user";
 import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {Role} from "../models/role";
 
@@ -10,16 +9,24 @@ import {Role} from "../models/role";
 export class RoleService {
   url:string = "http://localhost:8080/roles";
 
-  userroleList$: BehaviorSubject<Role[]> = new BehaviorSubject<Role[]>([]);
+  userRolesList$: BehaviorSubject<Role[]> = new BehaviorSubject<Role[]>([]);
 
   loadRoles():Observable<Role[]>{
-    return this.http.get<Role[]>(this.url).pipe(
-      tap(roles => this.userroleList$.next(roles))
+    var header = {
+      headers: new HttpHeaders()
+        .set("Authorization", localStorage.getItem("token") ??'')} //empty string daca e nedefinit
+    return this.http.get<Role[]>(this.url, header).pipe(
+      tap(roles => this.userRolesList$.next(roles))
     );
   }
 
   getRoles(): Observable<Role[]> {
-    return this.userroleList$.asObservable();
+    //return this.userRolesList$.asObservable();
+
+    var header = {
+      headers: new HttpHeaders()
+        .set("Authorization", localStorage.getItem("token") ??'')} //empty string daca e nedefinit
+    return this.http.get<Role[]>(this.url, header);
   }
 
   constructor(private http: HttpClient) { }

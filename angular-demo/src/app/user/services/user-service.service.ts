@@ -1,19 +1,22 @@
 import { Injectable } from '@angular/core';
 import { User } from "../models/user";
-import { BehaviorSubject, Observable, of, switchMap, tap } from "rxjs";
+import { BehaviorSubject, Observable, catchError, tap, throwError } from "rxjs";
 import { HttpClient, HttpHeaders } from "@angular/common/http";
-import { ActivatedRoute, Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
 })
 export class UserService {
-  url: string = "http://localhost:8080/users";
+  constructor(
+    private http: HttpClient
+  ){}
+
+  url:string = "http://localhost:8080/users";
+  url2:string = "http://localhost:8080/users/register";
 
   userList$: BehaviorSubject<User[]> = new BehaviorSubject<User[]>([]);
 
   loadUsers(page: number, size: number): Observable<User[]> {
-    //url = `http://localhost:8080/users/${page}/${size}`;
     var header = {
       headers: new HttpHeaders()
         .set("Authorization", localStorage.getItem("token") ?? '')
@@ -21,14 +24,18 @@ export class UserService {
     return this.http.get<User[]>(`${this.url}/${page}/${size}`, header).pipe(
       tap(users => this.userList$.next(users))
     );
-
-
   }
 
   getUsers(): Observable<User[]> {
     return this.userList$.asObservable();
   }
 
+  saveUser(newUser:User):Observable<User>{
+    var header = {
+      headers: new HttpHeaders()
+        .set("Authorization", localStorage.getItem("token") ?? '')}
+    return this.http.post<User>(this.url2,newUser,header)
+    }
   updateUser(user: User): Observable<User> {
     var header = {
       headers: new HttpHeaders()
@@ -45,9 +52,13 @@ export class UserService {
     return this.http.put<User>(this.url + `/` + id +"/firstLogin", {password:pd}, header);
   }
 
-  constructor(
-    private http: HttpClient,
-    private activatedRoute: ActivatedRoute
-  ) {
+  toggleActivation(user: User): Observable<User> {
+    const url = `${this.url}/${user.id}/activation`;
+
+    const header = new HttpHeaders()
+      .set("Authorization", localStorage.getItem("token") ?? '');
+
+    return this.http.put<User>(url, null, { headers: header });
+
   }
 }

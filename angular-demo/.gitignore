@@ -12,6 +12,18 @@ client/**/*.js.map
 /npm-debug.log
 .env
 ### Eclipse ###
+/node_modules
+.idea/
+.angular/
+.vscode/
+typings
+server/**/*.js
+server/**/*.js.map
+client/**/*.js
+client/**/*.js.map
+/npm-debug.log
+.env
+
 .metadata
 bin/
 tmp/

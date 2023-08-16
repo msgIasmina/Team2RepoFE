@@ -1,5 +1,7 @@
-import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
-import {User} from '../../models/user';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { User } from '../../models/user';
+import { UserService } from '../../services/user-service.service';
+import { UserAction } from '../user-list/user-list.component';
 
 @Component({
   selector: 'app-user',
@@ -9,7 +11,7 @@ import {User} from '../../models/user';
 export class UserDetailsComponent implements OnInit {
 
   @Input() user: User;
-  @Output() editUser = new EventEmitter<User>();
+  @Output() userAction = new EventEmitter<UserAction>();
 
   constructor() { }
 
@@ -17,6 +19,12 @@ export class UserDetailsComponent implements OnInit {
   }
 
   onEditClicked(user: User) {
-    this.editUser.emit(user)
+    const action: UserAction = { user, type: 'edit' };
+    this.userAction.emit(action);
+  }
+
+  onToggleActivationClicked(user: User) {
+    const action: UserAction = { user, type: 'toggleActivation' };
+    this.userAction.emit(action);
   }
 }
