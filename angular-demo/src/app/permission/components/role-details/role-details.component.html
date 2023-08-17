@@ -1,5 +1,19 @@
 <div>
-  {{rolePermission.role}},{{rolePermission.acquiredPermissions}},{{rolePermission.missingPermissions}}
+  {{rolePermission.role}}
+  <div>
+    <ul *ngFor="let permission of rolePermission.acquiredPermissions">
+      <li>
+        {{permission.name}}
+      </li>
+    </ul>
+  </div>
+  <div>
+    <ul *ngFor="let permission of rolePermission.missingPermissions">
+      <li>
+        {{permission.name}}
+      </li>
+    </ul>
+  </div>
 
   <mat-form-field>
     <mat-label>Add Permission</mat-label>
