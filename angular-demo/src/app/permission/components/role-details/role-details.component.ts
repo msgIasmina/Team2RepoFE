@@ -1,9 +1,8 @@
-import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {RolePermission} from "../../models/role-permission";
 import {FormBuilder, FormControl} from "@angular/forms";
 import {Permission} from "../../../user/models/permission";
 import {RolePermissionService} from "../../services/role-permission.service";
-import {RolePermissionAction} from "../role-list/role-list.component";
 
 @Component({
   selector: 'app-role-details',
@@ -12,13 +11,12 @@ import {RolePermissionAction} from "../role-list/role-list.component";
 })
 export class RoleDetailsComponent implements OnInit {
   @Input() rolePermission: RolePermission;
-  @Output() rolePermissionAction= new EventEmitter<RolePermissionAction>();
 
 
-  permissionsToBeAdded:FormControl = new FormControl('');
+  permissionsToBeAdded: FormControl = new FormControl('');
   missingPermissions: Permission[] = [];
 
-  permissionsToBeDeleted:FormControl = new FormControl('');
+  permissionsToBeDeleted: FormControl = new FormControl('');
   acquiredPermissions: Permission[] = [];
 
   constructor(private fb: FormBuilder, private rolePermissionService: RolePermissionService) {
@@ -29,13 +27,18 @@ export class RoleDetailsComponent implements OnInit {
     this.acquiredPermissions = this.rolePermission.acquiredPermissions;
   }
 
-  addPermissions():void{
+  addPermissions(): void {
     const newlySelectedPermissions = this.permissionsToBeAdded.value;
-
-
-
+    this.rolePermissionService.addPermissionsToRole(this.rolePermission.id, newlySelectedPermissions).subscribe(
+      response => console.log(response)
+    )
   }
-  removePermissions() {
 
+
+  removePermissions() {
+    const newlyRemovedPermissions = this.permissionsToBeDeleted.value;
+    this.rolePermissionService.removePermissionsFromRole(this.rolePermission.id, newlyRemovedPermissions).subscribe(
+      response => console.log(response)
+    )
   }
 }

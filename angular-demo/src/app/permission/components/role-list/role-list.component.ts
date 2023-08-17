@@ -1,6 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {RolePermission} from "../../models/role-permission";
 import {RolePermissionService} from "../../services/role-permission.service";
+import {ActivatedRoute} from "@angular/router";
+
 export interface RolePermissionAction {
   rp: RolePermission,
   type: 'addNewPermissions' | 'removeCurrentPermissions';
@@ -13,29 +15,21 @@ export interface RolePermissionAction {
 })
 export class RoleListComponent implements OnInit {
   rolePermissionsList: RolePermission[];
+  id: number;
 
-  constructor(private rolePermissionService: RolePermissionService) { }
+  constructor(private rolePermissionService: RolePermissionService,
+              private activatedRoute: ActivatedRoute) {
+  }
 
   ngOnInit(): void {
-    //this.loadRolePermissionsAndRefresh();
-    // ?
-  }
-
-  handleRolePermissionAction(action: RolePermissionAction){
-    if(action.type === 'addNewPermissions'){
-      this.addNewPermissions(action.rp);
-    }else if(action.type === 'removeCurrentPermissions'){
-      this.removeCurrentPermissions(action.rp);
-    }
-  }
-
-  addNewPermissions(rp: RolePermission) {
+    this.activatedRoute.params.subscribe((params) => {
+      this.id = +params['id'];
+    })
+    this.rolePermissionService.loadRolePermissions(this.id).subscribe(
+      rolePermissions => this.rolePermissionsList = rolePermissions
+    )
 
   }
-  //TODO: loadAndRefresh?
 
 
-  private removeCurrentPermissions(rp: RolePermission) {
-
-  }
 }
