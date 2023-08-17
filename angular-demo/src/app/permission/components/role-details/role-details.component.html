@@ -1,45 +1,20 @@
-<div>
-  {{rolePermission.role}},
-  <p>Acquired Permissions</p>
-  <div>
-    <ul *ngFor="let permission of rolePermission.acquiredPermissions">
-      <li>
-        {{permission.permission}}
-      </li>
-    </ul>
-  </div>
-
-  <p>Missing Permissions</p>
-  <div>
-    <ul *ngFor="let permission of rolePermission.missingPermissions">
-      <li>
-        {{permission.permission}}
-      </li>
-    </ul>
-  </div>
-
-  <mat-form-field>
-    <mat-label>Add Permission</mat-label>
-    <mat-select [formControl]="permissionsToBeAdded" multiple>
-      <mat-option
-        *ngFor="let permission of missingPermissions"
-        [value]="permission.permission">
+<div class="role-details">
+  <h2>{{rolePermission.role}}</h2>
+  <form [formGroup]="form">
+  <label for="addMultiplePermissions">Add Permissions</label>
+    <mat-select class="multi-select"  formControlName="permissionsToBeAdded" multiple  id="addMultiplePermissions">
+      <mat-option *ngFor="let permission of missingPermissions" [value]="permission">
         {{permission.permission}}
       </mat-option>
     </mat-select>
-  </mat-form-field>
-  <button (click)="addPermissions()">Add selected permissions</button>
-
-  <mat-form-field>
-    <mat-label>Remove Permission</mat-label>
-    <mat-select [formControl]="permissionsToBeDeleted" multiple>
-      <mat-option
-        *ngFor="let permission of acquiredPermissions"
-        [value]="permission.permission">
-        {{permission.permission}}
-      </mat-option>
-    </mat-select>
-  </mat-form-field>
-  <button (click)="removePermissions()">Remove selected permissions</button>
-
+  <button class="submit-button" (click)="addPermissions()">Submit added permissions</button>
+  <br>
+  <label for="removeMultiplePermissions">Remove Permissions</label>
+  <mat-select class="multi-select" formControlName="permissionsToBeDeleted" multiple  id="removeMultiplePermissions">
+    <mat-option *ngFor="let permission of acquiredPermissions" [value]="permission">
+      {{permission.permission}}
+    </mat-option>
+  </mat-select>
+  <button class="submit-button" (click)="removePermissions()">Submit removed permissions</button>
+  </form>
 </div>

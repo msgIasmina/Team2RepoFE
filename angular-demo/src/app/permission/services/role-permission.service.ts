@@ -1,8 +1,7 @@
 import {Injectable} from '@angular/core';
 import {HttpClient, HttpHeaders} from "@angular/common/http";
-import {BehaviorSubject, Observable} from "rxjs";
+import { Observable} from "rxjs";
 import {RolePermission} from "../models/role-permission";
-import {User} from "../../user/models/user";
 import {Permission} from "../../user/models/permission";
 
 @Injectable({
@@ -21,6 +20,7 @@ export class RolePermissionService {
 
 
   loadRolePermissions(id: number): Observable<RolePermission[]> {
+    console.log("hello world")
     var header = {
       headers: new HttpHeaders()
         .set("Authorization", localStorage.getItem("token") ?? '')

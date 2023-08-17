@@ -1,0 +1,18 @@
+.role-details{
+  background-color:white;
+  margin:10px;
+  padding-bottom: 10px;
+  padding-left: 7px;
+  padding-right: 7px;
+}
+h2{
+  color:black;
+}
+
+.multi-select{
+  border-style: solid;
+}
+
+.submit-button{
+  margin: 20px;
+}
