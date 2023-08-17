@@ -3,6 +3,7 @@
   max-width: 25rem;
   width: 100%;
 }
+
 .align__item--start {
   align-self: flex-start;
 }
@@ -10,8 +11,7 @@
 .align__item--end {
   align-self: flex-end;
 }
-
-.register-donator {
+.update {
   background-color: #ffffff;
   box-shadow: 0 0 250px #f85252;
   text-align: center;
@@ -19,7 +19,6 @@
   height: auto;
   border-radius: 25px;
 }
-
 
 h2 {
   font-size: 2.75rem;

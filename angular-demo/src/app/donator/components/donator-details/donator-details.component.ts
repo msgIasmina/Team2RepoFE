@@ -1,7 +1,7 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {Donator} from "../../models/donator";
-import {DonatorAction} from "../donator-list/donator-list.component";
 import {DonatorService} from "../../services/donator.service";
+import {DonatorAction} from "../../models/DonatorAction";
 
 @Component({
   selector: 'app-donator-details',
@@ -12,21 +12,30 @@ export class DonatorDetailsComponent implements OnInit {
 
   @Input() donator: Donator;
   @Output() donatorAction = new EventEmitter<DonatorAction>();
-  constructor(private donatorService: DonatorService) { }
+  constructor() { }
 
   ngOnInit(): void {
   }
 
-  onEditClicked(donator: Donator) {
-    const action: DonatorAction = { donator, type: 'edit' };
+  onEditClicked() {
+    const action: DonatorAction = { donator:this.donator, type: 'edit' };
     this.donatorAction.emit(action);
   }
 
-  onDeleteClicked(donator: Donator){
-    const action: DonatorAction = { donator, type: 'delete' };
-    this.donatorAction.emit(action);
-
-    this.donatorService.deleteDonator(donator).subscribe();
-  }
-
+  // onDeleteClicked(donator: Donator) {
+  //   if (donator.id) {
+  //     const action: DonatorAction = { donator, type: 'delete' };
+  //     this.donatorAction.emit(action);
+  //
+  //     this.donatorService.deleteDonator(donator).subscribe(
+  //       () => {
+  //         // Success logic or notification
+  //       },
+  //       error => {
+  //         console.error("Error deleting donator:", error);
+  //       }
+  //     );
+  //   }
+  // }
 }
+

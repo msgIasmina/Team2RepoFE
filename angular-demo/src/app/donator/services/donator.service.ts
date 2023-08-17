@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import {HttpClient, HttpHeaders} from "@angular/common/http";
-import {BehaviorSubject, Observable, tap} from "rxjs";
+import {BehaviorSubject, catchError, Observable, tap, throwError} from "rxjs";
 import {Role} from "../../user/models/role";
 import {Donator} from "../models/donator";
 import {User} from "../../user/models/user";
@@ -39,11 +39,37 @@ export class DonatorService {
     // return this.http.post<User>(this.url2,newDonator,header)
   }
 
-  deleteDonator(donator: Donator){
+  deleteDonator(donator: Donator) {
+    if (!donator.id) {
+      return throwError("Invalid donator ID");
+    }
+
+    const headers = new HttpHeaders().set("Authorization", localStorage.getItem("token") ?? '');
+    return this.http.delete(`${this.url}/${donator.id}`, { headers }).pipe(
+      catchError(error => {
+        console.error("Error deleting donator:", error);
+        return throwError("An error occurred while deleting the donator.");
+      })
+    );
+  }
+
+  updateDonator(donator: Donator): Observable<string> {
     var header = {
       headers: new HttpHeaders()
-        .set("Authorization", localStorage.getItem("token") ?? '')}
-    return this.http.delete(`${this.url}/${donator.id}`,header)
+        .set("Authorization", localStorage.getItem("token") ?? ''),
+    }
+    let id = donator.id
+    donator.id = undefined
+    console.log(donator)
+    return this.http.put<string>(this.url + `/` + id,donator,header);
+  }
+
+  findDonatorById(id:number):Observable<Donator>{
+    var header = {
+      headers: new HttpHeaders()
+        .set("Authorization", localStorage.getItem("token") ?? '')
+    }
+    return this.http.get<Donator>(`${this.url}/${id}`,header);
   }
 
 }

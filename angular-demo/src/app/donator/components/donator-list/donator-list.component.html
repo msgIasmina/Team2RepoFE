@@ -19,7 +19,7 @@
       <td>{{ donator.lastName }}</td>
       <td>{{ donator.maidenName }}</td>
       <td>
-        <app-donator-details [donator]="donator"></app-donator-details>
+        <app-donator-details [donator]="donator" (donatorAction)="handleDonatorAction($event)"></app-donator-details>
       </td>
     </tr>
     </tbody>

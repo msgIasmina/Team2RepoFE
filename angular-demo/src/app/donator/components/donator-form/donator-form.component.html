@@ -1,0 +1,43 @@
+<form class="form" [formGroup]="registerForm" (ngSubmit)="onSave()">
+  <div class="form__field">
+    <input
+      [placeholder]="placeholder.firstName"
+      type="text"
+      formControlName="firstName"
+    />
+    <div *ngIf="showFirstNameError()">
+      <div class="error-message">First name is required</div>
+    </div>
+  </div>
+
+  <div class="form__field">
+    <input
+      [placeholder]="placeholder.additionalName"
+      type="text"
+      formControlName="additionalName"
+    />
+  </div>
+
+  <div class="form__field">
+    <input
+      [placeholder]="placeholder.lastName"
+      type="text"
+      formControlName="lastName"
+    />
+    <div *ngIf="showLastNameError()">
+      <div class="error-message">Last name is required</div>
+    </div>
+  </div>
+
+  <div class="form__field">
+    <input
+      type="text"
+      formControlName="text"
+      [placeholder]="placeholder.maidenName"
+    />
+  </div>
+
+  <div class="form__field">
+    <button class="btn btn-primary custom-btn" type="submit">Submit donator</button>
+  </div>
+</form>
