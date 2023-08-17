@@ -2,9 +2,13 @@ import { Component, OnInit } from '@angular/core';
 import { User } from '../../models/user';
 import { UserService } from "../../services/user-service.service";
 import {ActivatedRoute, Router} from '@angular/router';
-import {UserAction} from "../../models/UserAction";
 import {ToastrService} from "ngx-toastr";
 import {PageEvent} from "@angular/material/paginator";
+
+export interface UserAction {
+  user: User;
+  type: 'toggleActivation' | 'edit' | 'manageRoles'; // Add more types if needed
+}
 
 @Component({
   selector: 'app-user-list',
@@ -81,4 +85,8 @@ export class UserListComponent implements OnInit {
     this.pageSize = event.pageSize;
     this.loadUsersAndRefresh();
   }
+
+    manageRoles(user: User){
+      //TODO
+    }
 }

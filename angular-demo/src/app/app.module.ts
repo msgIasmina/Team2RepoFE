@@ -1,6 +1,7 @@
 import {NgModule} from '@angular/core';
 import {BrowserModule} from '@angular/platform-browser';
 import {AppComponent} from './app.component';
+import {DonationsModule} from "./donations/donations.module";
 import {AppRoutingModule} from './app-routing.module';
 import {LoginModule} from "./account/component/login/login.module";
 import {HTTP_INTERCEPTORS, HttpClient, HttpClientModule} from "@angular/common/http";
@@ -22,6 +23,7 @@ import { TranslocoRootModule } from './transloco-root.module';
   ],
   imports: [
     BrowserModule,
+    DonationsModule,
     LoginModule,
     ManagementModule,
     AppRoutingModule,
@@ -40,4 +42,5 @@ import { TranslocoRootModule } from './transloco-root.module';
   ],
   bootstrap: [AppComponent]
 })
-export class AppModule{}
+export class AppModule {
+}

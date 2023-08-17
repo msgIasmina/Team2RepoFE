@@ -26,4 +26,10 @@ export class UserDetailsComponent implements OnInit {
     const action: UserAction = { user, type: 'toggleActivation' };
     this.userAction.emit(action);
   }
+
+  onManageRolesClicked(user: User) {
+    const action: UserAction = {user, type: 'manageRoles'};
+    this.userAction.emit(action);
+
+  }
 }
