@@ -23,8 +23,9 @@ import {ManagementModule} from "./management/management.module";
     HttpClientModule
   ],
   providers: [
-    LoginService, {provide: HTTP_INTERCEPTORS, useClass: Interceptor, multi: true},RoleGuard
+    LoginService, {provide: HTTP_INTERCEPTORS, useClass: Interceptor, multi: true}, RoleGuard
   ],
   bootstrap: [AppComponent]
 })
-export class AppModule{}
+export class AppModule {
+}

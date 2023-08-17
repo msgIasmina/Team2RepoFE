@@ -5,7 +5,7 @@ import { ActivatedRoute } from '@angular/router';
 
 export interface UserAction {
   user: User;
-  type: 'toggleActivation' | 'edit'; // Add more types if needed
+  type: 'toggleActivation' | 'edit' | 'manageRoles'; // Add more types if needed
 }
 
 @Component({
@@ -37,6 +37,8 @@ export class UserListComponent implements OnInit {
       this.toggleActivation(action.user);
     } else if (action.type === 'edit') {
       this.editUser(action.user);
+    } else if (action.type === 'manageRoles') {
+      this.manageRoles(action.user);
     }
   }
 
@@ -62,5 +64,9 @@ export class UserListComponent implements OnInit {
           this.loadUsersAndRefresh();
         });
       });
+    }
+
+    manageRoles(user: User){
+      //TODO
     }
 }
