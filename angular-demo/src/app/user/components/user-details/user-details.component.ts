@@ -2,6 +2,7 @@ import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {User} from '../../models/user';
 import {UserService} from '../../services/user-service.service';
 import {UserAction} from '../user-list/user-list.component';
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-user',
@@ -13,7 +14,7 @@ export class UserDetailsComponent implements OnInit {
   @Input() user: User;
   @Output() userAction = new EventEmitter<UserAction>();
 
-  constructor() {
+  constructor(private router:Router) {
   }
 
   ngOnInit(): void {
@@ -29,9 +30,9 @@ export class UserDetailsComponent implements OnInit {
     this.userAction.emit(action);
   }
 
-  onManageRolesClicked(user: User) {
-    const action: UserAction = {user, type: 'manageRoles'};
-    this.userAction.emit(action);
-
+  onManageRolesClicked() {
+    this.router.navigate(
+      ['/management/users/permissions/'+this.user.id]
+    );
   }
 }

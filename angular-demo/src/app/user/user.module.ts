@@ -7,7 +7,7 @@ import {UserDetailsComponent} from './components/user-details/user-details.compo
 import {UserRoutingModule} from "./user-routing.module";
 import {UserRegisterComponent} from "./components/user-register/user-register.component";
 import {MatChipsModule} from "@angular/material/chips";
-import {UserService} from "./services/user-service.service";
+import {PermissionModule} from "../permission/permission.module";
 
 
 @NgModule({
@@ -16,16 +16,14 @@ import {UserService} from "./services/user-service.service";
     UserDetailsComponent,
     UserRegisterComponent
   ],
-  exports: [
-    //UserService ::should be deleted
-  ],
   imports: [
     CommonModule,
     FormsModule,
     HttpClientModule,
     UserRoutingModule,
     ReactiveFormsModule,
-    MatChipsModule
+    MatChipsModule,
+    PermissionModule
   ]
 })
 export class UserModule { }

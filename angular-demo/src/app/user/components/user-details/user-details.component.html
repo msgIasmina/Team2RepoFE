@@ -2,5 +2,5 @@
   {{user.firstName}}, {{user.email}}, {{user.id}}, {{user.active}}
   <button (click)="onEditClicked(user)">Edit</button>
   <button (click)="onToggleActivationClicked(user)">{{ user.active ? 'Delete' : 'Activate' }}</button>
-  <button (click)="onManageRolesClicked(user)">Manage Roles</button>  <!--  redirect catre Role-List + trimitere user.id?-->
+  <button (click)="onManageRolesClicked()">Manage Roles</button>  <!--  redirect catre Role-List + trimitere user.id?-->
 </div>

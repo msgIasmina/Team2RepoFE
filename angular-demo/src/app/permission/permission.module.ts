@@ -6,8 +6,6 @@ import {MatSelectModule} from "@angular/material/select";
 import {ReactiveFormsModule} from "@angular/forms";
 import {MatChipsModule} from "@angular/material/chips";
 
-
-
 @NgModule({
   declarations: [
     RoleListComponent,
