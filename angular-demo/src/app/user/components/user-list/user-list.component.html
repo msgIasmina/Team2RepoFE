@@ -21,7 +21,7 @@
           </mat-icon>
 <!--          <td>{{ user.active }}</td>-->
           <td>
-            <app-user [user]="user"></app-user>
+            <app-user [user]="user" (userAction)="handleUserAction($event)"></app-user>
           </td>
         </tr>
       </tbody>
