@@ -4,13 +4,17 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="770d2d89-e173-4c19-9235-d14d4ffbfbd8" name="Changes" comment="User List page is now working and looks better.">
+    <list default="true" id="770d2d89-e173-4c19-9235-d14d4ffbfbd8" name="Changes" comment="User List page is now working and looks better."/>
       <change afterPath="$PROJECT_DIR$/angular-demo/src/app/donator/components/donator-details/donator-details.component.css" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/angular-demo/src/app/donator/components/donator-details/donator-details.component.html" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/angular-demo/src/app/donator/components/donator-details/donator-details.component.ts" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/angular-demo/src/app/donator/components/donator-list/donator-list.component.css" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/angular-demo/src/app/donator/components/donator-list/donator-list.component.html" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/angular-demo/src/app/donator/components/donator-list/donator-list.component.ts" afterDir="false" />
+    <list default="true" id="770d2d89-e173-4c19-9235-d14d4ffbfbd8" name="Changes" comment="Now roles can be selected successfully, as the issue has been resolved. In the user-service.service.ts, I have implemented a url2 for the 'register' endpoint. Additionally, in the user.ts file, the property 'roles' has been renamed to 'rolesIDs' to accurately represent the data. The onSave() method in the user-register.component.ts has been correctly implemented to handle the user registration process. These changes have been thoroughly reviewed and tested, ensuring accurate functionality. I am now ready to commit the changes." />
+    <list default="true" id="770d2d89-e173-4c19-9235-d14d4ffbfbd8" name="Changes" comment=""/>
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+    <list default="true" id="770d2d89-e173-4c19-9235-d14d4ffbfbd8" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/angular-demo/src/app/app.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/angular-demo/src/app/app.module.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/angular-demo/src/app/donator/components/donator-register/donator-register.component.spec.ts" beforeDir="false" />
@@ -158,11 +162,30 @@
       <updated>1691675905855</updated>
       <workItem from="1691670282844" duration="189000" />
     </task>
+    <task id="LOCAL-00006" summary="Now roles can be selected successfully, as the issue has been resolved. In the user-service.service.ts, I have implemented a url2 for the 'register' endpoint. Additionally, in the user.ts file, the property 'roles' has been renamed to 'rolesIDs' to accurately represent the data. The onSave() method in the user-register.component.ts has been correctly implemented to handle the user registration process. These changes have been thoroughly reviewed and tested, ensuring accurate functionality. I am now ready to commit the changes.">
+      <option name="closed" value="true" />
+      <created>1692018640324</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1692018640324</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
+    <MESSAGE value="adding Hello!" />
+    <MESSAGE value="adding gitignore file" />
+    <MESSAGE value="deleting gitignore file and updating the other gitignore file." />
+    <MESSAGE value="addig another gitignore file" />
+    <MESSAGE value="Enhancements have been implemented to improve the visual presentation of the registration and login pages through modifications to their respective HTML and CSS. Additionally, a comprehensive refinement of the application-wide styling has been executed by integrating CSS adjustments within the app component. Notably, the registration &quot;chips&quot; functionality has been rectified, ensuring seamless and accurate operation." />
+    <MESSAGE value="Now roles can be selected successfully, as the issue has been resolved. In the user-service.service.ts, I have implemented a url2 for the 'register' endpoint. Additionally, in the user.ts file, the property 'roles' has been renamed to 'rolesIDs' to accurately represent the data. The onSave() method in the user-register.component.ts has been correctly implemented to handle the user registration process. These changes have been thoroughly reviewed and tested, ensuring accurate functionality. I am now ready to commit the changes." />
+    <option name="LAST_COMMIT_MESSAGE" value="Now roles can be selected successfully, as the issue has been resolved. In the user-service.service.ts, I have implemented a url2 for the 'register' endpoint. Additionally, in the user.ts file, the property 'roles' has been renamed to 'rolesIDs' to accurately represent the data. The onSave() method in the user-register.component.ts has been correctly implemented to handle the user registration process. These changes have been thoroughly reviewed and tested, ensuring accurate functionality. I am now ready to commit the changes." />
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />

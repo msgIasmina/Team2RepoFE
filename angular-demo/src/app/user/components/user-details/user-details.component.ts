@@ -1,7 +1,6 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { User } from '../../models/user';
-import { UserService } from '../../services/user-service.service';
-import { UserAction } from '../user-list/user-list.component';
+import {UserAction} from "../../models/UserAction";
 
 @Component({
   selector: 'app-user',

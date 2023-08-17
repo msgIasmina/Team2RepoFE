@@ -16,7 +16,6 @@ export class LoginComponent implements OnInit {
     password: ['', Validators.required],
   })
 
-
   constructor(private fb: FormBuilder, private loginService: LoginService,private router:Router) { }
 
   ngOnInit(): void {
@@ -32,11 +31,12 @@ export class LoginComponent implements OnInit {
           window.alert("can't log in")
         }else{
           if(response.newUser){
-            window.alert("new user");
+            this.router.navigate(['/firstLogin']);
           }
         }
       },
       err => window.alert(err.message)
     );
   }
+
 }

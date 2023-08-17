@@ -12,6 +12,7 @@ import {ManagementModule} from "./management/management.module";
 import { DonatorDetailsComponent } from './donator/components/donator-details/donator-details.component';
 import { DonatorListComponent } from './donator/components/donator-list/donator-list.component';
 import {MatButtonModule} from "@angular/material/button";
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -26,6 +27,7 @@ import {MatButtonModule} from "@angular/material/button";
     ManagementModule,
     AppRoutingModule,
     HttpClientModule,
+    BrowserAnimationsModule,
     MatButtonModule
   ],
   providers: [
