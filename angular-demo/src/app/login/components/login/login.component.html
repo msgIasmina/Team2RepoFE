@@ -1,35 +1,23 @@
 <div class="grid align__item">
-
   <div class="login">
-
   <h2>Log in</h2>
-
   <form class="form" [formGroup]="loginForm" (ngSubmit)="onLogin()">
-
     <div class="form__field">
       <input
         type="text"
         formControlName="username"
         placeholder="username">
     </div>
-
     <div>
-
       <input
         type="password"
         formControlName="password"
         placeholder="••••••••••••">
     </div>
-
-<!--    <button mat-raised-button disabled type="submit"  [disabled]="!loginForm.valid" color="accent">Login</button>-->
-
     <div class="form__field">
       <button class="btn btn-primary custom-btn">Login</button>
     </div>
-
   </form>
-
-
   </div>
 </div>
 

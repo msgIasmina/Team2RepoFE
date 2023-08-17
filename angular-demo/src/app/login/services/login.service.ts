@@ -1,5 +1,5 @@
 import {Injectable} from '@angular/core';
-import {BehaviorSubject, catchError, tap, throwError} from "rxjs";
+import { catchError, tap, throwError} from "rxjs";
 import {LoginResponse} from "../models/login-response";
 import {LoginRequest} from "../models/login-request";
 import {HttpClient, HttpErrorResponse} from "@angular/common/http";
@@ -8,12 +8,8 @@ import {HttpClient, HttpErrorResponse} from "@angular/common/http";
   providedIn: 'root'
 })
 export class LoginService {
-
   url: string = "http://localhost:8080/auth/login";
-
-  // @ts-ignore
-  loginResponse: BehaviorSubject<LoginResponse> = new BehaviorSubject<LoginResponse>([]);
-
+  
   constructor(
     private http: HttpClient
   ) {}

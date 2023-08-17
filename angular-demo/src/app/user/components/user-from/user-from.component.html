@@ -1,0 +1,61 @@
+<form class="form" [formGroup]="registerForm" (ngSubmit)="onSave()">
+  <div class="form__field">
+    <input
+      [placeholder]="placeholder.firstName"
+      type="text"
+      formControlName="firstName"
+    />
+    <div *ngIf="showFirstNameError()">
+      <div class="error-message">First name is required</div>
+    </div>
+  </div>
+
+  <div class="form__field">
+    <input
+      [placeholder]="placeholder.lastName"
+      type="text"
+      formControlName="lastName"
+    />
+    <div *ngIf="showLastNameError()">
+      <div class="error-message">Last name is required</div>
+    </div>
+  </div>
+
+  <div class="form__field">
+    <input
+      [placeholder]="placeholder.email"
+      type="text"
+      formControlName="email"
+    />
+    <div *ngIf="showEmailError()">
+      <div class="error-message">Email is required</div>
+    </div>
+  </div>
+
+  <div class="form__field">
+    <input
+      type="text"
+      formControlName="mobileNumber"
+      [placeholder]="placeholder.mobileNumber"
+    />
+  </div>
+
+  <p>Choose Roles:</p>
+  <div class="form__field">
+    <mat-chip-list selectable multiple>
+      <mat-chip
+        #c="matChip"
+        *ngFor="let role of roleList"
+        [value]="role.name"
+        (click)="toggleSelection(c, role)"
+        [ngClass]="{'selected-chip': isSelected(role)}"
+      >
+        {{role.name}}
+      </mat-chip>
+    </mat-chip-list>
+  </div>
+
+  <div class="form__field">
+    <button class="btn btn-primary custom-btn" type="submit">Submit user</button>
+  </div>
+</form>

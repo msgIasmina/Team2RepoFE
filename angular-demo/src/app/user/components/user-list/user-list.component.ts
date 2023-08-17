@@ -1,12 +1,8 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { User } from '../../models/user';
 import { UserService } from "../../services/user-service.service";
-import { ActivatedRoute } from '@angular/router';
-
-export interface UserAction {
-  user: User;
-  type: 'toggleActivation' | 'edit'; // Add more types if needed
-}
+import {ActivatedRoute, Router} from '@angular/router';
+import {UserAction} from "../../models/UserAction";
 
 @Component({
   selector: 'app-user-list',
@@ -19,14 +15,13 @@ export class UserListComponent implements OnInit {
   page: number;
   size: number;
 
-  constructor(private userService: UserService, private activatedRoute: ActivatedRoute) {
+  constructor(private userService: UserService, private activatedRoute: ActivatedRoute,private router:Router) {
   }
 
   ngOnInit(): void {
     this.activatedRoute.params.subscribe((params) => {
       this.page = +params['page'];
       this.size = +params['size'];
-
       this.loadUsersAndRefresh();
     });
 
@@ -49,11 +44,9 @@ export class UserListComponent implements OnInit {
   }
 
   editUser(userToEdit: User) {
-    this.activatedRoute.params.subscribe(() => {
-      this.userService.updateUser(userToEdit).subscribe(() => {
-        this.loadUsersAndRefresh();
-      });
-    });
+    this.router.navigate(
+      ['/management/users/update/'+userToEdit.id]
+    );
   }
 
     toggleActivation(userToToggle: User) {
