@@ -9,6 +9,7 @@ import {LoginService} from "./login/services/login.service";
 import {Interceptor} from "./util/interceptors/interceptor";
 import {RoleGuard} from "./util/Roleguard";
 import {ManagementModule} from "./management/management.module";
+import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import {ManagementModule} from "./management/management.module";
     LoginModule,
     ManagementModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    BrowserAnimationsModule
   ],
   providers: [
     LoginService, {provide: HTTP_INTERCEPTORS, useClass: Interceptor, multi: true}, RoleGuard

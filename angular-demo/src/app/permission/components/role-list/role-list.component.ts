@@ -26,7 +26,9 @@ export class RoleListComponent implements OnInit {
       this.id = +params['id'];
     })
     this.rolePermissionService.loadRolePermissions(this.id).subscribe(
-      rolePermissions => this.rolePermissionsList = rolePermissions
+      rolePermissions => {
+        this.rolePermissionsList = rolePermissions
+      }
     )
 
   }
