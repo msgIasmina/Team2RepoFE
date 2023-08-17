@@ -43,4 +43,12 @@ export class CampaignService {
     return this.http.put<Campaign>(this.url + `/` + `${campaignToEdit.id}`, campaignToEdit, header);
   }
 
+  findCampaignById(id:number){
+    var header = {
+      headers: new HttpHeaders()
+        .set("Authorization", localStorage.getItem("token") ?? '')
+    }
+    return this.http.get<Campaign>(`${this.url}/${id}`,header);
+  }
+
 }

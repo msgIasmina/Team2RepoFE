@@ -1,13 +1,4 @@
-<form [formGroup]="campaignForm" (ngSubmit)="onSave()">
-  <div>
-    <label for="name">Campaign Name: </label>
-    <input id="name" type="text" formControlName="name">
-  </div>
-  <div>
-    <label for="purpose">Campaign Purpose: </label>
-    <input id="purpose" type="text" formControlName="purpose">
-  </div>
-
-  <p>Complete the form to enable button.</p>
-  <button mat-raised-button disabled type="submit" [disabled]="!campaignForm.valid" color="accent">Save</button>
-</form>
+<div>
+  <h2>Add campaign</h2>
+  <app-campaign-frm (submitEvent)="onSave($event)" [placeholder]="placeholder" functionality="add"></app-campaign-frm>
+</div>

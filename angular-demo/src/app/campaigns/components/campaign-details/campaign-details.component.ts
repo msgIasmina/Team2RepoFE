@@ -20,8 +20,4 @@ export class CampaignDetailsComponent implements OnInit {
     this.campaignAction.emit(campaign);
   }
 
-  onDeleteClicked(campaign:Campaign){
-    this.campaignAction.emit(campaign);
-  }
-
 }
