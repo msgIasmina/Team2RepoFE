@@ -30,8 +30,8 @@ export class DonatorListComponent implements OnInit {
   }
 
   // handleDonatorAction(action: DonatorAction) {
-  //   if (action.type === 'edit') {
-  //     this.editDonator(action.donator);
+  //   if (action.type === 'delete') {
+  //     this.(action.donator);
   //   }
   // }
 
@@ -50,4 +50,6 @@ export class DonatorListComponent implements OnInit {
   //     });
   //   });
   // }
+
+  //deleteDonator()
 }
