@@ -9,6 +9,7 @@ import {HttpClient, HttpErrorResponse} from "@angular/common/http";
 })
 export class LoginService {
   url: string = "http://localhost:8080/auth/login";
+  
   constructor(
     private http: HttpClient
   ) {}
@@ -33,5 +34,6 @@ export class LoginService {
       catchError(this.handleError)
     );
   }
+
 
 }

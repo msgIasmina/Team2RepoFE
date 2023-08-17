@@ -10,7 +10,6 @@ export class DonationListComponent implements OnInit {
 
   constructor() { }
 
-
   donationList: Donation[] = [
   ];
 

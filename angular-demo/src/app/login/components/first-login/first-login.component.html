@@ -1,0 +1,16 @@
+<p>It looks like it is your first time logging in. Please change your password!</p>
+
+<form [formGroup]="passwdForm" (ngSubmit)="onSave()">
+  <div>
+    <label for="password">Password: </label>
+    <input id="password" type="text" formControlName="password">
+  </div>
+
+  <p>Complete the form to enable button.</p>
+  <button mat-raised-button disabled type="submit"  [disabled]="!passwdForm.valid" color="accent">Save</button>
+  <div *ngIf="passwdForm.get('password')?.hasError('required')">Password is required</div>
+  <div *ngIf="passwdForm.get('password')?.hasError('minlength')">Minimum 10 characters</div>
+  <div *ngIf="passwdForm.get('password')?.hasError('specialChar')">At least one special character</div>
+  <div *ngIf="passwdForm.get('password')?.hasError('uppercase')">At least one uppercase character</div>
+  <div *ngIf="passwdForm.get('password')?.hasError('number')">At least one number</div>
+</form>

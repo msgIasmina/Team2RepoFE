@@ -11,6 +11,7 @@ import { UpdateUserComponent } from './components/update-user/update-user.compon
 import { UserFromComponent } from './components/user-from/user-from.component';
 import {MatButtonModule} from "@angular/material/button";
 import {MatIconModule} from "@angular/material/icon";
+import {UserService} from "./services/user-service.service";
 
 
 @NgModule({
@@ -21,8 +22,8 @@ import {MatIconModule} from "@angular/material/icon";
     UpdateUserComponent,
     UserFromComponent
   ],
-  exports: [
-    UserListComponent
+  providers: [
+    UserService
   ],
   imports: [
     CommonModule,
