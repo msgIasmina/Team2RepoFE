@@ -1,16 +1,19 @@
 <div>
-  {{rolePermission.role}}
+  {{rolePermission.role}},
+  <p>Acquired Permissions</p>
   <div>
     <ul *ngFor="let permission of rolePermission.acquiredPermissions">
       <li>
-        {{permission.name}}
+        {{permission.permission}}
       </li>
     </ul>
   </div>
+
+  <p>Missing Permissions</p>
   <div>
     <ul *ngFor="let permission of rolePermission.missingPermissions">
       <li>
-        {{permission.name}}
+        {{permission.permission}}
       </li>
     </ul>
   </div>
@@ -20,8 +23,8 @@
     <mat-select [formControl]="permissionsToBeAdded" multiple>
       <mat-option
         *ngFor="let permission of missingPermissions"
-        [value]="permission.name">
-        {{permission.name}}
+        [value]="permission.permission">
+        {{permission.permission}}
       </mat-option>
     </mat-select>
   </mat-form-field>
@@ -32,8 +35,8 @@
     <mat-select [formControl]="permissionsToBeDeleted" multiple>
       <mat-option
         *ngFor="let permission of acquiredPermissions"
-        [value]="permission.name">
-        {{permission.name}}
+        [value]="permission.permission">
+        {{permission.permission}}
       </mat-option>
     </mat-select>
   </mat-form-field>

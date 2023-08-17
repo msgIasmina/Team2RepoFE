@@ -3,7 +3,7 @@ import {EPermission} from "./EPermission";
 export class Permission {
   constructor(
     public id: number,
-    public name: EPermission
+    public permission: EPermission
   ) {
   }
 }
