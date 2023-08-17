@@ -1,5 +1,6 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {Campaign} from "../../models/campaign";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-campaign-details',
@@ -9,15 +10,13 @@ import {Campaign} from "../../models/campaign";
 export class CampaignDetailsComponent implements OnInit {
 
   @Input() campaign:Campaign;
-  @Output() campaignAction=new EventEmitter<Campaign>();
-
-  constructor() { }
+  constructor(private router:Router) { }
 
   ngOnInit(): void {
   }
 
   onEditClicked(campaign:Campaign){
-    this.campaignAction.emit(campaign);
+    this.router.navigate(["/management/campaigns/edit/"+campaign.id]);
   }
 
 }
