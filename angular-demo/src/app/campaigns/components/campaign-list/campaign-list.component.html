@@ -1,5 +1,5 @@
 <ul *ngFor="let campaign of campaignList">
   <li>
-    <app-campaign-details [campaign]="campaign"></app-campaign-details>
+    <app-campaign-details [campaign]="campaign" (emmitter)="handleCampaignAction($event)"></app-campaign-details>
   </li>
 </ul>

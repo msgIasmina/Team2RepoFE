@@ -51,4 +51,12 @@ export class CampaignService {
     return this.http.get<Campaign>(`${this.url}/${id}`,header);
   }
 
+  deleteCampaignById(id:number|undefined){
+    var header = {
+      headers: new HttpHeaders()
+        .set("Authorization", localStorage.getItem("token") ?? '')
+    }
+    return this.http.delete<void>(`${this.url}/${id}`,header)
+  }
+
 }
