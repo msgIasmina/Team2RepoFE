@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {Campaign} from "../../models/campaign";
 import {CampaignService} from "../../services/campaign.service";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-campaign-list',
@@ -11,7 +12,7 @@ export class CampaignListComponent implements OnInit {
 
   campaignList:Campaign[];
 
-  constructor(private campaignService:CampaignService) { }
+  constructor(private campaignService:CampaignService,private router:Router) { }
 
   ngOnInit(): void {
     this.loadCampaignsAndRefresh();
@@ -22,12 +23,6 @@ export class CampaignListComponent implements OnInit {
       this.campaignService.getCampaigns().subscribe(campaigns=>{
         this.campaignList=campaigns;
       })
-    })
-  }
-
-  editCampaign(campaignToEdit: Campaign){
-    this.campaignService.editCampaign(campaignToEdit).subscribe(()=>{
-      this.loadCampaignsAndRefresh();
     })
   }
 
