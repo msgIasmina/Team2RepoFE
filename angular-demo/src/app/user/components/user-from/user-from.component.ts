@@ -60,6 +60,10 @@ export class UserFromComponent implements OnInit {
     return this.submitted && emailControl?.hasError('required') && isRegistration || false;
   }
 
+  showRolesError(): boolean {
+    return this.submitted && this.selectedRoles.length === 0;
+  }
+
   isSelected(role: Role): boolean {
     return this.roleList.indexOf(role) !== -1;
   }

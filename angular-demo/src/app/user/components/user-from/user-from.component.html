@@ -55,6 +55,10 @@
     </mat-chip-list>
   </div>
 
+  <div *ngIf="showRolesError()">
+    <div class="error-message">Please select at least one role.</div>
+  </div>
+
   <div class="form__field">
     <button mat-raised-button color="accent" class="btn btn-primary custom-btn" type="submit">Submit user</button>
   </div>
