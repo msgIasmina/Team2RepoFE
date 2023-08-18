@@ -12,15 +12,14 @@ export class DonatorFormComponent implements OnInit {
   @Output()
   submitEvent:EventEmitter<Donator> = new EventEmitter<Donator>();
   @Input()
-  placeholder:Donator;
+  donator:Donator;
   @Input()
   functionality:string
-
   submitted = false;
 
   registerForm = this.fb.group({
-    firstName: ['', Validators.required],
     additionalName: [''],
+    firstName: ['', Validators.required],
     lastName: ['', Validators.required],
     maidenName: ['']
   })
@@ -40,9 +39,9 @@ export class DonatorFormComponent implements OnInit {
   onSave() {
     this.submitted = true;
     const firstName = this.registerForm.get('firstName')?.value;
-    const additionalName = this.registerForm.get('additionalName')?.value;
     const lastName = this.registerForm.get('lastName')?.value;
     const maidenName = this.registerForm.get('maidenName')?.value;
+    const additionalName = this.registerForm.get('additionalName')?.value;
 
     let newDonator:Donator ={
       firstName,
@@ -51,23 +50,26 @@ export class DonatorFormComponent implements OnInit {
       maidenName,
     };
     if (this.functionality === "update"){
-      newDonator.id=this.placeholder.id;
-      newDonator.firstName = firstName === "" ? this.placeholder.firstName :firstName;
-      newDonator.additionalName = additionalName === "" ? this.placeholder.additionalName :additionalName;
-      newDonator.maidenName = maidenName === "" ? this.placeholder.maidenName :maidenName;
-    } else if(this.functionality === "register"){
-      if(this.registerForm.valid){
-        this.submitEvent.emit(newDonator)
-      }else{
-        this.submitEvent.emit(newDonator);
+      newDonator.id=this.donator.id;
+    }
+    if(this.registerForm.valid){
+      this.submitEvent.emit(newDonator)
+      if (this.functionality === "register"){
+        this.registerForm.reset();
       }
     }
-
-    this.registerForm.reset();
   }
   constructor(private fb: FormBuilder) { }
 
   ngOnInit(): void {
+    if(this.functionality === "update"){
+    this.registerForm.setValue({
+      additionalName: this.donator.additionalName,
+      firstName: this.donator.firstName,
+      lastName: this.donator.lastName,
+      maidenName: this.donator.maidenName
+    })
+    }
   }
 
 }

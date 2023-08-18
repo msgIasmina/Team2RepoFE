@@ -15,7 +15,9 @@ export class UserListComponent implements OnInit {
   page: number;
   size: number;
 
-  constructor(private userService: UserService, private activatedRoute: ActivatedRoute,private router:Router) {
+  constructor(private userService: UserService,
+              private activatedRoute: ActivatedRoute,
+              private router:Router) {
   }
 
   ngOnInit(): void {

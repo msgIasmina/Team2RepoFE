@@ -15,21 +15,23 @@ export class DonatorListComponent implements OnInit {
   donatorList: Donator[];
   page: number;
   size: number;
-  constructor(private donatorService: DonatorService, private activatedRoute: ActivatedRoute,private router:Router) { }
+  constructor(private donatorService: DonatorService,
+              private activatedRoute: ActivatedRoute,
+              private router:Router) {
+  }
 
   ngOnInit(): void {
     this.activatedRoute.params.subscribe((params) => {
       this.page = +params['page'];
       this.size = +params['size'];
-
       this.loadDonatorsAndRefresh();
     });
   }
 
   handleDonatorAction(action: DonatorAction) {
-    // if (action.type === 'delete') {
-    //   this.deleteDonator(action.donator);
-    // }
+    if (action.type === 'delete') {
+      this.deleteDonator(action.donator);
+    }
     if(action.type === "edit"){
       this.editDonator(action.donator);
     }
@@ -59,4 +61,6 @@ export class DonatorListComponent implements OnInit {
       }
     );
   }
+
+  protected readonly Donator = Donator;
 }

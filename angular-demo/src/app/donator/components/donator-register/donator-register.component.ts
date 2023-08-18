@@ -9,7 +9,7 @@ import {Donator} from "../../models/donator";
   styleUrls: ['./donator-register.component.css']
 })
 export class DonatorRegisterComponent {
-  placeholder:Donator= new Donator("firstName","additionalName","lastName","maidenName")
+  placeholder:Donator= new Donator("firstName","lastName","additionalName","maidenName")
   registerdonator:string="registerdonator"
   onSave(newDonator:Donator) {
     this.donatorService.saveDonator(newDonator).subscribe();

@@ -12,30 +12,20 @@ export class DonatorDetailsComponent implements OnInit {
 
   @Input() donator: Donator;
   @Output() donatorAction = new EventEmitter<DonatorAction>();
-  constructor() { }
+  constructor(
+  ) { }
 
   ngOnInit(): void {
   }
 
-  onEditClicked() {
-    const action: DonatorAction = { donator:this.donator, type: 'edit' };
+  onEditClicked(donator: Donator) {
+    const action: DonatorAction = { donator, type: 'edit' };
     this.donatorAction.emit(action);
   }
 
-  // onDeleteClicked(donator: Donator) {
-  //   if (donator.id) {
-  //     const action: DonatorAction = { donator, type: 'delete' };
-  //     this.donatorAction.emit(action);
-  //
-  //     this.donatorService.deleteDonator(donator).subscribe(
-  //       () => {
-  //         // Success logic or notification
-  //       },
-  //       error => {
-  //         console.error("Error deleting donator:", error);
-  //       }
-  //     );
-  //   }
-  // }
+  onDeleteClicked(donator: Donator) {
+    const action : DonatorAction = {donator, type: 'delete'};
+    this.donatorAction.emit(action);
+  }
 }
 

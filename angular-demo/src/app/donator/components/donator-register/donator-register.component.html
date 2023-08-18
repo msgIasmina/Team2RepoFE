@@ -2,7 +2,13 @@
 
   <div class="register-donator">
     <h2>Register Donator</h2>
-    <app-donator-form (submitEvent)="onSave($event)" [placeholder]="placeholder" [functionality]="registerdonator"></app-donator-form>
+    <app-donator-form
+      (submitEvent)="onSave($event)"
+      [functionality]="registerdonator"
+      *ngIf="placeholder"
+      [donator]="placeholder"
+    >
+    </app-donator-form>
   </div>
 
 </div>
