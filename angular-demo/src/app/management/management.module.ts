@@ -11,8 +11,7 @@ import {LogoutService} from "./services/logout.service";
   imports: [
     CommonModule,
     ManagementRoutingModule,
-    MatToolbarModule,
-    //CampaignsModule
+    MatToolbarModule
   ],
   providers:[LoginGuard,LogoutService]
 })
