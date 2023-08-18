@@ -1,22 +1,6 @@
 <div class="grid align__item">
   <div class="update">
     <h2>Update user</h2>
-    <app-user-from
-      (submitEvent)="updateUser($event)"
-      [placeholder]="user"
-      [functionality]="update"
-    ></app-user-from>
-
-    <mat-chip-list selectable multiple>
-      <mat-chip
-        *ngFor="let role of roleList"
-        [value]="role.name"
-        (click)="toggleSelection(role)"
-        [ngClass]="{'selected-chip': isSelected(role)}"
-      >
-        {{ role.name }}
-      </mat-chip>
-    </mat-chip-list>
-
+    <app-user-from (submitEvent)="updateUser($event)" *ngIf="user" [user]="user" [functionality]="update"></app-user-from>
   </div>
 </div>
