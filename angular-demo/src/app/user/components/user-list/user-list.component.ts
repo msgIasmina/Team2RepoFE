@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { User } from '../../models/user';
 import { UserService } from "../../services/user-service.service";
 import {ActivatedRoute, Router} from '@angular/router';
@@ -15,7 +15,9 @@ export class UserListComponent implements OnInit {
   page: number;
   size: number;
 
-  constructor(private userService: UserService, private activatedRoute: ActivatedRoute,private router:Router) {
+  constructor(private userService: UserService,
+              private activatedRoute: ActivatedRoute,
+              private router:Router) {
   }
 
   ngOnInit(): void {
