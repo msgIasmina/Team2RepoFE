@@ -12,7 +12,7 @@ export class CampaignFrmComponent implements OnInit {
   @Output()
   submitEvent:EventEmitter<Campaign>=new EventEmitter<Campaign>();
   @Input()
-  placeholder:Campaign;
+  campaign:Campaign;
   @Input()
   functionality:string
   submitted=false
@@ -24,6 +24,13 @@ export class CampaignFrmComponent implements OnInit {
   constructor(private fb: FormBuilder) { }
 
   ngOnInit(): void {
+    console.log(this.campaign)
+    if(this.functionality === "update"){
+      this.campaignForm.setValue({
+        name:this.campaign.name,
+        purpose:this.campaign.purpose
+      })
+    }
   }
 
   onSave(){
@@ -35,19 +42,14 @@ export class CampaignFrmComponent implements OnInit {
       purpose
     };
     if(this.functionality==="update"){
-      newCampaign.id=this.placeholder.id;
-      newCampaign.name= name ===""? this.placeholder.name : name;   //check if duplicate name
-      newCampaign.purpose=purpose ===""? this.placeholder.purpose : purpose;
-    }else{
-      if(this.functionality==="add"){
-        if(this.campaignForm.valid){
-          this.submitEvent.emit(newCampaign);
-        }
-      }else {
-        this.submitEvent.emit(newCampaign);
+      newCampaign.id=this.campaign.id;
+    }
+    if(this.campaignForm.valid){
+      this.submitEvent.emit(newCampaign);
+      if(this.functionality === "add"){
+        this.campaignForm.reset();
       }
     }
-    this.campaignForm.reset();
   }
 
 }
