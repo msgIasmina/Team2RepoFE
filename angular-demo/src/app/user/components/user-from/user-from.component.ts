@@ -4,6 +4,7 @@ import {MatChip} from "@angular/material/chips";
 import {FormBuilder, Validators} from "@angular/forms";
 import {User} from "../../models/user";
 import {RoleService} from "../../services/role.service";
+import {SelectedRolesService} from "../../services/selected-roles.service";
 
 @Component({
   selector: 'app-user-from',
@@ -37,6 +38,8 @@ export class UserFromComponent implements OnInit {
     } else if (!chip.selected && index !== -1) {
       this.selectedRoles.splice(index, 1);
     }
+
+    this.selectedRolesService.selectedRoles = this.selectedRoles;
   }
 
   showFirstNameError(): boolean {
@@ -102,7 +105,8 @@ export class UserFromComponent implements OnInit {
   }
 
   constructor(private fb: FormBuilder,
-              private roleService: RoleService) {
+              private roleService: RoleService,
+              private selectedRolesService: SelectedRolesService) {
   }
 
   ngOnInit(): void {

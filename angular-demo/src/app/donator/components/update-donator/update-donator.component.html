@@ -1,0 +1,11 @@
+<div class="grid align__item">
+  <div class="update">
+    <h2>Update donator</h2>
+    <app-donator-form
+      (submitEvent)="updateDonator($event)"
+      *ngIf="donator"
+      [donator]="donator"
+      [functionality]="update"
+    ></app-donator-form>
+  </div>
+</div>
