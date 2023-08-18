@@ -89,7 +89,6 @@
   <component name="RunManager" selected="npm.Angular CLI Server">
     <configuration name="Tests (untitled5)" type="JavaScriptTestRunnerKarma">
       <config-file value="$PROJECT_DIR$/angular-demo/karma.conf.js" />
-      <karma-package-dir value="$PROJECT_DIR$/angular-demo/node_modules/@angular/cli" />
       <working-directory value="$PROJECT_DIR$/angular-demo" />
       <node-interpreter value="project" />
       <envs />
