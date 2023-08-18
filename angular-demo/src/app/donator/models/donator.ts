@@ -4,6 +4,7 @@ export class Donator {
     public lastName: string,
     public additionalName?: string,
     public maidenName?: string,
+    public id?: number
   //   public campaigns?: Campaign[]
   ) {
   }
