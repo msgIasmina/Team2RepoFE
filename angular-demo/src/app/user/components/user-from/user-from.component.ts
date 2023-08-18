@@ -1,7 +1,7 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {Role} from "../../models/role";
 import {MatChip} from "@angular/material/chips";
-import {FormBuilder, Validators} from "@angular/forms";
+import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {User} from "../../models/user";
 import {RoleService} from "../../services/role.service";
 
@@ -16,16 +16,16 @@ export class UserFromComponent implements OnInit {
   @Output()
   submitEvent:EventEmitter<User> = new EventEmitter<User>();
   @Input()
-  placeholder:User;
+  user:User;
   @Input()
   functionality:string
   submitted = false;
   roleList: Role[];
   selectedRoles: Role[] = [];
-  registerForm = this.fb.group({
+  registerForm:FormGroup = this.fb.group({
     firstName: ['', Validators.required],
     lastName: ['', Validators.required],
-    email: ['', Validators.required, Validators.email],
+    email: ['', [Validators.required, Validators.email]],
     mobileNumber: ['', Validators.pattern(/^(00407|07|\+407)\d{8}$/)]
   })
 
@@ -76,29 +76,23 @@ export class UserFromComponent implements OnInit {
       rolesIDs,
     };
     if (this.functionality === "update"){
-        newUser.id=this.placeholder.id;
-        newUser.active = this.placeholder.active;
-        newUser.newUser = this.placeholder.newUser;
-        newUser.firstName = firstName === "" ? this.placeholder.firstName :firstName;
-        newUser.lastName = lastName === "" ? this.placeholder.lastName :lastName;
-        newUser.email = email === "" ? this.placeholder.email :email;
-        newUser.mobileNumber = mobileNumber === "" ? this.placeholder.mobileNumber : mobileNumber;
+        newUser.id=this.user.id;
+        newUser.active = this.user.active;
+        newUser.newUser = this.user.newUser;
         newUser.roles = this.selectedRoles
         newUser.rolesIDs= undefined
     }
-    if(this.selectedRoles===[]){
+    if(this.selectedRoles.length === 0){
       window.alert("you cannot" + this.functionality + "without a role")
     }else {
-      if(this.functionality === "register"){
         if(this.registerForm.valid){
           this.submitEvent.emit(newUser)
-        }
-      }else{
-        this.submitEvent.emit(newUser);
+          if(this.functionality === "register"){
+            this.registerForm.reset();
+            this.selectedRoles = [];
+          }
       }
     }
-    this.registerForm.reset();
-    this.selectedRoles = [];
   }
 
   constructor(private fb: FormBuilder,
@@ -108,8 +102,16 @@ export class UserFromComponent implements OnInit {
   ngOnInit(): void {
     this.roleService.getRoles().subscribe((roles) => {
       this.roleList = roles;
-      this.selectedRoles = this.placeholder.roles as Role[];
+      this.selectedRoles = this.user.roles as Role[];
     });
+    if(this.functionality==="update") {
+      this.registerForm.setValue({
+        'firstName': this.user.firstName,
+        'lastName': this.user.lastName,
+        'email': this.user.email,
+        'mobileNumber': this.user.mobileNumber,
+      })
+    }
   }
 
 }
