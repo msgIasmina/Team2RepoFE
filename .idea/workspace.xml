@@ -65,7 +65,7 @@
     "ts.external.directory.path": "T:\\40_MVN_REPO\\Team2RepoFE\\angular-demo\\node_modules\\typescript\\lib",
     "vue.rearranger.settings.migration": "true"
   }
-}]]></component>
+}</component>
   <component name="RunManager" selected="npm.Angular CLI Server">
     <configuration name="Tests (untitled5)" type="JavaScriptTestRunnerKarma">
       <config-file value="$PROJECT_DIR$/angular-demo/karma.conf.js" />

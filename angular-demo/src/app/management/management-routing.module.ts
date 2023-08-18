@@ -11,7 +11,9 @@ const routes: Routes = [
       {path:"users",
         loadChildren: () => import('../user/user.module').then(m => m.UserModule)
       },
-      {path:"campaigns",component:CampaignComponent}
+      {path:"campaigns",
+        loadChildren: () => import('../campaigns/campaigns.module').then(m => m.CampaignsModule)
+      },
       {path:"donators",
         loadChildren: () => import('../donator/donator.module').then(m => m.DonatorModule)
       }
@@ -27,4 +29,5 @@ const routes: Routes = [
   ],
   exports:[RouterModule]
 })
+
 export class ManagementRoutingModule { }
