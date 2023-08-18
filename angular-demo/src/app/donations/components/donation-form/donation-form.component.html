@@ -32,6 +32,14 @@
     </div>
   </div>
 
+  <label for="addBenefactor">Add Donator</label>
+  <mat-select formControlName="donatorToBeAdded" id="addBenefactor">
+    <mat-option *ngFor="let donator of donators" [value]="donator">
+      {{donator.firstName}}, {{donator.lastName}}
+    </mat-option>
+  </mat-select>
+  <button class="submit-button" (click)="addDonator()">Submit added donator</button>
+
 
   <div class="form__field">
     <button mat-raised-button color="accent" class="btn btn-primary custom-btn" type="submit">Submit donation</button>

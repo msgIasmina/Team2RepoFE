@@ -7,6 +7,7 @@ import {UpdateDonationComponent} from "./components/update-donation/update-donat
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {DonationRoutingModule} from "./donation-routing.module";
 import {MatButtonModule} from "@angular/material/button";
+import {MatSelectModule} from "@angular/material/select";
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import {MatButtonModule} from "@angular/material/button";
     FormsModule,
     ReactiveFormsModule,
     DonationRoutingModule,
-    MatButtonModule
+    MatButtonModule,
+    MatSelectModule
   ]
 })
 export class DonationsModule { }
