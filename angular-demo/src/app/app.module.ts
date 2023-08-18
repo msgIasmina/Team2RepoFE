@@ -15,10 +15,14 @@ import {MatFormFieldModule} from "@angular/material/form-field";
 import {MatInputModule} from "@angular/material/input";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {MatChipsModule} from "@angular/material/chips";
+import { UpdateDonationComponent } from './donations/components/update-donation/update-donation.component';
+import { DonationFormComponent } from './donations/components/donation-form/donation-form.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    UpdateDonationComponent,
+    DonationFormComponent
   ],
   imports: [
     BrowserModule,
