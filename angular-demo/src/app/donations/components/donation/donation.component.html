@@ -1,7 +1,13 @@
 <div>
-  <button mat-raised-button color="accent" (click)="onEditClicked(donation)">Edit</button>
-  <button mat-raised-button color="warn" (click)="onDeleteClicked(donation)">Delete</button>
-  <button *ngIf="!donation.approved"
-          mat-raised-button color="primary"
+  <button mat-raised-button color="accent"
+          [disabled]="donation.approved === true"
+          (click)="onEditClicked(donation)">Edit</button>
+  <button mat-raised-button color="warn"
+          [disabled]="donation.approved === true"
+          (click)="onDeleteClicked(donation)">Delete</button>
+  <button mat-raised-button color="primary"
+          [disabled]="donation.approved === true"
           (click)="onApproveClicked(donation)">Approve</button>
 </div>
+
+
