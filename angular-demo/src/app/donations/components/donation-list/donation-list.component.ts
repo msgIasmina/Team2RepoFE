@@ -1,4 +1,4 @@
-import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output, Pipe, PipeTransform} from '@angular/core';
 import {Donation} from "../../models/donation";
 import {User} from "../../../user/models/user";
 import {DonationService} from "../../services/donation.service";
@@ -8,6 +8,8 @@ import {DonationAction} from "../../models/DonationAction";
 import {Campaign} from "../../../campaigns/models/campaign";
 import {CampaignService} from "../../../campaigns/services/campaign.service";
 import {UserService} from "../../../user/services/user-service.service";
+import {FormControl} from "@angular/forms";
+import {debounceTime, distinctUntilChanged} from "rxjs";
 
 @Component({
   selector: 'app-donation-list',
@@ -26,25 +28,24 @@ export class DonationListComponent implements OnInit {
 
   value: number;
 
-  currencyOptions: string[] = ['USD', 'EUR', 'GBP', 'JPY', 'RON', 'CHF', 'SEK', 'NOK', 'DKK', 'CZK', 'PLN', 'HUF'];
+  currencyOptions: string[];
   currency: string;
 
   campaignOptions: Campaign[] = [];
-  campaign: Campaign;
+  campaignId: number;
+
+  searchTerm: string;
 
   userOptions: User[] = [];
-  createdBy: User;
+  createdByUserId: number;
 
   createDate: Date;
 
-  searchTerm: string;
   approved: boolean;
 
   constructor(private donationService: DonationService,
               private activatedRoute: ActivatedRoute,
-              private router: Router,
-              private campaignService: CampaignService,
-              private userService: UserService) { }
+              private router: Router) { }
 
   ngOnInit(): void {
     this.activatedRoute.params.subscribe((params) => {
@@ -56,6 +57,19 @@ export class DonationListComponent implements OnInit {
       this.loadDonationsAndRefresh();
       }
     )
+
+    this.donationService.getCurrencies().subscribe(currencies => {
+      this.currencyOptions = currencies;
+    });
+
+    this.donationService.getCampaigns().subscribe(campaigns => {
+      this.campaignOptions = campaigns;
+      });
+
+    this.donationService.getUsers().subscribe(users => {
+      this.userOptions = users;
+      console.log(users[0].id);
+    })
   }
 
   private loadDonationsAndRefresh(){
@@ -120,6 +134,22 @@ export class DonationListComponent implements OnInit {
 
       if (this.currency) {
         queryParams['currency'] = this.currency;
+      }
+
+      if (this.campaignOptions) {
+        queryParams['campaignId'] = this.campaignId;
+      }
+
+      if (this.searchTerm != null) {
+        queryParams['searchTerm'] = this.searchTerm;
+      }
+
+      if (this.userOptions) {
+        queryParams['createdById'] = this.createdByUserId;
+      }
+
+      if (this.createDate) {
+        queryParams['createDate'] = this.createDate;
       }
 
       if (this.approved) {

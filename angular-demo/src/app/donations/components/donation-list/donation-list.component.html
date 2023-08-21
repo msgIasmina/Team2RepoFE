@@ -18,24 +18,24 @@
   </select>
 </div>
 
-<!--<div class="filter">-->
-<!--  <label>Campaign: </label>-->
-<!--  <select [(ngModel)]="campaign">-->
-<!--    <option *ngFor="let campaign of campaignOptions" [value]="campaign">{{ campaign }}</option>-->
-<!--  </select>-->
-<!--</div>-->
+<div class="filter">
+  <label>Campaign: </label>
+  <select [(ngModel)]="campaignId">
+    <option *ngFor="let campaign of campaignOptions" [value]="campaign.id">{{ campaign.name }}</option>
+  </select>
+</div>
 
 <div class="filter">
   <label>Search by campaign purpose: </label>
   <input type="text" [(ngModel)]="searchTerm" placeholder="Search Term">
 </div>
 
-<!--<div class="filter">-->
-<!--  <label>Created by: </label>-->
-<!--  <select [(ngModel)]="createdBy">-->
-<!--    <option *ngFor="let user of userOptions" [value]="user">{{ user }}</option>-->
-<!--  </select>-->
-<!--</div>-->
+<div class="filter">
+  <label>Created by: </label>
+  <select [(ngModel)]="createdByUserId">
+    <option *ngFor="let user of userOptions" [value]="user.id">{{ user.firstName }} {{user.lastName}}</option>
+  </select>
+</div>
 
 <div class="filter">
   <label>Creation date: </label>

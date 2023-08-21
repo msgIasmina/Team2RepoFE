@@ -5,8 +5,10 @@ import {DonationListComponent} from "./components/donation-list/donation-list.co
 import {MatIconModule} from "@angular/material/icon";
 import {DonationRoutingModule} from "./donation-routing.module";
 import {MatButtonModule} from "@angular/material/button";
-import {FormsModule} from "@angular/forms";
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {MatSliderModule} from "@angular/material/slider";
+import {MatInputModule} from "@angular/material/input";
+import {MatAutocompleteModule} from "@angular/material/autocomplete";
 
 
 
@@ -21,7 +23,10 @@ import {MatSliderModule} from "@angular/material/slider";
     DonationRoutingModule,
     MatButtonModule,
     FormsModule,
-    MatSliderModule
+    MatSliderModule,
+    ReactiveFormsModule,
+    MatInputModule,
+    MatAutocompleteModule
   ],
   exports: [
     DonationListComponent
