@@ -11,7 +11,6 @@ import {MatSelectModule} from "@angular/material/select";
 
 @NgModule({
   declarations: [
-    DonationListComponent,
     DonationComponent,
     DonationFormComponent,
     UpdateDonationComponent
