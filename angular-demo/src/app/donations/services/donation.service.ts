@@ -3,6 +3,8 @@ import {HttpClient, HttpHeaders, HttpParams} from "@angular/common/http";
 import {BehaviorSubject, Observable, tap} from "rxjs";
 import {Donation} from "../models/donation";
 import {ActivatedRoute} from "@angular/router";
+import {Campaign} from "../../campaigns/models/campaign";
+import {User} from "../../user/models/user";
 
 @Injectable({
   providedIn: 'root'
@@ -27,21 +29,24 @@ export class DonationService {
       tap(donations => this.donationList$.next(donations))
     );
   }
-  // loadFilteredDonations(): Observable<Donation[]>{
-  //   const headers = new HttpHeaders()
-  //     .set("Authorization", localStorage.getItem("token") ?? '');
-  //
-  //   // Retrieve query parameters from the ActivatedRoute
-  //   const queryParams = this.activatedRoute.snapshot.queryParams;
-  //
-  //   console.log(queryParams)
-  //
-  //   return this.http.get<Donation[]>(this.url +  '/filter', { headers, params: queryParams }).pipe(
-  //     tap(donations => {
-  //       this.donationList$.next(donations)
-  //     })
-  //   );
-  // }
+
+  getCurrencies(): Observable<string[]> {
+    const headers = new HttpHeaders().set("Authorization", localStorage.getItem("token") ?? '');
+
+    return this.http.get<string[]>(this.url + '/currencies', { headers });
+  }
+
+  getCampaigns(): Observable<Campaign[]> {
+    const headers = new HttpHeaders().set("Authorization", localStorage.getItem("token") ?? '');
+
+    return this.http.get<Campaign[]>(this.url + '/campaigns', { headers });
+  }
+
+  getUsers(): Observable<User[]> {
+    const headers = new HttpHeaders().set("Authorization", localStorage.getItem("token") ?? '');
+
+    return this.http.get<User[]>(this.url + '/users', { headers });
+  }
   loadFilteredDonations(): Observable<Donation[]> {
     const headers = new HttpHeaders().set("Authorization", localStorage.getItem("token") ?? '');
 
@@ -80,7 +85,7 @@ export class DonationService {
     const userId = localStorage.getItem('userId');
 
     const params = new HttpParams()
-      .set('donationId', donation.id.toString())
+      .set('donationId', donation.id)
       .set('approvedById', userId || '');
 
     return this.http.put(`${this.url}/approve`, null, { headers, params });
