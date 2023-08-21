@@ -20,11 +20,17 @@
   border-radius: 25px;
 }
 
-
 h2 {
   font-size: 2.75rem;
   font-weight: 100;
   margin: 0 0 1rem;
   text-transform: uppercase;
   color: #1b182b;
+}
+
+input, select{
+  border: 1px solid #242c37;
+  border-radius: 999px;
+  background-color: transparent;
+  text-align: center;
 }

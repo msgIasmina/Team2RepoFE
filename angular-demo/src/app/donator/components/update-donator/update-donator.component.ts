@@ -19,9 +19,12 @@ export class UpdateDonatorComponent implements OnInit {
               private activatedRoute: ActivatedRoute) { }
 
   updateDonator(donator: Donator) {
+    console.log("hello")
     this.donatorService.updateDonator(donator).subscribe(
       response => window.alert(response)
     )
+    window.alert("Successfully Donator Edited!");
+    window.location.href = '/management/donators/0/10';
   }
 
   ngOnInit(): void {

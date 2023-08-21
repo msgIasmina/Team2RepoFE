@@ -8,7 +8,7 @@ import {UserService} from "../../services/user-service.service";
   styleUrls: ['./user-register.component.css']
 })
 export class UserRegisterComponent  {
-  placeholder:User= new User("firstName","lastName","email","mobileNumber",[],[])
+  placeholder:User= new User("First Name","Last Name","Email","Mobile Number",[],[])
   register:string="register"
   onSave(newUser:User) {
     this.userService.saveUser(newUser).subscribe();

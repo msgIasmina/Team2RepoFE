@@ -1,5 +1,6 @@
 <form class="form" [formGroup]="registerForm" (ngSubmit)="onSave()">
   <div class="form__field">
+    <p>First Name: </p>
     <input
       [placeholder]="donator.firstName"
       type="text"
@@ -11,6 +12,7 @@
   </div>
 
   <div class="form__field">
+    <p>Additional Name:</p>
     <input
       [placeholder]="donator.additionalName"
       type="text"
@@ -19,6 +21,7 @@
   </div>
 
   <div class="form__field">
+    <p>Last Name:</p>
     <input
       [placeholder]="donator.lastName"
       type="text"
@@ -30,10 +33,11 @@
   </div>
 
   <div class="form__field">
+    <p>Maiden Name:</p>
     <input
+      [placeholder]="donator.maidenName"
       type="text"
       formControlName="maidenName"
-      [placeholder]="donator.maidenName"
     />
   </div>
 

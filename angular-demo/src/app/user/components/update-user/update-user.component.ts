@@ -29,6 +29,8 @@ export class UpdateUserComponent implements OnInit {
     this.userService.updateUser(user).subscribe(
       response => window.alert(response)
     )
+    window.alert("Successfully User Edited!");
+    window.location.href = '/management/users/0/10';
   }
 
   toggleSelection(role: Role) {

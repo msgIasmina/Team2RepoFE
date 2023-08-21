@@ -19,4 +19,24 @@ export class BasePageComponent{
     )
   }
 
+  toggleMenu() {
+    const menu = document.querySelector('.menu-icon') as HTMLElement | null;
+    const navbar = document.querySelector('.menu') as HTMLElement | null;
+
+    navbar?.classList.toggle('active');
+    menu?.classList.toggle('move');
+  }
+
+  goToPage(page: string) {
+    this.toggleMenu();
+    if(page === 'users') {
+      this.router.navigate(["/management/users/0/100"]);
+    }
+    if(page === 'donators'){
+      this.router.navigate(["/management/donators/0/100"]);
+    }
+  }
+
+
+
 }

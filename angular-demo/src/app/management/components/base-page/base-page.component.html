@@ -1,6 +1,27 @@
-<mat-toolbar>
-  <span>Management</span>
-  <span class="example-spacer"></span>
-  <button (click)="logout()">Logout</button>
-</mat-toolbar>
+ <!--Nav -->
+  <div class="nav container">
+    <!--Logo -->
+    <a href="index.html" class="logo">Donation<span>Manager</span></a>
+    <!--Nav Icons -->
+    <div class="nav-icons">
+<!--      <i class='bx bx-bell bx-tada' id="bell-icon"><span></span></i>-->
+      <button  mat-button color="warn" class="btn signInButton" (click)=logout()> LogOut </button>
+    </div>
+
+    <div class="menu-icon" (click)="toggleMenu()">
+      <div class="line1"></div>
+      <div class="line2"></div>
+      <div class="line3"></div>
+    </div>
+  </div>
+  <!--Menu -->
+  <div class="menu">
+    <div class="navbar">
+      <li><a (click)="goToPage('users')">Users</a></li>
+      <li><a (click)="goToPage('donators')">Donators</a></li>
+<!--      <li><a (click)="goToPage('cart')">Donations</a></li>-->
+    </div>
+  </div>
 <router-outlet></router-outlet>
+
+

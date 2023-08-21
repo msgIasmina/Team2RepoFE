@@ -22,6 +22,9 @@ export class DonatorService {
       headers: new HttpHeaders()
         .set("Authorization", localStorage.getItem("token") ?? '')
     }
+    console.log(page);
+    console.log(`${this.url}/${page}/${size}`);
+
     return this.http.get<Donator[]>(`${this.url}/${page}/${size}`, header).pipe(
       tap(donators => this.donatorList$.next(donators))
     );

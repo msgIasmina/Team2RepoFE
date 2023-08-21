@@ -20,6 +20,18 @@ body {
   flex-direction: row;
 }
 
+.align__item--start {
+  align-self: flex-start;
+}
+.align__item--end {
+  align-self: flex-end;
+}
+.site__logo {
+  margin-bottom: 2rem;
+  width: 50%;
+  height: 50%;
+}
+
 .site__logo {
   margin-bottom: 2rem;
   width: 50%;
@@ -28,7 +40,7 @@ body {
 }
 
 input {
-  border: 3px;
+  border: 0;
   font: inherit;
 }
 
@@ -125,3 +137,14 @@ a {
 .error-message{
   color: red;
 }
+
+p{
+  text-align: left;
+}
+
+input {
+  font: inherit;
+  border: 1px solid #242c37;
+  border-radius: 999px;
+}
+

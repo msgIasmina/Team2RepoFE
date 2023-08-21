@@ -28,8 +28,9 @@ body {
 }
 
 input {
-  border: 3px;
   font: inherit;
+  border: 1px solid #242c37;
+  border-radius: 999px;
 }
 
 input::placeholder {
@@ -124,4 +125,9 @@ a {
 
 .error-message{
   color: red;
+}
+
+p{
+  color: black;
+  text-align: left;
 }

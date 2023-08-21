@@ -32,7 +32,7 @@ export class DonatorListComponent implements OnInit {
     if (action.type === 'delete') {
       this.deleteDonator(action.donator);
     }
-    if(action.type === "edit"){
+    else if(action.type === "edit"){
       this.editDonator(action.donator);
     }
   }
@@ -52,15 +52,12 @@ export class DonatorListComponent implements OnInit {
   }
 
   private deleteDonator(donatorToDelete: Donator) {
-    this.donatorService.deleteDonator(donatorToDelete).subscribe(
-      () => {
-        this.loadDonatorsAndRefresh(); // Refresh the list after deletion
-      },
-      error => {
-        console.error("Error deleting donator:", error);
-      }
-    );
-  }
-
-  protected readonly Donator = Donator;
+    this.activatedRoute.params.subscribe(() => {
+      this.donatorService.deleteDonator(donatorToDelete).subscribe(() => {
+        },
+        error => {
+          this.loadDonatorsAndRefresh() // Refresh the list after deletion
+        })
+    })
+    }
 }

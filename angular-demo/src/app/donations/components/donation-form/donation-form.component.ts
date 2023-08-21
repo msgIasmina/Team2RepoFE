@@ -23,8 +23,8 @@ export class DonationFormComponent implements OnInit {
     amount: ['', Validators.required],
     currency: ['', Validators.required],
     createdBy: ['', Validators.required],
-    benefactor: ['', Validators.required],
-    notes: ['']
+    // benefactor: ['', Validators.required],
+    // notes: ['']
   })
   donators: Donator[];
 
@@ -51,20 +51,22 @@ export class DonationFormComponent implements OnInit {
     const currency = this.form.get('currency')?.value;
     const createdBy = this.form.get('createdBy')?.value;
 
-    let newDonation:Donation ={
-      amount,
-      currency,
-      createdBy,
-    };
-    if (this.functionality === "update"){
-      newDonation.id=this.donation.id;
-    }
-    if(this.form.valid){
-      this.submitEvent.emit(newDonation)
-      if (this.functionality === "register"){
-        this.form.reset();
-      }
-    }
+    // let newDonation:Donation ={
+    //   amount,
+    //   currency,
+    //   createdBy,
+    //   // benefactor,
+    //   // notes
+    // };
+    // if (this.functionality === "update"){
+    //   newDonation.id=this.donation.id;
+    // }
+    // if(this.form.valid){
+    //   this.submitEvent.emit(newDonation)
+    //   if (this.functionality === "register"){
+    //     this.form.reset();
+    //   }
+    // }
   }
   constructor(private fb: FormBuilder, private donatorService: DonatorService) { }
 
@@ -81,18 +83,18 @@ export class DonationFormComponent implements OnInit {
     }
   }
 
-  addDonator() {
-    let benefactorToBeAdded = this.form.get('benefactor')?.value
-    this.rolePermissionService.addPermissionsToRole(this.rolePermission.id, permissionsToBeAdded).subscribe(
-      response => {
-        /*this.missingPermissions = this.missingPermissions.filter(permission => permissionsToBeAdded.indexOf(permission)<0);
-        this.acquiredPermissions.push(...permissionsToBeAdded);*/
-      },
-      err =>{
-        //window.alert(err)
-        this.missingPermissions = this.missingPermissions.filter(permission => permissionsToBeAdded.indexOf(permission)<0);
-        this.acquiredPermissions.push(...permissionsToBeAdded);
-      }
-    )
-  }
+  // addDonator() {
+  //   let benefactorToBeAdded = this.form.get('benefactor')?.value
+  //   this.rolePermissionService.addPermissionsToRole(this.rolePermission.id, permissionsToBeAdded).subscribe(
+  //     response => {
+  //       /*this.missingPermissions = this.missingPermissions.filter(permission => permissionsToBeAdded.indexOf(permission)<0);
+  //       this.acquiredPermissions.push(...permissionsToBeAdded);*/
+  //     },
+  //     err =>{
+  //       //window.alert(err)
+  //       this.missingPermissions = this.missingPermissions.filter(permission => permissionsToBeAdded.indexOf(permission)<0);
+  //       this.acquiredPermissions.push(...permissionsToBeAdded);
+  //     }
+  //   )
+  // }
 }
