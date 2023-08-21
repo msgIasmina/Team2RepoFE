@@ -15,12 +15,14 @@ import {MatFormFieldModule} from "@angular/material/form-field";
 import {MatInputModule} from "@angular/material/input";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {MatChipsModule} from "@angular/material/chips";
+import {NotificationModule} from "./notifications/notification.module";
 
 @NgModule({
   declarations: [
     AppComponent
   ],
   imports: [
+    NotificationModule,
     BrowserModule,
     DonationsModule,
     LoginModule,

@@ -1,7 +1,7 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {Donation} from "../../models/donation";
 import {User} from "../../../user/models/user";
-import {DonationService} from "../../services/donation.service";
+/*import {DonationService} from "../../services/donation.service";*/
 import {ActivatedRoute, Router} from "@angular/router";
 import {UserAction} from "../../../user/models/UserAction";
 import {DonationAction} from "../../models/DonationAction";
@@ -38,7 +38,7 @@ export class DonationListComponent implements OnInit {
   searchTerm: string;
   approved: boolean;
 
-  constructor(private donationService: DonationService,
+  constructor(//private donationService: DonationService,
               private activatedRoute: ActivatedRoute,
               private router: Router,
               private campaignService: CampaignService,
@@ -54,11 +54,11 @@ export class DonationListComponent implements OnInit {
   }
 
   private loadDonationsAndRefresh(){
-    this.donationService.loadDonations(this.page, this.size).subscribe( () => {
+    /*this.donationService.loadDonations(this.page, this.size).subscribe( () => {
       this.donationService.getDonations().subscribe(donations => {
         this.donationList = donations;
       });
-  })
+  })*/
   }
 
   handleDonationAction(action: DonationAction) {
