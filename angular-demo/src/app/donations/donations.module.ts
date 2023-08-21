@@ -8,6 +8,8 @@ import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {DonationRoutingModule} from "./donation-routing.module";
 import {MatButtonModule} from "@angular/material/button";
 import {MatSelectModule} from "@angular/material/select";
+import {MatIconModule} from "@angular/material/icon";
+import {MatSliderModule} from "@angular/material/slider";
 
 @NgModule({
   declarations: [
@@ -22,7 +24,12 @@ import {MatSelectModule} from "@angular/material/select";
     ReactiveFormsModule,
     DonationRoutingModule,
     MatButtonModule,
-    MatSelectModule
+    MatSelectModule,
+    MatIconModule,
+    MatSliderModule
+  ],
+  exports: [
+    DonationListComponent
   ]
 })
 export class DonationsModule { }

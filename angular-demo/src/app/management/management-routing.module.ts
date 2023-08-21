@@ -12,10 +12,12 @@ const routes: Routes = [
         loadChildren: () => import('../user/user.module').then(m => m.UserModule)
       },
       {path:"campaigns",
-        loadChildren: () => import('../campaigns/campaigns.module').then(m => m.CampaignsModule)
-      },
+        loadChildren: () => import('../campaigns/campaigns.module').then(m => m.CampaignsModule)},
       {path:"donators",
         loadChildren: () => import('../donator/donator.module').then(m => m.DonatorModule)
+      },
+      {path:"donations",
+        loadChildren: () => import('../donations/donations.module').then(m => m.DonationsModule)
       }
     ],
     canActivate:[LoginGuard]

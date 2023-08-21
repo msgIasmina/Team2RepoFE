@@ -10,22 +10,16 @@ import {Campaign} from "../../models/campaign";
 })
 export class CampaignComponent implements OnInit {
 
-  campaignForm=this.fb.group({
-    name:['',Validators.required],
-    purpose:['',Validators.required]
-  })
+  placeholder:Campaign=new Campaign("Name","...")
+  add:string="add"
 
-  constructor(private fb: FormBuilder,private campaignService: CampaignService) { }
+  constructor(private campaignService: CampaignService) { }
 
   ngOnInit(): void {
   }
 
-  onSave(){
-    const name=this.campaignForm.get('name')?.value;
-    const purpose=this.campaignForm.get('purpose')?.value;
-    const newCampaign:Campaign=new Campaign(name,purpose);
+  onSave(newCampaign:Campaign){
     this.campaignService.saveCampaign(newCampaign).subscribe();
-
   }
 
 }
