@@ -1,7 +1,7 @@
  <!--Nav -->
   <div class="nav container">
     <!--Logo -->
-    <a href="index.html" class="logo">Donation<span>Manager</span></a>
+    <a routerLink="/home" class="logo">Donation<span>Manager</span></a>
     <!--Nav Icons -->
     <div class="nav-icons">
 <!--      <i class='bx bx-bell bx-tada' id="bell-icon"><span></span></i>-->
@@ -19,7 +19,7 @@
     <div class="navbar">
       <li><a (click)="goToPage('users')">Users</a></li>
       <li><a (click)="goToPage('donators')">Donators</a></li>
-<!--      <li><a (click)="goToPage('cart')">Donations</a></li>-->
+      <li><a (click)="goToPage('campaigns')">Campaigns</a></li>
     </div>
   </div>
 <router-outlet></router-outlet>

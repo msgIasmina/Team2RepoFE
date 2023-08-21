@@ -35,6 +35,9 @@ export class BasePageComponent{
     if(page === 'donators'){
       this.router.navigate(["/management/donators/0/100"]);
     }
+    if(page === 'campaigns'){
+      this.router.navigate(["/management/campaigns/listing"]);
+    }
   }
 
 

@@ -1,0 +1,29 @@
+.grid {
+  margin: 0 auto;
+  max-width: 25rem;
+  width: 100%;
+}
+
+.align__item--start {
+  align-self: flex-start;
+}
+
+.align__item--end {
+  align-self: flex-end;
+}
+.update {
+  background-color: #ffffff;
+  box-shadow: 0 0 250px #f85252;
+  text-align: center;
+  padding: 4rem 2rem;
+  height: auto;
+  border-radius: 25px;
+}
+
+h2 {
+  font-size: 2.75rem;
+  font-weight: 100;
+  margin: 0 0 1rem;
+  text-transform: uppercase;
+  color: #1b182b;
+}

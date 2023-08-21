@@ -20,6 +20,8 @@ export class CampaignEditComponent implements OnInit {
     this.campaignService.editCampaign(campaign).subscribe(
       response=>window.alert(response)
     );
+    window.alert("Successfully Campaign Edited!");
+    window.location.href = '/management/campaigns/listing';
   }
 
   ngOnInit(): void {
