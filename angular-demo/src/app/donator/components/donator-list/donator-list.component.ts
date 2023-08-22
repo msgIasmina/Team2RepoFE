@@ -3,7 +3,7 @@ import {Donator} from "../../models/donator";
 import {DonatorService} from "../../services/donator.service";
 import {ActivatedRoute, Router} from "@angular/router";
 import {DonatorAction} from "../../models/DonatorAction";
-import {User} from "../../../user/models/user";
+import {User} from "../../../user/models/User";
 
 @Component({
   selector: 'app-donator-list',
@@ -60,4 +60,10 @@ export class DonatorListComponent implements OnInit {
         })
     })
     }
+
+  onAddDonatorClicked(){
+    this.router.navigate(
+      ['/management/donators/register/']
+    );
+  }
 }

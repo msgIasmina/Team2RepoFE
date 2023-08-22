@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { User } from "../models/user";
+import { User } from "../models/User";
 import { BehaviorSubject, Observable,tap} from "rxjs";
 import { HttpClient, HttpHeaders } from "@angular/common/http";
 @Injectable({

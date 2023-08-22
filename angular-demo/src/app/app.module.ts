@@ -2,9 +2,9 @@ import {NgModule} from '@angular/core';
 import {BrowserModule} from '@angular/platform-browser';
 import {AppComponent} from './app.component';
 import {AppRoutingModule} from './app-routing.module';
-import {LoginModule} from "./login/login.module";
+import {LoginModule} from "./account/component/login/login.module";
 import {HTTP_INTERCEPTORS, HttpClient, HttpClientModule} from "@angular/common/http";
-import {LoginService} from "./login/services/login.service";
+import {AccountService} from "./account/component/login/services/account.service";
 import {Interceptor} from "./util/interceptors/interceptor";
 import {RoleGuard} from "./util/Roleguard";
 import {ManagementModule} from "./management/management.module";
@@ -14,7 +14,7 @@ import {MatFormFieldModule} from "@angular/material/form-field";
 import {MatInputModule} from "@angular/material/input";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {MatChipsModule} from "@angular/material/chips";
-import { HomeComponent } from './homePage/home/home.component';
+import { HomeComponent } from './homePage/components/home/home.component';
 
 @NgModule({
   declarations: [
@@ -36,7 +36,7 @@ import { HomeComponent } from './homePage/home/home.component';
     ReactiveFormsModule
   ],
   providers: [
-    LoginService, {provide: HTTP_INTERCEPTORS, useClass: Interceptor, multi: true}, RoleGuard
+    AccountService, {provide: HTTP_INTERCEPTORS, useClass: Interceptor, multi: true}, RoleGuard
   ],
   bootstrap: [AppComponent]
 })

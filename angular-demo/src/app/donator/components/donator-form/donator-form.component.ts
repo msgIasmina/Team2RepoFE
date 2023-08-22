@@ -38,6 +38,10 @@ export class DonatorFormComponent implements OnInit {
   }
 
   onSave() {
+    if (!this.registerForm.valid) {
+      console.log("Invalid Campaign form!");
+      return;
+    }
     this.submitted = true;
     const firstName = this.registerForm.get('firstName')?.value;
     const lastName = this.registerForm.get('lastName')?.value;
@@ -49,17 +53,23 @@ export class DonatorFormComponent implements OnInit {
       additionalName,
       maidenName,
     };
+
+    const permissions = JSON.parse(localStorage.getItem('permissions') || '[]');
+    const hasBenefPermission = permissions.includes('AUTHORITY_BENEF_MANAGEMENT');
     if (this.functionality === "update"){
       newDonator.id=this.donator.id;
     }
-    if(this.registerForm.valid){
-      this.submitEvent.emit(newDonator)
-      if (this.functionality === "register"){
-        this.registerForm.reset();
-        window.alert("Successfully Donator Registered!");
-        window.location.href = '/management/donators/0/10';
-      }
+
+    this.submitEvent.emit(newDonator)
+
+    if (this.functionality === "register" && hasBenefPermission){
+      window.alert("Successfully Donator Registered!");
+      window.location.href = '/management/donators/0/10';
+    } else{
+      window.alert('User does not have BENEF management permission.');
+      return;
     }
+
   }
   constructor(private fb: FormBuilder) { }
 

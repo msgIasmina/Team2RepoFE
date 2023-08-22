@@ -53,4 +53,10 @@ export class CampaignListComponent implements OnInit {
     );
   }
 
+  onAddCampaignClicked(){
+    this.router.navigate(
+      ['/management/campaigns/add/']
+    );
+  }
+
 }

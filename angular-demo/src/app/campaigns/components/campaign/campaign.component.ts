@@ -18,7 +18,7 @@ export class CampaignComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  onSave(newCampaign:Campaign){
+  onSave(newCampaign: Campaign){
     this.campaignService.saveCampaign(newCampaign).subscribe();
   }
 
