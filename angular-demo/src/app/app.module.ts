@@ -15,14 +15,12 @@ import {MatFormFieldModule} from "@angular/material/form-field";
 import {MatInputModule} from "@angular/material/input";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {MatChipsModule} from "@angular/material/chips";
-import {NotificationModule} from "./notifications/notification.module";
 
 @NgModule({
   declarations: [
     AppComponent
   ],
   imports: [
-    NotificationModule,
     BrowserModule,
     DonationsModule,
     LoginModule,
@@ -35,7 +33,7 @@ import {NotificationModule} from "./notifications/notification.module";
     MatInputModule,
     FormsModule,
     MatChipsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
   ],
   providers: [
     LoginService, {provide: HTTP_INTERCEPTORS, useClass: Interceptor, multi: true}, RoleGuard

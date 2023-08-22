@@ -5,13 +5,15 @@ import {ManagementRoutingModule} from "./management-routing.module";
 import {MatToolbarModule} from "@angular/material/toolbar";
 import {LoginGuard} from "./utils/utils/login-guard";
 import {LogoutService} from "./services/logout.service";
+import {ToastrModule} from "ngx-toastr";
 
 @NgModule({
   declarations: [BasePageComponent],
   imports: [
     CommonModule,
     ManagementRoutingModule,
-    MatToolbarModule
+    MatToolbarModule,
+    ToastrModule.forRoot()
   ],
   providers:[LoginGuard,LogoutService]
 })
