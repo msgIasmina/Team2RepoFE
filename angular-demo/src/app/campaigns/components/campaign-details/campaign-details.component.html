@@ -1,4 +1,4 @@
-<div>
-  <button  mat-raised-button color="accent" (click)="onEditClicked(campaign)">Edit</button>
-  <button mat-raised-button color="warn"(click)="onDeleteClicked(campaign)">Delete</button>
+<div *transloco="let t">
+  <button  mat-raised-button color="accent" (click)="onEditClicked(campaign)">{{t('cDetails.editBtn')}}</button>
+  <button mat-raised-button color="warn"(click)="onDeleteClicked(campaign)">{{t('cDetails.deleteBtn')}}</button>
 </div>

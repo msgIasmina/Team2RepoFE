@@ -6,6 +6,7 @@ import {MatToolbarModule} from "@angular/material/toolbar";
 import {LoginGuard} from "./utils/utils/login-guard";
 import {LogoutService} from "./services/logout.service";
 import {MatButtonModule} from "@angular/material/button";
+import {TranslocoModule} from "@ngneat/transloco";
 
 @NgModule({
   declarations: [BasePageComponent],
@@ -14,6 +15,7 @@ import {MatButtonModule} from "@angular/material/button";
         ManagementRoutingModule,
         MatToolbarModule,
         MatButtonModule,
+        TranslocoModule,
         //CampaignsModule
     ],
   providers:[LoginGuard,LogoutService]

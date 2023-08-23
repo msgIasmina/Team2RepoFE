@@ -1,3 +1,116 @@
 {
-
+  "navbar": {
+    "logout": "Sign Out",
+    "users": "Users",
+    "donators": "Donators",
+    "campaigns": "Campaigns"
+  },
+  "uDetails": {
+    "editBtn": "Edit",
+    "deleteBtn": {
+      "activate": "Activate",
+      "deactivate": "Deactivate"
+    }
+  },
+  "uList": {
+    "header": "List of Users",
+    "addBtn": "Add User",
+    "uTable": {
+      "firstname": "First Name",
+      "email": "Email",
+      "active": "Active",
+      "actions": "Actions"
+    }
+  },
+  "uRegister": {
+    "header": "Register User"
+  },
+  "uUpdate": {
+    "header": "Update User"
+  },
+  "uForm": {
+    "firstname": "First Name:",
+    "lastname": "Last Name:",
+    "email": "Email:",
+    "mobileNumber": "Mobile Number:",
+    "roles": "Choose Roles:",
+    "submitBtn": "Submit",
+    "errors": {
+      "firstnameE": "First Name is required",
+      "lastnameE": "Last Name is required",
+      "emailE": "Email is required",
+      "rolesE": "Please select at least one role"
+    }
+  },
+  "donatorDetails": {
+    "editBtn": "Edit",
+    "deleteBtn": "Delete"
+  },
+  "donatorList": {
+    "header": "List of Donators",
+    "addBtn": "Add Donator",
+    "dTable": {
+      "firstname": "First Name",
+      "lastname": "Last Name",
+      "additionalname": "Additional Name",
+      "maidenname": "Maiden Name",
+      "actions": "Actions"
+    }
+  },
+  "donatorRegister": {
+    "header": "Register Donator"
+  },
+  "donatorUpdate": {
+    "header": "Update Donator"
+  },
+  "donatorForm": {
+    "firstname": "First Name:",
+    "additionalname": "Additional Name:",
+    "lastname": "Last Name:",
+    "maidenname": "Maiden Name:",
+    "submitBtn": "Submit",
+    "errors": {
+      "firstnameE": "First Name is required",
+      "lastnameE": "Last Name is required"
+    }
+  },
+  "cDetails": {
+    "editBtn": "Edit",
+    "deleteBtn": "Delete"
+  },
+  "cList": {
+    "header": "List of Campaigns",
+    "addBtn": "Add Campaign",
+    "cTable": {
+      "name": "Name",
+      "purpose": "Purpose",
+      "actions": "Actions"
+    }
+  },
+  "cAdd": {
+    "header": "Add Campaign"
+  },
+  "cUpdate": {
+    "header": "Update campaign"
+  },
+  "cForm": {
+    "name": "Name:",
+    "purpose": "Purpose:",
+    "submitBtn": "Submit",
+    "errors": {
+      "nameE": "Name is required",
+      "purposeE": "Purpose is required"
+    }
+  },
+  "login": {
+    "username": "Username:",
+    "password": "Password:",
+    "btn": "Login"
+  },
+  "firstLogin": {
+    "header": "It looks like it is your first time logging in. Please change your password!",
+    "password": "Password:",
+    "disclaimer": "Complete the form to enable button",
+    "save": "Save"
+  }
 }

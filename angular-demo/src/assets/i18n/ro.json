@@ -1,3 +1,116 @@
 {
-
+  "navbar": {
+    "logout": "Delogare",
+    "users": "Utilizatori",
+    "donators": "Donatori",
+    "campaigns": "Campanii"
+  },
+  "uDetails": {
+    "editBtn": "Editează",
+    "deleteBtn": {
+      "activate": "Activează",
+      "deactivate": "Dezactivează"
+    }
+  },
+  "uList": {
+    "header": "Lista Utilizatorilor",
+    "addBtn": "Adaugă un utilizator",
+    "uTable": {
+      "firstname": "Prenume",
+      "email": "Email",
+      "active": "Activ",
+      "actions": "Acţiuni"
+    }
+  },
+  "uRegister": {
+    "header": "Înregistrare utilizator"
+  },
+  "uUpdate": {
+    "header": "Actualizare utilizator"
+  },
+  "uForm": {
+    "firstname": "Prenume:",
+    "lastname": "Nume:",
+    "email": "Email:",
+    "mobileNumber": "Număr de telefon:",
+    "roles": "Alege roluri:",
+    "submitBtn": "Trimite",
+    "errors": {
+      "firstnameE": "Prenumele este obligatoriu",
+      "lastnameE": "Numele este obligatoriu",
+      "emailE": "Emailul este obligatoriu",
+      "rolesE": "Selectează cel puțin un rol"
+    }
+  },
+  "donatorDetails": {
+    "editBtn": "Editează",
+    "deleteBtn": "Șterge"
+  },
+  "donatorList": {
+    "header": "Lista Donatorilor",
+    "addBtn": "Adaugă un donator",
+    "dTable": {
+      "firstname": "Prenume",
+      "lastname": "Nume",
+      "additionalname": "Nume adiţional",
+      "maidenname": "Nume de fată",
+      "actions": "Acţiuni"
+    }
+  },
+  "donatorRegister": {
+    "header": "Înregistrare donator"
+  },
+  "donatorUpdate": {
+    "header": "Actualizare donator"
+  },
+  "donatorForm": {
+    "firstname": "Prenume:",
+    "additionalname": "Nume adiţional:",
+    "lastname": "Nume:",
+    "maidenname": "Nume de fată:",
+    "submitBtn": "Trimite",
+    "errors": {
+      "firstnameE": "Prenumele este obligatoriu",
+      "lastnameE": "Numele este obligatoriu"
+    }
+  },
+  "cDetails": {
+    "editBtn": "Editează",
+    "deleteBtn": "Șterge"
+  },
+  "cList": {
+    "header": "Lista Campaniilor",
+    "addBtn": "Adaugă o campanie",
+    "cTable": {
+      "name": "Nume",
+      "purpose": "Scop",
+      "actions": "Acţiuni"
+    }
+  },
+  "cAdd": {
+    "header": "Adăugare campanie"
+  },
+  "cUpdate": {
+    "header": "Actualizare campanie"
+  },
+  "cForm": {
+    "name": "Nume:",
+    "purpose": "Scop:",
+    "submitBtn": "Trimite",
+    "errors": {
+      "nameE": "Numele este obligatoriu",
+      "purposeE": "Scopul este obligatoriu"
+    }
+  },
+  "login": {
+    "username": "Utilizator:",
+    "password": "Parolă:",
+    "btn": "Loghează-te"
+  },
+  "firstLogin": {
+    "header": "Se pare că sunteți la prima logare. Vă rugăm să vă schimbați parola!",
+    "password": "Parolă:",
+    "disclaimer": "Completați formularul pentru a activa butonul!",
+    "save": "Salvează"
+  }
 }

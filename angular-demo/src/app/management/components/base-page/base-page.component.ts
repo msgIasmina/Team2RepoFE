@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {Router} from "@angular/router";
 import {LogoutService} from "../../services/logout.service";
+import {TranslocoService} from "@ngneat/transloco";
 
 @Component({
   selector: 'app-base-page',
@@ -8,7 +9,7 @@ import {LogoutService} from "../../services/logout.service";
   styleUrls: ['./base-page.component.css']
 })
 export class BasePageComponent{
-  constructor(private router:Router,private service:LogoutService) { }
+  constructor(private router:Router,private service:LogoutService,private translocoService:TranslocoService) { }
 
   logout(){
     this.service.logout().subscribe(
@@ -17,6 +18,15 @@ export class BasePageComponent{
         this.router.navigate(['/login'])
       }
     )
+  }
+
+  onLanguageChange(){
+    const lang=this.translocoService.getActiveLang();
+    this.translocoService.setActiveLang(lang==='en'?'ro':'en');
+  }
+
+  isEnglSelected(){
+    return this.translocoService.getActiveLang()==='en';
   }
 
   toggleMenu() {

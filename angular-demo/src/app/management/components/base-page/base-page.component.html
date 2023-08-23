@@ -1,11 +1,15 @@
  <!--Nav -->
-  <div class="nav container">
+  <div class="nav container" *transloco="let t">
     <!--Logo -->
     <a routerLink="http://localhost:4200/home" class="logo">Donation<span>Manager</span></a>
     <!--Nav Icons -->
+    <div>
+      <img *ngIf="isEnglSelected()" src="assets/images/british-flag.jpg" width="80" height="23" (click)="onLanguageChange()">
+      <img *ngIf="!isEnglSelected()" src="assets/images/ro-flag.png" width="80" height="23" (click)="onLanguageChange()">
+    </div>
     <div class="nav-icons">
 <!--      <i class='bx bx-bell bx-tada' id="bell-icon"><span></span></i>-->
-      <button  mat-button color="warn" class="btn signInButton" (click)=logout()> LogOut </button>
+      <button  mat-button color="warn" class="btn signInButton" (click)=logout()> {{t('navbar.logout')}} </button>
     </div>
 <p></p>
     <div class="menu-icon" (click)="toggleMenu()">
@@ -15,11 +19,11 @@
     </div>
   </div>
   <!--Menu -->
-  <div class="menu">
+  <div class="menu" *transloco="let t">
     <div class="navbar">
-      <li><a (click)="goToPage('users')">Users</a></li>
-      <li><a (click)="goToPage('donators')">Donators</a></li>
-      <li><a (click)="goToPage('campaigns')">Campaigns</a></li>
+      <li><a (click)="goToPage('users')">{{t('navbar.users')}}</a></li>
+      <li><a (click)="goToPage('donators')">{{t('navbar.donators')}}</a></li>
+      <li><a (click)="goToPage('campaigns')">{{t('navbar.campaigns')}}</a></li>
     </div>
   </div>
 <router-outlet></router-outlet>
