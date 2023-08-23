@@ -45,15 +45,21 @@ export class DonationListComponent implements OnInit {
 
   createDateStart: Date;
   createDateEnd: Date;
+  minCreateDateEnd: Date;
 
   approved: boolean;
+
+  approvedDateStart: Date;
+  approvedDateEnd: Date;
+  minApprovedDateEnd: Date;
 
   filterParams: any = {};
 
   constructor(private donationService: DonationService,
               private userService: UserService,
               private campaignService: CampaignService,
-              private activatedRoute: ActivatedRoute) { }
+              private activatedRoute: ActivatedRoute,
+              private router: Router) { }
 
   ngOnInit(): void {
     this.donationService.getSize().subscribe(size => {
@@ -158,16 +164,31 @@ export class DonationListComponent implements OnInit {
         this.filterParams['approved'] = this.approved;
       }
 
+      if (this.approvedDateStart) {
+        this.filterParams['approvedDateStart'] = this.approvedDateStart;
+      }
+
+      if (this.approvedDateStart) {
+        this.filterParams['approvedDateEnd'] = this.approvedDateEnd;
+      }
+
     this.loadDonationsAndRefresh(this.filterParams);
   }
 
   clearFilterParams(){
-    for (const prop in this.filterParams) {
-      if (prop !== 'pageSize') {
-        delete this.filterParams[prop];
-      }
-    }
-    this.filterParams['offset'] = 0;
+    // for (const prop in this.filterParams) {
+    //   if (prop !== 'pageSize') {
+    //     delete this.filterParams[prop];
+    //   }
+    // }
+    // this.filterParams['offset'] = 0;
+
+  }
+
+  clearAllFilterParamsAndRefresh() {
+    this.router.navigate(
+      ['/management/donations/list']
+    );
   }
 
   pageChanged(event: PageEvent): void {
@@ -176,6 +197,11 @@ export class DonationListComponent implements OnInit {
     this.loadDonationsAndRefresh(this.filterParams);
   }
 
+  updateCreateDateEndMin() {
+    this.minCreateDateEnd = this.createDateStart;
+  }
 
-
+  updateApprovedDateEndMin() {
+    this.minApprovedDateEnd = this.approvedDateStart;
+  }
 }

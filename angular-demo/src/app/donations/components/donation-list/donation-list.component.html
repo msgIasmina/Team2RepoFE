@@ -39,9 +39,9 @@
 
 <div class="filter">
   <label>Created from: </label>
-  <input type="date" [(ngModel)]="createDateStart">
+  <input type="date" [(ngModel)]="createDateStart" (change)="updateCreateDateEndMin()">
   <label>Created until: </label>
-  <input type="date" [(ngModel)]="createDateEnd">
+  <input type="date" [(ngModel)]="createDateEnd" [min]="minCreateDateEnd">
 </div>
 
 <!--<div class="filter">-->
@@ -59,15 +59,15 @@
 <!--  <input type="number" [(ngModel)]="approvedById" placeholder="Approved By ID">-->
 <!--</div>-->
 
-<!--<div class="filter">-->
-<!--  <label>Approved Date Start: </label>-->
-<!--  <input type="date" [(ngModel)]="approvedDateStart">-->
-<!--  <label>Approved Date End: </label>-->
-<!--  <input type="date" [(ngModel)]="approvedDateEnd">-->
-<!--</div>-->
+<div class="filter">
+  <label>Approved from: </label>
+  <input type="date" [(ngModel)]="approvedDateStart" (change)="updateApprovedDateEndMin()">
+  <label>Approved until: </label>
+  <input type="date" [(ngModel)]="approvedDateEnd" [min]="minApprovedDateEnd">
+</div>
 
 <button (click)="applyFilters()">Apply Filters</button>
-<button (click)="clearFilterParams()">Clear All Filters</button>
+<button (click)="clearAllFilterParamsAndRefresh()">Clear All Filters</button>
 
 <div class="table-wrapper">
   <table class="fl-table">
