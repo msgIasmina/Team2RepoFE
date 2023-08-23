@@ -1,0 +1,113 @@
+<p></p>
+<h2>List of Donations</h2>
+<div class="filter">
+  <label>Amount Range: </label>
+  <input type="number" [(ngModel)]="minAmount" placeholder="Min Amount">
+  <input type="number" [(ngModel)]="maxAmount" placeholder="Max Amount">
+</div>
+
+<div class="filter">
+  <label>Fixed value: </label>
+  <input type="number" [(ngModel)]="value" placeholder="Value">
+</div>
+
+<div class="filter">
+  <label>Currency: </label>
+  <select [(ngModel)]="currency">
+    <option *ngFor="let currencyOption of currencyOptions" [value]="currencyOption">{{ currencyOption }}</option>
+  </select>
+</div>
+
+<div class="filter">
+  <label>Campaign: </label>
+  <select [(ngModel)]="campaignId">
+    <option *ngFor="let campaign of campaignOptions" [value]="campaign.id">{{ campaign.name }}</option>
+  </select>
+</div>
+
+<div class="filter">
+  <label>Search by campaign purpose: </label>
+  <input type="text" [(ngModel)]="searchTerm" placeholder="Search Term">
+</div>
+
+<div class="filter">
+  <label>Created by: </label>
+  <select [(ngModel)]="createdByUserId">
+    <option *ngFor="let user of userOptions" [value]="user.id">{{ user.firstName }} {{user.lastName}}</option>
+  </select>
+</div>
+
+<div class="filter">
+  <label>Creation date: </label>
+  <input type="date" [(ngModel)]="createDate">
+</div>
+
+<!--<div class="filter">-->
+<!--  <label>Start Date: </label>-->
+<!--  <input type="date" [(ngModel)]="startDate">-->
+<!--  <label>End Date: </label>-->
+<!--  <input type="date" [(ngModel)]="endDate">-->
+<!--</div>-->
+
+<!--<div class="filter">-->
+<!--  <label>Benefactor ID: </label>-->
+<!--  <input type="number" [(ngModel)]="benefactorId" placeholder="Benefactor ID">-->
+<!--</div>-->
+
+<div class="filter">
+  <label>Approved: </label>
+  <input type="checkbox" [(ngModel)]="approved">
+</div>
+
+<!--<div class="filter">-->
+<!--  <label>Approved By ID: </label>-->
+<!--  <input type="number" [(ngModel)]="approvedById" placeholder="Approved By ID">-->
+<!--</div>-->
+
+<!--<div class="filter">-->
+<!--  <label>Approved Date Start: </label>-->
+<!--  <input type="date" [(ngModel)]="approvedDateStart">-->
+<!--  <label>Approved Date End: </label>-->
+<!--  <input type="date" [(ngModel)]="approvedDateEnd">-->
+<!--</div>-->
+
+<button (click)="applyFilters()">Apply Filters</button>
+
+<div class="table-wrapper">
+  <table class="fl-table">
+    <thead>
+    <tr>
+      <th>Amount</th>
+      <th>Currency</th>
+      <th>Campaign</th>
+      <th>Created by</th>
+      <th>Created date</th>
+      <th>Benefactor</th>
+      <th>Approved</th>
+      <th>Approved by</th>
+      <th>Approval date</th>
+      <th>Notes</th>
+      <th>Action</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let donation of donationList">
+      <td>{{ donation.amount }}</td>
+      <td>{{ donation.currency }}</td>
+      <td>{{ donation.campaign.name}}</td>
+      <td>{{ donation.createdBy.firstName}} {{ donation.createdBy.lastName}}</td>
+      <td>{{ donation.createDate}}</td>
+      <td>{{ donation.benefactor.firstName}} {{ donation.benefactor.lastName}}</td>
+      <mat-icon class="icon" [ngClass]="{ 'approved-icon': donation.approved, 'not-approved-icon': !donation.approved }">
+        {{ donation.approved ? 'done' : 'pending_actions' }}
+      </mat-icon>
+      <td>{{ donation.approvedBy?.firstName}} {{donation.approvedBy?.lastName}}</td>
+      <td>{{ donation.approvedDate }}</td>
+      <td>{{ donation.notes}}</td>
+      <td>
+        <app-donation [donation]="donation" (donationAction)="handleDonationAction($event)"></app-donation>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+</div>
