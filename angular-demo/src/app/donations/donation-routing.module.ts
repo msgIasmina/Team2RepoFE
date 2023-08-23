@@ -4,7 +4,7 @@ import {RouterModule, Routes} from "@angular/router";
 import {DonationListComponent} from "./components/donation-list/donation-list.component";
 
 const routes: Routes = [
-  { path: '', component: DonationListComponent},
+  { path: 'listing', component: DonationListComponent},
 ];
 
 @NgModule({
