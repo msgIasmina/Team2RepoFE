@@ -90,10 +90,10 @@
     <tr *ngFor="let donation of donationList">
       <td>{{ donation.amount }}</td>
       <td>{{ donation.currency }}</td>
-      <td>{{ donation.campaign.name}}</td>
-      <td>{{ donation.createdBy.firstName}} {{ donation.createdBy.lastName}}</td>
+      <td>{{ donation.campaign?.name}}</td>
+      <td>{{ donation.createdBy?.firstName}} {{ donation.createdBy?.lastName}}</td>
       <td>{{ donation.createDate}}</td>
-      <td>{{ donation.benefactor.firstName}} {{ donation.benefactor.lastName}}</td>
+      <td>{{ donation.benefactor?.firstName}} {{ donation.benefactor?.lastName}}</td>
       <mat-icon class="icon" [ngClass]="{ 'approved-icon': donation.approved, 'not-approved-icon': !donation.approved }">
         {{ donation.approved ? 'done' : 'pending_actions' }}
       </mat-icon>

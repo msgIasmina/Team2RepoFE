@@ -1,7 +1,7 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {Donation} from "../../models/donation";
-import {DonationAction} from "../../models/DonationAction";
 import {UserAction} from "../../../user/models/UserAction";
+import {DonationAction} from "../../models/DonationAction";
 
 @Component({
   selector: 'app-donation',

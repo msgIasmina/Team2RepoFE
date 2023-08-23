@@ -5,7 +5,9 @@ import {Donation} from "../models/donation";
 import {ActivatedRoute, Router} from "@angular/router";
 import {Campaign} from "../../campaigns/models/campaign";
 import {User} from "../../user/models/user";
+import {UserService} from "../../user/services/user-service.service";
 import {DonationFilterPair} from "../models/DonationFilterPair";
+
 
 @Injectable({
   providedIn: 'root'
@@ -14,8 +16,10 @@ export class DonationService {
   constructor(
     private http: HttpClient,
     private activatedRoute: ActivatedRoute,
-    private router: Router
-  ){}
+    private router: Router,
+    private userService: UserService
+  ) {
+  }
 
   url: string = "http://localhost:8080/donations";
 
@@ -92,7 +96,7 @@ export class DonationService {
     const userId = localStorage.getItem('userId');
 
     const params = new HttpParams()
-      .set('donationId', donation.id)
+      .set('donationId', donation.id || '')
       .set('approvedById', userId || '');
 
     return this.http.put(`${this.url}/approve`, null, { headers, params });
@@ -101,5 +105,24 @@ export class DonationService {
   getSize(){
     const headers = new HttpHeaders().set("Authorization", localStorage.getItem("token") ?? '');
     return this.http.get<number>(this.url + '/size', {headers});
+  }
+
+  addDonation(newDonation: Donation): Observable<Donation> {
+    return this.http.post<Donation>(this.url, newDonation);
+  }
+
+  updateDonation(donation: Donation): Observable<Donation> {
+    let id = donation.id
+    //donation.id = undefined
+    console.log(donation)
+    return this.http.put<Donation>(this.url + `/` + id, donation);
+  }
+
+  findDonationById(id:number):Observable<Donation>{
+    var header = {
+      headers: new HttpHeaders()
+        .set("Authorization", localStorage.getItem("token") ?? '')
+    }
+    return this.http.get<Donation>(`${this.url}/${id}`,header);
   }
 }

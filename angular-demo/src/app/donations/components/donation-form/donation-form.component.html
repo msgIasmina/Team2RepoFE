@@ -1,0 +1,68 @@
+<form class="form" [formGroup]="donationForm" (ngSubmit)="onSave()">
+  <div class="form__field">
+    <h4>Amount</h4>
+    <input
+      [placeholder]="amount"
+      type="text"
+      formControlName="amount"
+    />
+    <div *ngIf="showAmountError()">
+      <div class="error-message">Amount is required</div>
+    </div>
+  </div>
+
+  <div>
+    <h4>Select currency</h4>
+    <mat-select formControlName="currency" id="addCurrency">
+      <mat-option *ngFor="let currency of currencies" [value]="currency">
+        {{currency}}
+      </mat-option>
+    </mat-select>
+    <!--    <button class="submit-button" (click)="addCampaign()">Confirm campaign</button>-->
+    <div *ngIf="showCurrencyError()">
+      <div class="error-message">Currency is required</div>
+    </div>
+  </div>
+
+  <div>
+    <h4>Select campaign</h4>
+    <mat-select formControlName="campaign" id="addCampaign">
+      <mat-option *ngFor="let campaign of campaigns"
+                  [value]="campaign">
+        {{campaign.name}}
+      </mat-option>
+    </mat-select>
+  </div>
+
+  <div *ngIf="showCampaignError()">
+    <div class="error-message">Please select one campaign.</div>
+  </div>
+
+  <div>
+    <h4>Select benefactor</h4>
+    <mat-select formControlName="benefactor" id="addBenefactor">
+      <mat-option *ngFor="let donator of donators"
+                  [value]="donator">
+        {{donator.firstName}} {{donator.lastName}} {{donator.additionalName}}
+      </mat-option>
+    </mat-select>
+  </div>
+
+  <div *ngIf="showBenefactorError()">
+    <div class="error-message">Please select one benefactor.</div>
+  </div>
+
+  <div class="form__field">
+    <h4>Notes:</h4>
+    <input
+      type="text"
+      formControlName="notes"
+      [placeholder]="notes"
+    />
+  </div>
+
+  <div class="form__field">
+    <button mat-raised-button color="accent" class="btn btn-primary custom-btn" type="submit">Submit donation</button>
+  </div>
+</form>
+
