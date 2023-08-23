@@ -1,4 +1,4 @@
-import {Campaign} from "../../campaigns/models/campaign";
+import {Campaign} from "./campaign";
 
 export interface CampaignAction{
   campaign:Campaign;

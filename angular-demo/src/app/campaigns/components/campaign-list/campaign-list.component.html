@@ -1,6 +1,20 @@
 <p></p>
 <h2>List of Campaigns</h2>
 <button mat-raised-button color="accent" (click)="onAddCampaignClicked()">Add Campaign</button>
+
+<div class="filter">
+  <label>Search by name: </label>
+  <input type="text" [(ngModel)]="nameTerm" placeholder="Name of Campaign">
+</div>
+
+<div class="filter">
+  <label>Search by purpose: </label>
+  <input type="text" [(ngModel)]="purposeTerm" placeholder="Purpose of Campaign">
+</div>
+
+<button (click)="applyFilters()">Apply Filters</button>
+<button (click)="clearAllFilterParamsAndRefresh()">Clear All Filters</button>
+
 <div class="table-wrapper">
   <table class="fl-table">
     <thead>
@@ -20,4 +34,13 @@
     </tr>
     </tbody>
   </table>
+</div>
+
+<div class="paginator-container">
+  <mat-paginator [length]="totalItems"
+                 [pageIndex]="currentPage"
+                 [pageSize]="pageSize"
+                 [pageSizeOptions]="pageSizeOptions"
+                 (page)="pageChanged($event)">
+  </mat-paginator>
 </div>

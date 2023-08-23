@@ -55,12 +55,6 @@ export class DonationService {
       );
   }
 
-  // private serializeQueryParams(params: any): string {
-  //   return Object.keys(params)
-  //     .map(key => key + '=' + params[key])
-  //     .join('&');
-  // }
-
   private serializeQueryParams(params: any): string {
     return Object.keys(params)
       .map(key => {
@@ -98,8 +92,4 @@ export class DonationService {
     return this.http.put(`${this.url}/approve`, null, { headers, params });
   }
 
-  getSize(){
-    const headers = new HttpHeaders().set("Authorization", localStorage.getItem("token") ?? '');
-    return this.http.get<number>(this.url + '/size', {headers});
-  }
 }

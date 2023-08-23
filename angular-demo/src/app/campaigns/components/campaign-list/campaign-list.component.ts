@@ -2,7 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import {Campaign} from "../../models/campaign";
 import {CampaignService} from "../../services/campaign.service";
 import {Router} from "@angular/router";
-import {CampaignAction} from "../../../user/models/CampaignAction";
+import {CampaignAction} from "../../models/CampaignAction";
+import {PageEvent} from "@angular/material/paginator";
 
 @Component({
   selector: 'app-campaign-list',
@@ -11,11 +12,24 @@ import {CampaignAction} from "../../../user/models/CampaignAction";
 })
 export class CampaignListComponent implements OnInit {
 
-  campaignList:Campaign[];
+  campaignList: Campaign[];
+  totalItems: number;
 
-  constructor(private campaignService:CampaignService,private router:Router) { }
+  currentPage: number = 0; // Current page index
+  pageSize: number = 5; // Items per page
+  pageSizeOptions: number[] = [3, 5, 6]; // Options for page size
+
+  nameTerm: string;
+  purposeTerm: string;
+
+  params: any = {};
+
+  constructor(private campaignService:CampaignService,
+              private router:Router) { }
 
   ngOnInit(): void {
+    this.params['offset'] = 0;
+    this.params['pageSize'] = 5;
     this.loadCampaignsAndRefresh();
   }
 
@@ -28,9 +42,10 @@ export class CampaignListComponent implements OnInit {
   }
 
   loadCampaignsAndRefresh(){
-    this.campaignService.loadCampaigns().subscribe(()=>{
-      this.campaignService.getCampaigns().subscribe(campaigns=>{
-        this.campaignList=campaigns;
+    this.campaignService.loadCampaigns(this.params).subscribe(()=>{
+      this.campaignService.getCampaignFilterPair().subscribe(campaignFilterPair=>{
+        this.campaignList = campaignFilterPair.campaigns;
+        this.totalItems = campaignFilterPair.totalItems;
       })
     })
   }
@@ -41,14 +56,10 @@ export class CampaignListComponent implements OnInit {
 
   deleteCampaign(campaignToDelete:Campaign){
     this.campaignService.deleteCampaignById(campaignToDelete.id).subscribe(()=>{
-    },
-      error => {
-        this.campaignService.loadCampaigns().subscribe(
-          campaigns => {
-            console.log(campaigns)
-            this.campaignList = campaigns
-          }
-        )
+        this.loadCampaignsAndRefresh();
+      },
+      (error) => {
+
       }
     );
   }
@@ -64,8 +75,38 @@ export class CampaignListComponent implements OnInit {
     } else {
       window.alert("Sorry but u don't have this permission (CAMP)...");
     }
-
-
   }
 
+  applyFilters(){
+    this.clearFilterParams();
+
+    if (this.nameTerm != null){
+      this.params['nameTerm'] = this.nameTerm;
+    }
+
+    if (this.purposeTerm != null){
+      this.params['purposeTerm'] = this.purposeTerm;
+    }
+
+    this.loadCampaignsAndRefresh();
+  }
+
+  clearFilterParams(){
+    for (const prop in this.params) {
+      if (prop !== 'pageSize') {
+        delete this.params[prop];
+      }
+    }
+    this.params['offset'] = 0;
+  }
+
+  // TODO
+  clearAllFilterParamsAndRefresh(){
+
+  }
+  pageChanged(event: PageEvent): void {
+    this.params['offset'] = event.pageIndex;
+    this.params['pageSize'] = event.pageSize;
+    this.loadCampaignsAndRefresh();
+  }
 }
