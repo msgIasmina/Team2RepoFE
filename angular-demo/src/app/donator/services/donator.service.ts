@@ -3,7 +3,7 @@ import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {BehaviorSubject, catchError, Observable, tap, throwError} from "rxjs";
 import {Role} from "../../user/models/role";
 import {Donator} from "../models/donator";
-import {User} from "../../user/models/user";
+import {User} from "../../user/models/User";
 
 @Injectable({
   providedIn: 'root'
@@ -22,6 +22,9 @@ export class DonatorService {
       headers: new HttpHeaders()
         .set("Authorization", localStorage.getItem("token") ?? '')
     }
+    console.log(page);
+    console.log(`${this.url}/${page}/${size}`);
+
     return this.http.get<Donator[]>(`${this.url}/${page}/${size}`, header).pipe(
       tap(donators => this.donatorList$.next(donators))
     );

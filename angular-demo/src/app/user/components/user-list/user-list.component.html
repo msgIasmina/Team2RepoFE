@@ -1,7 +1,7 @@
 
   <p></p>
   <h2>List of Users</h2>
-
+  <button mat-raised-button color="accent" (click)="onAddUserClicked()">Add User</button>
   <div class="table-wrapper">
     <table class="fl-table">
       <thead>
@@ -19,7 +19,6 @@
           <mat-icon class="icon" [ngClass]="{ 'active-icon': user.active, 'inactive-icon': !user.active }">
             {{ user.active ? 'check_circle' : 'cancel' }}
           </mat-icon>
-<!--          <td>{{ user.active }}</td>-->
           <td>
             <app-user [user]="user" (userAction)="handleUserAction($event)"></app-user>
           </td>

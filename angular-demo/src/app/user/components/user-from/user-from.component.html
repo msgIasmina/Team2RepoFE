@@ -1,5 +1,6 @@
 <form class="form" [formGroup]="registerForm" (ngSubmit)="onSave()">
   <div class="form__field">
+    <p>First Name:</p>
     <input
       [placeholder]="user.firstName"
       type="text"
@@ -11,6 +12,7 @@
   </div>
 
   <div class="form__field">
+    <p>Last Name:</p>
     <input
       [placeholder]="user.lastName"
       type="text"
@@ -22,6 +24,7 @@
   </div>
 
   <div class="form__field">
+    <p>Email:</p>
     <input
       [placeholder]="user.email"
       type="text"
@@ -33,6 +36,7 @@
   </div>
 
   <div class="form__field">
+    <p>Mobile Number:</p>
     <input
       type="text"
       formControlName="mobileNumber"

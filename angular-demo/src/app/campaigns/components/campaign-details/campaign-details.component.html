@@ -1,5 +1,4 @@
 <div>
-  {{campaign.name}},{{campaign.purpose}}
-  <button (click)="onEditClicked(campaign)">Edit</button>
-  <button (click)="onDeleteClicked(campaign)">Delete</button>
+  <button  mat-raised-button color="accent" (click)="onEditClicked(campaign)">Edit</button>
+  <button mat-raised-button color="warn"(click)="onDeleteClicked(campaign)">Delete</button>
 </div>

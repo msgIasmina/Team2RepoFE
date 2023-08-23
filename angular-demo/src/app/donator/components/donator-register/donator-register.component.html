@@ -1,12 +1,12 @@
 <div class="grid align__item">
 
-  <div class="register-donator">
+  <div class="register">
     <h2>Register Donator</h2>
     <app-donator-form
       (submitEvent)="onSave($event)"
-      [functionality]="registerdonator"
       *ngIf="placeholder"
       [donator]="placeholder"
+      [functionality]="register"
     >
     </app-donator-form>
   </div>
