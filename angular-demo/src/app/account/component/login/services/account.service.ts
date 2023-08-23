@@ -4,9 +4,9 @@ import {LoginResponse} from "../models/login-response";
 import {LoginRequest} from "../models/login-request";
 import {HttpClient, HttpErrorResponse} from "@angular/common/http";
 import {JwtHelperService} from "@auth0/angular-jwt";
-import {User} from "../../../../user/models/User";
 import {Router} from "@angular/router";
 import {APIEndpointURLs} from "../../../../../api-endpoint-urls";
+import {User} from "../../../../user/models/User";
 
 @Injectable({
   providedIn: 'root'

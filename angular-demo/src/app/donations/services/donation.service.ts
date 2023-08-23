@@ -1,10 +1,11 @@
 import { Injectable } from '@angular/core';
 import {HttpClient, HttpHeaders, HttpParams} from "@angular/common/http";
 import {BehaviorSubject, Observable, tap} from "rxjs";
-import {Donation} from "../models/donation";
 import {ActivatedRoute} from "@angular/router";
 import {Campaign} from "../../campaigns/models/campaign";
-import {User} from "../../user/models/user";
+import {User} from "../../user/models/User";
+import {Donation} from "../models/donation";
+
 
 @Injectable({
   providedIn: 'root'
@@ -85,7 +86,7 @@ export class DonationService {
     const userId = localStorage.getItem('userId');
 
     const params = new HttpParams()
-      .set('donationId', donation.id)
+      .set('donationId', donation.id as number)
       .set('approvedById', userId || '');
 
     return this.http.put(`${this.url}/approve`, null, { headers, params });

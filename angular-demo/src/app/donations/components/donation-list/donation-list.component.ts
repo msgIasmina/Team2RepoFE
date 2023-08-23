@@ -1,15 +1,12 @@
 import {Component, EventEmitter, Input, OnInit, Output, Pipe, PipeTransform} from '@angular/core';
 import {Donation} from "../../models/donation";
-import {User} from "../../../user/models/user";
-/*import {DonationService} from "../../services/donation.service";*/
+import {User}  from "../../../user/models/User"
 import {ActivatedRoute, Router} from "@angular/router";
-import {UserAction} from "../../../user/models/UserAction";
-import {DonationAction} from "../../models/DonationAction";
 import {Campaign} from "../../../campaigns/models/campaign";
-import {CampaignService} from "../../../campaigns/services/campaign.service";
-import {UserService} from "../../../user/services/user-service.service";
-import {FormControl} from "@angular/forms";
-import {debounceTime, distinctUntilChanged} from "rxjs";
+import {DonationService} from "../../services/donation.service";
+import {DonationAction} from "../../models/doation-action";
+
+
 
 @Component({
   selector: 'app-donation-list',
@@ -45,7 +42,8 @@ export class DonationListComponent implements OnInit {
 
   constructor(//private donationService: DonationService,
               private activatedRoute: ActivatedRoute,
-              private router: Router) { }
+              private router: Router,
+              private donationService:DonationService) { }
 
   ngOnInit(): void {
     this.activatedRoute.params.subscribe((params) => {
