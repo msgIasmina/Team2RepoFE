@@ -105,7 +105,7 @@ h2 {
 }
 
 .sticky-button:hover {
-  background-color: darkgreen; /* Set the same background color as default */
-  color: #ffffff; /* Set the same text color as default */
-  outline: none; /* Remove the default focus outline */
+  background-color: darkgreen;
+  color: #ffffff;
+  outline: none;
 }

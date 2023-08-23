@@ -30,6 +30,7 @@ export class AccountService {
       tap(response => {
         localStorage.setItem("token",response.token);
         localStorage.setItem("permissions",JSON.stringify(response.permissions));
+        localStorage.setItem("username", response.username as string);
         if(response.newUser){
           localStorage.setItem("newUser","true");
         }else{

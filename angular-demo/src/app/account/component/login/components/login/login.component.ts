@@ -34,7 +34,7 @@ export class LoginComponent implements OnInit {
             this.router.navigate(['/firstLogin']);
           }
           else{
-            window.location.href = '/management/campaigns/listing';
+            window.location.href = '/management/home';
           }
         }
       },

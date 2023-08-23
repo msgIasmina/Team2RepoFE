@@ -23,7 +23,11 @@ import {CampaignComponent} from "./components/campaign/campaign.component";
     CampaignRoutingModule,
     ReactiveFormsModule,
     MatButtonModule
-  ], providers: [
+  ],
+  exports: [
+    CampaignComponent
+  ],
+  providers: [
     CampaignService
   ]
 })

@@ -38,6 +38,9 @@ export class BasePageComponent{
     if(page === 'campaigns'){
       this.router.navigate(["/management/campaigns/listing"]);
     }
+    if(page === 'home'){
+      this.router.navigate(["/management/home"]);
+    }
   }
 
 
