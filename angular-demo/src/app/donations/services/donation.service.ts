@@ -6,6 +6,8 @@ import {ActivatedRoute, Router} from "@angular/router";
 import {Campaign} from "../../campaigns/models/campaign";
 import {User} from "../../user/models/user";
 import {UserService} from "../../user/services/user-service.service";
+import {DonationFilterPair} from "../models/DonationFilterPair";
+
 
 @Injectable({
   providedIn: 'root'
@@ -21,7 +23,10 @@ export class DonationService {
 
   url: string = "http://localhost:8080/donations";
 
-  donationList$: BehaviorSubject<Donation[]> = new BehaviorSubject<Donation[]>([]);
+  donationFilterPair$: BehaviorSubject<DonationFilterPair> =
+    new BehaviorSubject<DonationFilterPair>(new DonationFilterPair([],0));
+  // donationList$: BehaviorSubject<Donation[]> = new BehaviorSubject<Donation[]>([]);
+  // totalItems$: BehaviorSubject<number> = new BehaviorSubject<number>(0);
 
   getCurrencies(): Observable<string[]> {
     const headers = new HttpHeaders().set("Authorization", localStorage.getItem("token") ?? '');
@@ -40,22 +45,18 @@ export class DonationService {
 
     return this.http.get<User[]>("http://localhost:8080/users", { headers });
   }
-  loadDonations(filterParams: any): Observable<Donation[]> {
+  loadDonations(filterParams: any): Observable<DonationFilterPair> {
     const headers = new HttpHeaders().set("Authorization", localStorage.getItem("token") ?? '');
 
-    //const queryParams = this.router.getCurrentNavigation()?.extras.state;
-
-    if (filterParams) {
       const fullUrl = this.url + '/filter' + '?' + this.serializeQueryParams(filterParams);
 
-      return this.http.get<Donation[]>(fullUrl, { headers }).pipe(
-        tap(donations => {
-          this.donationList$.next(donations);
+      return this.http.get<DonationFilterPair>(fullUrl, { headers }).pipe(
+        tap(donationFilterPair => {
+          // this.donationList$.next(donationFilterPair.donations);
+          // this.totalItems$.next(donationFilterPair.totalItems);
+          this.donationFilterPair$.next(donationFilterPair);
         })
       );
-    } else {
-      return this.http.get<Donation[]>(this.url, { headers })
-    }
   }
 
   // private serializeQueryParams(params: any): string {
@@ -80,8 +81,8 @@ export class DonationService {
   }
 
 
-  getDonations(): Observable<Donation[]> {
-    return this.donationList$.asObservable();
+  getDonationFilterPair(): Observable<DonationFilterPair> {
+    return this.donationFilterPair$.asObservable();
   }
 
   deleteDonation(donation: Donation){
