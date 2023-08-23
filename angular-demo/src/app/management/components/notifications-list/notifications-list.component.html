@@ -1,0 +1,15 @@
+<div>
+  <mat-grid-list cols="3" rowHeight="2:0.4" row>
+    <mat-grid-tile *ngFor="let notif of notifications.notifications">
+      <app-notification [notification]="notif"></app-notification>
+    </mat-grid-tile>
+  </mat-grid-list>
+  <br>
+  <mat-paginator [length]="load"
+                 [pageSize]="size"
+                 [pageSizeOptions]="[3,6, 12, 21, 90]"
+                 aria-label="Select page"
+                 (page)="reloadData($event)"
+  >
+  </mat-paginator>
+</div>
