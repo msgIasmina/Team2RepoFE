@@ -60,9 +60,10 @@ export class DonationListComponent implements OnInit {
               private router: Router) { }
 
   ngOnInit(): void {
-    this.donationService.getSize().subscribe(size => {
-      this.totalItems = size;
-    });
+    // this.donationService.getSize().subscribe(size => {
+    //   this.totalItems = size;
+    // });
+
 
     this.filterParams['offset'] = 0;
     this.filterParams['pageSize'] = 5;
@@ -84,8 +85,9 @@ export class DonationListComponent implements OnInit {
 
   private loadDonationsAndRefresh(filterParams: any){
     this.donationService.loadDonations(filterParams).subscribe( () => {
-      this.donationService.getDonations().subscribe(donations => {
-        this.donationList = donations;
+      this.donationService.getDonationFilterPair().subscribe(donationFilterPair => {
+        this.donationList = donationFilterPair.donations;
+        this.totalItems = donationFilterPair.totalItems;
       });
     })
   }
@@ -174,12 +176,12 @@ export class DonationListComponent implements OnInit {
   }
 
   clearFilterParams(){
-    // for (const prop in this.filterParams) {
-    //   if (prop !== 'pageSize') {
-    //     delete this.filterParams[prop];
-    //   }
-    // }
-    // this.filterParams['offset'] = 0;
+    for (const prop in this.filterParams) {
+      if (prop !== 'pageSize') {
+        delete this.filterParams[prop];
+      }
+    }
+    this.filterParams['offset'] = 0;
 
   }
 
