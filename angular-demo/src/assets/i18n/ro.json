@@ -23,10 +23,10 @@
     }
   },
   "uRegister": {
-    "header": "Înregistrare utilizator"
+    "header": "Înregistrare Utilizator"
   },
   "uUpdate": {
-    "header": "Actualizare utilizator"
+    "header": "Actualizare Utilizator"
   },
   "uForm": {
     "firstname": "Prenume:",
@@ -58,10 +58,10 @@
     }
   },
   "donatorRegister": {
-    "header": "Înregistrare donator"
+    "header": "Înregistrare Donator"
   },
   "donatorUpdate": {
-    "header": "Actualizare donator"
+    "header": "Actualizare Donator"
   },
   "donatorForm": {
     "firstname": "Prenume:",
@@ -72,6 +72,62 @@
     "errors": {
       "firstnameE": "Prenumele este obligatoriu",
       "lastnameE": "Numele este obligatoriu"
+    }
+  },
+  "donationDetails": {
+    "editBtn": "Editează",
+    "deleteBtn": "Șterge",
+    "approveBtn": "Aprobă"
+  },
+  "donationList": {
+    "header": "Lista Donaţiilor",
+    "filters": {
+      "amountRange": "Interval sumă:",
+      "fixedValue": "Valoare fixă:",
+      "currency": "Valută:",
+      "campaign": "Campanie:",
+      "campaignPurpose": "Caută dupa scopul campaniei:",
+      "createdBy": "Creată de:",
+      "createdFrom": "Creată de la:",
+      "createdUntil": "Creată până la:",
+      "approved": "Aprobată:",
+      "approvedFrom": "Aprobată de la:",
+      "approvedUntil": "Aprobată până la:",
+      "applyFilters": "Aplică Filtre",
+      "clearFilters": "Șterge Filtre"
+    },
+    "donationTable": {
+      "amount": "Sumă",
+      "currency": "Valută",
+      "campaign": "Campanie",
+      "createdBy": "Creată de",
+      "createdDate": "Data creării",
+      "benefactor": "Donator",
+      "approved": "Aprobată",
+      "approvedBy": "Aprobată de",
+      "approvalDate": "Data aprobării",
+      "notes": "Informaţii suplimentare",
+      "actions": "Acţiuni"
+    }
+  },
+  "donationAdd": {
+    "header": "Adăugare Donaţie"
+  },
+  "donationUpdate": {
+    "header": "Actualizare Donaţie"
+  },
+  "donationForm": {
+    "amount": "Sumă:",
+    "currency": "Valută:",
+    "campaign": "Campanie:",
+    "benefactor": "Donator:",
+    "notes": "Informaţii suplimentare:",
+    "submitBtn": "Trimite",
+    "errors": {
+      "amountE": "Suma este obligatorie",
+      "currencyE": "Valuta este obligatorie",
+      "campaignE": "Selectează o campanie",
+      "benefactorE": "Selectează un donator"
     }
   },
   "cDetails": {
@@ -88,10 +144,10 @@
     }
   },
   "cAdd": {
-    "header": "Adăugare campanie"
+    "header": "Adăugare Campanie"
   },
   "cUpdate": {
-    "header": "Actualizare campanie"
+    "header": "Actualizare Campanie"
   },
   "cForm": {
     "name": "Nume:",

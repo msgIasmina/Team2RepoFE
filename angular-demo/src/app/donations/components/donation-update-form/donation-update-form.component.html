@@ -1,17 +1,17 @@
-<form class="form" [formGroup]="updateDonationForm" (ngSubmit)="onEdit()">
+<form class="form" [formGroup]="updateDonationForm" (ngSubmit)="onEdit()" *transloco="let t">
   <div class="form__field">
-    <h4>Amount</h4>
+    <h4>{{t('donationForm.amount')}}</h4>
     <input
       type="text"
       formControlName="amount"
     />
     <div *ngIf="showAmountError()">
-      <div class="error-message">Amount is required</div>
+      <div class="error-message">{{t('donationForm.errors.amountE')}}</div>
     </div>
   </div>
 
   <div>
-    <h4>Select currency</h4>
+    <h4>{{t('donationForm.currency')}}</h4>
     <mat-select formControlName="currency" id="addCurrency">
       <mat-option *ngFor="let currency of currencies" [value]="currency">
         {{currency}}
@@ -19,12 +19,12 @@
     </mat-select>
     <!--    <button class="submit-button" (click)="addCampaign()">Confirm campaign</button>-->
     <div *ngIf="showCurrencyError()">
-      <div class="error-message">Currency is required</div>
+      <div class="error-message">{{t('donationForm.errors.currencyE')}}</div>
     </div>
   </div>
 
   <div>
-    <h4>Select campaign</h4>
+    <h4>{{t('donationForm.campaign')}}</h4>
     <mat-select formControlName="campaignID" id="addCampaign">
       <mat-option *ngFor="let campaign of campaigns"
                   [value]="campaign.id">
@@ -34,11 +34,11 @@
   </div>
 
   <div *ngIf="showCampaignError()">
-    <div class="error-message">Please select one campaign.</div>
+    <div class="error-message">{{t('donationForm.errors.campaignE')}}</div>
   </div>
 
   <div>
-    <h4>Select benefactor</h4>
+    <h4>{{t('donationForm.benefactor')}}</h4>
     <mat-select formControlName="benefactorID" id="addBenefactor">
       <mat-option *ngFor="let donator of donators"
                   [value]="donator.id">
@@ -48,11 +48,11 @@
   </div>
 
   <div *ngIf="showBenefactorError()">
-    <div class="error-message">Please select one benefactor.</div>
+    <div class="error-message">{{t('donationForm.errors.benefactorE')}}</div>
   </div>
 
   <div class="form__field">
-    <h4>Notes:</h4>
+    <h4>{{t('donationForm.notes')}}</h4>
     <input
       type="text"
       formControlName="notes"
@@ -60,7 +60,7 @@
   </div>
 
   <div class="form__field">
-    <button mat-raised-button color="accent" class="btn btn-primary custom-btn" type="submit">Submit donation</button>
+    <button mat-raised-button color="accent" class="btn btn-primary custom-btn" type="submit">{{t('donationForm.submitBtn')}}</button>
   </div>
 </form>
 

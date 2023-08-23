@@ -74,6 +74,62 @@
       "lastnameE": "Last Name is required"
     }
   },
+  "donationDetails": {
+    "editBtn": "Edit",
+    "deleteBtn": "Delete",
+    "approveBtn": "Approve"
+  },
+  "donationList": {
+    "header": "List of Donations",
+    "filters": {
+      "amountRange": "Amount Range:",
+      "fixedValue": "Fixed value:",
+      "currency": "Currency:",
+      "campaign": "Campaign:",
+      "campaignPurpose": "Search by campaign purpose:",
+      "createdBy": "Created by:",
+      "createdFrom": "Created from:",
+      "createdUntil": "Created until:",
+      "approved": "Approved:",
+      "approvedFrom": "Approved from:",
+      "approvedUntil": "Approved until:",
+      "applyFilters": "Apply Filters",
+      "clearFilters": "Clear Filters"
+    },
+    "donationTable": {
+      "amount": "Amount",
+      "currency": "Currency",
+      "campaign": "Campaign",
+      "createdBy": "Created by",
+      "createdDate": "Created date",
+      "benefactor": "Benefactor",
+      "approved": "Approved",
+      "approvedBy": "Approved by",
+      "approvalDate": "Approval date",
+      "notes": "Notes",
+      "actions": "Actions"
+    }
+  },
+  "donationAdd": {
+    "header": "Add Donation"
+  },
+  "donationUpdate": {
+    "header": "Update Donation"
+  },
+  "donationForm": {
+    "amount": "Amount:",
+    "currency": "Currency:",
+    "campaign": "Campaign:",
+    "benefactor": "Benefactor:",
+    "notes": "Notes:",
+    "submitBtn": "Submit",
+    "errors": {
+      "amountE": "Amount is required",
+      "currencyE": "Currency is required",
+      "campaignE": "Please select a campaign",
+      "benefactorE": "Please select a benefactor"
+    }
+  },
   "cDetails": {
     "editBtn": "Edit",
     "deleteBtn": "Delete"
@@ -91,7 +147,7 @@
     "header": "Add Campaign"
   },
   "cUpdate": {
-    "header": "Update campaign"
+    "header": "Update Campaign"
   },
   "cForm": {
     "name": "Name:",
