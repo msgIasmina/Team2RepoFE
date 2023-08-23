@@ -38,16 +38,11 @@
 </div>
 
 <div class="filter">
-  <label>Creation date: </label>
-  <input type="date" [(ngModel)]="createDate">
+  <label>Created from: </label>
+  <input type="date" [(ngModel)]="createDateStart" (change)="updateCreateDateEndMin()">
+  <label>Created until: </label>
+  <input type="date" [(ngModel)]="createDateEnd" [min]="minCreateDateEnd">
 </div>
-
-<!--<div class="filter">-->
-<!--  <label>Start Date: </label>-->
-<!--  <input type="date" [(ngModel)]="startDate">-->
-<!--  <label>End Date: </label>-->
-<!--  <input type="date" [(ngModel)]="endDate">-->
-<!--</div>-->
 
 <!--<div class="filter">-->
 <!--  <label>Benefactor ID: </label>-->
@@ -64,14 +59,15 @@
 <!--  <input type="number" [(ngModel)]="approvedById" placeholder="Approved By ID">-->
 <!--</div>-->
 
-<!--<div class="filter">-->
-<!--  <label>Approved Date Start: </label>-->
-<!--  <input type="date" [(ngModel)]="approvedDateStart">-->
-<!--  <label>Approved Date End: </label>-->
-<!--  <input type="date" [(ngModel)]="approvedDateEnd">-->
-<!--</div>-->
+<div class="filter">
+  <label>Approved from: </label>
+  <input type="date" [(ngModel)]="approvedDateStart" (change)="updateApprovedDateEndMin()">
+  <label>Approved until: </label>
+  <input type="date" [(ngModel)]="approvedDateEnd" [min]="minApprovedDateEnd">
+</div>
 
 <button (click)="applyFilters()">Apply Filters</button>
+<button (click)="clearAllFilterParamsAndRefresh()">Clear All Filters</button>
 
 <div class="table-wrapper">
   <table class="fl-table">
@@ -94,10 +90,10 @@
     <tr *ngFor="let donation of donationList">
       <td>{{ donation.amount }}</td>
       <td>{{ donation.currency }}</td>
-      <td>{{ donation.campaign.name}}</td>
-      <td>{{ donation.createdBy.firstName}} {{ donation.createdBy.lastName}}</td>
+      <td>{{ donation.campaign?.name}}</td>
+      <td>{{ donation.createdBy?.firstName}} {{ donation.createdBy?.lastName}}</td>
       <td>{{ donation.createDate}}</td>
-      <td>{{ donation.benefactor.firstName}} {{ donation.benefactor.lastName}}</td>
+      <td>{{ donation.benefactor?.firstName}} {{ donation.benefactor?.lastName}}</td>
       <mat-icon class="icon" [ngClass]="{ 'approved-icon': donation.approved, 'not-approved-icon': !donation.approved }">
         {{ donation.approved ? 'done' : 'pending_actions' }}
       </mat-icon>
@@ -111,3 +107,13 @@
     </tbody>
   </table>
 </div>
+
+<div class="paginator-container">
+  <mat-paginator [length]="totalItems"
+                 [pageIndex]="currentPage"
+                 [pageSize]="pageSize"
+                 [pageSizeOptions]="pageSizeOptions"
+                 (page)="pageChanged($event)">
+  </mat-paginator>
+</div>
+

@@ -11,6 +11,15 @@
 <!--      <i class='bx bx-bell bx-tada' id="bell-icon"><span></span></i>-->
       <button  mat-button color="warn" class="btn signInButton" (click)=logout()> {{t('navbar.logout')}} </button>
     </div>
+    <div class="nav-icons">
+      <button mat-icon-button [matMenuTriggerFor]="menu"><mat-icon  [matBadge]="notifoication.length" matBadgePosition="before" matBadgeColor="warn">notifications</mat-icon></button>
+      <mat-menu #menu="matMenu">
+        <tr *ngFor=" let notif  of notifoication">
+          <app-notification [notification]="notif" ></app-notification>
+        </tr>
+        <button mat-button color="warn" (click)="seeAllNotifications()">All my notifications</button>
+      </mat-menu>
+    </div>
 <p></p>
     <div class="menu-icon" (click)="toggleMenu()">
       <div class="line1"></div>

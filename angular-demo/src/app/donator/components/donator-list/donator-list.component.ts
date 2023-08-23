@@ -3,7 +3,7 @@ import {Donator} from "../../models/donator";
 import {DonatorService} from "../../services/donator.service";
 import {ActivatedRoute, Router} from "@angular/router";
 import {DonatorAction} from "../../models/DonatorAction";
-import {User} from "../../../user/models/User";
+import {User} from "../../../user/models/user";
 
 @Component({
   selector: 'app-donator-list',

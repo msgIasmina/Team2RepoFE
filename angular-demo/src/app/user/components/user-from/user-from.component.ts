@@ -2,7 +2,7 @@ import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {Role} from "../../models/role";
 import {MatChip} from "@angular/material/chips";
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
-import {User} from "../../models/User";
+import {User} from "../../models/user";
 import {RoleService} from "../../services/role.service";
 import {SelectedRolesService} from "../../services/selected-roles.service";
 import {AccountService} from "../../../account/component/login/services/account.service";
