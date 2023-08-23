@@ -53,4 +53,19 @@ export class CampaignListComponent implements OnInit {
     );
   }
 
+  onAddCampaignClicked(){
+    const permissions = JSON.parse(localStorage.getItem('permissions') || '[]');
+    const hasCampPermission = permissions.includes('AUTHORITY_CAMP_MANAGEMENT');
+
+    if(hasCampPermission){
+      this.router.navigate(
+        ['/management/campaigns/add/']
+      );
+    } else {
+      window.alert("Sorry but u don't have this permission (CAMP)...");
+    }
+
+
+  }
+
 }

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { User } from '../../models/user';
+import { User } from '../../models/User';
 import { UserService } from "../../services/user-service.service";
 import {ActivatedRoute, Router} from '@angular/router';
 import {UserAction} from "../../models/UserAction";
@@ -69,4 +69,10 @@ export class UserListComponent implements OnInit {
         });
       });
     }
+
+  onAddUserClicked(){
+    this.router.navigate(
+      ["management/users/register"]
+    );
+  }
 }

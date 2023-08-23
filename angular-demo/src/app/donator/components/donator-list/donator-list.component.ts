@@ -3,7 +3,7 @@ import {Donator} from "../../models/donator";
 import {DonatorService} from "../../services/donator.service";
 import {ActivatedRoute, Router} from "@angular/router";
 import {DonatorAction} from "../../models/DonatorAction";
-import {User} from "../../../user/models/user";
+import {User} from "../../../user/models/User";
 
 @Component({
   selector: 'app-donator-list',
@@ -32,7 +32,7 @@ export class DonatorListComponent implements OnInit {
     if (action.type === 'delete') {
       this.deleteDonator(action.donator);
     }
-    if(action.type === "edit"){
+    else if(action.type === "edit"){
       this.editDonator(action.donator);
     }
   }
@@ -52,15 +52,18 @@ export class DonatorListComponent implements OnInit {
   }
 
   private deleteDonator(donatorToDelete: Donator) {
-    this.donatorService.deleteDonator(donatorToDelete).subscribe(
-      () => {
-        this.loadDonatorsAndRefresh(); // Refresh the list after deletion
-      },
-      error => {
-        console.error("Error deleting donator:", error);
-      }
+    this.activatedRoute.params.subscribe(() => {
+      this.donatorService.deleteDonator(donatorToDelete).subscribe(() => {
+        },
+        error => {
+          this.loadDonatorsAndRefresh() // Refresh the list after deletion
+        })
+    })
+    }
+
+  onAddDonatorClicked(){
+    this.router.navigate(
+      ['/management/donators/register/']
     );
   }
-
-  protected readonly Donator = Donator;
 }

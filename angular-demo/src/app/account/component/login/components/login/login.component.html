@@ -1,0 +1,27 @@
+<div class="grid align__item">
+  <div class="login">
+  <h2>Log in</h2>
+  <form class="form" [formGroup]="loginForm" (ngSubmit)="onLogin()">
+    <div class="form__field">
+      <p>Username:</p>
+      <input
+        type="text"
+        formControlName="username"
+        placeholder="username">
+    </div>
+
+    <div>
+      <p>Password:</p>
+      <input
+        type="password"
+        formControlName="password"
+        placeholder="••••••••••••">
+    </div>
+    <p></p>
+    <div class="form__field">
+      <button mat-raised-button color="accent" class="btn btn-primary custom-btn">Login</button>
+    </div>
+  </form>
+  </div>
+</div>
+
