@@ -8,7 +8,7 @@ import {UpdateUserComponent} from "./components/update-user/update-user.componen
 
 const routes: Routes = [
       {path:'update/:id',component:UpdateUserComponent},
-      {path:':page/:size', component:UserListComponent},
+      {path:'list', component:UserListComponent},
       {path:'details',component: UserDetailsComponent},
       {path: 'register', component: UserRegisterComponent}
 ]
