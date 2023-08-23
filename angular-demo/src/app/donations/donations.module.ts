@@ -10,6 +10,13 @@ import {DonationFormComponent} from "./components/donation-form/donation-form.co
 import { AddDonationComponent } from './components/add-donation/add-donation.component';
 import {DonationComponent} from "./components/donation/donation.component";
 import { DonationUpdateFormComponent } from './components/donation-update-form/donation-update-form.component';
+import {MatIconModule} from "@angular/material/icon";
+import {MatSliderModule} from "@angular/material/slider";
+import {MatInputModule} from "@angular/material/input";
+import {MatAutocompleteModule} from "@angular/material/autocomplete";
+import {MatPaginatorModule} from "@angular/material/paginator";
+
+
 
 @NgModule({
   declarations: [
@@ -17,8 +24,8 @@ import { DonationUpdateFormComponent } from './components/donation-update-form/d
     UpdateDonationComponent,
     DonationFormComponent,
     AddDonationComponent,
-    DonationComponent,
     DonationUpdateFormComponent
+    DonationComponent,
   ],
   imports: [
     CommonModule,
@@ -26,7 +33,17 @@ import { DonationUpdateFormComponent } from './components/donation-update-form/d
     ReactiveFormsModule,
     DonationRoutingModule,
     MatButtonModule,
-    MatSelectModule
+    MatSelectModule,
+    MatIconModule,
+    FormsModule,
+    MatSliderModule,
+    ReactiveFormsModule,
+    MatInputModule,
+    MatAutocompleteModule,
+    MatPaginatorModule
+  ],
+  exports: [
+    DonationListComponent
   ]
 })
 export class DonationsModule { }

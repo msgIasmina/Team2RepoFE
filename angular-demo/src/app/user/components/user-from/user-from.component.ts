@@ -5,6 +5,7 @@ import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {User} from "../../models/user";
 import {RoleService} from "../../services/role.service";
 import {SelectedRolesService} from "../../services/selected-roles.service";
+import {AccountService} from "../../../account/component/login/services/account.service";
 
 @Component({
   selector: 'app-user-from',
@@ -29,6 +30,12 @@ export class UserFromComponent implements OnInit {
     email: ['', [Validators.required, Validators.email]],
     mobileNumber: ['', Validators.pattern(/^(00407|07|\+407)\d{8}$/)]
   })
+
+  constructor(private fb: FormBuilder,
+              private roleService: RoleService,
+              private selectedRolesService: SelectedRolesService,
+              private accountService: AccountService) {
+  }
 
   toggleSelection(chip: MatChip, role: Role) {
     chip.toggleSelected();
@@ -82,6 +89,10 @@ export class UserFromComponent implements OnInit {
       mobileNumber,
       rolesIDs,
     };
+
+    const permissions = JSON.parse(localStorage.getItem('permissions') || '[]');
+    const hasUserPermission = permissions.includes('AUTHORITY_USER_MANAGEMENT');
+
     if (this.functionality === "update"){
         newUser.id=this.user.id;
         newUser.active = this.user.active;
@@ -94,17 +105,15 @@ export class UserFromComponent implements OnInit {
     }else {
         if(this.registerForm.valid){
           this.submitEvent.emit(newUser)
-          if(this.functionality === "register"){
-            this.registerForm.reset();
-            this.selectedRoles = [];
+          if(this.functionality === "register" && hasUserPermission){
+            window.alert("User Registered Successfully!");
+            window.location.href = '/management/users/0/100';
+          } else{
+            window.alert('User does not have USER management permission.');
+            return;
           }
       }
     }
-  }
-
-  constructor(private fb: FormBuilder,
-              private roleService: RoleService,
-              private selectedRolesService: SelectedRolesService) {
   }
 
   ngOnInit(): void {

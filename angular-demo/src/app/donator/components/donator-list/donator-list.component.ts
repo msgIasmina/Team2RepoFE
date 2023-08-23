@@ -60,4 +60,10 @@ export class DonatorListComponent implements OnInit {
         })
     })
     }
+
+  onAddDonatorClicked(){
+    this.router.navigate(
+      ['/management/donators/register/']
+    );
+  }
 }
