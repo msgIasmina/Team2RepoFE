@@ -33,7 +33,7 @@ import { HomeComponent } from './homePage/components/home/home.component';
     MatInputModule,
     FormsModule,
     MatChipsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
   ],
   providers: [
     AccountService, {provide: HTTP_INTERCEPTORS, useClass: Interceptor, multi: true}, RoleGuard
