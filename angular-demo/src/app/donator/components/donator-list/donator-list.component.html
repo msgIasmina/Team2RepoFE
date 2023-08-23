@@ -1,16 +1,16 @@
-
+<div *transloco="let t">
   <p></p>
-  <h2>List of Donators</h2>
-  <button mat-raised-button color="accent" (click)="onAddDonatorClicked()">Add Donator</button>
+  <h2>{{t('donatorList.header')}}</h2>
+  <button mat-raised-button color="accent" (click)="onAddDonatorClicked()">{{t('donatorList.addBtn')}}</button>
   <div class="table-wrapper">
     <table class="fl-table">
       <thead>
         <tr>
-          <th>First Name</th>
-          <th>Last Name</th>
-          <th>Additional Name</th>
-          <th>Maiden Name</th>
-          <th>Actions</th>
+          <th>{{t('donatorList.dTable.firstname')}}</th>
+          <th>{{t('donatorList.dTable.lastname')}}</th>
+          <th>{{t('donatorList.dTable.additionalname')}}</th>
+          <th>{{t('donatorList.dTable.maidenname')}}</th>
+          <th>{{t('donatorList.dTable.actions')}}</th>
         </tr>
       </thead>
       <tbody>
@@ -25,4 +25,5 @@
       </tr>
       </tbody>
   </table>
+</div>
 </div>

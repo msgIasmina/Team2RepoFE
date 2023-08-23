@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {Router} from "@angular/router";
 import {LogoutService} from "../../services/logout.service";
+import {TranslocoService} from "@ngneat/transloco";
 import {WebSocketService} from "../../services/web-socket.service";
 import {Notif} from "../../model/notification";
 import {NotificationService} from "../../services/notification.service";
@@ -14,7 +15,7 @@ export class BasePageComponent implements OnInit{
 
   notifoication:Notif[] = [];
 
-  constructor(private router:Router,private service:LogoutService,private notificationService:NotificationService,private websocketService:WebSocketService) { }
+  constructor(private router:Router,private service:LogoutService,private notificationService:NotificationService,private websocketService:WebSocketService,private translocoService:TranslocoService) { }
 
   logout(){
     this.service.logout().subscribe(
@@ -23,6 +24,15 @@ export class BasePageComponent implements OnInit{
         this.router.navigate(['/login'])
       }
     )
+  }
+
+  onLanguageChange(){
+    const lang=this.translocoService.getActiveLang();
+    this.translocoService.setActiveLang(lang==='en'?'ro':'en');
+  }
+
+  isEnglSelected(){
+    return this.translocoService.getActiveLang()==='en';
   }
 
   ngOnInit(): void {

@@ -1,6 +1,6 @@
-<div class="grid align__item">
+<div class="grid align__item" *transloco="let t">
   <div class="update">
-  <h2>Update campaign</h2>
+  <h2>{{t('cUpdate.header')}}</h2>
   <app-campaign-frm
     (submitEvent)="editCampaign($event)"
     *ngIf="campaign"

@@ -1,7 +1,7 @@
-<div class="grid align__item">
+<div class="grid align__item" *transloco="let t">
 
   <div class="register">
-    <h2>Add Donation</h2>
+    <h2>{{t('donationAdd.header')}}</h2>
     <app-donation-form (submitEvent)="onSave($event)" *ngIf="placeholder" [donation]="placeholder" [functionality]="register"></app-donation-form>
   </div>
 

@@ -8,6 +8,7 @@ import {LogoutService} from "./services/logout.service";
 import {ToastrModule} from "ngx-toastr";
 import {MatMenuModule} from "@angular/material/menu";
 import {MatButtonModule} from "@angular/material/button";
+import {TranslocoModule} from "@ngneat/transloco";
 import {MatIconModule} from "@angular/material/icon";
 import {MatBadgeModule} from "@angular/material/badge";
 import {NotificationComponent} from './components/notification/notification.component';
@@ -24,6 +25,7 @@ import {MatGridListModule} from "@angular/material/grid-list";
     MatToolbarModule,
     ToastrModule.forRoot(),
     MatMenuModule,
+    TranslocoModule,
     MatButtonModule,
     MatIconModule,
     MatBadgeModule,

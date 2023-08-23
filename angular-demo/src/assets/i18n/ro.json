@@ -1,0 +1,172 @@
+{
+  "navbar": {
+    "logout": "Delogare",
+    "users": "Utilizatori",
+    "donators": "Donatori",
+    "campaigns": "Campanii"
+  },
+  "uDetails": {
+    "editBtn": "Editează",
+    "deleteBtn": {
+      "activate": "Activează",
+      "deactivate": "Dezactivează"
+    }
+  },
+  "uList": {
+    "header": "Lista Utilizatorilor",
+    "addBtn": "Adaugă un utilizator",
+    "uTable": {
+      "firstname": "Prenume",
+      "email": "Email",
+      "active": "Activ",
+      "actions": "Acţiuni"
+    }
+  },
+  "uRegister": {
+    "header": "Înregistrare Utilizator"
+  },
+  "uUpdate": {
+    "header": "Actualizare Utilizator"
+  },
+  "uForm": {
+    "firstname": "Prenume:",
+    "lastname": "Nume:",
+    "email": "Email:",
+    "mobileNumber": "Număr de telefon:",
+    "roles": "Alege roluri:",
+    "submitBtn": "Trimite",
+    "errors": {
+      "firstnameE": "Prenumele este obligatoriu",
+      "lastnameE": "Numele este obligatoriu",
+      "emailE": "Emailul este obligatoriu",
+      "rolesE": "Selectează cel puțin un rol"
+    }
+  },
+  "donatorDetails": {
+    "editBtn": "Editează",
+    "deleteBtn": "Șterge"
+  },
+  "donatorList": {
+    "header": "Lista Donatorilor",
+    "addBtn": "Adaugă un donator",
+    "dTable": {
+      "firstname": "Prenume",
+      "lastname": "Nume",
+      "additionalname": "Nume adiţional",
+      "maidenname": "Nume de fată",
+      "actions": "Acţiuni"
+    }
+  },
+  "donatorRegister": {
+    "header": "Înregistrare Donator"
+  },
+  "donatorUpdate": {
+    "header": "Actualizare Donator"
+  },
+  "donatorForm": {
+    "firstname": "Prenume:",
+    "additionalname": "Nume adiţional:",
+    "lastname": "Nume:",
+    "maidenname": "Nume de fată:",
+    "submitBtn": "Trimite",
+    "errors": {
+      "firstnameE": "Prenumele este obligatoriu",
+      "lastnameE": "Numele este obligatoriu"
+    }
+  },
+  "donationDetails": {
+    "editBtn": "Editează",
+    "deleteBtn": "Șterge",
+    "approveBtn": "Aprobă"
+  },
+  "donationList": {
+    "header": "Lista Donaţiilor",
+    "filters": {
+      "amountRange": "Interval sumă:",
+      "fixedValue": "Valoare fixă:",
+      "currency": "Valută:",
+      "campaign": "Campanie:",
+      "campaignPurpose": "Caută dupa scopul campaniei:",
+      "createdBy": "Creată de:",
+      "createdFrom": "Creată de la:",
+      "createdUntil": "Creată până la:",
+      "approved": "Aprobată:",
+      "approvedFrom": "Aprobată de la:",
+      "approvedUntil": "Aprobată până la:",
+      "applyFilters": "Aplică Filtre",
+      "clearFilters": "Șterge Filtre"
+    },
+    "donationTable": {
+      "amount": "Sumă",
+      "currency": "Valută",
+      "campaign": "Campanie",
+      "createdBy": "Creată de",
+      "createdDate": "Data creării",
+      "benefactor": "Donator",
+      "approved": "Aprobată",
+      "approvedBy": "Aprobată de",
+      "approvalDate": "Data aprobării",
+      "notes": "Informaţii suplimentare",
+      "actions": "Acţiuni"
+    }
+  },
+  "donationAdd": {
+    "header": "Adăugare Donaţie"
+  },
+  "donationUpdate": {
+    "header": "Actualizare Donaţie"
+  },
+  "donationForm": {
+    "amount": "Sumă:",
+    "currency": "Valută:",
+    "campaign": "Campanie:",
+    "benefactor": "Donator:",
+    "notes": "Informaţii suplimentare:",
+    "submitBtn": "Trimite",
+    "errors": {
+      "amountE": "Suma este obligatorie",
+      "currencyE": "Valuta este obligatorie",
+      "campaignE": "Selectează o campanie",
+      "benefactorE": "Selectează un donator"
+    }
+  },
+  "cDetails": {
+    "editBtn": "Editează",
+    "deleteBtn": "Șterge"
+  },
+  "cList": {
+    "header": "Lista Campaniilor",
+    "addBtn": "Adaugă o campanie",
+    "cTable": {
+      "name": "Nume",
+      "purpose": "Scop",
+      "actions": "Acţiuni"
+    }
+  },
+  "cAdd": {
+    "header": "Adăugare Campanie"
+  },
+  "cUpdate": {
+    "header": "Actualizare Campanie"
+  },
+  "cForm": {
+    "name": "Nume:",
+    "purpose": "Scop:",
+    "submitBtn": "Trimite",
+    "errors": {
+      "nameE": "Numele este obligatoriu",
+      "purposeE": "Scopul este obligatoriu"
+    }
+  },
+  "login": {
+    "username": "Utilizator:",
+    "password": "Parolă:",
+    "btn": "Loghează-te"
+  },
+  "firstLogin": {
+    "header": "Se pare că sunteți la prima logare. Vă rugăm să vă schimbați parola!",
+    "password": "Parolă:",
+    "disclaimer": "Completați formularul pentru a activa butonul!",
+    "save": "Salvează"
+  }
+}

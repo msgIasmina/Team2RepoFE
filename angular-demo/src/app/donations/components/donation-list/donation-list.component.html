@@ -1,46 +1,47 @@
+<div *transloco="let t">
 <p></p>
-<h2>List of Donations</h2>
+<h2>{{t('donationList.header')}}</h2>
 <div class="filter">
-  <label>Amount Range: </label>
+  <label>{{t('donationList.filters.amountRange')}}</label>
   <input type="number" [(ngModel)]="minAmount" placeholder="Min Amount">
   <input type="number" [(ngModel)]="maxAmount" placeholder="Max Amount">
 </div>
 
 <div class="filter">
-  <label>Fixed value: </label>
+  <label>{{t('donationList.filters.fixedValue')}}</label>
   <input type="number" [(ngModel)]="value" placeholder="Value">
 </div>
 
 <div class="filter">
-  <label>Currency: </label>
+  <label>{{t('donationList.filters.currency')}}</label>
   <select [(ngModel)]="currency">
     <option *ngFor="let currencyOption of currencyOptions" [value]="currencyOption">{{ currencyOption }}</option>
   </select>
 </div>
 
 <div class="filter">
-  <label>Campaign: </label>
+  <label>{{t('donationList.filters.campaign')}}</label>
   <select [(ngModel)]="campaignId">
     <option *ngFor="let campaign of campaignOptions" [value]="campaign.id">{{ campaign.name }}</option>
   </select>
 </div>
 
 <div class="filter">
-  <label>Search by campaign purpose: </label>
+  <label>{{t('donationList.filters.campaignPurpose')}}</label>
   <input type="text" [(ngModel)]="searchTerm" placeholder="Search Term">
 </div>
 
 <div class="filter">
-  <label>Created by: </label>
+  <label>{{t('donationList.filters.createdBy')}}</label>
   <select [(ngModel)]="createdByUserId">
     <option *ngFor="let user of userOptions" [value]="user.id">{{ user.firstName }} {{user.lastName}}</option>
   </select>
 </div>
 
 <div class="filter">
-  <label>Created from: </label>
+  <label>{{t('donationList.filters.createdFrom')}}</label>
   <input type="date" [(ngModel)]="createDateStart" (change)="updateCreateDateEndMin()">
-  <label>Created until: </label>
+  <label>{{t('donationList.filters.createdUntil')}}</label>
   <input type="date" [(ngModel)]="createDateEnd" [min]="minCreateDateEnd">
 </div>
 
@@ -50,7 +51,7 @@
 <!--</div>-->
 
 <div class="filter">
-  <label>Approved: </label>
+  <label>{{t('donationList.filters.approved')}}</label>
   <input type="checkbox" [(ngModel)]="approved">
 </div>
 
@@ -60,30 +61,30 @@
 <!--</div>-->
 
 <div class="filter">
-  <label>Approved from: </label>
+  <label>{{t('donationList.filters.approvedFrom')}}</label>
   <input type="date" [(ngModel)]="approvedDateStart" (change)="updateApprovedDateEndMin()">
-  <label>Approved until: </label>
+  <label>{{t('donationList.filters.approvedUntil')}}</label>
   <input type="date" [(ngModel)]="approvedDateEnd" [min]="minApprovedDateEnd">
 </div>
 
-<button (click)="applyFilters()">Apply Filters</button>
-<button (click)="clearAllFilterParamsAndRefresh()">Clear All Filters</button>
+<button (click)="applyFilters()">{{t('donationList.filters.applyFilters')}}</button>
+<button (click)="clearAllFilterParamsAndRefresh()">{{t('donationList.filters.clearFilters')}}</button>
 
 <div class="table-wrapper">
   <table class="fl-table">
     <thead>
     <tr>
-      <th>Amount</th>
-      <th>Currency</th>
-      <th>Campaign</th>
-      <th>Created by</th>
-      <th>Created date</th>
-      <th>Benefactor</th>
-      <th>Approved</th>
-      <th>Approved by</th>
-      <th>Approval date</th>
-      <th>Notes</th>
-      <th>Action</th>
+      <th>{{t('donationList.donationTable.amount')}}</th>
+      <th>{{t('donationList.donationTable.currency')}}</th>
+      <th>{{t('donationList.donationTable.campaign')}}</th>
+      <th>{{t('donationList.donationTable.createdBy')}}</th>
+      <th>{{t('donationList.donationTable.createdDate')}}</th>
+      <th>{{t('donationList.donationTable.benefactor')}}</th>
+      <th>{{t('donationList.donationTable.approved')}}</th>
+      <th>{{t('donationList.donationTable.approvedBy')}}</th>
+      <th>{{t('donationList.donationTable.approvalDate')}}</th>
+      <th>{{t('donationList.donationTable.notes')}}</th>
+      <th>{{t('donationList.donationTable.actions')}}</th>
     </tr>
     </thead>
     <tbody>
@@ -116,4 +117,4 @@
                  (page)="pageChanged($event)">
   </mat-paginator>
 </div>
-
+</div>
