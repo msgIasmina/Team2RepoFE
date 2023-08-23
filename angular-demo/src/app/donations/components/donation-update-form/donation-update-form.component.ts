@@ -1,19 +1,20 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {Donation} from "../../models/donation";
 import {FormBuilder, Validators} from "@angular/forms";
-import {Donator} from "../../../donator/models/donator";
 import {DonatorService} from "../../../donator/services/donator.service";
 import {DonationService} from "../../services/donation.service";
-import {Campaign} from "../../../campaigns/models/campaign";
 import {CampaignService} from "../../../campaigns/services/campaign.service";
 import {ActivatedRoute} from "@angular/router";
+import {Donator} from "../../../donator/models/donator";
+import {Campaign} from "../../../campaigns/models/campaign";
 
 @Component({
-  selector: 'app-donation-form',
-  templateUrl: './donation-form.component.html',
-  styleUrls: ['./donation-form.component.css']
+  selector: 'app-donation-update-form',
+  templateUrl: './donation-update-form.component.html',
+  styleUrls: ['./donation-update-form.component.css']
 })
-export class DonationFormComponent implements OnInit {
+export class DonationUpdateFormComponent implements OnInit {
+
   ngOnInit(): void {
     this.donationService.getCurrencies().subscribe(currencies => {
       this.currencies = currencies;
@@ -30,6 +31,7 @@ export class DonationFormComponent implements OnInit {
         console.log(error.message)
       });
 
+
     this.campaignService.loadCampaigns().subscribe(() => {
         this.campaignService.getCampaigns().subscribe(campaigns => {
           this.campaigns = campaigns;
@@ -45,17 +47,14 @@ export class DonationFormComponent implements OnInit {
       this.id = +params['id'];
     })
 
-    // if (this.functionality === "update") {
-    //   console.log(this.donation)
-    //
-    //   this.donationForm.setValue({
-    //     amount: this.donation.amount,
-    //     currency: this.donation.currency,
-    //     campaign: this.donation.campaign,
-    //     benefactor: this.donation.benefactor,
-    //     notes: this.donation.notes,
-    //   })
-    // }
+    this.updateDonationForm.setValue({
+          amount: this.donation.amount,
+          currency: this.donation.currency,
+          campaignID: this.donation.campaign?.id,
+          benefactorID: this.donation.benefactor?.id,
+          notes: this.donation.notes})
+    console.log(this.updateDonationForm)
+
   }
   id: number;
 
@@ -68,11 +67,11 @@ export class DonationFormComponent implements OnInit {
   functionality: string
   submitted = false;
 
-  donationForm = this.fb.group({
+  updateDonationForm = this.fb.group({
     amount: ['', Validators.required],
     currency: ['', Validators.required],
-    campaign: ['', Validators.required],
-    benefactor: ['', Validators.required],
+    campaignID: ['', Validators.required],
+    benefactorID: ['', Validators.required],
     notes: ['']
   })
   donators: Donator[];
@@ -81,29 +80,27 @@ export class DonationFormComponent implements OnInit {
   currency: string = 'currency';
   notes: string = 'notes';
   currencies: string[]=[];
-  // @ts-ignore
-  selectedDonatorName: string
 
 
   showAmountError(): boolean {
-    const amountControl = this.donationForm.get('amount');
+    const amountControl = this.updateDonationForm.get('amount');
     let isRegistration: boolean = this.functionality === "register";
     return this.submitted && amountControl?.hasError('required') && isRegistration || false;
   }
 
   showCurrencyError(): boolean {
-    const currencyControl = this.donationForm.get('currency');
+    const currencyControl = this.updateDonationForm.get('currency');
     let isRegistration: boolean = this.functionality === "register";
     return this.submitted && currencyControl?.hasError('required') && isRegistration || false;
   }
 
-  onSave() {
+  onEdit() {
     this.submitted = true;
-    const amount = this.donationForm.get('amount')?.value;
-    const currency = this.donationForm.get('currency')?.value;
-    const campaign = this.donationForm.get('campaign')?.value;
-    const benefactor = this.donationForm.get('benefactor')?.value;
-    const notes = this.donationForm.get('notes')?.value;
+    const amount = this.updateDonationForm.get('amount')?.value;
+    const currency = this.updateDonationForm.get('currency')?.value;
+    const campaign = {id:this.updateDonationForm.get('campaignID')?.value};
+    const benefactor = {id:this.updateDonationForm.get('benefactorID')?.value};
+    const notes = this.updateDonationForm.get('notes')?.value;
 
     let newDonation: Donation = {
       amount,
@@ -112,14 +109,9 @@ export class DonationFormComponent implements OnInit {
       benefactor,
       notes,
     };
-    if (this.functionality === "update") {
       newDonation.id = this.donation.id;
-    }
-    if (this.donationForm.valid) {
+    if (this.updateDonationForm.valid) {
       this.submitEvent.emit(newDonation)
-      // if (this.functionality === "register") {
-      //   //this.donationForm.reset();
-      // }
     }
     console.log(newDonation)
   }
@@ -134,10 +126,10 @@ export class DonationFormComponent implements OnInit {
 
 
   showCampaignError(): boolean {
-    return this.submitted && this.donationForm.get('campaign')?.value == null;
+    return this.submitted && this.updateDonationForm.get('campaignID')?.value == null;
   }
 
   showBenefactorError(): boolean {
-    return this.submitted && this.donationForm.get('benefactor')?.value == null;
+    return this.submitted && this.updateDonationForm.get('benefactorID')?.value == null;
   }
 }

@@ -22,10 +22,17 @@ export class DonatorService {
       headers: new HttpHeaders()
         .set("Authorization", localStorage.getItem("token") ?? '')
     }
-    console.log(page);
-    console.log(`${this.url}/${page}/${size}`);
-
     return this.http.get<Donator[]>(`${this.url}/${page}/${size}`, header).pipe(
+      tap(donators => this.donatorList$.next(donators))
+    );
+  }
+
+  loadDonators2():Observable<Donator[]>{
+    var header = {
+      headers: new HttpHeaders()
+        .set("Authorization", localStorage.getItem("token") ?? '')
+    }
+    return this.http.get<Donator[]>(this.url, header).pipe(
       tap(donators => this.donatorList$.next(donators))
     );
   }

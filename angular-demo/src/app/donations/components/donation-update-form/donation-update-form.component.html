@@ -1,8 +1,7 @@
-<form class="form" [formGroup]="donationForm" (ngSubmit)="onSave()">
+<form class="form" [formGroup]="updateDonationForm" (ngSubmit)="onEdit()">
   <div class="form__field">
     <h4>Amount</h4>
     <input
-      [placeholder]="amount"
       type="text"
       formControlName="amount"
     />
@@ -26,9 +25,9 @@
 
   <div>
     <h4>Select campaign</h4>
-    <mat-select formControlName="campaign" id="addCampaign">
+    <mat-select formControlName="campaignID" id="addCampaign">
       <mat-option *ngFor="let campaign of campaigns"
-                  [value]="campaign">
+                  [value]="campaign.id">
         {{campaign.name}}
       </mat-option>
     </mat-select>
@@ -40,9 +39,9 @@
 
   <div>
     <h4>Select benefactor</h4>
-    <mat-select formControlName="benefactor" id="addBenefactor">
+    <mat-select formControlName="benefactorID" id="addBenefactor">
       <mat-option *ngFor="let donator of donators"
-                  [value]="donator">
+                  [value]="donator.id">
         {{donator.firstName}} {{donator.lastName}} {{donator.additionalName}}
       </mat-option>
     </mat-select>
@@ -57,7 +56,6 @@
     <input
       type="text"
       formControlName="notes"
-      [placeholder]="notes"
     />
   </div>
 

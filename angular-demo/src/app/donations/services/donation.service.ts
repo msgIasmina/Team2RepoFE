@@ -1,9 +1,8 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
 import {HttpClient, HttpHeaders, HttpParams} from "@angular/common/http";
 import {BehaviorSubject, Observable, tap} from "rxjs";
 import {Donation} from "../models/donation";
-import {Donator} from "../../donator/models/donator";
-import {ActivatedRoute} from "@angular/router";
+import {UserService} from "../../user/services/user-service.service";
 
 @Injectable({
   providedIn: 'root'
@@ -11,8 +10,9 @@ import {ActivatedRoute} from "@angular/router";
 export class DonationService {
   constructor(
     private http: HttpClient,
-    private activatedRoute: ActivatedRoute,
-  ){}
+    private userService: UserService
+  ) {
+  }
 
   url: string = "http://localhost:8080/donations";
 
@@ -24,46 +24,36 @@ export class DonationService {
     const params = new HttpParams()
       .set('offset', page)
       .set('pageSize', size);
-    return this.http.get<Donation[]>(this.url, { headers, params }).pipe(
+    return this.http.get<Donation[]>(this.url, {headers, params}).pipe(
       tap(donations => this.donationList$.next(donations))
     );
   }
 
-  updateDonation(donation: Donation): Observable<string> {
-    var header = {
-      headers: new HttpHeaders()
-        .set("Authorization", localStorage.getItem("token") ?? ''),
-    }
-    let id = donation.id
-    donation.id = undefined
-    console.log(donation)
-    return this.http.put<string>(this.url + `/` + id, donation, header);
-  }
-  loadFilteredDonations(): Observable<Donation[]> {
-    const headers = new HttpHeaders().set("Authorization", localStorage.getItem("token") ?? '');
-
-    // Retrieve query parameters from the ActivatedRoute
-    const queryParams = this.activatedRoute.snapshot.queryParams;
-
-    // Construct the full URL
-    const fullUrl = this.url + '/filter' + '?' + this.serializeQueryParams(queryParams);
-
-    return this.http.get<Donation[]>(fullUrl, { headers }).pipe(
-      tap(donations => {
-        this.donationList$.next(donations);
-      })
-    );
-  }
-
-// Helper function to serialize query parameters
-  private serializeQueryParams(params: any): string {
-    return Object.keys(params)
-      .map(key => encodeURIComponent(key) + '=' + encodeURIComponent(params[key]))
-      .join('&');
-  }
-
   getDonations(): Observable<Donation[]> {
     return this.donationList$.asObservable();
+  }
+
+  getCurrencies(): Observable<string[]> {
+    const headers = new HttpHeaders().set("Authorization", localStorage.getItem("token") ?? '');
+
+    return this.http.get<string[]>(this.url + '/currencies', {headers});
+  }
+
+  addDonation(newDonation: Donation): Observable<Donation> {
+    const userId =parseInt( localStorage.getItem('userId') || '');
+    // this.userService.findUserById(userId).subscribe((user) =>
+    // {
+    //   newDonation.createdBy = user;
+    // })
+
+    return this.http.post<Donation>(this.url, newDonation);
+  }
+
+  updateDonation(donation: Donation): Observable<Donation> {
+    let id = donation.id
+    //donation.id = undefined
+    console.log(donation)
+    return this.http.put<Donation>(this.url + `/` + id, donation);
   }
 
   findDonationById(id:number):Observable<Donation>{
@@ -73,21 +63,4 @@ export class DonationService {
     }
     return this.http.get<Donation>(`${this.url}/${id}`,header);
   }
-  deleteDonation(donation: Donation){
-    const header = new HttpHeaders().set("Authorization", localStorage.getItem("token") ?? '');
-
-    return this.http.delete(`${this.url}/${donation.id}`, {headers: header});
-  }
-
-  approveDonation(donation: Donation) {
-    const headers = new HttpHeaders().set("Authorization", localStorage.getItem("token") ?? '');
-    const userId = localStorage.getItem('userId');
-
-    const params = new HttpParams()
-      .set('donationId', donation.id.toString())
-      .set('approvedById', userId || '');
-
-    return this.http.put(`${this.url}/approve`, null, { headers, params });
-  }
-
 }
