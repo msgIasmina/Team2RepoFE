@@ -7,6 +7,7 @@ import {DonationService} from "../../services/donation.service";
 import {Campaign} from "../../../campaigns/models/campaign";
 import {CampaignService} from "../../../campaigns/services/campaign.service";
 import {ActivatedRoute} from "@angular/router";
+import {currencies} from "../../models/Currencies";
 
 @Component({
   selector: 'app-donation-form',
@@ -15,10 +16,6 @@ import {ActivatedRoute} from "@angular/router";
 })
 export class DonationFormComponent implements OnInit {
   ngOnInit(): void {
-    this.donationService.getCurrencies().subscribe(currencies => {
-      this.currencies = currencies;
-    });
-    console.log(this.currencies)
 
     this.donatorService.loadDonators2().subscribe(() => {
         this.donatorService.getDonators().subscribe(donators => {
@@ -80,9 +77,8 @@ export class DonationFormComponent implements OnInit {
   amount: string = 'amount';
   currency: string = 'currency';
   notes: string = 'notes';
-  currencies: string[]=[];
-  // @ts-ignore
-  selectedDonatorName: string
+  currencies: string[]=currencies;
+
 
 
   showAmountError(): boolean {
