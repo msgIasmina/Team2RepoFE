@@ -11,8 +11,14 @@ export class CampaignService {
   constructor(private http: HttpClient) { }
 
   url:string = "http://localhost:8080/campaigns";
-
   campaignList$: BehaviorSubject<Campaign[]> = new BehaviorSubject<Campaign[]>([]);
+
+  saveCampaign(newCampaign:Campaign):Observable<Campaign>{
+    var header = {
+      headers: new HttpHeaders()
+        .set("Authorization", localStorage.getItem("token") ?? '')}
+    return this.http.post<Campaign>(this.url,newCampaign,header)
+  }
 
   loadCampaigns(): Observable<Campaign[]> {
     var header = {
@@ -28,35 +34,5 @@ export class CampaignService {
     return this.campaignList$.asObservable();
   }
 
-  saveCampaign(newCampaign:Campaign):Observable<Campaign>{
-    var header = {
-      headers: new HttpHeaders()
-        .set("Authorization", localStorage.getItem("token") ?? '')}
-    return this.http.post<Campaign>(this.url,newCampaign,header)
-  }
-
-  editCampaign(campaignToEdit:Campaign){
-    var header = {
-      headers: new HttpHeaders()
-        .set("Authorization", localStorage.getItem("token") ?? '')
-    }
-    return this.http.put<Campaign>(this.url + `/` + `${campaignToEdit.id}`, campaignToEdit, header);
-  }
-
-  findCampaignById(id:number){
-    var header = {
-      headers: new HttpHeaders()
-        .set("Authorization", localStorage.getItem("token") ?? '')
-    }
-    return this.http.get<Campaign>(`${this.url}/${id}`,header);
-  }
-
-  deleteCampaignById(id:number|undefined){
-    var header = {
-      headers: new HttpHeaders()
-        .set("Authorization", localStorage.getItem("token") ?? '')
-    }
-    return this.http.delete<void>(`${this.url}/${id}`,header)
-  }
 
 }

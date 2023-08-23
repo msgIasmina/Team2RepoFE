@@ -10,7 +10,7 @@ import {Donator} from "../../../donator/models/donator";
   styleUrls: ['./add-donation.component.css']
 })
 export class AddDonationComponent implements OnInit {
-  placeholder: Donation = new Donation(0, "currency", new Campaign("", ""), new Donator("", ""))
+  placeholder: Donation = new Donation(0, "currency", new Campaign("", ""),undefined,undefined,new Donator())
   register: string = "register"
 
   constructor(

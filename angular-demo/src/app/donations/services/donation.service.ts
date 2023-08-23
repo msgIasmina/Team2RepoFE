@@ -95,7 +95,7 @@ export class DonationService {
     const userId = localStorage.getItem('userId');
 
     const params = new HttpParams()
-      .set('donationId', donation.id)
+      .set('donationId', donation.id || '')
       .set('approvedById', userId || '');
 
     return this.http.put(`${this.url}/approve`, null, { headers, params });
@@ -104,11 +104,6 @@ export class DonationService {
   getSize(){
     const headers = new HttpHeaders().set("Authorization", localStorage.getItem("token") ?? '');
     return this.http.get<number>(this.url + '/size', {headers});
-  }
-  getCurrencies(): Observable<string[]> {
-    const headers = new HttpHeaders().set("Authorization", localStorage.getItem("token") ?? '');
-
-    return this.http.get<string[]>(this.url + '/currencies', {headers});
   }
 
   addDonation(newDonation: Donation): Observable<Donation> {

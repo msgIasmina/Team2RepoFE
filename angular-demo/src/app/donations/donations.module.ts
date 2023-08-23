@@ -24,7 +24,7 @@ import {MatPaginatorModule} from "@angular/material/paginator";
     UpdateDonationComponent,
     DonationFormComponent,
     AddDonationComponent,
-    DonationUpdateFormComponent
+    DonationUpdateFormComponent,
     DonationComponent,
   ],
   imports: [
