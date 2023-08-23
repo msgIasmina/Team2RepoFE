@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { CampaignComponent } from './components/campaign/campaign.component';
 import {CampaignRoutingModule} from "./campaign-routing.module";
 import {CampaignService} from "./services/campaign.service";
 import {ReactiveFormsModule} from "@angular/forms";
@@ -9,6 +8,7 @@ import { CampaignDetailsComponent } from './components/campaign-details/campaign
 import { CampaignListComponent } from './components/campaign-list/campaign-list.component';
 import { CampaignFrmComponent } from './components/campaign-frm/campaign-frm.component';
 import { CampaignEditComponent } from './components/campaign-edit/campaign-edit.component';
+import {CampaignComponent} from "./components/campaign/campaign.component";
 
 @NgModule({
   declarations: [

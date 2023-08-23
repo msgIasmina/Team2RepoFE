@@ -1,13 +1,36 @@
-<mat-toolbar>
-  <span>Management</span>
-  <span class="example-spacer"></span>
-  <button mat-icon-button [matMenuTriggerFor]="menu"><mat-icon  [matBadge]="notifoication.length" matBadgePosition="before" matBadgeColor="warn">notifications</mat-icon></button>
-  <mat-menu #menu="matMenu">
-    <tr *ngFor=" let notif  of notifoication">
-      <app-notification [notification]="notif" ></app-notification>
-    </tr>
-    <button mat-button color="warn" (click)="seeAllNotifications()">All my notifications</button>
-  </mat-menu>
-  <button (click)="logout()">Logout</button>
-</mat-toolbar>
+ <!--Nav -->
+  <div class="nav container">
+    <!--Logo -->
+    <a routerLink="http://localhost:4200/home" class="logo">Donation<span>Manager</span></a>
+    <!--Nav Icons -->
+    <div class="nav-icons">
+<!--      <i class='bx bx-bell bx-tada' id="bell-icon"><span></span></i>-->
+      <button  mat-button color="warn" class="btn signInButton" (click)=logout()> LogOut </button>
+    </div>
+    <div class="nav-icons">
+      <button mat-icon-button [matMenuTriggerFor]="menu"><mat-icon  [matBadge]="notifoication.length" matBadgePosition="before" matBadgeColor="warn">notifications</mat-icon></button>
+      <mat-menu #menu="matMenu">
+        <tr *ngFor=" let notif  of notifoication">
+          <app-notification [notification]="notif" ></app-notification>
+        </tr>
+        <button mat-button color="warn" (click)="seeAllNotifications()">All my notifications</button>
+      </mat-menu>
+    </div>
+<p></p>
+    <div class="menu-icon" (click)="toggleMenu()">
+      <div class="line1"></div>
+      <div class="line2"></div>
+      <div class="line3"></div>
+    </div>
+  </div>
+  <!--Menu -->
+  <div class="menu">
+    <div class="navbar">
+      <li><a (click)="goToPage('users')">Users</a></li>
+      <li><a (click)="goToPage('donators')">Donators</a></li>
+      <li><a (click)="goToPage('campaigns')">Campaigns</a></li>
+    </div>
+  </div>
 <router-outlet></router-outlet>
+
+

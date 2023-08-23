@@ -1,6 +1,11 @@
 <div class="grid align__item">
   <div class="update">
     <h2>Update user</h2>
-    <app-user-from (submitEvent)="updateUser($event)" *ngIf="user" [user]="user" [functionality]="update"></app-user-from>
+    <app-user-from
+      (submitEvent)="updateUser($event)"
+      *ngIf="user"
+      [user]="user"
+      [functionality]="update">
+    </app-user-from>
   </div>
 </div>

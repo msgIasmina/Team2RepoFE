@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {User} from "../../../user/models/user";
+import {User} from "../../../user/models/User";
 import {Donator} from "../../models/donator";
 import {DonatorService} from "../../services/donator.service";
 import {ActivatedRoute} from "@angular/router";
@@ -19,9 +19,12 @@ export class UpdateDonatorComponent implements OnInit {
               private activatedRoute: ActivatedRoute) { }
 
   updateDonator(donator: Donator) {
+    console.log("hello")
     this.donatorService.updateDonator(donator).subscribe(
       response => window.alert(response)
     )
+    window.alert("Successfully Donator Edited!");
+    window.location.href = '/management/donators/0/10';
   }
 
   ngOnInit(): void {

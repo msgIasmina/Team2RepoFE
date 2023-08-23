@@ -1,7 +1,7 @@
 import { Component, OnInit } from "@angular/core"
 import { FormBuilder, Validators} from "@angular/forms";
 import {LoginRequest} from "../../models/login-request";
-import {LoginService} from "../../services/login.service";
+import {AccountService} from "../../services/account.service";
 import {Router} from "@angular/router";
 
 @Component({
@@ -16,7 +16,7 @@ export class LoginComponent implements OnInit {
     password: ['', Validators.required],
   })
 
-  constructor(private fb: FormBuilder, private loginService: LoginService,private router:Router) { }
+  constructor(private fb: FormBuilder, private loginService: AccountService, private router:Router) { }
 
   ngOnInit(): void {
   }
@@ -32,6 +32,9 @@ export class LoginComponent implements OnInit {
         }else{
           if(response.newUser){
             this.router.navigate(['/firstLogin']);
+          }
+          else{
+            window.location.href = '/management/campaigns/listing';
           }
         }
       },

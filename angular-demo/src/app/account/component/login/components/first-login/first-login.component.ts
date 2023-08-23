@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {AbstractControl, FormBuilder, Validators} from "@angular/forms";
-import {UserService} from "../../../user/services/user-service.service";
+import {UserService} from "../../../../../user/services/user-service.service";
 
 @Component({
   selector: 'app-first-login',
