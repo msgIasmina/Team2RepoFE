@@ -60,8 +60,15 @@ export class UserListComponent implements OnInit {
     }
 
   onAddUserClicked(){
-    this.router.navigate(
-      ["management/users/register"]
-    );
+    const permissions = JSON.parse(localStorage.getItem('permissions') || '[]');
+    const hasBenefPermission = permissions.includes('AUTHORITY_USER_MANAGEMENT');
+
+    if(hasBenefPermission){
+      this.router.navigate(
+        ['/management/users/register/']
+      );
+    } else {
+      window.alert("Sorry but u don't have this permission (USER)...");
+    }
   }
 }
