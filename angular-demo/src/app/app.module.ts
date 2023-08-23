@@ -30,7 +30,7 @@ import {MatChipsModule} from "@angular/material/chips";
     MatInputModule,
     FormsModule,
     MatChipsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
   ],
   providers: [
     AccountService, {provide: HTTP_INTERCEPTORS, useClass: Interceptor, multi: true}, RoleGuard
