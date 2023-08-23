@@ -33,8 +33,10 @@ export class LoginComponent implements OnInit {
           if(response.newUser){
             this.router.navigate(['/firstLogin']);
           }
+          else{
+            window.location.href = '/management/campaigns/listing';
+          }
         }
-        window.location.href = '/management/campaigns/listing';
       },
       err => window.alert(err.message)
     );

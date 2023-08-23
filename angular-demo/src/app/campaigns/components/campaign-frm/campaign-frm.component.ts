@@ -52,20 +52,16 @@ export class CampaignFrmComponent implements OnInit {
       purpose
     };
 
-    const permissions = JSON.parse(localStorage.getItem('permissions') || '[]');
-    const hasCampPermission = permissions.includes('AUTHORITY_CAMP_MANAGEMENT');
+
     if(this.functionality==="update"){
       newCampaign.id=this.campaign.id;
     }
 
     this.submitEvent.emit(newCampaign);
 
-    if(this.functionality === "add" && hasCampPermission) {
+    if(this.functionality === "add") {
       window.alert("Campaign added successfully!");
       window.location.href = '/management/campaigns/listing';
-    } else{
-      window.alert('User does not have CAMP management permission.');
-      return;
     }
 
   }
