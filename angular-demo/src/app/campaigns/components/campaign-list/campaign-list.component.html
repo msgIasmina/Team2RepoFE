@@ -1,5 +1,23 @@
-<ul *ngFor="let campaign of campaignList">
-  <li>
-    <app-campaign-details [campaign]="campaign" (emmitter)="handleCampaignAction($event)"></app-campaign-details>
-  </li>
-</ul>
+<p></p>
+<h2>List of Campaigns</h2>
+<button mat-raised-button color="accent" (click)="onAddCampaignClicked()">Add Campaign</button>
+<div class="table-wrapper">
+  <table class="fl-table">
+    <thead>
+    <tr>
+      <th>Name</th>
+      <th>Purpose</th>
+      <th>Actions</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let campaign of campaignList">
+      <td>{{ campaign.name }} </td>
+      <td>{{ campaign.purpose }}</td>
+      <td>
+        <app-campaign-details [campaign]="campaign" (emmitter)="handleCampaignAction($event)"></app-campaign-details>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+</div>
