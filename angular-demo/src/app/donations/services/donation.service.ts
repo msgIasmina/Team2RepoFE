@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import {HttpClient, HttpHeaders, HttpParams} from "@angular/common/http";
-import {BehaviorSubject, Observable, tap} from "rxjs";
+import {BehaviorSubject, Observable, of, Subject, tap} from "rxjs";
 import {Donation} from "../models/donation";
-import {ActivatedRoute} from "@angular/router";
+import {ActivatedRoute, Router} from "@angular/router";
 import {Campaign} from "../../campaigns/models/campaign";
 import {User} from "../../user/models/user";
 
@@ -13,22 +13,12 @@ export class DonationService {
   constructor(
     private http: HttpClient,
     private activatedRoute: ActivatedRoute,
+    private router: Router
   ){}
 
   url: string = "http://localhost:8080/donations";
 
   donationList$: BehaviorSubject<Donation[]> = new BehaviorSubject<Donation[]>([]);
-
-  loadDonations(page: number, size: number): Observable<Donation[]> {
-    const headers = new HttpHeaders()
-      .set("Authorization", localStorage.getItem("token") ?? ''); // empty string if undefined
-    const params = new HttpParams()
-      .set('offset', page)
-      .set('pageSize', size);
-    return this.http.get<Donation[]>(this.url, { headers, params }).pipe(
-      tap(donations => this.donationList$.next(donations))
-    );
-  }
 
   getCurrencies(): Observable<string[]> {
     const headers = new HttpHeaders().set("Authorization", localStorage.getItem("token") ?? '');
@@ -39,36 +29,53 @@ export class DonationService {
   getCampaigns(): Observable<Campaign[]> {
     const headers = new HttpHeaders().set("Authorization", localStorage.getItem("token") ?? '');
 
-    return this.http.get<Campaign[]>(this.url + '/campaigns', { headers });
+    return this.http.get<Campaign[]>("http://localhost:8080/campaigns", { headers });
   }
 
   getUsers(): Observable<User[]> {
     const headers = new HttpHeaders().set("Authorization", localStorage.getItem("token") ?? '');
 
-    return this.http.get<User[]>(this.url + '/users', { headers });
+    return this.http.get<User[]>("http://localhost:8080/users", { headers });
   }
-  loadFilteredDonations(): Observable<Donation[]> {
+  loadDonations(filterParams: any): Observable<Donation[]> {
     const headers = new HttpHeaders().set("Authorization", localStorage.getItem("token") ?? '');
 
-    // Retrieve query parameters from the ActivatedRoute
-    const queryParams = this.activatedRoute.snapshot.queryParams;
+    //const queryParams = this.router.getCurrentNavigation()?.extras.state;
 
-    // Construct the full URL
-    const fullUrl = this.url + '/filter' + '?' + this.serializeQueryParams(queryParams);
+    if (filterParams) {
+      const fullUrl = this.url + '/filter' + '?' + this.serializeQueryParams(filterParams);
 
-    return this.http.get<Donation[]>(fullUrl, { headers }).pipe(
-      tap(donations => {
-        this.donationList$.next(donations);
-      })
-    );
+      return this.http.get<Donation[]>(fullUrl, { headers }).pipe(
+        tap(donations => {
+          this.donationList$.next(donations);
+        })
+      );
+    } else {
+      return this.http.get<Donation[]>(this.url, { headers })
+    }
   }
 
-// Helper function to serialize query parameters
+  // private serializeQueryParams(params: any): string {
+  //   return Object.keys(params)
+  //     .map(key => key + '=' + params[key])
+  //     .join('&');
+  // }
+
   private serializeQueryParams(params: any): string {
     return Object.keys(params)
-      .map(key => encodeURIComponent(key) + '=' + encodeURIComponent(params[key]))
+      .map(key => {
+        const value = params[key];
+        if (value !== null && value !== undefined) {
+          // Convert numbers to strings, and escape values
+          const serializedValue = typeof value === 'number' ? value.toString() : encodeURIComponent(value);
+          return `${key}=${serializedValue}`;
+        }
+        return ''; // Skip null or undefined values
+      })
+      .filter(param => param !== '') // Remove empty values
       .join('&');
   }
+
 
   getDonations(): Observable<Donation[]> {
     return this.donationList$.asObservable();
@@ -91,4 +98,8 @@ export class DonationService {
     return this.http.put(`${this.url}/approve`, null, { headers, params });
   }
 
+  getSize(){
+    const headers = new HttpHeaders().set("Authorization", localStorage.getItem("token") ?? '');
+    return this.http.get<number>(this.url + '/size', {headers});
+  }
 }

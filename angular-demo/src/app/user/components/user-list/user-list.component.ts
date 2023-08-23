@@ -20,13 +20,24 @@ export class UserListComponent implements OnInit {
               private router:Router) {
   }
 
+  // ngOnInit(): void {
+  //   this.activatedRoute.params.subscribe((params) => {
+  //     this.page = +params['page'];
+  //     this.size = +params['size'];
+  //     this.loadUsersAndRefresh();
+  //   });
+  // }
   ngOnInit(): void {
-    this.activatedRoute.params.subscribe((params) => {
-      this.page = +params['page'];
-      this.size = +params['size'];
-      this.loadUsersAndRefresh();
-    });
+    const navigationState = this.router.getCurrentNavigation()?.extras.state;
 
+    if (navigationState) {
+      this.page = navigationState['page'];
+      this.size = navigationState['size'];
+    } else {
+      this.page = 0;
+      this.size = 7;
+    }
+      this.loadUsersAndRefresh();
   }
 
   handleUserAction(action: UserAction) {

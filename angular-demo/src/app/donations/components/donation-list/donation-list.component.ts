@@ -10,6 +10,7 @@ import {CampaignService} from "../../../campaigns/services/campaign.service";
 import {UserService} from "../../../user/services/user-service.service";
 import {FormControl} from "@angular/forms";
 import {debounceTime, distinctUntilChanged} from "rxjs";
+import {PageEvent} from "@angular/material/paginator";
 
 @Component({
   selector: 'app-donation-list',
@@ -17,11 +18,14 @@ import {debounceTime, distinctUntilChanged} from "rxjs";
   styleUrls: ['./donation-list.component.css']
 })
 export class DonationListComponent implements OnInit {
-  userId: number;
+  // userId: number;
 
   donationList: Donation[];
-  page: number;
-  size: number;
+
+  totalItems: number;
+  currentPage: number = 0; // Current page index
+  pageSize: number = 5; // Items per page
+  pageSizeOptions: number[] = [3, 5, 6]; // Options for page size
 
   minAmount: number;
   maxAmount: number;
@@ -39,24 +43,27 @@ export class DonationListComponent implements OnInit {
   userOptions: User[] = [];
   createdByUserId: number;
 
-  createDate: Date;
+  createDateStart: Date;
+  createDateEnd: Date;
 
   approved: boolean;
 
+  filterParams: any = {};
+
   constructor(private donationService: DonationService,
-              private activatedRoute: ActivatedRoute,
-              private router: Router) { }
+              private userService: UserService,
+              private campaignService: CampaignService,
+              private activatedRoute: ActivatedRoute) { }
 
   ngOnInit(): void {
-    this.activatedRoute.params.subscribe((params) => {
-      this.userId = +params['id'];
-    })
-    this.activatedRoute.queryParams.subscribe((queryParams) => {
-      this.page = +queryParams['offset'];
-      this.size = +queryParams['pageSize'];
-      this.loadDonationsAndRefresh();
-      }
-    )
+    this.donationService.getSize().subscribe(size => {
+      this.totalItems = size;
+    });
+
+    this.filterParams['offset'] = 0;
+    this.filterParams['pageSize'] = 5;
+
+    this.loadDonationsAndRefresh(this.filterParams);
 
     this.donationService.getCurrencies().subscribe(currencies => {
       this.currencyOptions = currencies;
@@ -68,20 +75,11 @@ export class DonationListComponent implements OnInit {
 
     this.donationService.getUsers().subscribe(users => {
       this.userOptions = users;
-      console.log(users[0].id);
     })
   }
 
-  private loadDonationsAndRefresh(){
-    this.donationService.loadDonations(this.page, this.size).subscribe( () => {
-      this.donationService.getDonations().subscribe(donations => {
-        this.donationList = donations;
-      });
-  })
-  }
-
-  private loadFilteredDonationsAndRefresh(){
-    this.donationService.loadFilteredDonations().subscribe( () => {
+  private loadDonationsAndRefresh(filterParams: any){
+    this.donationService.loadDonations(filterParams).subscribe( () => {
       this.donationService.getDonations().subscribe(donations => {
         this.donationList = donations;
       });
@@ -102,7 +100,7 @@ export class DonationListComponent implements OnInit {
     this.activatedRoute.params.subscribe(() => {
       this.donationService.deleteDonation(donationToDelete).subscribe( () => {},
         (error) => {
-        this.loadDonationsAndRefresh();
+        this.loadDonationsAndRefresh(this.filterParams);
       })
     })
   }
@@ -112,61 +110,72 @@ export class DonationListComponent implements OnInit {
       this.donationService.approveDonation(donationToApprove).subscribe( () => {},
         (error) =>
       {
-        this.loadDonationsAndRefresh();
+        this.loadDonationsAndRefresh(this.filterParams);
       })
     })
   }
 
   applyFilters(){
-      const queryParams: any = {};
+    this.clearFilterParams();
 
       if (this.minAmount !== null) {
-        queryParams['minAmount'] = this.minAmount;
+        this.filterParams['minAmount'] = this.minAmount;
       }
 
       if (this.maxAmount !== null) {
-        queryParams['maxAmount'] = this.maxAmount;
+        this.filterParams['maxAmount'] = this.maxAmount;
       }
 
       if  (this.value !== null) {
-        queryParams['value'] = this.value;
+        this.filterParams['value'] = this.value;
       }
 
       if (this.currency) {
-        queryParams['currency'] = this.currency;
+        this.filterParams['currency'] = this.currency;
       }
 
       if (this.campaignOptions) {
-        queryParams['campaignId'] = this.campaignId;
+        this.filterParams['campaignId'] = this.campaignId;
       }
 
       if (this.searchTerm != null) {
-        queryParams['searchTerm'] = this.searchTerm;
+        this.filterParams['searchTerm'] = this.searchTerm;
       }
 
       if (this.userOptions) {
-        queryParams['createdById'] = this.createdByUserId;
+        this.filterParams['createdById'] = this.createdByUserId;
       }
 
-      if (this.createDate) {
-        queryParams['createDate'] = this.createDate;
+      if (this.createDateStart) {
+        this.filterParams['createDateStart'] = this.createDateStart;
+      }
+
+      if (this.createDateEnd){
+        this.filterParams['createDateEnd'] = this.createDateEnd;
       }
 
       if (this.approved) {
-        queryParams['approved'] = this.approved;
+        this.filterParams['approved'] = this.approved;
       }
 
-    this.router.navigate([], {
-      relativeTo: this.activatedRoute,
-      queryParams: queryParams,
-      queryParamsHandling: 'merge'
-    });
-
-      this.donationService.loadFilteredDonations().subscribe(() => {
-        this.loadFilteredDonationsAndRefresh();
-      });
-
-
+    this.loadDonationsAndRefresh(this.filterParams);
   }
+
+  clearFilterParams(){
+    for (const prop in this.filterParams) {
+      if (prop !== 'pageSize') {
+        delete this.filterParams[prop];
+      }
+    }
+    this.filterParams['offset'] = 0;
+  }
+
+  pageChanged(event: PageEvent): void {
+    this.filterParams['offset'] = event.pageIndex;
+    this.filterParams['pageSize'] = event.pageSize;
+    this.loadDonationsAndRefresh(this.filterParams);
+  }
+
+
 
 }

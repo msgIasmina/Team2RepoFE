@@ -38,16 +38,11 @@
 </div>
 
 <div class="filter">
-  <label>Creation date: </label>
-  <input type="date" [(ngModel)]="createDate">
+  <label>Created from: </label>
+  <input type="date" [(ngModel)]="createDateStart">
+  <label>Created until: </label>
+  <input type="date" [(ngModel)]="createDateEnd">
 </div>
-
-<!--<div class="filter">-->
-<!--  <label>Start Date: </label>-->
-<!--  <input type="date" [(ngModel)]="startDate">-->
-<!--  <label>End Date: </label>-->
-<!--  <input type="date" [(ngModel)]="endDate">-->
-<!--</div>-->
 
 <!--<div class="filter">-->
 <!--  <label>Benefactor ID: </label>-->
@@ -72,6 +67,7 @@
 <!--</div>-->
 
 <button (click)="applyFilters()">Apply Filters</button>
+<button (click)="clearFilterParams()">Clear All Filters</button>
 
 <div class="table-wrapper">
   <table class="fl-table">
@@ -111,3 +107,13 @@
     </tbody>
   </table>
 </div>
+
+<div class="paginator-container">
+  <mat-paginator [length]="totalItems"
+                 [pageIndex]="currentPage"
+                 [pageSize]="pageSize"
+                 [pageSizeOptions]="pageSizeOptions"
+                 (page)="pageChanged($event)">
+  </mat-paginator>
+</div>
+
