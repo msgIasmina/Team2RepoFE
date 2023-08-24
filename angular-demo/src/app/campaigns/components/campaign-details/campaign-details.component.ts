@@ -1,6 +1,6 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {Campaign} from "../../models/campaign";
-import {CampaignAction} from "../../../user/models/CampaignAction";
+import {CampaignAction} from "../../models/CampaignAction";
 
 @Component({
   selector: 'app-campaign-details',

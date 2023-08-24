@@ -81,5 +81,12 @@ h2 {
   font-size: 24px;
   vertical-align: middle;
   margin-right: 4px;
+}
 
+.paginator-container {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  padding: 5px; /* Add some padding to the paginator container */
 }

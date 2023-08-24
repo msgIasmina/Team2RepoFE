@@ -25,9 +25,7 @@ export class DonationService {
 
   donationFilterPair$: BehaviorSubject<DonationFilterPair> =
     new BehaviorSubject<DonationFilterPair>(new DonationFilterPair([],0));
-  // donationList$: BehaviorSubject<Donation[]> = new BehaviorSubject<Donation[]>([]);
-  // totalItems$: BehaviorSubject<number> = new BehaviorSubject<number>(0);
-
+  
   getCurrencies(): Observable<string[]> {
     const headers = new HttpHeaders().set("Authorization", localStorage.getItem("token") ?? '');
 
@@ -52,18 +50,10 @@ export class DonationService {
 
       return this.http.get<DonationFilterPair>(fullUrl, { headers }).pipe(
         tap(donationFilterPair => {
-          // this.donationList$.next(donationFilterPair.donations);
-          // this.totalItems$.next(donationFilterPair.totalItems);
           this.donationFilterPair$.next(donationFilterPair);
         })
       );
   }
-
-  // private serializeQueryParams(params: any): string {
-  //   return Object.keys(params)
-  //     .map(key => key + '=' + params[key])
-  //     .join('&');
-  // }
 
   private serializeQueryParams(params: any): string {
     return Object.keys(params)
