@@ -12,6 +12,7 @@ import { UserFromComponent } from './components/user-from/user-from.component';
 import {MatButtonModule} from "@angular/material/button";
 import {MatIconModule} from "@angular/material/icon";
 import {UserService} from "./services/user-service.service";
+import {TranslocoModule} from "@ngneat/transloco";
 
 
 @NgModule({
@@ -25,15 +26,16 @@ import {UserService} from "./services/user-service.service";
   providers: [
     UserService
   ],
-  imports: [
-    CommonModule,
-    FormsModule,
-    HttpClientModule,
-    UserRoutingModule,
-    ReactiveFormsModule,
-    MatChipsModule,
-    MatButtonModule,
-    MatIconModule
-  ]
+    imports: [
+        CommonModule,
+        FormsModule,
+        HttpClientModule,
+        UserRoutingModule,
+        ReactiveFormsModule,
+        MatChipsModule,
+        MatButtonModule,
+        MatIconModule,
+        TranslocoModule
+    ]
 })
 export class UserModule { }

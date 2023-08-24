@@ -9,6 +9,7 @@ import { CampaignListComponent } from './components/campaign-list/campaign-list.
 import { CampaignFrmComponent } from './components/campaign-frm/campaign-frm.component';
 import { CampaignEditComponent } from './components/campaign-edit/campaign-edit.component';
 import {CampaignComponent} from "./components/campaign/campaign.component";
+import {TranslocoModule} from "@ngneat/transloco";
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import {CampaignComponent} from "./components/campaign/campaign.component";
     CommonModule,
     CampaignRoutingModule,
     ReactiveFormsModule,
-    MatButtonModule
+    MatButtonModule,
+    TranslocoModule
   ],
   exports: [
     CampaignComponent

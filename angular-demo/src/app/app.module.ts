@@ -14,9 +14,13 @@ import {MatFormFieldModule} from "@angular/material/form-field";
 import {MatInputModule} from "@angular/material/input";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {MatChipsModule} from "@angular/material/chips";
+import { HomeComponent } from './homePage/components/home/home.component';
+import { TranslocoRootModule } from './transloco-root.module';
+
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,
@@ -30,7 +34,8 @@ import {MatChipsModule} from "@angular/material/chips";
     MatInputModule,
     FormsModule,
     MatChipsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    TranslocoRootModule
   ],
   providers: [
     AccountService, {provide: HTTP_INTERCEPTORS, useClass: Interceptor, multi: true}, RoleGuard

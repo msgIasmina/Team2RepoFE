@@ -8,6 +8,7 @@ import {DonatorDetailsComponent} from "./components/donator-details/donator-deta
 import {UpdateDonatorComponent} from "./components/update-donator/update-donator.component";
 import {DonatorListComponent} from "./components/donator-list/donator-list.component";
 import {MatButtonModule} from "@angular/material/button";
+import {TranslocoModule} from "@ngneat/transloco";
 
 @NgModule({
   declarations: [
@@ -17,12 +18,13 @@ import {MatButtonModule} from "@angular/material/button";
     DonatorFormComponent,
     UpdateDonatorComponent
   ],
-  imports: [
-    CommonModule,
-    FormsModule,
-    ReactiveFormsModule,
-    DonatorRoutingModule,
-    MatButtonModule
-  ]
+    imports: [
+        CommonModule,
+        FormsModule,
+        ReactiveFormsModule,
+        DonatorRoutingModule,
+        MatButtonModule,
+        TranslocoModule
+    ]
 })
 export class DonatorModule { }

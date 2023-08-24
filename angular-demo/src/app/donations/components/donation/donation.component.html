@@ -1,0 +1,13 @@
+<div *transloco="let t">
+  <button mat-raised-button color="accent"
+          [disabled]="donation.approved === true"
+          (click)="onEditClicked(donation)">{{t('donationDetails.editBtn')}}</button>
+  <button mat-raised-button color="warn"
+          [disabled]="donation.approved === true"
+          (click)="onDeleteClicked(donation)">{{t('donationDetails.deleteBtn')}}</button>
+  <button mat-raised-button color="primary"
+          [disabled]="donation.approved === true"
+          (click)="onApproveClicked(donation)">{{t('donationDetails.approveBtn')}}</button>
+</div>
+
+

@@ -1,15 +1,15 @@
-
+<div *transloco="let t">
   <p></p>
-  <h2>List of Users</h2>
-  <button mat-raised-button color="accent" (click)="onAddUserClicked()">Add User</button>
+  <h2>{{t('uList.header')}}</h2>
+  <button mat-raised-button color="accent" (click)="onAddUserClicked()">{{t('uList.addBtn')}}</button>
   <div class="table-wrapper">
     <table class="fl-table">
       <thead>
         <tr>
-          <th>First Name</th>
-          <th>Email</th>
-          <th>Active</th>
-          <th>Actions</th>
+          <th>{{t('uList.uTable.firstname')}}</th>
+          <th>{{t('uList.uTable.email')}}</th>
+          <th>{{t('uList.uTable.active')}}</th>
+          <th>{{t('uList.uTable.actions')}}</th>
         </tr>
       </thead>
       <tbody>
@@ -26,4 +26,4 @@
       </tbody>
     </table>
   </div>
-
+</div>
