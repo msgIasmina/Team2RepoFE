@@ -4,10 +4,11 @@ import {Observable} from "rxjs";
 
 @Injectable()
 export class RoleGuard implements CanActivate{
-
   constructor(private router:Router){}
   roles:string[];
-  canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
+  canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot):
+    Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree
+  {
     let userRole:string[];
     const receivedRole = route.data['role'];
 
@@ -30,4 +31,6 @@ export class RoleGuard implements CanActivate{
       return false;
     }
   }
+
+
 }

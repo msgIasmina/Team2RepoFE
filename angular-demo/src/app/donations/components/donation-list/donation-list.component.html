@@ -1,4 +1,10 @@
 <p></p>
+<div>
+  <button (click)="exportToCSV()">
+    Export Donations
+    <mat-icon>download</mat-icon>
+  </button>
+</div>
 <h2>List of Donations</h2>
 <div class="filter">
   <label>Amount Range: </label>
@@ -106,9 +112,6 @@
     </tr>
     </tbody>
   </table>
-</div>
-<div>
-  <button (click)="exportDonations()">Export Donations</button>
 </div>
 
 <div class="paginator-container">

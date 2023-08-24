@@ -1,4 +1,4 @@
-<div class="grid align__item">
+<div class="grid">
   <div class="login">
   <h2>Log in</h2>
   <form class="form" [formGroup]="loginForm" (ngSubmit)="onLogin()">
@@ -10,18 +10,36 @@
         placeholder="username">
     </div>
 
-    <div>
-      <p>Password:</p>
-      <input
-        type="password"
-        formControlName="password"
-        placeholder="••••••••••••">
+    <div class="form__field">
+      <div class="password-container">
+        <p>Password:</p>
+          <input
+            type="{{ showPassword ? 'text' : 'password' }}"
+            formControlName="password"
+            placeholder="•••••••••"
+          >
+        <button mat-icon-button type="button" class="toggle-password" (click)="togglePassword()">
+          <mat-icon class="icon-help">{{ showPassword ? 'visibility_off' : 'visibility' }}</mat-icon>
+        </button>
+      </div>
     </div>
     <p></p>
     <div class="form__field">
-      <button mat-raised-button color="accent" class="btn btn-primary custom-btn">Login</button>
+      <button mat-raised-button disabled type="submit" [disabled]="!loginForm.valid" color="accent">Login</button>
     </div>
   </form>
+    <div class="help-icon" (click)="toggleHelpField()">
+      <mat-icon class="icon-help">help_outline</mat-icon>
+    </div>
   </div>
+</div>
+
+<div class="help-field" [ngClass]="{'open': isHelpFieldOpen}">
+  <h3>Need Help?</h3>
+  <p>If you need assistance, feel free to contact our support team:</p>
+  <ul>
+    <li>Email: support@example.com</li>
+    <li>Phone: +1-123-456-7890</li>
+  </ul>
 </div>
 

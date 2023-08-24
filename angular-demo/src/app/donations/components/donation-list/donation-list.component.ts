@@ -205,20 +205,49 @@ export class DonationListComponent implements OnInit {
     this.minApprovedDateEnd = this.approvedDateStart;
   }
 
-  exportDonations() {
-    const currentPage = this.currentPage;
-    const pageSize = this.pageSize;
+  exportToCSV() {
+    const filteredData: Donation[] = this.filterParams.filteredData;
 
-    const url = `/donations/downloadCSV?currentPage=${currentPage}&pageSize=${pageSize}`;
-    // Use HttpClient to trigger the download
-    this.http.get(url, { responseType: 'blob' }).subscribe((data: Blob) => {
-      const blob = new Blob([data], { type: 'text/csv' });
-      const downloadUrl = URL.createObjectURL(blob);
-      const a = document.createElement('a');
-      a.href = downloadUrl;
-      a.download = 'donations.csv';
-      a.click();
-      URL.revokeObjectURL(downloadUrl);
+    // if (filteredData.length === 0) {
+    //   this._snackBar.open('No data to export.', 'OK', {
+    //     duration: 3000,
+    //     panelClass: 'error-snack',
+    //   });
+    //   return;
+    // }
+
+    const csvData = this.generateCSVData(filteredData);
+    this.downloadCSV(csvData);
+  }
+
+  generateCSVData(data: Donation[]): string {
+    const headers = ['Amount', 'Currency', 'Campaign', 'Creator', 'Creation Date', 'Benefactor', 'Approved', 'Notes'];
+    const rows = data.map(donation => {
+      return [
+        donation.amount.toString(),
+        donation.currency,
+        `${donation.createdBy.firstName} ${donation.createdBy.lastName}`,
+        donation.createDate.toString(),
+        `${donation.benefactor.firstName || ''} ${donation.benefactor.lastName || ''}`,
+        donation.approved,
+        `${donation.notes || ''}`
+      ];
     });
+
+    const csvArray = [headers, ...rows];
+
+    return csvArray.map(row => row.join(',')).join('\n');
+  }
+
+  downloadCSV(csvData: string) {
+    const blob = new Blob([csvData], { type: 'text/csv' });
+    const url = window.URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = 'donation_data.csv';
+    a.click();
+    window.URL.revokeObjectURL(url);
   }
 }
+
+

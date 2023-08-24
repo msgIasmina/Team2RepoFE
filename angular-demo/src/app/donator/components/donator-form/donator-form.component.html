@@ -1,6 +1,6 @@
 <form class="form" [formGroup]="registerForm" (ngSubmit)="onSave()">
   <div class="form__field">
-    <p>First Name: </p>
+    <p>First Name:<span>*</span></p>
     <input
       [placeholder]="donator.firstName"
       type="text"
@@ -21,7 +21,7 @@
   </div>
 
   <div class="form__field">
-    <p>Last Name:</p>
+    <p>Last Name:<span>*</span></p>
     <input
       [placeholder]="donator.lastName"
       type="text"
@@ -42,6 +42,6 @@
   </div>
 
   <div class="form__field">
-    <button mat-raised-button color="accent" class="btn btn-primary custom-btn" type="submit">Submit donator</button>
+    <button mat-raised-button disabled type="submit" [disabled]="!registerForm.valid" color="accent">Submit donator</button>
   </div>
 </form>

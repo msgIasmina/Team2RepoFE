@@ -1,7 +1,7 @@
 <div>
 <form class="form" [formGroup]="campaignForm" (ngSubmit)="onSave()">
   <div class="form__field">
-    <p>Name:</p>
+    <p>Name:<span>*</span></p>
     <input
       [placeholder]="campaign.name"
       type="text"
@@ -10,7 +10,7 @@
   </div>
 
   <div class="form__field">
-    <p>Purpose:</p>
+    <p>Purpose:<span>*</span></p>
     <input
       [placeholder]="campaign.purpose"
       type="text"

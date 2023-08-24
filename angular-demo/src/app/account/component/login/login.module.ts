@@ -8,18 +8,20 @@ import {MatButtonModule} from "@angular/material/button";
 
 
 import {LoginRoutingModule} from "./login-routing.module";
+import {MatIconModule} from "@angular/material/icon";
 
 @NgModule({
   declarations: [
     LoginComponent,
     FirstLoginComponent
   ],
-  imports: [
-    CommonModule,
-    ReactiveFormsModule,
-    LoginRoutingModule,
-    MatButtonModule
-  ], providers: [
+    imports: [
+        CommonModule,
+        ReactiveFormsModule,
+        LoginRoutingModule,
+        MatButtonModule,
+        MatIconModule
+    ], providers: [
     AccountService
   ]
 })

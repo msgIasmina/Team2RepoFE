@@ -10,6 +10,8 @@ import {Router} from "@angular/router";
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
+  isHelpFieldOpen: boolean = false;
+  showPassword: boolean = false;
 
   loginForm = this.fb.group({
     username: ['', Validators.required],
@@ -42,6 +44,14 @@ export class LoginComponent implements OnInit {
         window.alert(err.message)
       }
     );
+  }
+
+  toggleHelpField() {
+    this.isHelpFieldOpen = !this.isHelpFieldOpen;
+  }
+
+  togglePassword(): void {
+    this.showPassword = !this.showPassword;
   }
 
 }

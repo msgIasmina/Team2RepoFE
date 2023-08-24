@@ -1,6 +1,6 @@
 <form class="form" [formGroup]="registerForm" (ngSubmit)="onSave()">
   <div class="form__field">
-    <p>First Name:</p>
+    <p>First Name:<span>*</span></p>
     <input
       [placeholder]="user.firstName"
       type="text"
@@ -12,7 +12,7 @@
   </div>
 
   <div class="form__field">
-    <p>Last Name:</p>
+    <p>Last Name:<span>*</span></p>
     <input
       [placeholder]="user.lastName"
       type="text"
@@ -24,7 +24,7 @@
   </div>
 
   <div class="form__field">
-    <p>Email:</p>
+    <p>Email:<span>*</span></p>
     <input
       [placeholder]="user.email"
       type="text"
@@ -44,7 +44,7 @@
     />
   </div>
 
-  <p>Choose Roles:</p>
+  <p>Choose Roles:<span>*</span></p>
   <div class="form__field">
     <mat-chip-list selectable multiple>
       <mat-chip
@@ -64,6 +64,7 @@
   </div>
 
   <div class="form__field">
-    <button mat-raised-button color="accent" class="btn btn-primary custom-btn" type="submit">Submit user</button>
+    <button mat-raised-button disabled type="submit" [disabled]="!registerForm.valid" color="accent">Submit user</button>
   </div>
+
 </form>
