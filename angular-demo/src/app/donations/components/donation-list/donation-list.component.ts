@@ -17,8 +17,8 @@ import {User} from "../../../user/models/user";
 })
 export class DonationListComponent implements OnInit {
   donationList: Donation[];
-
   totalItems: number;
+
   currentPage: number = 0; // Current page index
   pageSize: number = 5; // Items per page
   pageSizeOptions: number[] = [3, 5, 6]; // Options for page size
@@ -61,7 +61,7 @@ export class DonationListComponent implements OnInit {
     this.filterParams['offset'] = 0;
     this.filterParams['pageSize'] = 5;
 
-    this.loadDonationsAndRefresh(this.filterParams);
+    this.loadDonationsAndRefresh();
 
     this.donationService.getCurrencies().subscribe(currencies => {
       this.currencyOptions = currencies;
@@ -76,8 +76,8 @@ export class DonationListComponent implements OnInit {
     })
   }
 
-  private loadDonationsAndRefresh(filterParams: any){
-    this.donationService.loadDonations(filterParams).subscribe( () => {
+  private loadDonationsAndRefresh(){
+    this.donationService.loadDonations(this.filterParams).subscribe( () => {
       this.donationService.getDonationFilterPair().subscribe(donationFilterPair => {
         this.donationList = donationFilterPair.donations;
         this.totalItems = donationFilterPair.totalItems;
@@ -87,7 +87,7 @@ export class DonationListComponent implements OnInit {
 
   handleDonationAction(action: DonationAction) {
     if (action.type === 'edit') {
-      //this.toggleActivation(action.user);
+      this.editDonation(action.donation);
     } else if (action.type === 'delete'){
       this.deleteDonation(action.donation);
     } else if (action.type === 'approve'){
@@ -99,7 +99,7 @@ export class DonationListComponent implements OnInit {
     this.activatedRoute.params.subscribe(() => {
       this.donationService.deleteDonation(donationToDelete).subscribe( () => {},
         (error) => {
-        this.loadDonationsAndRefresh(this.filterParams);
+        this.loadDonationsAndRefresh();
       })
     })
   }
@@ -109,9 +109,14 @@ export class DonationListComponent implements OnInit {
       this.donationService.approveDonation(donationToApprove).subscribe( () => {},
         (error) =>
       {
-        this.loadDonationsAndRefresh(this.filterParams);
+        this.loadDonationsAndRefresh();
       })
     })
+  }
+
+  // TODO - didn't check if it's working
+  editDonation(donationToEdit: Donation){
+    this.router.navigate(["management/donations/edit/"+donationToEdit.id])
   }
 
   applyFilters(){
@@ -165,7 +170,7 @@ export class DonationListComponent implements OnInit {
         this.filterParams['approvedDateEnd'] = this.approvedDateEnd;
       }
 
-    this.loadDonationsAndRefresh(this.filterParams);
+    this.loadDonationsAndRefresh();
   }
 
   clearFilterParams(){
@@ -178,6 +183,7 @@ export class DonationListComponent implements OnInit {
 
   }
 
+  // TODO
   clearAllFilterParamsAndRefresh() {
     this.router.navigate(
       ['/management/donations/list']
@@ -187,7 +193,7 @@ export class DonationListComponent implements OnInit {
   pageChanged(event: PageEvent): void {
     this.filterParams['offset'] = event.pageIndex;
     this.filterParams['pageSize'] = event.pageSize;
-    this.loadDonationsAndRefresh(this.filterParams);
+    this.loadDonationsAndRefresh();
   }
 
   updateCreateDateEndMin() {

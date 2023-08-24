@@ -35,7 +35,7 @@ h2 {
 /* Table Styles */
 
 .table-wrapper{
-  margin: 70px 350px;
+  margin: 20px 70px 70px;
   box-shadow: 0px 35px 50px rgba( 0, 0, 0, 0.2 );
 }
 
@@ -82,7 +82,6 @@ h2 {
   vertical-align: middle;
   margin-right: 4px;
 }
-
 .sticky-button {
   position: fixed;
   bottom: 20px;
@@ -93,4 +92,11 @@ h2 {
   border: none;
   border-radius: 5px;
   cursor: pointer;
+}
+.paginator-container {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  padding: 5px; /* Add some padding to the paginator container */
 }

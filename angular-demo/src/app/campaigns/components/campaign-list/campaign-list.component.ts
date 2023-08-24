@@ -12,11 +12,23 @@ import {ToastrService} from "ngx-toastr";
 })
 export class CampaignListComponent implements OnInit {
 
-  campaignList:Campaign[];
+  campaignList: Campaign[];
+  totalItems: number;
+
+  currentPage: number = 0; // Current page index
+  pageSize: number = 5; // Items per page
+  pageSizeOptions: number[] = [3, 5, 6]; // Options for page size
+
+  nameTerm: string;
+  purposeTerm: string;
+
+  params: any = {};
 
   constructor(private campaignService:CampaignService,private router:Router, private toastr: ToastrService) { }
 
   ngOnInit(): void {
+    this.params['offset'] = 0;
+    this.params['pageSize'] = 5;
     this.loadCampaignsAndRefresh();
   }
 
@@ -29,9 +41,10 @@ export class CampaignListComponent implements OnInit {
   }
 
   loadCampaignsAndRefresh(){
-    this.campaignService.loadCampaigns().subscribe(()=>{
-      this.campaignService.getCampaigns().subscribe(campaigns=>{
-        this.campaignList=campaigns;
+    this.campaignService.loadCampaigns(this.params).subscribe(()=>{
+      this.campaignService.getCampaignFilterPair().subscribe(campaignFilterPair=>{
+        this.campaignList = campaignFilterPair.campaigns;
+        this.totalItems = campaignFilterPair.totalItems;
       })
     })
   }
@@ -64,8 +77,29 @@ export class CampaignListComponent implements OnInit {
     } else {
       this.toastr.error("It seems that you don't have the permissions for completing this action.")
     }
+  }
 
+  applyFilters(){
+    this.clearFilterParams();
 
+    if (this.nameTerm != null){
+      this.params['nameTerm'] = this.nameTerm;
+    }
+
+    if (this.purposeTerm != null){
+      this.params['purposeTerm'] = this.purposeTerm;
+    }
+
+    this.loadCampaignsAndRefresh();
+  }
+
+  clearFilterParams(){
+    for (const prop in this.params) {
+      if (prop !== 'pageSize') {
+        delete this.params[prop];
+      }
+    }
+    this.params['offset'] = 0;
   }
 
 }
