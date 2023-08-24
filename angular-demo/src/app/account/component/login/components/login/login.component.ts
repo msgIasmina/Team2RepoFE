@@ -3,6 +3,9 @@ import { FormBuilder, Validators} from "@angular/forms";
 import {LoginRequest} from "../../models/login-request";
 import {AccountService} from "../../services/account.service";
 import {Router} from "@angular/router";
+import {ToastrService} from "ngx-toastr";
+import * as bcrypt from 'bcryptjs';
+import { MD5 } from 'crypto-js';
 
 @Component({
   selector: 'app-login',
@@ -16,14 +19,19 @@ export class LoginComponent implements OnInit {
     password: ['', Validators.required],
   })
 
-  constructor(private fb: FormBuilder, private loginService: AccountService, private router:Router) { }
+  constructor(private fb: FormBuilder, private loginService: AccountService, private router:Router,
+              private toastr: ToastrService) { }
 
   ngOnInit(): void {
   }
 
   onLogin() {
     const username=this.loginForm.get('username')?.value;
-    const password=this.loginForm.get('password')?.value;
+    //const salt = bcrypt.genSaltSync(10);
+    //const password= bcrypt.hashSync(this.loginForm.get('password')?.value);
+    //const password= this.loginForm.get('password')?.value;
+    const password = MD5(this.loginForm.get('password')?.value).toString();
+    console.log(password);
     const loginRequest:LoginRequest = new LoginRequest(username,password);
     this.loginService.login(loginRequest).subscribe(
       response => {
@@ -32,14 +40,14 @@ export class LoginComponent implements OnInit {
           }
           else{
             if(response.disabled){
-              window.alert("Your account has been deactivated")
+              this.toastr.success("Your account has been deactivated");
             }else {
               this.router.navigate(['/management/home']);
             }
           }
       },
       err => {
-        window.alert(err.message)
+        this.toastr.error(err.message);
       }
     );
   }

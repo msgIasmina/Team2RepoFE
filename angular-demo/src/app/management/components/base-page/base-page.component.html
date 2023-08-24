@@ -10,7 +10,7 @@
     <div class="nav-icons">
       <button  mat-button color="warn" class="btn signInButton" (click)=logout()> LogOut </button>
 <!--      <i class='bx bx-bell bx-tada' id="bell-icon"><span></span></i>-->
-      <button  mat-button color="warn" class="btn signInButton" (click)=logout()> {{t('navbar.logout')}} </button>
+      <button  mat-button color="warn" class="btn signInButton" (click)=logout()> {{('navbar.logout')}} </button>
     </div>
     <div class="nav-icons">
       <button mat-icon-button [matMenuTriggerFor]="menu"><mat-icon  [matBadge]="notifoication.length" matBadgePosition="before" matBadgeColor="warn">notifications</mat-icon></button>

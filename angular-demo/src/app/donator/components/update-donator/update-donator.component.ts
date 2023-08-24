@@ -3,6 +3,7 @@ import {User} from "../../../user/models/user";
 import {Donator} from "../../models/donator";
 import {DonatorService} from "../../services/donator.service";
 import {ActivatedRoute} from "@angular/router";
+import {ToastrService} from "ngx-toastr";
 
 @Component({
   selector: 'app-update-donator',
@@ -16,14 +17,14 @@ export class UpdateDonatorComponent implements OnInit {
   update: string="update";
 
   constructor(private donatorService: DonatorService,
-              private activatedRoute: ActivatedRoute) { }
+              private activatedRoute: ActivatedRoute,
+              private toastr: ToastrService) { }
 
   updateDonator(donator: Donator) {
-    console.log("hello")
     this.donatorService.updateDonator(donator).subscribe(
-      response => window.alert(response)
+      response => this.toastr.info(response)
     )
-    window.alert("Successfully Donator Edited!");
+    this.toastr.success("Donator edited successfully")
     window.location.href = '/management/donators/0/10';
   }
 

@@ -113,8 +113,6 @@ export class DonationService {
 
   updateDonation(donation: Donation): Observable<Donation> {
     let id = donation.id
-    //donation.id = undefined
-    console.log(donation)
     return this.http.put<Donation>(this.url + `/` + id, donation);
   }
 

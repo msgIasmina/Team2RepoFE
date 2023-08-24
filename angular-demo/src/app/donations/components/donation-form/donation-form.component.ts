@@ -8,6 +8,7 @@ import {Campaign} from "../../../campaigns/models/campaign";
 import {CampaignService} from "../../../campaigns/services/campaign.service";
 import {ActivatedRoute} from "@angular/router";
 import {currencies} from "../../models/Currencies";
+import {ToastrService} from "ngx-toastr";
 
 @Component({
   selector: 'app-donation-form',
@@ -21,23 +22,20 @@ export class DonationFormComponent implements OnInit {
         this.donatorService.getDonators().subscribe(donators => {
           this.donators = donators;
         });
-        console.log(this.donators)
       },
       (error) => {
-        console.log(error.message)
+        this.toastr.error(error.message)
       });
 
     this.campaignService.loadCampaigns().subscribe(() => {
         this.campaignService.getCampaigns().subscribe(campaigns => {
           this.campaigns = campaigns;
         });
-        console.log(this.campaigns)
       },
       (error) => {
-        console.log(error.message)
+      this.toastr.error(error.message)
       });
 
-    console.log(this.campaigns)
     this.activatedRoute.params.subscribe((params) => {
       this.id = +params['id'];
     })
@@ -117,14 +115,14 @@ export class DonationFormComponent implements OnInit {
       //   //this.donationForm.reset();
       // }
     }
-    console.log(newDonation)
   }
 
   constructor(private fb: FormBuilder,
               private donatorService: DonatorService,
               private donationService: DonationService,
               private campaignService: CampaignService,
-              private activatedRoute: ActivatedRoute) {
+              private activatedRoute: ActivatedRoute,
+              private toastr: ToastrService) {
   }
 
 

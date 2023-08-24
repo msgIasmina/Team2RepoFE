@@ -4,6 +4,7 @@ import {DonatorService} from "../../services/donator.service";
 import {ActivatedRoute, Router} from "@angular/router";
 import {DonatorAction} from "../../models/DonatorAction";
 import {User} from "../../../user/models/user";
+import {ToastrService} from "ngx-toastr";
 
 @Component({
   selector: 'app-donator-list',
@@ -17,7 +18,8 @@ export class DonatorListComponent implements OnInit {
   size: number;
   constructor(private donatorService: DonatorService,
               private activatedRoute: ActivatedRoute,
-              private router:Router) {
+              private router:Router,
+              private toastr: ToastrService) {
   }
 
   ngOnInit(): void {
@@ -70,7 +72,7 @@ export class DonatorListComponent implements OnInit {
         ['/management/donators/register/']
       );
     } else {
-      window.alert("Sorry but u don't have this permission (BENEF)...");
+      this.toastr.error("It seems that you don't have the permissions for completing this action.")
     }
 
   }

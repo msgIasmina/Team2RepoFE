@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {Campaign} from "../../models/campaign";
 import {CampaignService} from "../../services/campaign.service";
 import {ActivatedRoute} from "@angular/router";
+import {ToastrService} from "ngx-toastr";
 
 @Component({
   selector: 'app-campaign-edit',
@@ -14,13 +15,14 @@ export class CampaignEditComponent implements OnInit {
   id:number;
   update:string="update"
 
-  constructor(private activatedRoute: ActivatedRoute,private campaignService:CampaignService) { }
+  constructor(private activatedRoute: ActivatedRoute,private campaignService:CampaignService,
+              private toastr: ToastrService) { }
 
   editCampaign(campaign:Campaign){
     this.campaignService.editCampaign(campaign).subscribe(
       response=>window.alert(response)
     );
-    window.alert("Successfully Campaign Edited!");
+    this.toastr.success("Campaign edited successfully!");
     window.location.href = '/management/campaigns/listing';
   }
 

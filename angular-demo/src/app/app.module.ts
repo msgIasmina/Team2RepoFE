@@ -20,7 +20,7 @@ import { TranslocoRootModule } from './transloco-root.module';
 @NgModule({
   declarations: [
     AppComponent,
-    HomeComponent
+    //HomeComponent
   ],
   imports: [
     BrowserModule,

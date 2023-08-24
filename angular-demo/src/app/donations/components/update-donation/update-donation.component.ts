@@ -26,7 +26,6 @@ export class UpdateDonationComponent implements OnInit {
         this.donation = donationData;
       })
     });
-    console.log(this.donation)
   }
 
 

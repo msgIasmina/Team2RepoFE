@@ -4,16 +4,17 @@ import {BehaviorSubject, catchError, Observable, tap, throwError} from "rxjs";
 import {Role} from "../../user/models/role";
 import {Donator} from "../models/donator";
 import {User} from "../../user/models/user";
+import {ToastrService} from "ngx-toastr";
 
 @Injectable({
   providedIn: 'root'
 })
 export class DonatorService {
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient,
+              private toastr: ToastrService) { }
 
   url:string = "http://localhost:8080/donators";
-  //url2:string = "http://localhost:8080/donators/register";
 
   donatorList$: BehaviorSubject<Donator[]> = new BehaviorSubject<Donator[]>([]);
 
@@ -57,7 +58,7 @@ export class DonatorService {
     const headers = new HttpHeaders().set("Authorization", localStorage.getItem("token") ?? '');
     return this.http.delete(`${this.url}/${donator.id}`, { headers }).pipe(
       catchError(error => {
-        console.error("Error deleting donator:", error);
+        this.toastr.error("Error deleting donator:" + error)
         return throwError("An error occurred while deleting the donator.");
       })
     );
@@ -70,7 +71,6 @@ export class DonatorService {
     }
     let id = donator.id
     donator.id = undefined
-    console.log(donator)
     return this.http.put<string>(this.url + `/` + id,donator,header);
   }
 

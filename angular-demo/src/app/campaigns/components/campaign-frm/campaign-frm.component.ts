@@ -3,6 +3,7 @@ import {Campaign} from "../../models/campaign";
 import {FormBuilder, Validators} from "@angular/forms";
 import {AccountService} from "../../../account/component/login/services/account.service";
 import {CampaignService} from "../../services/campaign.service";
+import {ToastrService} from "ngx-toastr";
 
 @Component({
   selector: 'app-campaign-frm',
@@ -24,10 +25,9 @@ export class CampaignFrmComponent implements OnInit {
   })
 
   constructor(private fb: FormBuilder,
-              private campaignService: CampaignService) { }
+              private toastr: ToastrService) { }
 
   ngOnInit(): void {
-    console.log(this.campaign)
     if(this.functionality === "update"){
       this.campaignForm.setValue({
         name:this.campaign.name,
@@ -40,7 +40,7 @@ export class CampaignFrmComponent implements OnInit {
     this.submitted=true;
 
     if (!this.campaignForm.valid) {
-      console.log("Invalid Campaign form!");
+      this.toastr.error("Invalid campaign form! Please check the required fields.")
       return;
     }
 
@@ -60,7 +60,7 @@ export class CampaignFrmComponent implements OnInit {
     this.submitEvent.emit(newCampaign);
 
     if(this.functionality === "add") {
-      window.alert("Campaign added successfully!");
+      this.toastr.success("Campaign added successfully!")
       window.location.href = '/management/campaigns/listing';
     }
 

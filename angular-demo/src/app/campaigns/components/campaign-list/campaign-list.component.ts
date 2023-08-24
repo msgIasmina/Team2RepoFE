@@ -3,6 +3,7 @@ import {Campaign} from "../../models/campaign";
 import {CampaignService} from "../../services/campaign.service";
 import {Router} from "@angular/router";
 import {CampaignAction} from "../../../user/models/CampaignAction";
+import {ToastrService} from "ngx-toastr";
 
 @Component({
   selector: 'app-campaign-list',
@@ -13,7 +14,7 @@ export class CampaignListComponent implements OnInit {
 
   campaignList:Campaign[];
 
-  constructor(private campaignService:CampaignService,private router:Router) { }
+  constructor(private campaignService:CampaignService,private router:Router, private toastr: ToastrService) { }
 
   ngOnInit(): void {
     this.loadCampaignsAndRefresh();
@@ -45,7 +46,6 @@ export class CampaignListComponent implements OnInit {
       error => {
         this.campaignService.loadCampaigns().subscribe(
           campaigns => {
-            console.log(campaigns)
             this.campaignList = campaigns
           }
         )
@@ -62,7 +62,7 @@ export class CampaignListComponent implements OnInit {
         ['/management/campaigns/add/']
       );
     } else {
-      window.alert("Sorry but u don't have this permission (CAMP)...");
+      this.toastr.error("It seems that you don't have the permissions for completing this action.")
     }
 
 

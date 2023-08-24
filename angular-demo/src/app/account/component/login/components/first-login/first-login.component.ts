@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {AbstractControl, FormBuilder, Validators} from "@angular/forms";
 import {AccountService} from "../../services/account.service";
 import {Router} from "@angular/router";
+import {ToastrService} from "ngx-toastr";
 
 @Component({
   selector: 'app-first-login',
@@ -23,7 +24,8 @@ export class FirstLoginComponent implements OnInit {
     ],
   });
 
-  constructor(private fb: FormBuilder, private service:AccountService,private router:Router) { }
+  constructor(private fb: FormBuilder, private service:AccountService,private router:Router,
+              private toastr: ToastrService) { }
 
   validateSpecialChar(control: AbstractControl): { [key: string]: boolean } | null {
     const specialCharRegex = /[!@#$%^&*(),.?":{}|<>]/;
@@ -57,11 +59,11 @@ export class FirstLoginComponent implements OnInit {
     const userId:string|null=localStorage.getItem("userId");
     this.service.firstLoginUpdate(userId, password).subscribe(
         response => {
-          window.alert(response.text);
+          this.toastr.success(response.text);
           localStorage.setItem("newUser","false")
           this.router.navigate(["/management/home"])
         },
-      error => window.alert(error.message)
+      error => this.toastr.error(error.message)
     );
   }
 
