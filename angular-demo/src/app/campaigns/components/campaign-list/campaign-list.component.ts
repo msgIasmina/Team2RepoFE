@@ -2,8 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import {Campaign} from "../../models/campaign";
 import {CampaignService} from "../../services/campaign.service";
 import {Router} from "@angular/router";
-import {CampaignAction} from "../../../user/models/CampaignAction";
 import {ToastrService} from "ngx-toastr";
+import {CampaignAction} from "../../models/CampaignAction";
+import {PageEvent} from "@angular/material/paginator";
 
 @Component({
   selector: 'app-campaign-list',
@@ -57,9 +58,10 @@ export class CampaignListComponent implements OnInit {
     this.campaignService.deleteCampaignById(campaignToDelete.id).subscribe(()=>{
     },
       error => {
-        this.campaignService.loadCampaigns().subscribe(
-          campaigns => {
-            this.campaignList = campaigns
+        this.campaignService.loadCampaigns(this.params).subscribe(
+          campaignFilterPair => {
+            this.campaignList = campaignFilterPair.campaigns
+            this.totalItems = campaignFilterPair.totalItems
           }
         )
       }
@@ -100,6 +102,16 @@ export class CampaignListComponent implements OnInit {
       }
     }
     this.params['offset'] = 0;
+  }
+
+  clearAllFilterParamsAndRefresh(){
+
+  }
+
+  pageChanged(event: PageEvent): void {
+    this.params['offset'] = event.pageIndex;
+    this.params['pageSize'] = event.pageSize;
+    this.loadCampaignsAndRefresh();
   }
 
 }

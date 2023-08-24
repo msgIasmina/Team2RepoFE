@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { User } from "../models/user";
 import { BehaviorSubject, Observable,tap} from "rxjs";
 import { HttpClient, HttpHeaders } from "@angular/common/http";
+import {UserPair} from "../models/UserPair";
 @Injectable({
   providedIn: 'root'
 })
@@ -12,20 +13,24 @@ export class UserService {
 
   url:string = "http://localhost:8080/users";
 
-  userList$: BehaviorSubject<User[]> = new BehaviorSubject<User[]>([]);
+  userPair$: BehaviorSubject<UserPair> = new BehaviorSubject<UserPair>(new UserPair([],0));
 
-  loadUsers(page: number, size: number): Observable<User[]> {
-    var header = {
-      headers: new HttpHeaders()
-        .set("Authorization", localStorage.getItem("token") ?? '')
-    } //empty string daca e nedefinit
-    return this.http.get<User[]>(`${this.url}/${page}/${size}`, header).pipe(
-      tap(users => this.userList$.next(users))
+  loadUsers(page: number, size: number): Observable<UserPair> {
+    const headers = new HttpHeaders()
+      .set("Authorization", localStorage.getItem("token") ?? '');
+
+    const params: any = {};
+    params['offset'] = page;
+    params['pageSize'] = size;
+
+    return this.http.get<UserPair>(this.url, { headers, params }).pipe(
+      tap(userPair => this.userPair$.next(userPair))
     );
   }
 
-  getUsers(): Observable<User[]> {
-    return this.userList$.asObservable();
+
+  getUsers(): Observable<UserPair> {
+    return this.userPair$.asObservable();
   }
 
   saveUser(newUser:User):Observable<User>{

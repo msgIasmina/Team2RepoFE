@@ -1,6 +1,8 @@
 import {Injectable} from "@angular/core";
 
-@Injectable()
+@Injectable({
+  providedIn: 'root'
+})
 export class Visualizer{
   serializeQueryParams(params: any): string {
     return Object.keys(params)

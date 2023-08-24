@@ -27,9 +27,9 @@ export class DonationFormComponent implements OnInit {
         this.toastr.error(error.message)
       });
 
-    this.campaignService.loadCampaigns().subscribe(() => {
-        this.campaignService.getCampaigns().subscribe(campaigns => {
-          this.campaigns = campaigns;
+    this.campaignService.loadCampaigns({}).subscribe(() => {
+        this.campaignService.getCampaignFilterPair().subscribe(campaignFilterPair => {
+          this.campaigns = campaignFilterPair.campaigns;
         });
       },
       (error) => {

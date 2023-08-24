@@ -30,9 +30,9 @@ export class DonationUpdateFormComponent implements OnInit {
       });
 
 
-    this.campaignService.loadCampaigns().subscribe(() => {
-        this.campaignService.getCampaigns().subscribe(campaigns => {
-          this.campaigns = campaigns;
+    this.campaignService.loadCampaigns({}).subscribe(() => {
+        this.campaignService.getCampaignFilterPair().subscribe(campaignFilterPair => {
+          this.campaigns = campaignFilterPair.campaigns
         });
       },
       (error) => {

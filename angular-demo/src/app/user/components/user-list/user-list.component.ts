@@ -3,6 +3,8 @@ import { User } from '../../models/user';
 import { UserService } from "../../services/user-service.service";
 import {ActivatedRoute, Router} from '@angular/router';
 import {UserAction} from "../../models/UserAction";
+import {ToastrService} from "ngx-toastr";
+import {PageEvent} from "@angular/material/paginator";
 
 @Component({
   selector: 'app-user-list',
@@ -12,25 +14,25 @@ import {UserAction} from "../../models/UserAction";
 export class UserListComponent implements OnInit {
 
   userList: User[];
-  page: number;
-  size: number;
+  totalItems: number;
+
+  currentPage: number = 0; // Current page index
+  pageSize: number = 5; // Items per page
+  pageSizeOptions: number[] = [3, 5, 6]; // Options for page size
+
+  params: any = {};
 
   constructor(private userService: UserService,
               private activatedRoute: ActivatedRoute,
-              private router:Router) {
+              private router:Router,
+              private toastr: ToastrService) {
   }
 
   ngOnInit(): void {
-    const navigationState = this.router.getCurrentNavigation()?.extras.state;
+    this.params['offset'] = 0;
+    this.params['pageSize'] = 5;
 
-    if (navigationState) {
-      this.page = navigationState['page'];
-      this.size = navigationState['size'];
-    } else {
-      this.page = 0;
-      this.size = 7;
-    }
-      this.loadUsersAndRefresh();
+    this.loadUsersAndRefresh();
   }
 
   handleUserAction(action: UserAction) {
@@ -42,9 +44,10 @@ export class UserListComponent implements OnInit {
   }
 
   private loadUsersAndRefresh() {
-    this.userService.loadUsers(this.page, this.size).subscribe(() => {
-      this.userService.getUsers().subscribe(users => {
-        this.userList = users;
+    this.userService.loadUsers(this.currentPage, this.pageSize).subscribe(() => {
+      this.userService.getUsers().subscribe(userPair => {
+        this.userList = userPair.users;
+        this.totalItems = userPair.totalItems;
       });
     });
   }
@@ -72,7 +75,13 @@ export class UserListComponent implements OnInit {
         ['/management/users/register/']
       );
     } else {
-      window.alert("Sorry but u don't have this permission (USER)...");
+      this.toastr.error("It seems that you don't have the permissions for completing this action.")
     }
+  }
+
+  pageChanged(event: PageEvent) {
+    this.params['offset'] = event.pageIndex;
+    this.params['pageSize'] = event.pageSize;
+    this.loadUsersAndRefresh();
   }
 }
