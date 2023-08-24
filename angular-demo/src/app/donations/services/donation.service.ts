@@ -7,6 +7,7 @@ import {Campaign} from "../../campaigns/models/campaign";
 import {User} from "../../user/models/user";
 import {UserService} from "../../user/services/user-service.service";
 import {DonationFilterPair} from "../models/DonationFilterPair";
+import {Visualizer} from "../../util/visualizer.service";
 
 
 @Injectable({
@@ -17,7 +18,8 @@ export class DonationService {
     private http: HttpClient,
     private activatedRoute: ActivatedRoute,
     private router: Router,
-    private userService: UserService
+    private userService: UserService,
+    private visualizer: Visualizer
   ) {
   }
 
@@ -25,8 +27,6 @@ export class DonationService {
 
   donationFilterPair$: BehaviorSubject<DonationFilterPair> =
     new BehaviorSubject<DonationFilterPair>(new DonationFilterPair([],0));
-  // donationList$: BehaviorSubject<Donation[]> = new BehaviorSubject<Donation[]>([]);
-  // totalItems$: BehaviorSubject<number> = new BehaviorSubject<number>(0);
 
   getCurrencies(): Observable<string[]> {
     const headers = new HttpHeaders().set("Authorization", localStorage.getItem("token") ?? '');
@@ -48,37 +48,16 @@ export class DonationService {
   loadDonations(filterParams: any): Observable<DonationFilterPair> {
     const headers = new HttpHeaders().set("Authorization", localStorage.getItem("token") ?? '');
 
-      const fullUrl = this.url + '/filter' + '?' + this.serializeQueryParams(filterParams);
+      const fullUrl = this.url + '/filter' + '?' + this.visualizer.serializeQueryParams(filterParams);
 
       return this.http.get<DonationFilterPair>(fullUrl, { headers }).pipe(
         tap(donationFilterPair => {
-          // this.donationList$.next(donationFilterPair.donations);
-          // this.totalItems$.next(donationFilterPair.totalItems);
           this.donationFilterPair$.next(donationFilterPair);
         })
       );
   }
 
-  // private serializeQueryParams(params: any): string {
-  //   return Object.keys(params)
-  //     .map(key => key + '=' + params[key])
-  //     .join('&');
-  // }
 
-  private serializeQueryParams(params: any): string {
-    return Object.keys(params)
-      .map(key => {
-        const value = params[key];
-        if (value !== null && value !== undefined) {
-          // Convert numbers to strings, and escape values
-          const serializedValue = typeof value === 'number' ? value.toString() : encodeURIComponent(value);
-          return `${key}=${serializedValue}`;
-        }
-        return ''; // Skip null or undefined values
-      })
-      .filter(param => param !== '') // Remove empty values
-      .join('&');
-  }
 
 
   getDonationFilterPair(): Observable<DonationFilterPair> {
@@ -100,11 +79,6 @@ export class DonationService {
       .set('approvedById', userId || '');
 
     return this.http.put(`${this.url}/approve`, null, { headers, params });
-  }
-
-  getSize(){
-    const headers = new HttpHeaders().set("Authorization", localStorage.getItem("token") ?? '');
-    return this.http.get<number>(this.url + '/size', {headers});
   }
 
   addDonation(newDonation: Donation): Observable<Donation> {

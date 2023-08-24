@@ -17,6 +17,7 @@
     "addBtn": "Add User",
     "uTable": {
       "firstname": "First Name",
+      "lastname": "Last Name",
       "email": "Email",
       "active": "Active",
       "actions": "Actions"

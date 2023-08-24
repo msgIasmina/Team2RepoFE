@@ -7,6 +7,7 @@
       <thead>
         <tr>
           <th>{{t('uList.uTable.firstname')}}</th>
+          <th>{{t('uList.uTable.lastname')}}</th>
           <th>{{t('uList.uTable.email')}}</th>
           <th>{{t('uList.uTable.active')}}</th>
           <th>{{t('uList.uTable.actions')}}</th>
@@ -15,6 +16,7 @@
       <tbody>
         <tr *ngFor="let user of userList">
           <td>{{ user.firstName }}</td>
+          <td>{{ user.lastName}}</td>
           <td>{{ user.email }}</td>
           <mat-icon class="icon" [ngClass]="{ 'active-icon': user.active, 'inactive-icon': !user.active }">
             {{ user.active ? 'check_circle' : 'cancel' }}

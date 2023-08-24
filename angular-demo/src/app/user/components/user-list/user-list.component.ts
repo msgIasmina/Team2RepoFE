@@ -20,13 +20,6 @@ export class UserListComponent implements OnInit {
               private router:Router) {
   }
 
-  // ngOnInit(): void {
-  //   this.activatedRoute.params.subscribe((params) => {
-  //     this.page = +params['page'];
-  //     this.size = +params['size'];
-  //     this.loadUsersAndRefresh();
-  //   });
-  // }
   ngOnInit(): void {
     const navigationState = this.router.getCurrentNavigation()?.extras.state;
 
