@@ -1,9 +1,9 @@
-<div class="grid align__item">
+<div class="grid align__item" *transloco="let t">
   <div class="login">
   <h2>Log in</h2>
   <form class="form" [formGroup]="loginForm" (ngSubmit)="onLogin()">
     <div class="form__field">
-      <p>Username:</p>
+      <p>{{t('login.username')}}</p>
       <input
         type="text"
         formControlName="username"
@@ -11,15 +11,15 @@
     </div>
 
     <div>
-      <p>Password:</p>
+      <p>{{t('login.password')}}</p>
       <input
         type="password"
         formControlName="password"
-        placeholder="••••••••••••">
+        placeholder="••••••••••">
     </div>
     <p></p>
     <div class="form__field">
-      <button mat-raised-button color="accent" class="btn btn-primary custom-btn">Login</button>
+      <button mat-raised-button color="accent" class="btn btn-primary custom-btn">{{t('login.btn')}}</button>
     </div>
   </form>
   </div>

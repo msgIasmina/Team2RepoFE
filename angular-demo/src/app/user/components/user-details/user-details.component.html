@@ -1,7 +1,7 @@
-<div>
-  <button mat-raised-button color="accent" (click)="onEditClicked(user)">Edit</button>
+<div *transloco="let t">
+  <button mat-raised-button color="accent" (click)="onEditClicked(user)">{{t('uDetails.editBtn')}}</button>
   <button mat-raised-button [color]="user.active ? 'warn' : 'primary'" (click)="onToggleActivationClicked(user)">
     <mat-icon>{{ user.active ? 'delete' : 'check_circle' }}</mat-icon>
-    {{ user.active ? 'Delete' : 'Activate' }}
+    {{ user.active ? t('uDetails.deleteBtn.deactivate') : t('uDetails.deleteBtn.activate') }}
   </button>
 </div>

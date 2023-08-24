@@ -1,7 +1,7 @@
-<div class="grid align__item">
+<div class="grid align__item" *transloco="let t">
 
   <div class="register">
-    <h2>Add Campaign</h2>
+    <h2>{{t('cAdd.header')}}</h2>
     <app-campaign-frm
       (submitEvent)="onSave($event)"
       *ngIf="placeholder"

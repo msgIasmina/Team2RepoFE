@@ -1,18 +1,18 @@
-<form class="form" [formGroup]="registerForm" (ngSubmit)="onSave()">
+<form class="form" [formGroup]="registerForm" (ngSubmit)="onSave()" *transloco="let t">
   <div class="form__field">
-    <p>First Name: </p>
+    <p>{{t('donatorForm.firstname')}}</p>
     <input
       [placeholder]="donator.firstName"
       type="text"
       formControlName="firstName"
     />
     <div *ngIf="showFirstNameError()">
-      <div class="error-message">First name is required</div>
+      <div class="error-message">{{t('donatorForm.errors.firstnameE')}}</div>
     </div>
   </div>
 
   <div class="form__field">
-    <p>Additional Name:</p>
+    <p>{{t('donatorForm.additionalname')}}</p>
     <input
       [placeholder]="donator.additionalName"
       type="text"
@@ -21,19 +21,19 @@
   </div>
 
   <div class="form__field">
-    <p>Last Name:</p>
+    <p>{{t('donatorForm.lastname')}}</p>
     <input
       [placeholder]="donator.lastName"
       type="text"
       formControlName="lastName"
     />
     <div *ngIf="showLastNameError()">
-      <div class="error-message">Last name is required</div>
+      <div class="error-message">{{t('donatorForm.errors.lastnameE')}}</div>
     </div>
   </div>
 
   <div class="form__field">
-    <p>Maiden Name:</p>
+    <p>{{t('donatorForm.maidenname')}}</p>
     <input
       [placeholder]="donator.maidenName"
       type="text"
@@ -42,6 +42,6 @@
   </div>
 
   <div class="form__field">
-    <button mat-raised-button color="accent" class="btn btn-primary custom-btn" type="submit">Submit donator</button>
+    <button mat-raised-button color="accent" class="btn btn-primary custom-btn" type="submit">{{t('donatorForm.submitBtn')}}</button>
   </div>
 </form>

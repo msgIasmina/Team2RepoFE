@@ -1,42 +1,42 @@
-<form class="form" [formGroup]="registerForm" (ngSubmit)="onSave()">
+<form class="form" [formGroup]="registerForm" (ngSubmit)="onSave()" *transloco="let t">
   <div class="form__field">
-    <p>First Name:</p>
+    <p>{{t('uForm.firstname')}}</p>
     <input
       [placeholder]="user.firstName"
       type="text"
       formControlName="firstName"
     />
     <div *ngIf="showFirstNameError()">
-      <div class="error-message">First name is required</div>
+      <div class="error-message">{{t('uForm.errors.firstnameE')}}</div>
     </div>
   </div>
 
   <div class="form__field">
-    <p>Last Name:</p>
+    <p>{{t('uForm.lastname')}}</p>
     <input
       [placeholder]="user.lastName"
       type="text"
       formControlName="lastName"
     />
     <div *ngIf="showLastNameError()">
-      <div class="error-message">Last name is required</div>
+      <div class="error-message">{{t('uForm.errors.lastnameE')}}</div>
     </div>
   </div>
 
   <div class="form__field">
-    <p>Email:</p>
+    <p>{{t('uForm.email')}}</p>
     <input
       [placeholder]="user.email"
       type="text"
       formControlName="email"
     />
     <div *ngIf="showEmailError()">
-      <div class="error-message">Email is required</div>
+      <div class="error-message">{{t('uForm.errors.emailE')}}</div>
     </div>
   </div>
 
   <div class="form__field">
-    <p>Mobile Number:</p>
+    <p>{{t('uForm.mobileNumber')}}</p>
     <input
       type="text"
       formControlName="mobileNumber"
@@ -44,7 +44,7 @@
     />
   </div>
 
-  <p>Choose Roles:</p>
+  <p>{{t('uForm.roles')}}</p>
   <div class="form__field">
     <mat-chip-list selectable multiple>
       <mat-chip
@@ -60,10 +60,10 @@
   </div>
 
   <div *ngIf="showRolesError()">
-    <div class="error-message">Please select at least one role.</div>
+    <div class="error-message">{{t('uForm.errors.rolesE')}}</div>
   </div>
 
   <div class="form__field">
-    <button mat-raised-button color="accent" class="btn btn-primary custom-btn" type="submit">Submit user</button>
+    <button mat-raised-button color="accent" class="btn btn-primary custom-btn" type="submit">{{t('uForm.submitBtn')}}</button>
   </div>
 </form>

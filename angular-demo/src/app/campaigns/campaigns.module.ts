@@ -10,6 +10,7 @@ import { CampaignFrmComponent } from './components/campaign-frm/campaign-frm.com
 import { CampaignEditComponent } from './components/campaign-edit/campaign-edit.component';
 import {CampaignComponent} from "./components/campaign/campaign.component";
 import {MatPaginatorModule} from "@angular/material/paginator";
+import {TranslocoModule} from "@ngneat/transloco";
 
 @NgModule({
   declarations: [
