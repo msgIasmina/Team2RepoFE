@@ -2,17 +2,19 @@ import {Injectable} from '@angular/core';
 import {catchError, Observable, tap, throwError} from "rxjs";
 import {LoginResponse} from "../models/login-response";
 import {LoginRequest} from "../models/login-request";
-import {HttpClient, HttpErrorResponse} from "@angular/common/http";
+import {HttpClient, HttpErrorResponse, HttpHeaders} from "@angular/common/http";
 import {JwtHelperService} from "@auth0/angular-jwt";
 import {User} from "../../../../user/models/user";
 import {Router} from "@angular/router";
 import {APIEndpointURLs} from "../../../../../api-endpoint-urls";
+import {TextResponse} from "../../../../models/text-response";
 
 @Injectable({
   providedIn: 'root'
 })
 export class AccountService {
   url: string = "http://localhost:8080/auth/login";
+  firstLoginUrl :string = "http://localhost:8080/users"
 
   private readonly TOKEN = 'token';
 
@@ -43,21 +45,12 @@ export class AccountService {
     );
   }
 
- isLoggedIn(): boolean {
-    const jwt = new JwtHelperService();
-    const token = localStorage.getItem(this.TOKEN);
-    return !jwt.isTokenExpired(token);
-  }
-
-  registerUser(user: User) {
-    const permissions = JSON.parse(localStorage.getItem('permissions') || '[]');
-    const isAdmin = permissions.includes('AUTHORITY_USER_MANAGEMENT');
-    if (!isAdmin) {
-      window.alert("'User does not have USER management permission.");
-      return throwError('User does not have USER_MANAGEMENT permission.');
+  firstLoginUpdate(id:string|null, pd:string): Observable<TextResponse>{
+    var header = {
+      headers: new HttpHeaders()
+        .set("Authorization", localStorage.getItem("token") ?? '')
     }
-    return this.http.post(APIEndpointURLs.registerUrl, user);
+    return this.http.put<TextResponse>(this.firstLoginUrl + `/` + id +"/firstLogin", {password:pd}, header);
   }
-
 
 }

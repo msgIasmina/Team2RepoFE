@@ -27,18 +27,20 @@ export class LoginComponent implements OnInit {
     const loginRequest:LoginRequest = new LoginRequest(username,password);
     this.loginService.login(loginRequest).subscribe(
       response => {
-        if(response.token === ''){
-          window.alert("can't log in")
-        }else{
           if(response.newUser){
             this.router.navigate(['/firstLogin']);
           }
           else{
-            window.location.href = '/management/home';
+            if(response.disabled){
+              window.alert("Your account has been deactivated")
+            }else {
+              this.router.navigate(['/management/home']);
+            }
           }
-        }
       },
-      err => window.alert(err.message)
+      err => {
+        window.alert(err.message)
+      }
     );
   }
 
