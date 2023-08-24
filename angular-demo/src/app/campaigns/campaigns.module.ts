@@ -26,8 +26,13 @@ import {TranslocoModule} from "@ngneat/transloco";
     ReactiveFormsModule,
     MatButtonModule,
     FormsModule,
-    MatPaginatorModule
-  ], providers: [
+    MatPaginatorModule,
+    TranslocoModule
+  ],
+  exports: [
+    CampaignComponent
+  ],
+  providers: [
     CampaignService
   ]
 })

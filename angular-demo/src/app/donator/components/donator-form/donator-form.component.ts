@@ -2,6 +2,7 @@ import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {Donator} from "../../models/donator";
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {DonatorService} from "../../services/donator.service";
+import {ToastrService} from "ngx-toastr";
 
 @Component({
   selector: 'app-donator-form',
@@ -39,7 +40,7 @@ export class DonatorFormComponent implements OnInit {
 
   onSave() {
     if (!this.registerForm.valid) {
-      console.log("Invalid Campaign form!");
+      this.toastr.error("The form is invalid. Please check the required fields.")
       return;
     }
     this.submitted = true;
@@ -63,15 +64,16 @@ export class DonatorFormComponent implements OnInit {
     this.submitEvent.emit(newDonator)
 
     if (this.functionality === "register" && hasBenefPermission){
-      window.alert("Successfully Donator Registered!");
+      this.toastr.success("Donator registered successfully");
       window.location.href = '/management/donators/0/10';
     } else{
-      window.alert('User does not have BENEF management permission.');
+      this.toastr.error("It seems that you don't have the permissions for completing this action.")
       return;
     }
 
   }
-  constructor(private fb: FormBuilder) { }
+  constructor(private fb: FormBuilder,
+              private toastr: ToastrService) { }
 
   ngOnInit(): void {
     if(this.functionality === "update"){

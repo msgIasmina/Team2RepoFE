@@ -1,7 +1,7 @@
 <div *transloco="let t">
   <p></p>
-  <h2>{{t('donatorList.header')}}</h2>
-  <button mat-raised-button color="accent" (click)="onAddDonatorClicked()">{{t('donatorList.addBtn')}}</button>
+  <h2>List of Donators</h2>
+  <button mat-raised-button color="accent" (click)="onAddDonatorClicked()">Add Donator</button>
   <div class="table-wrapper">
     <table class="fl-table">
       <thead>
@@ -26,4 +26,13 @@
       </tbody>
   </table>
 </div>
+
+  <div class="paginator-container">
+    <mat-paginator [length]="totalItems"
+                   [pageIndex]="currentPage"
+                   [pageSize]="pageSize"
+                   [pageSizeOptions]="pageSizeOptions"
+                   (page)="pageChanged($event)">
+    </mat-paginator>
+  </div>
 </div>

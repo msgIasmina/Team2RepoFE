@@ -1,6 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {AbstractControl, FormBuilder, Validators} from "@angular/forms";
-import {UserService} from "../../../../../user/services/user-service.service";
+import {AccountService} from "../../services/account.service";
+import {Router} from "@angular/router";
+import {ToastrService} from "ngx-toastr";
 
 @Component({
   selector: 'app-first-login',
@@ -22,7 +24,8 @@ export class FirstLoginComponent implements OnInit {
     ],
   });
 
-  constructor(private fb: FormBuilder, private userService:UserService) { }
+  constructor(private fb: FormBuilder, private service:AccountService,private router:Router,
+              private toastr: ToastrService) { }
 
   validateSpecialChar(control: AbstractControl): { [key: string]: boolean } | null {
     const specialCharRegex = /[!@#$%^&*(),.?":{}|<>]/;
@@ -54,10 +57,14 @@ export class FirstLoginComponent implements OnInit {
   onSave(){
     const password=this.passwdForm.get('password')?.value;
     const userId:string|null=localStorage.getItem("userId");
-
-    this.userService.firstLoginUpdate(userId, password).subscribe();
-
-
+    this.service.firstLoginUpdate(userId, password).subscribe(
+        response => {
+          this.toastr.success(response.text);
+          localStorage.setItem("newUser","false")
+          this.router.navigate(["/management/home"])
+        },
+      error => this.toastr.error(error.message)
+    );
   }
 
 }

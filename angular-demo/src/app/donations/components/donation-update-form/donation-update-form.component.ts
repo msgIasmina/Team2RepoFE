@@ -8,6 +8,7 @@ import {ActivatedRoute} from "@angular/router";
 import {Donator} from "../../../donator/models/donator";
 import {Campaign} from "../../../campaigns/models/campaign";
 import {currencies} from "../../models/Currencies";
+import {ToastrService} from "ngx-toastr";
 
 @Component({
   selector: 'app-donation-update-form',
@@ -23,24 +24,21 @@ export class DonationUpdateFormComponent implements OnInit {
         this.donatorService.getDonators().subscribe(donators => {
           this.donators = donators;
         });
-        console.log(this.donators)
       },
       (error) => {
-        console.log(error.message)
+        this.toastr.error(error.message)
       });
 
 
-    this.campaignService.loadCampaigns().subscribe(() => {
-        this.campaignService.getCampaigns().subscribe(campaigns => {
-          this.campaigns = campaigns;
+    this.campaignService.loadCampaigns({}).subscribe(() => {
+        this.campaignService.getCampaignFilterPair().subscribe(campaignFilterPair => {
+          this.campaigns = campaignFilterPair.campaigns
         });
-        console.log(this.campaigns)
       },
       (error) => {
-        console.log(error.message)
+      this.toastr.error(error.message)
       });
 
-    console.log(this.campaigns)
     this.activatedRoute.params.subscribe((params) => {
       this.id = +params['id'];
     })
@@ -51,8 +49,6 @@ export class DonationUpdateFormComponent implements OnInit {
           campaignID: this.donation.campaign?.id,
           benefactorID: this.donation.benefactor?.id,
           notes: this.donation.notes})
-    console.log(this.updateDonationForm)
-
   }
   id: number;
 
@@ -111,14 +107,14 @@ export class DonationUpdateFormComponent implements OnInit {
     if (this.updateDonationForm.valid) {
       this.submitEvent.emit(newDonation)
     }
-    console.log(newDonation)
   }
 
   constructor(private fb: FormBuilder,
               private donatorService: DonatorService,
               private donationService: DonationService,
               private campaignService: CampaignService,
-              private activatedRoute: ActivatedRoute) {
+              private activatedRoute: ActivatedRoute,
+              private toastr: ToastrService) {
   }
 
 

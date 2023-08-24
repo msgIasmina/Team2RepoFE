@@ -17,6 +17,7 @@
     "addBtn": "Adaugă un utilizator",
     "uTable": {
       "firstname": "Prenume",
+      "lastname": "Nume",
       "email": "Email",
       "active": "Activ",
       "actions": "Acţiuni"

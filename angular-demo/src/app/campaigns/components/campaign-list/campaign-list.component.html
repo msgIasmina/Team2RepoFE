@@ -1,9 +1,7 @@
 <div *transloco="let t">
 <p></p>
-
-<h2>List of Campaigns</h2>
-<button mat-raised-button color="accent" (click)="onAddCampaignClicked()">Add Campaign</button>
-
+  <h2>{{t('cList.header')}}</h2>
+  <button mat-raised-button color="accent" (click)="onAddCampaignClicked()">{{t('cList.addBtn')}}</button>
 <div class="filter">
   <label>Search by name: </label>
   <input type="text" [(ngModel)]="nameTerm" placeholder="Name of Campaign">
@@ -17,8 +15,7 @@
 <button (click)="applyFilters()">Apply Filters</button>
 <button (click)="clearAllFilterParamsAndRefresh()">Clear All Filters</button>
 
-<h2>{{t('cList.header')}}</h2>
-<button mat-raised-button color="accent" (click)="onAddCampaignClicked()">{{t('cList.addBtn')}}</button>
+
 <div class="table-wrapper">
   <table class="fl-table">
     <thead>

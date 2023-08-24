@@ -3,6 +3,8 @@ import { User } from '../../models/user';
 import { UserService } from "../../services/user-service.service";
 import {ActivatedRoute, Router} from '@angular/router';
 import {UserAction} from "../../models/UserAction";
+import {ToastrService} from "ngx-toastr";
+import {PageEvent} from "@angular/material/paginator";
 
 @Component({
   selector: 'app-user-list',
@@ -12,32 +14,23 @@ import {UserAction} from "../../models/UserAction";
 export class UserListComponent implements OnInit {
 
   userList: User[];
-  page: number;
-  size: number;
+  totalItems: number;
+
+  currentPage: number = 0; // Current page index
+  pageSize: number = 5; // Items per page
+  pageSizeOptions: number[] = [3, 5, 8]; // Options for page size
 
   constructor(private userService: UserService,
               private activatedRoute: ActivatedRoute,
-              private router:Router) {
+              private router:Router,
+              private toastr: ToastrService) {
   }
 
-  // ngOnInit(): void {
-  //   this.activatedRoute.params.subscribe((params) => {
-  //     this.page = +params['page'];
-  //     this.size = +params['size'];
-  //     this.loadUsersAndRefresh();
-  //   });
-  // }
   ngOnInit(): void {
-    const navigationState = this.router.getCurrentNavigation()?.extras.state;
-
-    if (navigationState) {
-      this.page = navigationState['page'];
-      this.size = navigationState['size'];
-    } else {
-      this.page = 0;
-      this.size = 7;
-    }
-      this.loadUsersAndRefresh();
+    this.userService.getSize().subscribe(
+      totalItems => this.totalItems = totalItems
+    )
+    this.loadUsersAndRefresh();
   }
 
   handleUserAction(action: UserAction) {
@@ -49,7 +42,7 @@ export class UserListComponent implements OnInit {
   }
 
   private loadUsersAndRefresh() {
-    this.userService.loadUsers(this.page, this.size).subscribe(() => {
+    this.userService.loadUsers(this.currentPage, this.pageSize).subscribe(() => {
       this.userService.getUsers().subscribe(users => {
         this.userList = users;
       });
@@ -71,8 +64,21 @@ export class UserListComponent implements OnInit {
     }
 
   onAddUserClicked(){
-    this.router.navigate(
-      ["management/users/register"]
-    );
+    const permissions = JSON.parse(localStorage.getItem('permissions') || '[]');
+    const hasBenefPermission = permissions.includes('AUTHORITY_USER_MANAGEMENT');
+
+    if(hasBenefPermission){
+      this.router.navigate(
+        ['/management/users/register/']
+      );
+    } else {
+      this.toastr.error("It seems that you don't have the permissions for completing this action.")
+    }
+  }
+
+  pageChanged(event: PageEvent) {
+    this.currentPage = event.pageIndex;
+    this.pageSize = event.pageSize;
+    this.loadUsersAndRefresh();
   }
 }

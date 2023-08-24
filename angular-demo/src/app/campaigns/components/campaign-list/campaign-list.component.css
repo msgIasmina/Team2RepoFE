@@ -82,7 +82,17 @@ h2 {
   vertical-align: middle;
   margin-right: 4px;
 }
-
+.sticky-button {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background: #4FC3A1;
+  color: #ffffff;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
 .paginator-container {
   position: fixed;
   bottom: 0;

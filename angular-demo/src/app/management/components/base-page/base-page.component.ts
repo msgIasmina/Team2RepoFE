@@ -57,13 +57,19 @@ export class BasePageComponent implements OnInit{
   goToPage(page: string) {
     this.toggleMenu();
     if(page === 'users') {
-      this.router.navigate(["/management/users/0/100"]);
+      this.router.navigate(["/management/users/list"]);
     }
     if(page === 'donators'){
-      this.router.navigate(["/management/donators/0/100"]);
+      this.router.navigate(["/management/donators/list"]);
     }
     if(page === 'campaigns'){
-      this.router.navigate(["/management/campaigns/listing"]);
+      this.router.navigate(["/management/campaigns/list"]);
+    }
+    if(page === 'donations'){
+      this.router.navigate(["/management/donations/list"])
+    }
+    if(page === 'home'){
+      this.router.navigate(["/management/home"]);
     }
   }
 

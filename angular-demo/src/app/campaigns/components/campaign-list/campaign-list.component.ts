@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {Campaign} from "../../models/campaign";
 import {CampaignService} from "../../services/campaign.service";
 import {Router} from "@angular/router";
+import {ToastrService} from "ngx-toastr";
 import {CampaignAction} from "../../models/CampaignAction";
 import {PageEvent} from "@angular/material/paginator";
 
@@ -24,8 +25,7 @@ export class CampaignListComponent implements OnInit {
 
   params: any = {};
 
-  constructor(private campaignService:CampaignService,
-              private router:Router) { }
+  constructor(private campaignService:CampaignService,private router:Router, private toastr: ToastrService) { }
 
   ngOnInit(): void {
     this.params['offset'] = 0;
@@ -56,10 +56,14 @@ export class CampaignListComponent implements OnInit {
 
   deleteCampaign(campaignToDelete:Campaign){
     this.campaignService.deleteCampaignById(campaignToDelete.id).subscribe(()=>{
-        this.loadCampaignsAndRefresh();
-      },
-      (error) => {
-
+    },
+      error => {
+        this.campaignService.loadCampaigns(this.params).subscribe(
+          campaignFilterPair => {
+            this.campaignList = campaignFilterPair.campaigns
+            this.totalItems = campaignFilterPair.totalItems
+          }
+        )
       }
     );
   }
@@ -73,7 +77,7 @@ export class CampaignListComponent implements OnInit {
         ['/management/campaigns/add/']
       );
     } else {
-      window.alert("Sorry but u don't have this permission (CAMP)...");
+      this.toastr.error("It seems that you don't have the permissions for completing this action.")
     }
   }
 
@@ -100,13 +104,14 @@ export class CampaignListComponent implements OnInit {
     this.params['offset'] = 0;
   }
 
-  // TODO
   clearAllFilterParamsAndRefresh(){
 
   }
+
   pageChanged(event: PageEvent): void {
     this.params['offset'] = event.pageIndex;
     this.params['pageSize'] = event.pageSize;
     this.loadCampaignsAndRefresh();
   }
+
 }

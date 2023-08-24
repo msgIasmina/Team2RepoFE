@@ -20,7 +20,6 @@ export class RoleGuard implements CanActivate{
       console.log("User data not found in local storage.");
     }
     userRole=this.roles;
-    console.log("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAICIII")
     console.log(userRole.find(role=>role===receivedRole))
 
     if(userRole.find(role=>role===receivedRole)){
@@ -28,7 +27,6 @@ export class RoleGuard implements CanActivate{
     }
     else{
       this.router.navigateByUrl('/home');
-      console.log("EEEEEEEEEELLLLLLSSSSSSSEEEEEE")
       return false;
     }
   }

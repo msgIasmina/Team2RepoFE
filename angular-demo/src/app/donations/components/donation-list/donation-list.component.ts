@@ -16,8 +16,6 @@ import {User} from "../../../user/models/user";
   styleUrls: ['./donation-list.component.css']
 })
 export class DonationListComponent implements OnInit {
-  // userId: number;
-
   donationList: Donation[];
   totalItems: number;
 
@@ -60,11 +58,6 @@ export class DonationListComponent implements OnInit {
               private router: Router) { }
 
   ngOnInit(): void {
-    // this.donationService.getSize().subscribe(size => {
-    //   this.totalItems = size;
-    // });
-
-
     this.filterParams['offset'] = 0;
     this.filterParams['pageSize'] = 5;
 

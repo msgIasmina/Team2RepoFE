@@ -11,16 +11,19 @@ export class UserService {
   ){}
 
   url:string = "http://localhost:8080/users";
-  url2:string = "http://localhost:8080/users";
 
   userList$: BehaviorSubject<User[]> = new BehaviorSubject<User[]>([]);
+  totalItems$: BehaviorSubject<number> = new BehaviorSubject<number>(0);
 
   loadUsers(page: number, size: number): Observable<User[]> {
-    var header = {
-      headers: new HttpHeaders()
-        .set("Authorization", localStorage.getItem("token") ?? '')
-    } //empty string daca e nedefinit
-    return this.http.get<User[]>(`${this.url}/${page}/${size}`, header).pipe(
+    const headers = new HttpHeaders()
+      .set("Authorization", localStorage.getItem("token") ?? '');
+
+    const params: any = {};
+    params['offset'] = page;
+    params['pageSize'] = size;
+
+    return this.http.get<User[]>(this.url, { headers, params }).pipe(
       tap(users => this.userList$.next(users))
     );
   }
@@ -29,11 +32,20 @@ export class UserService {
     return this.userList$.asObservable();
   }
 
+  getSize(): Observable<number> {
+    const headers = new HttpHeaders()
+      .set("Authorization", localStorage.getItem("token") ?? '');
+
+    return this.http.get<number>(this.url + '/size', { headers }).pipe(
+      tap(size => this.totalItems$.next(size))
+    );
+  }
+
   saveUser(newUser:User):Observable<User>{
     var header = {
       headers: new HttpHeaders()
         .set("Authorization", localStorage.getItem("token") ?? '')}
-    return this.http.post<User>(this.url2,newUser,header)
+    return this.http.post<User>(this.url,newUser,header)
     }
   updateUser(user: User): Observable<string> {
     var header = {
@@ -53,15 +65,6 @@ export class UserService {
     }
     return this.http.get<User>(`${this.url}/${id}`,header);
   }
-
-  firstLoginUpdate(id:string|null, pd:string): Observable<User>{
-    var header = {
-      headers: new HttpHeaders()
-        .set("Authorization", localStorage.getItem("token") ?? '')
-    }
-    return this.http.put<User>(this.url + `/` + id +"/firstLogin", {password:pd}, header);
-  }
-
   toggleActivation(user: User): Observable<User> {
     const url = `${this.url}/${user.id}/activation`;
 
