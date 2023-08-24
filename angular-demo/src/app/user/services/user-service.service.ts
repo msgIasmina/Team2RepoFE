@@ -2,7 +2,6 @@ import { Injectable } from '@angular/core';
 import { User } from "../models/user";
 import { BehaviorSubject, Observable,tap} from "rxjs";
 import { HttpClient, HttpHeaders } from "@angular/common/http";
-import {UserPair} from "../models/UserPair";
 @Injectable({
   providedIn: 'root'
 })
@@ -13,9 +12,10 @@ export class UserService {
 
   url:string = "http://localhost:8080/users";
 
-  userPair$: BehaviorSubject<UserPair> = new BehaviorSubject<UserPair>(new UserPair([],0));
+  userList$: BehaviorSubject<User[]> = new BehaviorSubject<User[]>([]);
+  totalItems$: BehaviorSubject<number> = new BehaviorSubject<number>(0);
 
-  loadUsers(page: number, size: number): Observable<UserPair> {
+  loadUsers(page: number, size: number): Observable<User[]> {
     const headers = new HttpHeaders()
       .set("Authorization", localStorage.getItem("token") ?? '');
 
@@ -23,14 +23,22 @@ export class UserService {
     params['offset'] = page;
     params['pageSize'] = size;
 
-    return this.http.get<UserPair>(this.url, { headers, params }).pipe(
-      tap(userPair => this.userPair$.next(userPair))
+    return this.http.get<User[]>(this.url, { headers, params }).pipe(
+      tap(users => this.userList$.next(users))
     );
   }
 
+  getUsers(): Observable<User[]> {
+    return this.userList$.asObservable();
+  }
 
-  getUsers(): Observable<UserPair> {
-    return this.userPair$.asObservable();
+  getSize(): Observable<number> {
+    const headers = new HttpHeaders()
+      .set("Authorization", localStorage.getItem("token") ?? '');
+
+    return this.http.get<number>(this.url + '/size', { headers }).pipe(
+      tap(size => this.totalItems$.next(size))
+    );
   }
 
   saveUser(newUser:User):Observable<User>{

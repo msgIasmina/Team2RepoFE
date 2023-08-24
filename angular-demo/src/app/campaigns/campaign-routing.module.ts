@@ -6,7 +6,7 @@ import {CampaignComponent} from "./components/campaign/campaign.component";
 import {CampaignEditComponent} from "./components/campaign-edit/campaign-edit.component";
 
 const routes: Routes = [
-   {path:"listing",component:CampaignListComponent},
+   {path:"list",component:CampaignListComponent},
    {path:"add",component:CampaignComponent},
    {path:"edit/:id",component:CampaignEditComponent}
 ];

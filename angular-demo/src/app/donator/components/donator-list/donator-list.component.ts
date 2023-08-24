@@ -3,8 +3,8 @@ import {Donator} from "../../models/donator";
 import {DonatorService} from "../../services/donator.service";
 import {ActivatedRoute, Router} from "@angular/router";
 import {DonatorAction} from "../../models/DonatorAction";
-import {User} from "../../../user/models/user";
 import {ToastrService} from "ngx-toastr";
+import {PageEvent} from "@angular/material/paginator";
 
 @Component({
   selector: 'app-donator-list',
@@ -14,8 +14,12 @@ import {ToastrService} from "ngx-toastr";
 export class DonatorListComponent implements OnInit {
 
   donatorList: Donator[];
-  page: number;
-  size: number;
+  totalItems: number;
+
+  currentPage: number = 0; // Current page index
+  pageSize: number = 5; // Items per page
+  pageSizeOptions: number[] = [3, 5, 8]; // Options for page size
+
   constructor(private donatorService: DonatorService,
               private activatedRoute: ActivatedRoute,
               private router:Router,
@@ -23,11 +27,14 @@ export class DonatorListComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.activatedRoute.params.subscribe((params) => {
-      this.page = +params['page'];
-      this.size = +params['size'];
+      this.currentPage = 0;
+      this.pageSize = 5;
+      this.donatorService.getSize().subscribe(
+        totalItems => {
+          this.totalItems = totalItems;
+        }
+      )
       this.loadDonatorsAndRefresh();
-    });
   }
 
   handleDonatorAction(action: DonatorAction) {
@@ -40,7 +47,7 @@ export class DonatorListComponent implements OnInit {
   }
 
   private loadDonatorsAndRefresh() {
-    this.donatorService.loadDonators(this.page, this.size).subscribe(() => {
+    this.donatorService.loadDonators(this.currentPage, this.pageSize).subscribe(() => {
       this.donatorService.getDonators().subscribe(donators => {
         this.donatorList = donators;
       });
@@ -56,8 +63,16 @@ export class DonatorListComponent implements OnInit {
   private deleteDonator(donatorToDelete: Donator) {
     this.activatedRoute.params.subscribe(() => {
       this.donatorService.deleteDonator(donatorToDelete).subscribe(() => {
+        this.toastr.success("Donator deleted successfully")
+        this.loadDonatorsAndRefresh()
+          this.donatorService.getSize().subscribe(
+            size => {
+              this.totalItems = size;
+            }
+          )
         },
         error => {
+        this.toastr.error(error.message)
           this.loadDonatorsAndRefresh() // Refresh the list after deletion
         })
     })
@@ -74,6 +89,11 @@ export class DonatorListComponent implements OnInit {
     } else {
       this.toastr.error("It seems that you don't have the permissions for completing this action.")
     }
+  }
 
+  pageChanged(event: PageEvent): void{
+    this.currentPage = event.pageIndex;
+    this.pageSize = event.pageSize;
+    this.loadDonatorsAndRefresh();
   }
 }

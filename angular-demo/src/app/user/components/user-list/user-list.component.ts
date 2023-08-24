@@ -18,9 +18,7 @@ export class UserListComponent implements OnInit {
 
   currentPage: number = 0; // Current page index
   pageSize: number = 5; // Items per page
-  pageSizeOptions: number[] = [3, 5, 6]; // Options for page size
-
-  params: any = {};
+  pageSizeOptions: number[] = [3, 5, 8]; // Options for page size
 
   constructor(private userService: UserService,
               private activatedRoute: ActivatedRoute,
@@ -29,9 +27,9 @@ export class UserListComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.params['offset'] = 0;
-    this.params['pageSize'] = 5;
-
+    this.userService.getSize().subscribe(
+      totalItems => this.totalItems = totalItems
+    )
     this.loadUsersAndRefresh();
   }
 
@@ -45,9 +43,8 @@ export class UserListComponent implements OnInit {
 
   private loadUsersAndRefresh() {
     this.userService.loadUsers(this.currentPage, this.pageSize).subscribe(() => {
-      this.userService.getUsers().subscribe(userPair => {
-        this.userList = userPair.users;
-        this.totalItems = userPair.totalItems;
+      this.userService.getUsers().subscribe(users => {
+        this.userList = users;
       });
     });
   }
@@ -80,8 +77,8 @@ export class UserListComponent implements OnInit {
   }
 
   pageChanged(event: PageEvent) {
-    this.params['offset'] = event.pageIndex;
-    this.params['pageSize'] = event.pageSize;
+    this.currentPage = event.pageIndex;
+    this.pageSize = event.pageSize;
     this.loadUsersAndRefresh();
   }
 }

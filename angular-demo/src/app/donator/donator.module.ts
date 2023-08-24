@@ -9,6 +9,7 @@ import {UpdateDonatorComponent} from "./components/update-donator/update-donator
 import {DonatorListComponent} from "./components/donator-list/donator-list.component";
 import {MatButtonModule} from "@angular/material/button";
 import {TranslocoModule} from "@ngneat/transloco";
+import {MatPaginatorModule} from "@angular/material/paginator";
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import {TranslocoModule} from "@ngneat/transloco";
         ReactiveFormsModule,
         DonatorRoutingModule,
         MatButtonModule,
-        TranslocoModule
+        TranslocoModule,
+        MatPaginatorModule
     ]
 })
 export class DonatorModule { }
