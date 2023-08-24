@@ -9,6 +9,7 @@ import { CampaignListComponent } from './components/campaign-list/campaign-list.
 import { CampaignFrmComponent } from './components/campaign-frm/campaign-frm.component';
 import { CampaignEditComponent } from './components/campaign-edit/campaign-edit.component';
 import {CampaignComponent} from "./components/campaign/campaign.component";
+import {MatIconModule} from "@angular/material/icon";
 import {MatPaginatorModule} from "@angular/material/paginator";
 import {TranslocoModule} from "@ngneat/transloco";
 
@@ -27,7 +28,8 @@ import {TranslocoModule} from "@ngneat/transloco";
     MatButtonModule,
     FormsModule,
     MatPaginatorModule,
-    TranslocoModule
+    TranslocoModule,
+    MatIconModule
   ],
   exports: [
     CampaignComponent

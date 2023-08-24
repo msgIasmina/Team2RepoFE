@@ -5,10 +5,9 @@ import {ReactiveFormsModule} from "@angular/forms";
 import {AccountService} from "./services/account.service";
 import { FirstLoginComponent } from './components/first-login/first-login.component';
 import {MatButtonModule} from "@angular/material/button";
-
-
 import {LoginRoutingModule} from "./login-routing.module";
 import {TranslocoModule} from "@ngneat/transloco";
+import {MatIconModule} from "@angular/material/icon";
 
 @NgModule({
   declarations: [
@@ -20,7 +19,8 @@ import {TranslocoModule} from "@ngneat/transloco";
         ReactiveFormsModule,
         LoginRoutingModule,
         MatButtonModule,
-        TranslocoModule
+        TranslocoModule,
+      MatIconModule
     ], providers: [
     AccountService
   ]

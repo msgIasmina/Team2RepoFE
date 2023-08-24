@@ -71,6 +71,9 @@ export class BasePageComponent implements OnInit{
     if(page === 'home'){
       this.router.navigate(["/management/home"]);
     }
+    if(page === 'donations'){
+      this.router.navigate(["/management/donations/list"]);
+    }
   }
 
 

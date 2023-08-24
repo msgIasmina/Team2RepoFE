@@ -30,20 +30,7 @@ export class UpdateUserComponent implements OnInit {
       response => window.alert(response)
     )
     window.alert("Successfully User Edited!");
-    window.location.href = '/management/users/0/10';
-  }
-
-  toggleSelection(role: Role) {
-    const index = this.selectedRoles.findIndex(selectedRole => selectedRole.id === role.id);
-    if (index === -1) {
-      this.selectedRoles.push(role);
-    } else {
-      this.selectedRoles.splice(index, 1);
-    }
-  }
-
-  isSelected(role: Role): boolean {
-    return this.selectedRoles.some(selectedRole => selectedRole.id === role.id);
+    window.location.href = '/management/users/list';
   }
 
   ngOnInit(): void {
@@ -61,11 +48,8 @@ export class UpdateUserComponent implements OnInit {
         }
       });
     });
-
-    // Retrieve selected roles from the shared service
     this.selectedRoles = this.selectedRolesService.selectedRoles;
 
-    // Fetch all roles and populate the roleList
     this.roleService.getRoles().subscribe(roles => {
       this.roleList = roles;
     });

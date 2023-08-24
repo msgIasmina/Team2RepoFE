@@ -1,5 +1,10 @@
 <div *transloco="let t">
-<p></p>
+  <div>
+    <button (click)="exportToCSV()">
+      Export Donations
+      <mat-icon>download</mat-icon>
+    </button>
+  </div>
 <h2>{{t('donationList.header')}}</h2>
 <div class="filter">
   <label>{{t('donationList.filters.amountRange')}}</label>
@@ -118,3 +123,4 @@
   </mat-paginator>
 </div>
 </div>
+

@@ -1,4 +1,8 @@
-<div *transloco="let t">
-  <button mat-raised-button color="accent" (click)="onEditClicked(donator)">{{t('donatorDetails.editBtn')}}</button>
-  <button mat-raised-button color="warn" (click)="onDeleteClicked(donator)">{{t('donatorDetails.deleteBtn')}}</button>
+<div>
+  <button mat-raised-button color="accent" (click)="onEditClicked(donator)">
+    <mat-icon>edit</mat-icon>
+  </button>
+  <button mat-raised-button color="warn" (click)="onDeleteClicked(donator)">
+    <mat-icon>delete</mat-icon>
+  </button>
 </div>

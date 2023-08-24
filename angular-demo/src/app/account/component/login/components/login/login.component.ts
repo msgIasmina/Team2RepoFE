@@ -13,6 +13,8 @@ import { MD5 } from 'crypto-js';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
+  isHelpFieldOpen: boolean = false;
+  showPassword: boolean = false;
 
   loginForm = this.fb.group({
     username: ['', Validators.required],
@@ -46,6 +48,14 @@ export class LoginComponent implements OnInit {
         this.toastr.error(err.message);
       }
     );
+  }
+
+  toggleHelpField() {
+    this.isHelpFieldOpen = !this.isHelpFieldOpen;
+  }
+
+  togglePassword(): void {
+    this.showPassword = !this.showPassword;
   }
 
 }

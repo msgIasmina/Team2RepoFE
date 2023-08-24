@@ -9,6 +9,7 @@ import {PageEvent} from "@angular/material/paginator";
 import {DonationService} from "../../services/donation.service";
 import {DonationAction} from "../../models/DonationAction";
 import {User} from "../../../user/models/user";
+import {HttpClient} from "@angular/common/http";
 
 @Component({
   selector: 'app-donation-list',
@@ -55,7 +56,8 @@ export class DonationListComponent implements OnInit {
               private userService: UserService,
               private campaignService: CampaignService,
               private activatedRoute: ActivatedRoute,
-              private router: Router) { }
+              private router: Router,
+              private http: HttpClient) { }
 
   ngOnInit(): void {
     this.filterParams['offset'] = 0;
@@ -203,4 +205,50 @@ export class DonationListComponent implements OnInit {
   updateApprovedDateEndMin() {
     this.minApprovedDateEnd = this.approvedDateStart;
   }
+
+  exportToCSV() {
+    const filteredData: Donation[] = this.filterParams.filteredData;
+
+    // if (filteredData.length === 0) {
+    //   this._snackBar.open('No data to export.', 'OK', {
+    //     duration: 3000,
+    //     panelClass: 'error-snack',
+    //   });
+    //   return;
+    // }
+
+    const csvData = this.generateCSVData(filteredData);
+    this.downloadCSV(csvData);
+  }
+
+  generateCSVData(data: Donation[]): string {
+    const headers = ['Amount', 'Currency', 'Campaign', 'Creator', 'Creation Date', 'Benefactor', 'Approved', 'Notes'];
+    const rows = data.map(donation => {
+      return [
+        donation.amount.toString(),
+        donation.currency,
+        `${donation.createdBy.firstName} ${donation.createdBy.lastName}`,
+        donation.createDate.toString(),
+        `${donation.benefactor.firstName || ''} ${donation.benefactor.lastName || ''}`,
+        donation.approved,
+        `${donation.notes || ''}`
+      ];
+    });
+
+    const csvArray = [headers, ...rows];
+
+    return csvArray.map(row => row.join(',')).join('\n');
+  }
+
+  downloadCSV(csvData: string) {
+    const blob = new Blob([csvData], { type: 'text/csv' });
+    const url = window.URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = 'donation_data.csv';
+    a.click();
+    window.URL.revokeObjectURL(url);
+  }
 }
+
+

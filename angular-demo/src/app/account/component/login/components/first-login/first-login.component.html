@@ -1,19 +1,19 @@
 <div class="grid align__item" *transloco="let t">
-<h3>{{t('firstLogin.header')}}</h3>
+  <div class="first-login">
+    <p class="info-text">It looks like it's your first time logging in.</p>
+    <p class="info-text">Please change your password!</p>
 
-<form [formGroup]="passwdForm" (ngSubmit)="onSave()">
-  <div>
-    <label for="password">{{t('firstLogin.password')}}</label>
-    <input id="password" type="text" formControlName="password">
+    <form [formGroup]="passwdForm" (ngSubmit)="onSave()">
+      <div class="form-group">
+        <input id="password" type="password" formControlName="password" class="form-control" placeholder="Enter your new password">
+        <div class="error-msg" *ngIf="passwdForm.get('password')?.hasError('required')">Password is required</div>
+        <div class="error-msg" *ngIf="passwdForm.get('password')?.hasError('minlength')">Minimum 10 characters</div>
+        <div class="error-msg" *ngIf="passwdForm.get('password')?.hasError('specialChar')">At least one special character</div>
+        <div class="error-msg" *ngIf="passwdForm.get('password')?.hasError('uppercase')">At least one uppercase character</div>
+        <div class="error-msg" *ngIf="passwdForm.get('password')?.hasError('number')">At least one number</div>
+      </div>
+
+      <button mat-raised-button [disabled]="!passwdForm.valid" color="accent">Save</button>
+    </form>
   </div>
-
-  <p>{{t('firstLogin.disclaimer')}}</p>
-  <button mat-raised-button disabled type="submit"  [disabled]="!passwdForm.valid" color="accent">{{t('firstLogin.save')}}</button>
-  <div *ngIf="passwdForm.get('password')?.hasError('required')">Password is required</div>
-  <div *ngIf="passwdForm.get('password')?.hasError('minlength')">Minimum 10 characters</div>
-  <div *ngIf="passwdForm.get('password')?.hasError('specialChar')">At least one special character</div>
-  <div *ngIf="passwdForm.get('password')?.hasError('uppercase')">At least one uppercase character</div>
-  <div *ngIf="passwdForm.get('password')?.hasError('number')">At least one number</div>
-</form>
-
-</div>
+  </div>

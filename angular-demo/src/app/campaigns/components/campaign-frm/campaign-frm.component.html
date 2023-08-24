@@ -1,6 +1,7 @@
+<div>
 <form class="form" [formGroup]="campaignForm" (ngSubmit)="onSave()" *transloco="let t">
   <div class="form__field">
-    <p>{{t('cForm.name')}}</p>
+    <p>{{t('cForm.name')}}:<span>*</span></p>
     <input
       [placeholder]="campaign.name"
       type="text"
@@ -9,7 +10,7 @@
   </div>
 
   <div class="form__field">
-    <p>{{t('cForm.purpose')}}</p>
+    <p>{{t('cForm.purpose')}}:<span>*</span></p>
     <input
       [placeholder]="campaign.purpose"
       type="text"
@@ -20,3 +21,4 @@
     <button mat-raised-button disabled type="submit" [disabled]="!campaignForm.valid" color="accent">{{t('cForm.submitBtn')}}</button>
   </div>
 </form>
+</div>

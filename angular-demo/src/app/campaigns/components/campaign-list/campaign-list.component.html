@@ -1,7 +1,7 @@
 <div *transloco="let t">
 <p></p>
   <h2>{{t('cList.header')}}</h2>
-  <button mat-raised-button color="accent" (click)="onAddCampaignClicked()">{{t('cList.addBtn')}}</button>
+  <button mat-raised-button color="accent" (click)="onAddCampaignClicked()"><mat-icon>add</mat-icon></button>
 <div class="filter">
   <label>Search by name: </label>
   <input type="text" [(ngModel)]="nameTerm" placeholder="Name of Campaign">
@@ -46,3 +46,4 @@
   </mat-paginator>
 </div>
 </div>
+

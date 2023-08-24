@@ -1,6 +1,6 @@
 <form class="form" [formGroup]="registerForm" (ngSubmit)="onSave()" *transloco="let t">
   <div class="form__field">
-    <p>{{t('donatorForm.firstname')}}</p>
+    <p>{{t('donatorForm.firstname')}}:<span>*</span></p>
     <input
       [placeholder]="donator.firstName"
       type="text"
@@ -21,7 +21,7 @@
   </div>
 
   <div class="form__field">
-    <p>{{t('donatorForm.lastname')}}</p>
+    <p>{{t('donatorForm.lastname')}}:<span>*</span></p>
     <input
       [placeholder]="donator.lastName"
       type="text"

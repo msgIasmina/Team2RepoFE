@@ -1,7 +1,9 @@
 <div *transloco="let t">
   <p></p>
   <h2>List of Donators</h2>
-  <button mat-raised-button color="accent" (click)="onAddDonatorClicked()">Add Donator</button>
+  <button mat-raised-button  class="sticky-button" (click)="onAddDonatorClicked()">
+    <mat-icon>add</mat-icon>
+  </button>
   <div class="table-wrapper">
     <table class="fl-table">
       <thead>
