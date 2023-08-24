@@ -14,7 +14,7 @@ export  class LoginGuard implements CanActivate {
     const newUser: string | null = localStorage.getItem("newUser");
         if(logged === "true"){
           if(newUser === "true"){
-            window.alert("newUser")
+            this.router.navigate(["/firstLogin"])
           }else{
             return true;
           }

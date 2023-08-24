@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import {RouterModule, Routes} from "@angular/router";
 import {BasePageComponent} from "./components/base-page/base-page.component";
-import {LoginGuard} from "./utils/utils/login-guard";
+import {LoginGuard} from "../account/component/login/utils/login-guard";
 
 const routes: Routes = [
   {path:"management",
