@@ -35,7 +35,7 @@ h2 {
 /* Table Styles */
 
 .table-wrapper{
-  margin: 20px 70px 70px;
+  margin: 70px 350px;
   box-shadow: 0px 35px 50px rgba( 0, 0, 0, 0.2 );
 }
 
@@ -90,6 +90,24 @@ h2 {
 
 .inactive-icon {
   color: red;
+}
+
+.sticky-button {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background: #4FC3A1;
+  color: #ffffff;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.sticky-button:hover {
+  background-color: darkgreen;
+  color: #ffffff;
+  outline: none;
 }
 
 

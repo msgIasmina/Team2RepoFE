@@ -47,7 +47,7 @@ export class BasePageComponent implements OnInit{
   goToPage(page: string) {
     this.toggleMenu();
     if(page === 'users') {
-      this.router.navigate(["/management/users/0/100"]);
+      this.router.navigate(["/management/users/list"]);
     }
     if(page === 'donators'){
       this.router.navigate(["/management/donators/0/100"]);
@@ -57,6 +57,9 @@ export class BasePageComponent implements OnInit{
     }
     if(page === 'home'){
       this.router.navigate(["/management/home"]);
+    }
+    if(page === 'donations'){
+      this.router.navigate(["/management/donations/list"]);
     }
   }
 

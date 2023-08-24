@@ -9,6 +9,7 @@ import {PageEvent} from "@angular/material/paginator";
 import {DonationService} from "../../services/donation.service";
 import {DonationAction} from "../../models/DonationAction";
 import {User} from "../../../user/models/user";
+import {HttpClient} from "@angular/common/http";
 
 @Component({
   selector: 'app-donation-list',
@@ -57,7 +58,8 @@ export class DonationListComponent implements OnInit {
               private userService: UserService,
               private campaignService: CampaignService,
               private activatedRoute: ActivatedRoute,
-              private router: Router) { }
+              private router: Router,
+              private http: HttpClient) { }
 
   ngOnInit(): void {
     this.donationService.getSize().subscribe(size => {
@@ -201,5 +203,22 @@ export class DonationListComponent implements OnInit {
 
   updateApprovedDateEndMin() {
     this.minApprovedDateEnd = this.approvedDateStart;
+  }
+
+  exportDonations() {
+    const currentPage = this.currentPage;
+    const pageSize = this.pageSize;
+
+    const url = `/donations/downloadCSV?currentPage=${currentPage}&pageSize=${pageSize}`;
+    // Use HttpClient to trigger the download
+    this.http.get(url, { responseType: 'blob' }).subscribe((data: Blob) => {
+      const blob = new Blob([data], { type: 'text/csv' });
+      const downloadUrl = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = downloadUrl;
+      a.download = 'donations.csv';
+      a.click();
+      URL.revokeObjectURL(downloadUrl);
+    });
   }
 }

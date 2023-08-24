@@ -94,3 +94,9 @@ h2 {
   border-radius: 5px;
   cursor: pointer;
 }
+
+.sticky-button:hover {
+  background-color: darkgreen;
+  color: #ffffff;
+  outline: none;
+}
