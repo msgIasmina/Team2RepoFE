@@ -27,11 +27,7 @@ export class LoginComponent implements OnInit {
 
   onLogin() {
     const username=this.loginForm.get('username')?.value;
-    //const salt = bcrypt.genSaltSync(10);
-    //const password= bcrypt.hashSync(this.loginForm.get('password')?.value);
-    //const password= this.loginForm.get('password')?.value;
     const password = MD5(this.loginForm.get('password')?.value).toString();
-    console.log(password);
     const loginRequest:LoginRequest = new LoginRequest(username,password);
     this.loginService.login(loginRequest).subscribe(
       response => {
