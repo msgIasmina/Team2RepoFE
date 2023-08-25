@@ -52,7 +52,7 @@
         *ngFor="let role of roleList"
         [value]="role.name"
         (click)="toggleSelection(c, role)"
-        [ngClass]="{'selected-chip': isSelected(role)}"
+        [ngClass]="{'selected-chip': isSelected(c,role)}"
       >
         {{role.name}}
       </mat-chip>
