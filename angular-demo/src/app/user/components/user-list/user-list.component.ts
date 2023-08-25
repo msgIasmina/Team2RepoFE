@@ -83,4 +83,8 @@ export class UserListComponent implements OnInit {
     this.pageSize = event.pageSize;
     this.loadUsersAndRefresh();
   }
+
+  private manageRoles(user: User) {
+    
+  }
 }

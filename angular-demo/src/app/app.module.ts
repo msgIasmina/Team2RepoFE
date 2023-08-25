@@ -2,9 +2,7 @@ import {NgModule} from '@angular/core';
 import {BrowserModule} from '@angular/platform-browser';
 import {AppComponent} from './app.component';
 import {AppRoutingModule} from './app-routing.module';
-import {LoginModule} from "./login/login.module";
 import {HTTP_INTERCEPTORS, HttpClient, HttpClientModule} from "@angular/common/http";
-import {LoginService} from "./login/services/login.service";
 import {LoginModule} from "./account/component/login/login.module";
 import {Interceptor} from "./util/interceptors/interceptor";
 import {RoleGuard} from "./util/Roleguard";
@@ -18,6 +16,7 @@ import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {MatChipsModule} from "@angular/material/chips";
 import { HomeComponent } from './homePage/components/home/home.component';
 import { TranslocoRootModule } from './transloco-root.module';
+import {DonationsModule} from "./donations/donations.module";
 
 @NgModule({
   declarations: [
