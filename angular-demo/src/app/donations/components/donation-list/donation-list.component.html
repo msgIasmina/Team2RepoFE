@@ -99,7 +99,14 @@
       <td>{{ donation.campaign?.name}}</td>
       <td>{{ donation.createdBy?.firstName}} {{ donation.createdBy?.lastName}}</td>
       <td>{{ donation.createDate}}</td>
-      <td>{{ donation.benefactor?.firstName}} {{ donation.benefactor?.lastName}}</td>
+      <td>
+        <ng-container *ngIf="donation.benefactor">
+          {{ donation.benefactor.firstName }} {{ donation.benefactor.lastName }}
+        </ng-container>
+        <ng-container *ngIf="!donation.benefactor">
+          <span>Unknown</span>
+        </ng-container>
+      </td>
       <mat-icon class="icon" [ngClass]="{ 'approved-icon': donation.approved, 'not-approved-icon': !donation.approved }">
         {{ donation.approved ? 'done' : 'pending_actions' }}
       </mat-icon>
