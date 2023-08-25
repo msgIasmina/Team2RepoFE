@@ -15,6 +15,7 @@ import {UserService} from "./services/user-service.service";
 import {TranslocoModule} from "@ngneat/transloco";
 import {MatPaginatorModule} from "@angular/material/paginator";
 import {MatSpinner} from "@angular/material/progress-spinner";
+import {PermissionModule} from "../permission/permission.module";
 
 
 @NgModule({
@@ -38,7 +39,8 @@ import {MatSpinner} from "@angular/material/progress-spinner";
         MatButtonModule,
         MatIconModule,
         TranslocoModule,
-        MatPaginatorModule
+        MatPaginatorModule,
+       PermissionModule
     ]
 })
 export class UserModule { }

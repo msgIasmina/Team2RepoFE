@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { User } from '../../models/user';
 import { UserService } from "../../services/user-service.service";
 import {ActivatedRoute, Router} from '@angular/router';
@@ -38,6 +38,8 @@ export class UserListComponent implements OnInit {
       this.toggleActivation(action.user);
     } else if (action.type === 'edit') {
       this.editUser(action.user);
+    } else if (action.type === 'manageRoles') {
+      this.manageRoles(action.user);
     }
   }
 
@@ -80,5 +82,9 @@ export class UserListComponent implements OnInit {
     this.currentPage = event.pageIndex;
     this.pageSize = event.pageSize;
     this.loadUsersAndRefresh();
+  }
+
+  private manageRoles(user: User) {
+    
   }
 }

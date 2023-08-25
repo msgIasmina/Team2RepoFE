@@ -1,0 +1,20 @@
+<div class="role-details">
+  <h2>{{rolePermission.role}}</h2>
+  <form [formGroup]="form">
+  <label for="addMultiplePermissions">Add Permissions</label>
+    <mat-select class="multi-select"  formControlName="permissionsToBeAdded" multiple  id="addMultiplePermissions">
+      <mat-option *ngFor="let permission of missingPermissions" [value]="permission">
+        {{permission.permission}}
+      </mat-option>
+    </mat-select>
+  <button class="submit-button" (click)="addPermissions()">Submit added permissions</button>
+  <br>
+  <label for="removeMultiplePermissions">Remove Permissions</label>
+  <mat-select class="multi-select" formControlName="permissionsToBeDeleted" multiple  id="removeMultiplePermissions">
+    <mat-option *ngFor="let permission of acquiredPermissions" [value]="permission">
+      {{permission.permission}}
+    </mat-option>
+  </mat-select>
+  <button class="submit-button" (click)="removePermissions()">Submit removed permissions</button>
+  </form>
+</div>

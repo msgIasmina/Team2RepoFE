@@ -4,4 +4,5 @@
     <mat-icon>{{ user.active ? 'delete' : 'check_circle' }}</mat-icon>
     {{ user.active ? t('uDetails.deleteBtn.deactivate') : t('uDetails.deleteBtn.activate') }}
   </button>
+  <button mat-raised-button (click)="onManageRolesClicked()"><mat-icon>lock_open</mat-icon></button>
 </div>
