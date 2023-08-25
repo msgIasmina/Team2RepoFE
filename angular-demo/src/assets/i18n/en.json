@@ -1,6 +1,6 @@
 {
   "navbar": {
-    "logout": "Sign Out",
+    "logout": "Log Out",
     "users": "Users",
     "donators": "Donators",
     "campaigns": "Campaigns"
