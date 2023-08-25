@@ -35,15 +35,15 @@ export class UserFromComponent implements OnInit {
               private toastr:ToastrService) {
   }
 
-  toggleSelection(chip: MatChip, role: Role) {
-    chip.toggleSelected();
-    const index = this.selectedRoles.indexOf(role);
-    if (chip.selected && index === -1) {
-      this.selectedRoles.push(role);
-    } else if (!chip.selected && index !== -1) {
-      this.selectedRoles.splice(index, 1);
-    }
-  }
+  // toggleSelection(chip: MatChip, role: Role) {
+  //   chip.toggleSelected();
+  //   const index = this.selectedRoles.indexOf(role);
+  //   if (chip.selected && index === -1) {
+  //     this.selectedRoles.push(role);
+  //   } else if (!chip.selected && index !== -1) {
+  //     this.selectedRoles.splice(index, 1);
+  //   }
+  // }
 
   showFirstNameError(): boolean {
     const firstNameControl = this.registerForm.get('firstName');
@@ -87,13 +87,13 @@ export class UserFromComponent implements OnInit {
   getFilteredRole(role:Role){
    return  this.selectedRoles.filter(selectedRole => selectedRole.name===role.name)
   }
-  isSelected(chip: MatChip, role: Role): boolean {
-    let filteredRole = this.getFilteredRole(role);
-    if(filteredRole.length > 0){
-      chip.toggleSelected();
-    }
-    return (filteredRole.length > 0)
-  }
+  // isSelected(chip: MatChip, role: Role): boolean {
+  //   let filteredRole = this.getFilteredRole(role);
+  //   if(filteredRole.length > 0){
+  //     chip.toggleSelected();
+  //   }
+  //   return (filteredRole.length > 0)
+  // }
 
   onSave() {
     this.submitted = true;
@@ -127,14 +127,6 @@ export class UserFromComponent implements OnInit {
     this.roleService.getRoles().subscribe((roles) => {
       this.roleList = roles;
       this.selectedRoles = this.user.roles as Role[];
-      for (var role of this.selectedRoles){
-        console.log(role.name.toString())
-        console.log(this.selectedRoles)
-        let myChip = <HTMLElement>document.getElementsByClassName(role.name.toString())[0] as unknown as MatChip
-        console.log(myChip)
-        //myChip.toggleSelected()
-      }
-
     });
     if(this.functionality==="update") {
       this.registerForm.setValue({
@@ -144,9 +136,41 @@ export class UserFromComponent implements OnInit {
         'mobileNumber': this.user.mobileNumber,
       })
     }
-
-
-
   }
+
+  getChipClass(role: Role): string {
+    console.log(role.name)
+    console.log(this.isSelected(role))
+    if (this.isSelected(role)) {
+      return 'selected-chip';
+    } else {
+      return '';
+    }
+  }
+
+  isSelected(role: Role): boolean {
+    // Implement your logic to determine if the role is selected
+    // For example, you might have a selectedRoles array to track selected roles
+    let filteredRole = this.getFilteredRole(role);
+    return (filteredRole.length > 0)
+  }
+
+  toggleSelection(c: MatChip, role: Role): void {
+    const index = this.selectedRoles.indexOf(this.getFilteredRole(role)[0]);
+    if (index === -1) {
+      this.selectedRoles.push(role);
+    } else {
+      this.selectedRoles.splice(index, 1);
+    }
+  }
+
+  getChipBackgroundColor(role: Role): string {
+    if (this.getChipClass(role) === 'selected-chip') {
+      return '#Fa5353'; // Replace with the desired color
+    } else {
+      return ''; // No background color
+    }
+  }
+
 
 }
