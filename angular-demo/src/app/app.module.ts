@@ -17,7 +17,6 @@ import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {MatChipsModule} from "@angular/material/chips";
 import { HomeComponent } from './homePage/components/home/home.component';
 import { TranslocoRootModule } from './transloco-root.module';
-import {DonationsModule} from "./donations/donations.module";
 
 @NgModule({
   declarations: [
