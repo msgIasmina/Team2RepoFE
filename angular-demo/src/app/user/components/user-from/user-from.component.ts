@@ -47,28 +47,52 @@ export class UserFromComponent implements OnInit {
 
   showFirstNameError(): boolean {
     const firstNameControl = this.registerForm.get('firstName');
-    let isRegistration:boolean = this.functionality==="register";
-    return this.submitted && firstNameControl?.hasError('required') && isRegistration || false;
+    if (this.functionality === "register"){
+      return this.submitted && firstNameControl?.hasError('required') || false;
+    } else if (this.functionality === "update"){
+      return firstNameControl?.hasError('required') || false;
+    }
+    return false;
   }
 
   showLastNameError(): boolean {
     const lastNameControl = this.registerForm.get('lastName');
-    let isRegistration:boolean = this.functionality==="register";
-    return this.submitted && lastNameControl?.hasError('required') && isRegistration|| false;
+    if (this.functionality === "register"){
+      return this.submitted && lastNameControl?.hasError('required') || false;
+    } else if (this.functionality === "update"){
+      return lastNameControl?.hasError('required') || false;
+    }
+    return false;
   }
 
   showEmailError(): boolean {
     const emailControl = this.registerForm.get('email');
-    let isRegistration:boolean = this.functionality==="register";
-    return this.submitted && emailControl?.hasError('required') && isRegistration || false;
+    if(this.functionality==="register"){
+      return this.submitted && emailControl?.hasError('required') || false;
+    }else if (this.functionality === "update"){
+      return emailControl?.hasError('required') || false;
+    }
+    return false;
   }
 
   showRolesError(): boolean {
-    return this.submitted && this.selectedRoles.length === 0;
+    if (this.functionality === "register"){
+      return this.submitted && this.selectedRoles.length === 0;
+    } else if (this.functionality === "update") {
+      return this.selectedRoles.length === 0;
+    }
+    return false;
   }
 
-  isSelected(role: Role): boolean {
-    return this.roleList.indexOf(role) !== -1;
+  getFilteredRole(role:Role){
+   return  this.selectedRoles.filter(selectedRole => selectedRole.name===role.name)
+  }
+  isSelected(chip: MatChip, role: Role): boolean {
+    let filteredRole = this.getFilteredRole(role);
+    if(filteredRole.length > 0){
+      chip.toggleSelected();
+    }
+    return (filteredRole.length > 0)
   }
 
   onSave() {
@@ -103,6 +127,14 @@ export class UserFromComponent implements OnInit {
     this.roleService.getRoles().subscribe((roles) => {
       this.roleList = roles;
       this.selectedRoles = this.user.roles as Role[];
+      for (var role of this.selectedRoles){
+        console.log(role.name.toString())
+        console.log(this.selectedRoles)
+        let myChip = <HTMLElement>document.getElementsByClassName(role.name.toString())[0] as unknown as MatChip
+        console.log(myChip)
+        //myChip.toggleSelected()
+      }
+
     });
     if(this.functionality==="update") {
       this.registerForm.setValue({
@@ -112,6 +144,9 @@ export class UserFromComponent implements OnInit {
         'mobileNumber': this.user.mobileNumber,
       })
     }
+
+
+
   }
 
 }
