@@ -5,6 +5,7 @@ import {UserService} from "../../services/user-service.service";
 import {RoleService} from "../../services/role.service";
 import {Role} from "../../models/role";
 import {SelectedRolesService} from "../../services/selected-roles.service";
+import {ToastrService} from "ngx-toastr";
 
 @Component({
   selector: 'app-update-user',
@@ -22,15 +23,20 @@ export class UpdateUserComponent implements OnInit {
   constructor(private activatedRoute: ActivatedRoute,
               private userService: UserService,
               private selectedRolesService: SelectedRolesService,
-              private roleService: RoleService
+              private roleService: RoleService,
+              private toastr: ToastrService,
+              private router: Router
   ) {}
 
   updateUser(user: User) {
     this.userService.updateUser(user).subscribe(
-      response => window.alert(response)
+      response => {
+        this.toastr.success(response.text)
+        this.router.navigate(['/management/users/list']);
+      },
+      error => this.toastr.error(error.error)
     )
-    window.alert("Successfully User Edited!");
-    window.location.href = '/management/users/list';
+
   }
 
   ngOnInit(): void {

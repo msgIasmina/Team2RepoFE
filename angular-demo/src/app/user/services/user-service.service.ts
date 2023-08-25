@@ -48,15 +48,14 @@ export class UserService {
         .set("Authorization", localStorage.getItem("token") ?? '')}
     return this.http.post<TextResponse>(this.url,newUser,header)
     }
-  updateUser(user: User): Observable<string> {
+  updateUser(user: User): Observable<TextResponse> {
     var header = {
       headers: new HttpHeaders()
         .set("Authorization", localStorage.getItem("token") ?? ''),
     }
     let id = user.id
     user.id = undefined
-    console.log(user)
-    return this.http.put<string>(this.url + `/` + id,user,header);
+    return this.http.put<TextResponse>(this.url + `/` + id,user,header);
   }
 
   findUserById(id:number):Observable<User>{
