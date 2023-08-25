@@ -6,12 +6,6 @@ h2 {
   text-align: center;
 }
 
-.grid {
-  margin: 0 auto;
-  max-width: 25rem;
-  width: 100%;
-}
-
 .align {
   align-items: center;
   display: flex;
@@ -31,6 +25,7 @@ h2 {
 .table-wrapper{
   margin: 70px 350px;
   box-shadow: 0px 35px 50px rgba( 0, 0, 0, 0.2 );
+  position: relative;
 }
 
 .fl-table {
@@ -70,25 +65,9 @@ h2 {
   background: #F8F8F8;
 }
 
-/* icon */
-
-.icon {
-  font-size: 24px;
-  vertical-align: middle;
-  margin-right: 4px;
-}
-
-.active-icon {
-  color: green;
-}
-
-.inactive-icon {
-  color: red;
-}
-
-.sticky-button {
+.addbutton {
   background: #4FC3A1;
-  margin-left: 300px;
+  margin-left: 400px;
   color: #ffffff;
   padding: 10px 20px;
   border: none;
@@ -96,7 +75,7 @@ h2 {
   cursor: pointer;
 }
 
-.sticky-button:hover {
+.addbutton:hover {
   background-color: darkgreen;
   color: #ffffff;
   outline: none;

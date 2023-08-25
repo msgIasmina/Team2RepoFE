@@ -1,7 +1,10 @@
 <div *transloco="let t">
   <p></p>
-  <h2>{{t('donatorList.header')}}</h2>
-  <button mat-raised-button  class="sticky-button" (click)="onAddDonatorClicked()">Add Donator
+  <h2>
+    {{t('donatorList.header')}}
+  </h2>
+
+  <button mat-raised-button  class="addbutton" (click)="onAddDonatorClicked()">Add Donator
     <mat-icon>add</mat-icon>
   </button>
   <div class="table-wrapper">

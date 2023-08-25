@@ -5,6 +5,7 @@
   left: 50%;
   transform: translate(-50%, -50%);
 }
+
 .toast-top-center {
   top: 0;
   right: 0;
@@ -217,6 +218,7 @@ button.toast-close-button {
 img{
   width: 100%;
 }
+
 body{
   color: var(--text-color);
   background: var(--dark-color);
@@ -227,9 +229,34 @@ html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
 .paginator-container {
-  position: fixed;
+  position: absolute;
   bottom: 0;
   left: 0;
   width: 100%;
-  padding: 5px; /* Add some padding to the paginator container */
+  padding: 5px;
 }
+
+/* ScrollBar */
+
+/* width */
+::-webkit-scrollbar {
+  width: 20px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 5px grey;
+  border-radius: 10px;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background:  #Fa5353;
+  border-radius: 10px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background:  #Fa5353;
+}
+
