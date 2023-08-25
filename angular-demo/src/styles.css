@@ -222,9 +222,6 @@ body{
   background: var(--dark-color);
   /* DISPLAY Block for Default Scroll Bar */
 }
-html::-webkit-scrollbar{
-  display:none;
-}
 
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

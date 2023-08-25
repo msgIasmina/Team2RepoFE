@@ -1,9 +1,12 @@
 {
   "navbar": {
-    "logout": "Sign Out",
+    "logout": "Log Out",
+    "home": "Home",
     "users": "Users",
     "donators": "Donators",
-    "campaigns": "Campaigns"
+    "campaigns": "Campaigns",
+    "donations": "Donations",
+    "notification": "All my notifications"
   },
   "uDetails": {
     "editBtn": "Edit",
@@ -160,6 +163,7 @@
     }
   },
   "login": {
+    "header": "Donation Manager",
     "username": "Username:",
     "password": "Password:",
     "btn": "Login"
@@ -169,5 +173,11 @@
     "password": "Password:",
     "disclaimer": "Complete the form to enable button",
     "save": "Save"
+  },
+  "homepage": {
+    "welcome": "Welcome",
+    "p1": "This is a dynamic web application designed to empower NGOs and organizations in efficiently overseeing campaigns, donors, and donations.",
+    "p2": "Through its user-friendly interface, it provides clear visualizations of donation data, timely notifications, internationalization capabilities, and effortless financial report generation.",
+    "p3": "Elevate your community engagement and financial management with DonationManager –> your all-in-one solution for impactful online operations."
   }
 }

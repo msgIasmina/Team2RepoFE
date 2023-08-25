@@ -1,21 +1,17 @@
-<div class="row">
-  <div class="col-1">
-    <img src="assets/man.png">
-    <img src="assets/elements.png" class="elements">
-  </div>
-  <div class="col-2">
-    <h1>Welcome <span>{{username}}</span>!</h1>
-    <p></p>
-    <div class="para">
-       <p>
-         This is a dynamic web application designed to empower NGOs and
-         organizations in efficiently overseeing campaigns, donors, and donations.<br>
-         Through its user-friendly interface, it provides clear visualizations of donation data,
-         timely notifications, internationalization capabilities, and effortless financial
-         report generation.<br> Elevate your community engagement and financial management
-         with DonationManager –> your all-in-one solution for impactful online operations.
-      </p>
+<div class="row" *transloco="let t">
+
+    <div class="col-1">
+      <img src="assets/man.png">
+      <img src="assets/elements.png" class="elements">
     </div>
-  </div>
+
+    <div class="col-2">
+      <h1>{{t('homepage.welcome')}}<span> {{username}}</span>!</h1>
+         <p class="text">
+           {{t('homepage.p1')}}<br>
+           {{t('homepage.p2')}}<br>
+           {{t('homepage.p3')}}
+        </p>
+    </div>
 </div>
 

@@ -15,6 +15,7 @@ import {MatSliderModule} from "@angular/material/slider";
 import {MatInputModule} from "@angular/material/input";
 import {MatAutocompleteModule} from "@angular/material/autocomplete";
 import {MatPaginatorModule} from "@angular/material/paginator";
+import {TranslocoModule} from "@ngneat/transloco";
 
 
 
@@ -27,21 +28,22 @@ import {MatPaginatorModule} from "@angular/material/paginator";
     DonationUpdateFormComponent,
     DonationComponent,
   ],
-  imports: [
-    CommonModule,
-    FormsModule,
-    ReactiveFormsModule,
-    DonationRoutingModule,
-    MatButtonModule,
-    MatSelectModule,
-    MatIconModule,
-    FormsModule,
-    MatSliderModule,
-    ReactiveFormsModule,
-    MatInputModule,
-    MatAutocompleteModule,
-    MatPaginatorModule
-  ],
+    imports: [
+        CommonModule,
+        FormsModule,
+        ReactiveFormsModule,
+        DonationRoutingModule,
+        MatButtonModule,
+        MatSelectModule,
+        MatIconModule,
+        FormsModule,
+        MatSliderModule,
+        ReactiveFormsModule,
+        MatInputModule,
+        MatAutocompleteModule,
+        MatPaginatorModule,
+        TranslocoModule
+    ],
   exports: [
     DonationListComponent
   ]

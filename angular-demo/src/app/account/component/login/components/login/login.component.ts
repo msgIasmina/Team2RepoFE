@@ -4,7 +4,6 @@ import {LoginRequest} from "../../models/login-request";
 import {AccountService} from "../../services/account.service";
 import {Router} from "@angular/router";
 import {ToastrService} from "ngx-toastr";
-import * as bcrypt from 'bcryptjs';
 import { MD5 } from 'crypto-js';
 
 @Component({

@@ -28,14 +28,14 @@
   font-size: 62px;
   font-weight: 600;
   margin-top: 10%;
-  margin-left: 10%
+  margin-left: 15%
 }
 
 .col-2 p{
   max-width: 600px;
   font-size: 19px;
   display: flex;
-  margin-left: 80px;
+  margin-left: 150px;
   margin-top: 30px;
   font-family: cursive;
 }
@@ -63,6 +63,6 @@ span{
   }
 }
 
-.para{
-
+.text{
+  width: 50%; min-width: 20em; float: left;
 }

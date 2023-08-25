@@ -26,12 +26,6 @@ h2 {
   align-self: flex-end;
 }
 
-*{
-  box-sizing: border-box;
-  -webkit-box-sizing: border-box;
-  -moz-box-sizing: border-box;
-}
-
 /* Table Styles */
 
 .table-wrapper{
@@ -67,7 +61,6 @@ h2 {
   background: #4FC3A1;
 }
 
-
 .fl-table thead th:nth-child(odd) {
   color: #ffffff;
   background: #324960;
@@ -77,11 +70,12 @@ h2 {
   background: #F8F8F8;
 }
 
+/* icon */
+
 .icon {
   font-size: 24px;
   vertical-align: middle;
   margin-right: 4px;
-
 }
 
 .active-icon {
@@ -93,10 +87,8 @@ h2 {
 }
 
 .sticky-button {
-  position: fixed;
-  bottom: 20px;
-  right: 20px;
   background: #4FC3A1;
+  margin-left: 300px;
   color: #ffffff;
   padding: 10px 20px;
   border: none;

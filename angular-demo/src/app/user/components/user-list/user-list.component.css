@@ -92,4 +92,20 @@ h2 {
   color: red;
 }
 
+.sticky-button {
+  background: #4FC3A1;
+  margin-left: 300px;
+  color: #ffffff;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.sticky-button:hover {
+  background-color: darkgreen;
+  color: #ffffff;
+  outline: none;
+}
+
 
