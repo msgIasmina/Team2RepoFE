@@ -14,6 +14,7 @@ import {NotificationService} from "../../services/notification.service";
 export class BasePageComponent implements OnInit{
 
   notifoication:Notif[] = [];
+  length = 0;
 
   constructor(private router:Router,private service:LogoutService,private notificationService:NotificationService,private websocketService:WebSocketService,private translocoService:TranslocoService) { }
 
@@ -41,9 +42,17 @@ export class BasePageComponent implements OnInit{
         this.notifoication = notifications
       }
     )
+    this.websocketService.notificationEvent.subscribe(
+      (notification) => {
+        this.length++;
+        this.notifoication.splice(0,1 )
+        this.notifoication.push(notification)
+      }
+    )
   }
 
   seeAllNotifications() {
+    this.length = 0;
     this.router.navigate(["management/notifications"])
   }
   toggleMenu() {
@@ -64,9 +73,6 @@ export class BasePageComponent implements OnInit{
     }
     if(page === 'campaigns'){
       this.router.navigate(["/management/campaigns/list"]);
-    }
-    if(page === 'donations'){
-      this.router.navigate(["/management/donations/list"])
     }
     if(page === 'home'){
       this.router.navigate(["/management/home"]);
