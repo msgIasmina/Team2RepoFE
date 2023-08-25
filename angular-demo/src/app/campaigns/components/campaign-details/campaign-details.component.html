@@ -1,8 +1,8 @@
-<div>
+<div *transloco="let t">
   <button  mat-raised-button color="accent" (click)="onEditClicked(campaign)">
-    <mat-icon>{{t('cDetails.editBtn')}}</mat-icon>
+    <mat-icon>edit</mat-icon>
   </button>
   <button mat-raised-button color="warn"(click)="onDeleteClicked(campaign)">
-    <mat-icon>{{t('cDetails.deleteBtn')}}</mat-icon>
+    <mat-icon>delete</mat-icon>
   </button>
 </div>

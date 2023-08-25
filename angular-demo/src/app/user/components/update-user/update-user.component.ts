@@ -39,13 +39,13 @@ export class UpdateUserComponent implements OnInit {
       this.userService.findUserById(this.id).subscribe(userData => {
         this.user = userData;
 
-        if (this.user.rolesIDs) {
+/*        if (this.user.rolesIDs) {
           this.roleService.getRoles().subscribe(roles => {
             this.selectedRoles = roles.filter(role =>
               this.user.rolesIDs?.includes(role.id)
             );
           });
-        }
+        }*/
       });
     });
     this.selectedRoles = this.selectedRolesService.selectedRoles;

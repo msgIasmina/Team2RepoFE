@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { User } from "../models/user";
 import { BehaviorSubject, Observable,tap} from "rxjs";
 import { HttpClient, HttpHeaders } from "@angular/common/http";
+import {TextResponse} from "../../models/text-response";
 @Injectable({
   providedIn: 'root'
 })
@@ -41,11 +42,11 @@ export class UserService {
     );
   }
 
-  saveUser(newUser:User):Observable<User>{
+  saveUser(newUser:User):Observable<TextResponse>{
     var header = {
       headers: new HttpHeaders()
         .set("Authorization", localStorage.getItem("token") ?? '')}
-    return this.http.post<User>(this.url,newUser,header)
+    return this.http.post<TextResponse>(this.url,newUser,header)
     }
   updateUser(user: User): Observable<string> {
     var header = {

@@ -227,9 +227,9 @@ export class DonationListComponent implements OnInit {
       return [
         donation.amount.toString(),
         donation.currency,
-        `${donation.createdBy.firstName} ${donation.createdBy.lastName}`,
-        donation.createDate.toString(),
-        `${donation.benefactor.firstName || ''} ${donation.benefactor.lastName || ''}`,
+        `${donation.createdBy?.firstName} ${donation.createdBy?.lastName}`,
+        donation.createDate?.toString(),
+        `${donation.benefactor?.firstName || ''} ${donation.benefactor?.lastName || ''}`,
         donation.approved,
         `${donation.notes || ''}`
       ];

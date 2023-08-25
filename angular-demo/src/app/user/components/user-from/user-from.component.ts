@@ -4,8 +4,7 @@ import {MatChip} from "@angular/material/chips";
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {User} from "../../models/user";
 import {RoleService} from "../../services/role.service";
-import {SelectedRolesService} from "../../services/selected-roles.service";
-import {AccountService} from "../../../account/component/login/services/account.service";
+import {ToastrService} from "ngx-toastr";
 
 @Component({
   selector: 'app-user-from',
@@ -22,7 +21,7 @@ export class UserFromComponent implements OnInit {
   @Input()
   functionality:string
   submitted = false;
-  roleList: Role[];
+  roleList: Role[] =[];
   selectedRoles: Role[] = [];
   registerForm:FormGroup = this.fb.group({
     firstName: ['', Validators.required],
@@ -33,8 +32,7 @@ export class UserFromComponent implements OnInit {
 
   constructor(private fb: FormBuilder,
               private roleService: RoleService,
-              private selectedRolesService: SelectedRolesService,
-              private accountService: AccountService) {
+              private toastr:ToastrService) {
   }
 
   toggleSelection(chip: MatChip, role: Role) {
@@ -45,8 +43,6 @@ export class UserFromComponent implements OnInit {
     } else if (!chip.selected && index !== -1) {
       this.selectedRoles.splice(index, 1);
     }
-
-    this.selectedRolesService.selectedRoles = this.selectedRoles;
   }
 
   showFirstNameError(): boolean {
@@ -81,39 +77,26 @@ export class UserFromComponent implements OnInit {
     const lastName = this.registerForm.get('lastName')?.value;
     const email = this.registerForm.get('email')?.value;
     const mobileNumber = this.registerForm.get('mobileNumber')?.value;
-    const rolesIDs: number[] = this.selectedRoles.map(role => role.id)
+    const roles = this.selectedRoles;
     let newUser:User ={
       firstName,
       lastName,
       email,
       mobileNumber,
-      rolesIDs,
+      roles
     };
-
-    const permissions = JSON.parse(localStorage.getItem('permissions') || '[]');
-    const hasUserPermission = permissions.includes('AUTHORITY_USER_MANAGEMENT');
-
     if (this.functionality === "update"){
         newUser.id=this.user.id;
         newUser.active = this.user.active;
         newUser.newUser = this.user.newUser;
         newUser.roles = this.selectedRoles
-        newUser.rolesIDs= undefined
     }
-    if(this.selectedRoles.length === 0){
-      window.alert("you cannot" + this.functionality + "without a role")
-    }else {
-        if(this.registerForm.valid){
+        if(this.registerForm.valid && this.selectedRoles.length !== 0){
           this.submitEvent.emit(newUser)
-          if(this.functionality === "register" && hasUserPermission){
-            window.alert("User Registered Successfully!");
-            window.location.href = '/management/users/0/100';
           } else{
-            window.alert('User does not have USER management permission.');
-            return;
-          }
-      }
-    }
+          this.toastr.show("You must select at last one role and one fill in all the  required fields");
+        }
+
   }
 
   ngOnInit(): void {

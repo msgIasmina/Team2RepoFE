@@ -14,6 +14,7 @@ import {MatIconModule} from "@angular/material/icon";
 import {UserService} from "./services/user-service.service";
 import {TranslocoModule} from "@ngneat/transloco";
 import {MatPaginatorModule} from "@angular/material/paginator";
+import {MatSpinner} from "@angular/material/progress-spinner";
 
 
 @NgModule({

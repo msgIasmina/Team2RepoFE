@@ -6,7 +6,6 @@ export class User {
               public lastName: string,
               public email: string,
               public mobileNumber: string,
-              public rolesIDs?: number[],
               public roles?:Role[],
               public id?: number,
               public active?: boolean,
