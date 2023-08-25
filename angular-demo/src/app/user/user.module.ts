@@ -7,6 +7,14 @@ import {UserDetailsComponent} from './components/user-details/user-details.compo
 import {UserRoutingModule} from "./user-routing.module";
 import {UserRegisterComponent} from "./components/user-register/user-register.component";
 import {MatChipsModule} from "@angular/material/chips";
+import { UpdateUserComponent } from './components/update-user/update-user.component';
+import { UserFromComponent } from './components/user-from/user-from.component';
+import {MatButtonModule} from "@angular/material/button";
+import {MatIconModule} from "@angular/material/icon";
+import {UserService} from "./services/user-service.service";
+import {TranslocoModule} from "@ngneat/transloco";
+import {MatPaginatorModule} from "@angular/material/paginator";
+import {MatSpinner} from "@angular/material/progress-spinner";
 import {PermissionModule} from "../permission/permission.module";
 
 
@@ -14,16 +22,25 @@ import {PermissionModule} from "../permission/permission.module";
   declarations: [
     UserListComponent,
     UserDetailsComponent,
-    UserRegisterComponent
+    UserRegisterComponent,
+    UpdateUserComponent,
+    UserFromComponent
   ],
-  imports: [
-    CommonModule,
-    FormsModule,
-    HttpClientModule,
-    UserRoutingModule,
-    ReactiveFormsModule,
-    MatChipsModule,
-    PermissionModule
-  ]
+  providers: [
+    UserService
+  ],
+    imports: [
+        CommonModule,
+        FormsModule,
+        HttpClientModule,
+        UserRoutingModule,
+        ReactiveFormsModule,
+        MatChipsModule,
+        MatButtonModule,
+        MatIconModule,
+        TranslocoModule,
+        MatPaginatorModule,
+       PermissionModule
+    ]
 })
 export class UserModule { }

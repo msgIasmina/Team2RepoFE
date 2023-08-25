@@ -1,12 +1,10 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { User } from '../../models/user';
 import { UserService } from "../../services/user-service.service";
-import { ActivatedRoute } from '@angular/router';
-
-export interface UserAction {
-  user: User;
-  type: 'toggleActivation' | 'edit' | 'manageRoles'; // Add more types if needed
-}
+import {ActivatedRoute, Router} from '@angular/router';
+import {UserAction} from "../../models/UserAction";
+import {ToastrService} from "ngx-toastr";
+import {PageEvent} from "@angular/material/paginator";
 
 @Component({
   selector: 'app-user-list',
@@ -16,20 +14,23 @@ export interface UserAction {
 export class UserListComponent implements OnInit {
 
   userList: User[];
-  page: number;
-  size: number;
+  totalItems: number;
 
-  constructor(private userService: UserService, private activatedRoute: ActivatedRoute) {
+  currentPage: number = 0; // Current page index
+  pageSize: number = 5; // Items per page
+  pageSizeOptions: number[] = [3, 5, 8]; // Options for page size
+
+  constructor(private userService: UserService,
+              private activatedRoute: ActivatedRoute,
+              private router:Router,
+              private toastr: ToastrService) {
   }
 
   ngOnInit(): void {
-    this.activatedRoute.params.subscribe((params) => {
-      this.page = +params['page'];
-      this.size = +params['size'];
-
-      this.loadUsersAndRefresh();
-    });
-
+    this.userService.getSize().subscribe(
+      totalItems => this.totalItems = totalItems
+    )
+    this.loadUsersAndRefresh();
   }
 
   handleUserAction(action: UserAction) {
@@ -43,7 +44,7 @@ export class UserListComponent implements OnInit {
   }
 
   private loadUsersAndRefresh() {
-    this.userService.loadUsers(this.page, this.size).subscribe(() => {
+    this.userService.loadUsers(this.currentPage, this.pageSize).subscribe(() => {
       this.userService.getUsers().subscribe(users => {
         this.userList = users;
       });
@@ -51,11 +52,9 @@ export class UserListComponent implements OnInit {
   }
 
   editUser(userToEdit: User) {
-    this.activatedRoute.params.subscribe(() => {
-      this.userService.updateUser(userToEdit).subscribe(() => {
-        this.loadUsersAndRefresh();
-      });
-    });
+    this.router.navigate(
+      ['/management/users/update/'+userToEdit.id]
+    );
   }
 
     toggleActivation(userToToggle: User) {
@@ -66,7 +65,22 @@ export class UserListComponent implements OnInit {
       });
     }
 
-    manageRoles(user: User){
-      //TODO
+  onAddUserClicked(){
+    const permissions = JSON.parse(localStorage.getItem('permissions') || '[]');
+    const hasBenefPermission = permissions.includes('AUTHORITY_USER_MANAGEMENT');
+
+    if(hasBenefPermission){
+      this.router.navigate(
+        ['/management/users/register/']
+      );
+    } else {
+      this.toastr.error("It seems that you don't have the permissions for completing this action.")
     }
+  }
+
+  pageChanged(event: PageEvent) {
+    this.currentPage = event.pageIndex;
+    this.pageSize = event.pageSize;
+    this.loadUsersAndRefresh();
+  }
 }

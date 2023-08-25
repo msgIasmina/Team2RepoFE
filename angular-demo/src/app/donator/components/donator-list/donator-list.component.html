@@ -1,0 +1,40 @@
+<div *transloco="let t">
+  <p></p>
+  <h2>List of Donators</h2>
+  <button mat-raised-button  class="sticky-button" (click)="onAddDonatorClicked()">
+    <mat-icon>add</mat-icon>
+  </button>
+  <div class="table-wrapper">
+    <table class="fl-table">
+      <thead>
+        <tr>
+          <th>{{t('donatorList.dTable.firstname')}}</th>
+          <th>{{t('donatorList.dTable.lastname')}}</th>
+          <th>{{t('donatorList.dTable.additionalname')}}</th>
+          <th>{{t('donatorList.dTable.maidenname')}}</th>
+          <th>{{t('donatorList.dTable.actions')}}</th>
+        </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let donator of donatorList">
+        <td>{{ donator.firstName }} </td>
+        <td>{{ donator.lastName }}</td>
+        <td>{{ donator.additionalName }}</td>
+        <td>{{ donator.maidenName }}</td>
+        <td>
+          <app-donator-details [donator]="donator" (donatorAction)="handleDonatorAction($event)"></app-donator-details>
+        </td>
+      </tr>
+      </tbody>
+  </table>
+</div>
+
+  <div class="paginator-container">
+    <mat-paginator [length]="totalItems"
+                   [pageIndex]="currentPage"
+                   [pageSize]="pageSize"
+                   [pageSizeOptions]="pageSizeOptions"
+                   (page)="pageChanged($event)">
+    </mat-paginator>
+  </div>
+</div>

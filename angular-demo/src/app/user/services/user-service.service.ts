@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { User } from "../models/user";
-import { BehaviorSubject, Observable, catchError, tap, throwError } from "rxjs";
+import { BehaviorSubject, Observable,tap} from "rxjs";
 import { HttpClient, HttpHeaders } from "@angular/common/http";
-
+import {TextResponse} from "../../models/text-response";
 @Injectable({
   providedIn: 'root'
 })
@@ -12,16 +12,19 @@ export class UserService {
   ){}
 
   url:string = "http://localhost:8080/users";
-  url2:string = "http://localhost:8080/users/register";
 
   userList$: BehaviorSubject<User[]> = new BehaviorSubject<User[]>([]);
+  totalItems$: BehaviorSubject<number> = new BehaviorSubject<number>(0);
 
   loadUsers(page: number, size: number): Observable<User[]> {
-    var header = {
-      headers: new HttpHeaders()
-        .set("Authorization", localStorage.getItem("token") ?? '')
-    } //empty string daca e nedefinit
-    return this.http.get<User[]>(`${this.url}/${page}/${size}`, header).pipe(
+    const headers = new HttpHeaders()
+      .set("Authorization", localStorage.getItem("token") ?? '');
+
+    const params: any = {};
+    params['offset'] = page;
+    params['pageSize'] = size;
+
+    return this.http.get<User[]>(this.url, { headers, params }).pipe(
       tap(users => this.userList$.next(users))
     );
   }
@@ -30,28 +33,38 @@ export class UserService {
     return this.userList$.asObservable();
   }
 
-  saveUser(newUser:User):Observable<User>{
+  getSize(): Observable<number> {
+    const headers = new HttpHeaders()
+      .set("Authorization", localStorage.getItem("token") ?? '');
+
+    return this.http.get<number>(this.url + '/size', { headers }).pipe(
+      tap(size => this.totalItems$.next(size))
+    );
+  }
+
+  saveUser(newUser:User):Observable<TextResponse>{
     var header = {
       headers: new HttpHeaders()
         .set("Authorization", localStorage.getItem("token") ?? '')}
-    return this.http.post<User>(this.url2,newUser,header)
+    return this.http.post<TextResponse>(this.url,newUser,header)
     }
-  updateUser(user: User): Observable<User> {
+  updateUser(user: User): Observable<TextResponse> {
+    var header = {
+      headers: new HttpHeaders()
+        .set("Authorization", localStorage.getItem("token") ?? ''),
+    }
+    let id = user.id
+    user.id = undefined
+    return this.http.put<TextResponse>(this.url + `/` + id,user,header);
+  }
+
+  findUserById(id:number):Observable<User>{
     var header = {
       headers: new HttpHeaders()
         .set("Authorization", localStorage.getItem("token") ?? '')
     }
-    return this.http.put<User>(this.url + `/` + `${user.id}`, user, header);
+    return this.http.get<User>(`${this.url}/${id}`,header);
   }
-
-  firstLoginUpdate(id:string|null, pd:string): Observable<User>{
-    var header = {
-      headers: new HttpHeaders()
-        .set("Authorization", localStorage.getItem("token") ?? '')
-    }
-    return this.http.put<User>(this.url + `/` + id +"/firstLogin", {password:pd}, header);
-  }
-
   toggleActivation(user: User): Observable<User> {
     const url = `${this.url}/${user.id}/activation`;
 

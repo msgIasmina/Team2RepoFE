@@ -1,0 +1,49 @@
+<div *transloco="let t">
+<p></p>
+  <h2>{{t('cList.header')}}</h2>
+  <button mat-raised-button color="accent" (click)="onAddCampaignClicked()"><mat-icon>add</mat-icon></button>
+<div class="filter">
+  <label>Search by name: </label>
+  <input type="text" [(ngModel)]="nameTerm" placeholder="Name of Campaign">
+</div>
+
+<div class="filter">
+  <label>Search by purpose: </label>
+  <input type="text" [(ngModel)]="purposeTerm" placeholder="Purpose of Campaign">
+</div>
+
+<button (click)="applyFilters()">Apply Filters</button>
+<button (click)="clearAllFilterParamsAndRefresh()">Clear All Filters</button>
+
+
+<div class="table-wrapper">
+  <table class="fl-table">
+    <thead>
+    <tr>
+      <th>{{t('cList.cTable.name')}}</th>
+      <th>{{t('cList.cTable.purpose')}}</th>
+      <th>{{t('cList.cTable.actions')}}</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let campaign of campaignList">
+      <td>{{ campaign.name }} </td>
+      <td>{{ campaign.purpose }}</td>
+      <td>
+        <app-campaign-details [campaign]="campaign" (emmitter)="handleCampaignAction($event)"></app-campaign-details>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+</div>
+
+<div class="paginator-container">
+  <mat-paginator [length]="totalItems"
+                 [pageIndex]="currentPage"
+                 [pageSize]="pageSize"
+                 [pageSizeOptions]="pageSizeOptions"
+                 (page)="pageChanged($event)">
+  </mat-paginator>
+</div>
+</div>
+

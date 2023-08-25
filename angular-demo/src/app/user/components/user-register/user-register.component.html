@@ -1,76 +1,12 @@
-<div class="grid align__item">
+<div class="grid align__item" *transloco="let t">
 
   <div class="register">
-  <h2>Register User</h2>
-
-  <form class="form" [formGroup]="registerForm" (ngSubmit)="onSave()">
-    <div class="form__field">
-      <input
-          placeholder="firstname"
-          type="text"
-          formControlName="firstName"
-      />
-      <div *ngIf="showFirstNameError()">
-        <div class="error-message">First name is required</div>
-      </div>
-    </div>
-
-    <div class="form__field">
-      <input
-        placeholder="lastname"
-        type="text"
-        formControlName="lastName"
-      />
-      <div *ngIf="showLastNameError()">
-        <div class="error-message">Last name is required</div>
-      </div>
-    </div>
-
-    <div class="form__field">
-      <input
-        placeholder="info@mailaddress.com"
-        type="text"
-        formControlName="email"
-      />
-      <div *ngIf="showEmailError()">
-        <div class="error-message">Email is required</div>
-      </div>
-    </div>
-
-    <div class="form__field">
-      <input
-        type="text"
-        formControlName="mobileNumber"
-        placeholder="phone number"
-      />
-    </div>
-
-    <p>Choose Roles:</p>
-    <div class="form__field">
-      <mat-chip-list selectable multiple>
-        <mat-chip
-          #c="matChip"
-          *ngFor="let role of roleList"
-          [value]="role.name"
-          (click)="toggleSelection(c, role)"
-          [ngClass]="{'selected-chip': isSelected(role)}"
-        >
-          {{role.name}}
-        </mat-chip>
-      </mat-chip-list>
-    </div>
-
-    <div class="form__field">
-      <button class="btn btn-primary custom-btn" type="submit">Submit user</button>
-    </div>
-
-<!--    <button mat-raised-button disabled type="submit"  [disabled]="!registerForm.valid" color="accent">Register</button>-->
-
-
-  </form>
-
-<!--    <p>Already have an account? <a href="/login">Log in</a></p>-->
-
+  <h2>{{t('uRegister.header')}}</h2>
+    <app-user-from
+      (submitEvent)="onSave($event)"
+      *ngIf="placeholder"
+      [user]="placeholder"
+      [functionality]="register">
+    </app-user-from>
   </div>
-
 </div>

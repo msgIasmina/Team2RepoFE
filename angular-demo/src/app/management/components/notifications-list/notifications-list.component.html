@@ -1,0 +1,16 @@
+<div>
+  <mat-grid-list cols="3" rowHeight="2:0.55" row>
+    <mat-grid-tile *ngFor="let notif of notifList">
+      <app-notification [notification]="notif"></app-notification>
+    </mat-grid-tile>
+  </mat-grid-list>
+  <br>
+  <div class="paginator-container">
+    <mat-paginator [length]="totalItems"
+                   [pageIndex]="currentPage"
+                   [pageSize]="pageSize"
+                   [pageSizeOptions]="pageSizeOptions"
+                   (page)="pageChanged($event)">
+    </mat-paginator>
+</div>
+</div>

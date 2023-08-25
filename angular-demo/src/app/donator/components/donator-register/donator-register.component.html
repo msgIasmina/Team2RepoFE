@@ -1,50 +1,13 @@
-<div class="grid align__item">
-
+<div class="grid align__item" *transloco="let t">
   <div class="register">
-    <h2>Register Donator</h2>
-
-    <form class="form" [formGroup]="registerForm" (ngSubmit)="onSave()">
-      <div class="form__field">
-        <input
-          placeholder="firstname"
-          type="text"
-          formControlName="firstName"
-        />
-        <div *ngIf="showFirstNameError()">
-          <div class="error-message">First name is required</div>
-        </div>
-      </div>
-
-      <div class="form__field">
-        <input
-          placeholder="lastname"
-          type="text"
-          formControlName="lastName"
-        />
-        <div *ngIf="showLastNameError()">
-          <div class="error-message">Last name is required</div>
-        </div>
-      </div>
-
-      <div class="form__field">
-        <input
-          type="text"
-          formControlName="additionalName"
-          placeholder="additional name"
-        />
-      </div>
-
-      <div class="form__field">
-        <input
-          type="text"
-          formControlName="maidenName"
-          placeholder="maidenname"
-        />
-      </div>
-
-      <div class="form__field">
-        <button class="btn btn-primary custom-btn" type="submit">Submit donator</button>
-      </div>
-    </form>
+    <h2>{{t('donatorRegister.header')}}</h2>
+    <app-donator-form
+      (submitEvent)="onSave($event)"
+      *ngIf="placeholder"
+      [donator]="placeholder"
+      [functionality]="register"
+    >
+    </app-donator-form>
   </div>
+
 </div>

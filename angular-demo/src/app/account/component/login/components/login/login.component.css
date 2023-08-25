@@ -1,0 +1,142 @@
+input {
+  border: 0;
+  font: inherit;
+}
+input::placeholder {
+  color: #7e8ba3;
+}
+.form__field {
+  margin-bottom: 1rem;
+}
+.form input {
+  outline: 0;
+  padding: 0.5rem 1rem;
+}
+.form input[type="email"], .form input[type="password"]{}
+.grid {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin-left: 20px;
+  margin-top: -50px;
+}
+h2 {
+  font-size: 2.75rem;
+  font-weight: 100;
+  margin: 0 0 1rem;
+  text-transform: uppercase;
+  color: black;
+}
+svg {
+  height: auto;
+  max-width: 100%;
+  vertical-align: middle;
+}
+a {
+  color: #7e8ba3;
+}
+
+p{
+  color: black;
+}
+
+.custom-btn {
+  background-color: #ffffff;
+  color: #000000;
+  border-radius: 999px;
+  text-align: center;
+}
+
+.login {
+  background-color: #ffffff;
+  box-shadow: 0 0 250px #f85252;
+  text-align: center;
+  padding: 4rem 2rem;
+  border-radius: 25px;
+  max-width: 400px;
+  width: 100%;
+}
+
+.login input, select{
+  border: 1px solid #242c37;
+  border-radius: 999px;
+  background-color: transparent;
+  text-align: center;
+}
+
+.help-field {
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  width: 300px;
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  font-family: Arial, sans-serif;
+}
+
+.help-field h3 {
+  margin: 0 0 10px;
+  font-size: 1.3rem;
+  color: #333;
+}
+
+.help-field p {
+  margin: 0 0 15px;
+  font-size: 1rem;
+  color: #666;
+}
+
+.help-field ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.help-field ul li {
+  font-size: 0.9rem;
+  color: #555;
+  margin-bottom: 5px;
+}
+
+.help-field ul li:before {
+  content: '\2022';
+  margin-right: 5px;
+  color: #777;
+}
+
+.help-field.open {
+  display: block;
+}
+
+.help-field {
+  display: none;
+}
+
+.icon-help{
+  color: black;
+  display: flex;
+  margin-top: 25px;
+  cursor: pointer;
+}
+
+.toggle-password {
+  position: absolute;
+  top: 50%;
+  right: 10px;
+  transform: translateY(-50%);
+  cursor: pointer;
+}
+
+.password-container {
+  position: relative;
+}
+
+.show-password .toggle-password {
+  color: #3498db;
+}
+
+

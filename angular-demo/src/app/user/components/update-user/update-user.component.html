@@ -1,0 +1,11 @@
+<div class="grid align__item" *transloco="let t">
+  <div class="update">
+    <h2>{{t('uUpdate.header')}}</h2>
+    <app-user-from
+      (submitEvent)="updateUser($event)"
+      *ngIf="user"
+      [user]="user"
+      [functionality]="update">
+    </app-user-from>
+  </div>
+</div>

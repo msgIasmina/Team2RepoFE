@@ -1,0 +1,69 @@
+<form class="form" [formGroup]="registerForm" (ngSubmit)="onSave()" *transloco="let t">
+  <div class="form__field">
+    <p>{{t('uForm.firstname')}}<span>*</span></p>
+    <input
+      [placeholder]="user.firstName"
+      type="text"
+      formControlName="firstName"
+    />
+    <div *ngIf="showFirstNameError()">
+      <div class="error-message">{{t('uForm.errors.firstnameE')}}</div>
+    </div>
+  </div>
+
+  <div class="form__field">
+    <p>{{t('uForm.lastname')}}<span>*</span></p>
+    <input
+      [placeholder]="user.lastName"
+      type="text"
+      formControlName="lastName"
+    />
+    <div *ngIf="showLastNameError()">
+      <div class="error-message">{{t('uForm.errors.lastnameE')}}</div>
+    </div>
+  </div>
+
+  <div class="form__field">
+    <p>{{t('uForm.email')}}<span>*</span></p>
+    <input
+      [placeholder]="user.email"
+      type="text"
+      formControlName="email"
+    />
+    <div *ngIf="showEmailError()">
+      <div class="error-message">{{t('uForm.errors.emailE')}}</div>
+    </div>
+  </div>
+
+  <div class="form__field">
+    <p>{{t('uForm.mobileNumber')}}</p>
+    <input
+      type="text"
+      formControlName="mobileNumber"
+      [placeholder]="user.mobileNumber"
+    />
+  </div>
+
+  <p>{{t('uForm.roles')}}<span>*</span></p>
+  <div class="form__field">
+    <mat-chip-list selectable multiple>
+      <mat-chip
+        #c="matChip"
+        *ngFor="let role of roleList"
+        [value]="role.name"
+        (click)="toggleSelection(c, role)"
+        [ngClass]="{'selected-chip': isSelected(c,role)}"
+      >
+        {{role.name}}
+      </mat-chip>
+    </mat-chip-list>
+  </div>
+
+  <div *ngIf="showRolesError()">
+    <div class="error-message">{{t('uForm.errors.rolesE')}}</div>
+  </div>
+
+  <div class="form__field">
+    <button mat-raised-button color="accent" class="btn btn-primary custom-btn" type="submit">{{t('uForm.submitBtn')}}</button>
+  </div>
+</form>

@@ -1,0 +1,173 @@
+{
+  "navbar": {
+    "logout": "Log Out",
+    "users": "Users",
+    "donators": "Donators",
+    "campaigns": "Campaigns"
+  },
+  "uDetails": {
+    "editBtn": "Edit",
+    "deleteBtn": {
+      "activate": "Activate",
+      "deactivate": "Deactivate"
+    }
+  },
+  "uList": {
+    "header": "List of Users",
+    "addBtn": "Add User",
+    "uTable": {
+      "firstname": "First Name",
+      "lastname": "Last Name",
+      "email": "Email",
+      "active": "Active",
+      "actions": "Actions"
+    }
+  },
+  "uRegister": {
+    "header": "Register User"
+  },
+  "uUpdate": {
+    "header": "Update User"
+  },
+  "uForm": {
+    "firstname": "First Name:",
+    "lastname": "Last Name:",
+    "email": "Email:",
+    "mobileNumber": "Mobile Number:",
+    "roles": "Choose Roles:",
+    "submitBtn": "Submit",
+    "errors": {
+      "firstnameE": "First Name is required",
+      "lastnameE": "Last Name is required",
+      "emailE": "Email is required",
+      "rolesE": "Please select at least one role"
+    }
+  },
+  "donatorDetails": {
+    "editBtn": "Edit",
+    "deleteBtn": "Delete"
+  },
+  "donatorList": {
+    "header": "List of Donators",
+    "addBtn": "Add Donator",
+    "dTable": {
+      "firstname": "First Name",
+      "lastname": "Last Name",
+      "additionalname": "Additional Name",
+      "maidenname": "Maiden Name",
+      "actions": "Actions"
+    }
+  },
+  "donatorRegister": {
+    "header": "Register Donator"
+  },
+  "donatorUpdate": {
+    "header": "Update Donator"
+  },
+  "donatorForm": {
+    "firstname": "First Name:",
+    "additionalname": "Additional Name:",
+    "lastname": "Last Name:",
+    "maidenname": "Maiden Name:",
+    "submitBtn": "Submit",
+    "errors": {
+      "firstnameE": "First Name is required",
+      "lastnameE": "Last Name is required"
+    }
+  },
+  "donationDetails": {
+    "editBtn": "Edit",
+    "deleteBtn": "Delete",
+    "approveBtn": "Approve"
+  },
+  "donationList": {
+    "header": "List of Donations",
+    "filters": {
+      "amountRange": "Amount Range:",
+      "fixedValue": "Fixed value:",
+      "currency": "Currency:",
+      "campaign": "Campaign:",
+      "campaignPurpose": "Search by campaign purpose:",
+      "createdBy": "Created by:",
+      "createdFrom": "Created from:",
+      "createdUntil": "Created until:",
+      "approved": "Approved:",
+      "approvedFrom": "Approved from:",
+      "approvedUntil": "Approved until:",
+      "applyFilters": "Apply Filters",
+      "clearFilters": "Clear Filters"
+    },
+    "donationTable": {
+      "amount": "Amount",
+      "currency": "Currency",
+      "campaign": "Campaign",
+      "createdBy": "Created by",
+      "createdDate": "Created date",
+      "benefactor": "Benefactor",
+      "approved": "Approved",
+      "approvedBy": "Approved by",
+      "approvalDate": "Approval date",
+      "notes": "Notes",
+      "actions": "Actions"
+    }
+  },
+  "donationAdd": {
+    "header": "Add Donation"
+  },
+  "donationUpdate": {
+    "header": "Update Donation"
+  },
+  "donationForm": {
+    "amount": "Amount:",
+    "currency": "Currency:",
+    "campaign": "Campaign:",
+    "benefactor": "Benefactor:",
+    "notes": "Notes:",
+    "submitBtn": "Submit",
+    "errors": {
+      "amountE": "Amount is required",
+      "currencyE": "Currency is required",
+      "campaignE": "Please select a campaign",
+      "benefactorE": "Please select a benefactor"
+    }
+  },
+  "cDetails": {
+    "editBtn": "Edit",
+    "deleteBtn": "Delete"
+  },
+  "cList": {
+    "header": "List of Campaigns",
+    "addBtn": "Add Campaign",
+    "cTable": {
+      "name": "Name",
+      "purpose": "Purpose",
+      "actions": "Actions"
+    }
+  },
+  "cAdd": {
+    "header": "Add Campaign"
+  },
+  "cUpdate": {
+    "header": "Update Campaign"
+  },
+  "cForm": {
+    "name": "Name:",
+    "purpose": "Purpose:",
+    "submitBtn": "Submit",
+    "errors": {
+      "nameE": "Name is required",
+      "purposeE": "Purpose is required"
+    }
+  },
+  "login": {
+    "username": "Username:",
+    "password": "Password:",
+    "btn": "Login"
+  },
+  "firstLogin": {
+    "header": "It looks like it is your first time logging in. Please change your password!",
+    "password": "Password:",
+    "disclaimer": "Complete the form to enable button",
+    "save": "Save"
+  }
+}

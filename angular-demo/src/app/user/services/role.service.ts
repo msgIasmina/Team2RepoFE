@@ -21,11 +21,9 @@ export class RoleService {
   }
 
   getRoles(): Observable<Role[]> {
-    //return this.userRolesList$.asObservable();
-
     var header = {
       headers: new HttpHeaders()
-        .set("Authorization", localStorage.getItem("token") ??'')} //empty string daca e nedefinit
+        .set("Authorization", localStorage.getItem("token") ??'')}
     return this.http.get<Role[]>(this.url, header);
   }
 

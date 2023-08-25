@@ -1,0 +1,68 @@
+<form class="form" [formGroup]="donationForm" (ngSubmit)="onSave()" *transloco="let t">
+  <div class="form__field">
+    <h4>{{t('donationForm.amount')}}</h4>
+    <input
+      [placeholder]="amount"
+      type="text"
+      formControlName="amount"
+    />
+    <div *ngIf="showAmountError()">
+      <div class="error-message">{{t('donationForm.errors.amountE')}}</div>
+    </div>
+  </div>
+
+  <div>
+    <h4>{{t('donationForm.currency')}}</h4>
+    <mat-select formControlName="currency" id="addCurrency">
+      <mat-option *ngFor="let currency of currencies" [value]="currency">
+        {{currency}}
+      </mat-option>
+    </mat-select>
+    <!--    <button class="submit-button" (click)="addCampaign()">Confirm campaign</button>-->
+    <div *ngIf="showCurrencyError()">
+      <div class="error-message">{{t('donationForm.errors.currencyE')}}</div>
+    </div>
+  </div>
+
+  <div>
+    <h4>{{t('donationForm.campaign')}}</h4>
+    <mat-select formControlName="campaign" id="addCampaign">
+      <mat-option *ngFor="let campaign of campaigns"
+                  [value]="campaign">
+        {{campaign.name}}
+      </mat-option>
+    </mat-select>
+  </div>
+
+  <div *ngIf="showCampaignError()">
+    <div class="error-message">{{t('donationForm.errors.campaignE')}}</div>
+  </div>
+
+  <div>
+    <h4>{{t('donationForm.benefactor')}}</h4>
+    <mat-select formControlName="benefactor" id="addBenefactor">
+      <mat-option *ngFor="let donator of donators"
+                  [value]="donator">
+        {{donator.firstName}} {{donator.lastName}} {{donator.additionalName}}
+      </mat-option>
+    </mat-select>
+  </div>
+
+  <div *ngIf="showBenefactorError()">
+    <div class="error-message">{{t('donationForm.errors.benefactorE')}}</div>
+  </div>
+
+  <div class="form__field">
+    <h4>{{t('donationForm.notes')}}</h4>
+    <input
+      type="text"
+      formControlName="notes"
+      [placeholder]="notes"
+    />
+  </div>
+
+  <div class="form__field">
+    <button mat-raised-button color="accent" class="btn btn-primary custom-btn" type="submit">{{t('donationForm.submitBtn')}}</button>
+  </div>
+</form>
+

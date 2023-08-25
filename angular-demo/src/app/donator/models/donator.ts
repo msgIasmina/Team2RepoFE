@@ -1,10 +1,10 @@
 export class Donator {
   constructor(
-    public firstName: string,
-    public lastName: string,
+    public firstName?: string,
+    public lastName?: string,
     public additionalName?: string,
     public maidenName?: string,
-  //   public campaigns?: Campaign[]
+    public id?: number
   ) {
   }
 }
