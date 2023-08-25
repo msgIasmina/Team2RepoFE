@@ -40,7 +40,6 @@ export class RoleDetailsComponent implements OnInit {
     )
   }
 
-
   removePermissions() {
     let permissionsToBeRemoved = this.form.get('permissionsToBeDeleted')?.value
     this.rolePermissionService.removePermissionsFromRole(this.rolePermission.id, permissionsToBeRemoved).subscribe(

@@ -8,8 +8,7 @@ import {RoleListComponent} from "../permission/components/role-list/role-list.co
 import {UpdateUserComponent} from "./components/update-user/update-user.component";
 
 const routes: Routes = [
-     {path:"permissions/:id",component:RoleListComponent},
-      {path:':page/:size', component:UserListComponent},
+  {path:"permissions/:id",component:RoleListComponent},
       {path:'update/:id',component:UpdateUserComponent},
       {path:'list', component:UserListComponent},
       {path:'details',component: UserDetailsComponent},
