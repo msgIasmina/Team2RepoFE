@@ -1,5 +1,17 @@
-<div class="role-details">
+<div class="role-details" *transloco="let t">
   <h2>{{rolePermission.role}}</h2>
+  <div class="form__field">
+    <mat-chip-list selectable multiple>
+      <mat-chip
+        #c="matChip"
+        *ngFor="let permission of acquiredPermissions"
+        [value]="permission.permission"
+        [ngStyle]="{'background-color': '#Fa5353'}"
+      >
+        {{permission.permission}}
+      </mat-chip>
+    </mat-chip-list>
+  </div>
   <form [formGroup]="form">
   <label for="addMultiplePermissions">Add Permissions</label>
     <mat-select class="multi-select"  formControlName="permissionsToBeAdded" multiple  id="addMultiplePermissions">

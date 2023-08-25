@@ -55,4 +55,5 @@ export class RoleDetailsComponent implements OnInit {
       }
     )
   }
+
 }

@@ -5,18 +5,20 @@ import { RoleDetailsComponent } from './components/role-details/role-details.com
 import {MatSelectModule} from "@angular/material/select";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {MatChipsModule} from "@angular/material/chips";
+import {TranslocoModule} from "@ngneat/transloco";
 
 @NgModule({
   declarations: [
     RoleListComponent,
     RoleDetailsComponent
   ],
-  imports: [
-    CommonModule,
-    MatSelectModule,
-    ReactiveFormsModule,
-    MatChipsModule,
-    FormsModule
-  ]
+    imports: [
+        CommonModule,
+        MatSelectModule,
+        ReactiveFormsModule,
+        MatChipsModule,
+        FormsModule,
+        TranslocoModule
+    ]
 })
 export class PermissionModule { }

@@ -117,10 +117,9 @@ export class UserFromComponent implements OnInit {
     }
         if(this.registerForm.valid && this.selectedRoles.length !== 0){
           this.submitEvent.emit(newUser)
-          } else{
-          this.toastr.show("You must select at last one role and one fill in all the  required fields");
+          } else {
+          this.toastr.show("Please make sure that your name contains only letters and all required fields are filled in");
         }
-
   }
 
   ngOnInit(): void {
@@ -139,8 +138,6 @@ export class UserFromComponent implements OnInit {
   }
 
   getChipClass(role: Role): string {
-    console.log(role.name)
-    console.log(this.isSelected(role))
     if (this.isSelected(role)) {
       return 'selected-chip';
     } else {
@@ -149,8 +146,6 @@ export class UserFromComponent implements OnInit {
   }
 
   isSelected(role: Role): boolean {
-    // Implement your logic to determine if the role is selected
-    // For example, you might have a selectedRoles array to track selected roles
     let filteredRole = this.getFilteredRole(role);
     return (filteredRole.length > 0)
   }
