@@ -11,7 +11,7 @@
     </div>
   </div>
 
-  <div>
+  <div class="form__field">
     <h4>{{t('donationForm.currency')}}</h4>
     <mat-select formControlName="currency" id="addCurrency">
       <mat-option *ngFor="let currency of currencies" [value]="currency">
@@ -24,7 +24,7 @@
     </div>
   </div>
 
-  <div>
+  <div class="form__field">
     <h4>{{t('donationForm.campaign')}}</h4>
     <mat-select formControlName="campaign" id="addCampaign">
       <mat-option *ngFor="let campaign of campaigns"
@@ -38,7 +38,7 @@
     <div class="error-message">{{t('donationForm.errors.campaignE')}}</div>
   </div>
 
-  <div>
+  <div class="form__field">
     <h4>{{t('donationForm.benefactor')}}</h4>
     <mat-select formControlName="benefactor" id="addBenefactor">
       <mat-option *ngFor="let donator of donators"

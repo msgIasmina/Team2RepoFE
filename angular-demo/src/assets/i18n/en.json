@@ -87,7 +87,7 @@
     "header": "List of Donations",
     "filters": {
       "amountRange": "Amount Range:",
-      "fixedValue": "Fixed value:",
+      "fixedValue": "Fixed Amount:",
       "currency": "Currency:",
       "campaign": "Campaign:",
       "campaignPurpose": "Search by campaign purpose:",
