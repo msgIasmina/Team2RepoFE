@@ -228,14 +228,6 @@ body{
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
-.paginator-container {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  padding: 5px;
-}
-
 /* ScrollBar */
 
 /* width */
@@ -260,3 +252,10 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
   background:  #Fa5353;
 }
 
+.paginator-container {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  padding: 5px;
+}
