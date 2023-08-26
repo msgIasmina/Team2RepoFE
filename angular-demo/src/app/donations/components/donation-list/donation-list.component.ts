@@ -206,12 +206,12 @@ export class DonationListComponent implements OnInit {
   }
 
   downloadCsvFile(){
+    console.log("Hello")
     let exportData:Donation[];
     delete this.filterParams['offset']
     this.donationService.loadDonations(this.filterParams).subscribe( () => {
       this.donationService.getDonationFilterPair().subscribe(donationFilterPair => {
         exportData = donationFilterPair.donations;
-        console.log(exportData)
         const selectedFields = [];
         for (const donation of exportData) {
           selectedFields.push({
@@ -236,6 +236,7 @@ export class DonationListComponent implements OnInit {
           showTitle: true,
           title: 'Report data',
           useBom: true,
+          noDownload: false,
           headers: ['Amount, Currency, Campaign, Creator, Creation Date, Benefactor, Approved, Approved By, Approval Date, Notes']
         };
 
