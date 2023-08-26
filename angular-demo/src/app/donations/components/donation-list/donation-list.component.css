@@ -21,10 +21,18 @@ h2 {
 }
 /* Table Styles */
 
+.table-container {
+  max-height: 400px;
+  position: relative;
+}
+
 .table-wrapper{
   margin: 70px 350px;
   box-shadow: 0px 35px 50px rgba( 0, 0, 0, 0.2 );
   position: relative;
+  max-height: 300px;
+  overflow-y: scroll;
+  overflow-x: scroll;
 }
 
 .fl-table {
@@ -33,10 +41,9 @@ h2 {
   font-weight: normal;
   border: none;
   border-collapse: collapse;
-  width: 100%;
-  max-width: 100%;
   white-space: nowrap;
   background-color: white;
+  max-width: 20px;
 }
 
 .fl-table td, .fl-table th {
@@ -90,10 +97,6 @@ h2 {
   border-radius: 10px;
   box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.3);
   background-color:  black;
-}
-
-.form__field {
-  margin-bottom: 1rem;
 }
 
 .form input {
@@ -163,3 +166,4 @@ input {
   color: #ffffff;
   outline: none;
 }
+

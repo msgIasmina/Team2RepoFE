@@ -42,6 +42,6 @@
   </div>
 
   <div class="form__field">
-    <button mat-raised-button color="accent" class="btn btn-primary custom-btn" type="submit">{{t('donatorForm.submitBtn')}}</button>
+    <button mat-raised-button color="accent" disabled [disabled]="!registerForm.valid" type="submit">{{t('donatorForm.submitBtn')}}</button>
   </div>
 </form>

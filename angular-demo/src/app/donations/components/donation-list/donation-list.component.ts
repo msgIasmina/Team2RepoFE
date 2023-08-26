@@ -57,7 +57,16 @@ export class DonationListComponent implements OnInit {
   donationForm:FormGroup = this.fb.group({
     minAmount: [''],
     maxAmount: [''],
-
+    Amount: [''],
+    currency: [''],
+    searchTerm: [''],
+    campaignId: [''],
+    createdByUserId: [''],
+    createDateStart: [''],
+    createDateEnd: [''],
+    approved: [''],
+    approvedDateStart: [''],
+    approvedDateEnd: ['']
   })
 
   constructor(private donationService: DonationService,
@@ -145,45 +154,45 @@ export class DonationListComponent implements OnInit {
       this.filterParams['maxAmount'] = this.donationForm.get('maxAmount')?.value;
     }
 
-    // if (this.value !== null) {
-    //   this.filterParams['value'] = this.value;
-    // }
-    //
-    // if (this.currency) {
-    //   this.filterParams['currency'] = this.currency;
-    // }
-    //
-    // if (this.campaignOptions) {
-    //   this.filterParams['campaignId'] = this.campaignId;
-    // }
-    //
-    // if (this.searchTerm != null) {
-    //   this.filterParams['searchTerm'] = this.searchTerm;
-    // }
-    //
-    // if (this.userOptions) {
-    //   this.filterParams['createdById'] = this.createdByUserId;
-    // }
-    //
-    // if (this.createDateStart) {
-    //   this.filterParams['createDateStart'] = this.createDateStart;
-    // }
-    //
-    // if (this.createDateEnd) {
-    //   this.filterParams['createDateEnd'] = this.createDateEnd;
-    // }
-    //
-    // if (this.approved) {
-    //   this.filterParams['approved'] = this.approved;
-    // }
-    //
-    // if (this.approvedDateStart) {
-    //   this.filterParams['approvedDateStart'] = this.approvedDateStart;
-    // }
-    //
-    // if (this.approvedDateStart) {
-    //   this.filterParams['approvedDateEnd'] = this.approvedDateEnd;
-    // }
+    if (this.donationForm.get("Amount") !== null) {
+      this.filterParams['Amount'] = this.donationForm.get("Amount")?.value;
+    }
+
+    if (this.donationForm.get('currency')) {
+      this.filterParams['currency'] = this.donationForm.get('currency')?.value;
+    }
+
+    if (this.donationForm.get("campaignId")) {
+      this.filterParams['campaignId'] = this.donationForm.get('campaignId')?.value;
+    }
+
+    if (this.donationForm.get('searchTerm') !== null) {
+      this.filterParams['searchTerm'] = this.donationForm.get('searchTerm')?.value;
+    }
+
+    if (this.donationForm.get('createdByUserId')) {
+      this.filterParams['createdByUserId'] = this.donationForm.get('createdByUserId')?.value;
+    }
+
+    if (this.donationForm.get('createDateStart')) {
+      this.filterParams['createDateStart'] = this.donationForm.get('createDateStart')?.value;
+    }
+
+    if (this.donationForm.get('createDateEnd')) {
+      this.filterParams['createDateEnd'] = this.donationForm.get('createDateEnd')?.value;
+    }
+
+    if (this.donationForm.get('approved')) {
+      this.filterParams['approved'] = this.donationForm.get('approved')?.value;
+    }
+
+    if (this.donationForm.get('approvedDateStart')) {
+      this.filterParams['approvedDateStart'] = this.donationForm.get('approvedDateStart')?.value;
+    }
+
+    if (this.donationForm.get('approvedDateEnd')) {
+      this.filterParams['approvedDateEnd'] = this.donationForm.get('approvedDateEnd')?.value;
+    }
 
     this.loadDonationsAndRefresh();
   }

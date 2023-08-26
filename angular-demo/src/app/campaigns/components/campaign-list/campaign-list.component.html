@@ -1,49 +1,77 @@
 <div *transloco="let t">
 <p></p>
   <h2>{{t('cList.header')}}</h2>
-  <button mat-raised-button color="accent" (click)="onAddCampaignClicked()"><mat-icon>add</mat-icon></button>
-<div class="filter">
-  <label>Search by name: </label>
-  <input type="text" [(ngModel)]="nameTerm" placeholder="Name of Campaign">
-</div>
+  <button mat-raised-button class="addbutton" (click)="onAddCampaignClicked()">Add Campaign
+    <mat-icon>add</mat-icon>
+    </button>
 
-<div class="filter">
-  <label>Search by purpose: </label>
-  <input type="text" [(ngModel)]="purposeTerm" placeholder="Purpose of Campaign">
-</div>
+  <div class="dropdown-container">
+    <button mat-raised-button id="dropdown-button" (click)="toggleDropdown()">Filter</button>
+    <div class="dropdown-content">
 
-<button (click)="applyFilters()">Apply Filters</button>
-<button (click)="clearAllFilterParamsAndRefresh()">Clear All Filters</button>
+      <div class="container">
 
+        <form class="form" [formGroup]="campaignForm" (ngSubmit)="applyFilters()">
 
-<div class="table-wrapper">
-  <table class="fl-table">
-    <thead>
-    <tr>
-      <th>{{t('cList.cTable.name')}}</th>
-      <th>{{t('cList.cTable.purpose')}}</th>
-      <th>{{t('cList.cTable.actions')}}</th>
-    </tr>
-    </thead>
-    <tbody>
-    <tr *ngFor="let campaign of campaignList">
-      <td>{{ campaign.name }} </td>
-      <td>{{ campaign.purpose }}</td>
-      <td>
-        <app-campaign-details [campaign]="campaign" (emmitter)="handleCampaignAction($event)"></app-campaign-details>
-      </td>
-    </tr>
-    </tbody>
-  </table>
-</div>
+          <div class="filter">
+            <div class="form__field">
+              <label>Search by name: </label>
+              <input
+                type="text"
+                formControlName="nameTerm"
+                placeholder="Name of Campaign"
+              />
+            </div>
+          </div>
 
-<div class="paginator-container">
-  <mat-paginator [length]="totalItems"
-                 [pageIndex]="currentPage"
-                 [pageSize]="pageSize"
-                 [pageSizeOptions]="pageSizeOptions"
-                 (page)="pageChanged($event)">
-  </mat-paginator>
-</div>
+          <div class="filter">
+            <div class="form__field">
+              <label>Search by purpose: </label>
+              <input
+                type="text"
+                formControlName="purposeTerm"
+                placeholder="Purpose of Campaign"
+              >
+            </div>
+          </div>
+
+          <button mat-raised-button color="accent" type="submit">{{t('donationList.filters.applyFilters')}}</button>
+          <button  mat-raised-button color="primary" (click)="clearAllFilterParamsAndRefresh()">{{t('donationList.filters.clearFilters')}}</button>
+
+        </form>
+      </div>
+
+    </div>
+  </div>
+
+      <div class="table-wrapper">
+        <table class="fl-table">
+          <thead>
+          <tr>
+            <th>{{t('cList.cTable.name')}}</th>
+            <th>{{t('cList.cTable.purpose')}}</th>
+            <th>{{t('cList.cTable.actions')}}</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr *ngFor="let campaign of campaignList">
+            <td>{{ campaign.name }} </td>
+            <td>{{ campaign.purpose }}</td>
+            <td>
+              <app-campaign-details [campaign]="campaign" (emmitter)="handleCampaignAction($event)"></app-campaign-details>
+            </td>
+          </tr>
+          </tbody>
+        </table>
+      </div>
+
+  <div class="paginator-container">
+    <mat-paginator [length]="totalItems"
+                   [pageIndex]="currentPage"
+                   [pageSize]="pageSize"
+                   [pageSizeOptions]="pageSizeOptions"
+                   (page)="pageChanged($event)">
+    </mat-paginator>
+  </div>
 </div>
 
