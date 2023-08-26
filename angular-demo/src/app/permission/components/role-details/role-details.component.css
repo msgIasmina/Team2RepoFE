@@ -1,18 +1,68 @@
-.role-details{
-  background-color:white;
-  margin:10px;
-  padding-bottom: 10px;
-  padding-left: 7px;
-  padding-right: 7px;
+.role-details {
+  background-color:  #1b182b;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+  color: #ffffff;
+  text-align: center;
 }
+
+.form__field {
+  margin-bottom: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 2em;
+}
+
+.mat-chip {
+  margin: 4px;
+  background-color: #fa5353;
+  color: #ffffff;
+  font-size: 14px;
+  border-radius: 4px;
+}
+
+label {
+  font-size: 16px;
+  color: white;
+  margin-top: 10px;
+  display: block;
+}
+
+.mat-select {
+  width: 100%;
+  max-width: 400px;
+}
+
+.submit-button {
+  margin-top: 10px;
+}
+
+.form__field {
+  margin-bottom: 20px;
+}
+
 h2{
-  color:black;
+  font-size: 2.75rem;
+  font-weight: 100;
+  margin: 0 0 1rem;
+  text-transform: uppercase;
+  text-align: center;
+  color: #Fa5353;
 }
 
 .multi-select{
-  border-style: solid;
+  width: 100%;
+  max-width: 400px;
+  background-color: #3b394f;
+  color: #ffffff;
+  border: 1px solid #4d4b6a;
+  border-radius: 4px;
+  padding: 10px;
 }
 
-.submit-button{
-  margin: 20px;
+.mat-select:focus {
+  outline: none;
+  border-color: #fa5353;
 }

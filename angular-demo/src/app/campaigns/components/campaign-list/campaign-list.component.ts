@@ -5,6 +5,7 @@ import {Router} from "@angular/router";
 import {ToastrService} from "ngx-toastr";
 import {CampaignAction} from "../../models/CampaignAction";
 import {PageEvent} from "@angular/material/paginator";
+import {FormBuilder, FormGroup} from "@angular/forms";
 
 @Component({
   selector: 'app-campaign-list',
@@ -25,7 +26,13 @@ export class CampaignListComponent implements OnInit {
 
   params: any = {};
 
-  constructor(private campaignService:CampaignService,private router:Router, private toastr: ToastrService) { }
+  campaignForm:FormGroup = this.fb.group({
+    nameTerm: [''],
+    purposeTerm: ['']
+  })
+
+  constructor(private campaignService:CampaignService,private router:Router, private toastr: ToastrService,
+              private fb: FormBuilder) { }
 
   ngOnInit(): void {
     this.params['offset'] = 0;
@@ -84,12 +91,12 @@ export class CampaignListComponent implements OnInit {
   applyFilters(){
     this.clearFilterParams();
 
-    if (this.nameTerm != null){
-      this.params['nameTerm'] = this.nameTerm;
+    if (this.campaignForm.get('nameTerm') != null){
+      this.params['nameTerm'] = this.campaignForm.get('nameTerm')?.value;
     }
 
-    if (this.purposeTerm != null){
-      this.params['purposeTerm'] = this.purposeTerm;
+    if (this.campaignForm.get('purposeTerm') != null){
+      this.params['purposeTerm'] = this.campaignForm.get('purposeTerm')?.value;
     }
 
     this.loadCampaignsAndRefresh();
@@ -105,13 +112,21 @@ export class CampaignListComponent implements OnInit {
   }
 
   clearAllFilterParamsAndRefresh(){
-
+    this.campaignForm.reset();
   }
 
   pageChanged(event: PageEvent): void {
     this.params['offset'] = event.pageIndex;
     this.params['pageSize'] = event.pageSize;
     this.loadCampaignsAndRefresh();
+  }
+
+  toggleDropdown(): void {
+    const dropdownContent = document.querySelector(".dropdown-content");
+
+    if (dropdownContent instanceof HTMLElement) {
+      dropdownContent.style.display = dropdownContent.style.display === "block" ? "none" : "block";
+    }
   }
 
 }

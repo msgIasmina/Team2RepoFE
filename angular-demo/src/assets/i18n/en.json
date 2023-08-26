@@ -87,7 +87,7 @@
     "header": "List of Donations",
     "filters": {
       "amountRange": "Amount Range:",
-      "fixedValue": "Fixed value:",
+      "fixedValue": "Fixed Amount:",
       "currency": "Currency:",
       "campaign": "Campaign:",
       "campaignPurpose": "Search by campaign purpose:",
@@ -136,7 +136,8 @@
   },
   "cDetails": {
     "editBtn": "Edit",
-    "deleteBtn": "Delete"
+    "deleteBtn": "Delete",
+    "addBtn": "Add"
   },
   "cList": {
     "header": "List of Campaigns",
@@ -162,6 +163,10 @@
       "purposeE": "Purpose is required"
     }
   },
+  "pForm": {
+    "add": "Add Permissions",
+    "delete": "Remove Permissions"
+  },
   "login": {
     "header": "Donation Manager",
     "username": "Username:",
@@ -179,5 +184,11 @@
     "p1": "This is a dynamic web application designed to empower NGOs and organizations in efficiently overseeing campaigns, donors, and donations.",
     "p2": "Through its user-friendly interface, it provides clear visualizations of donation data, timely notifications, internationalization capabilities, and effortless financial report generation.",
     "p3": "Elevate your community engagement and financial management with DonationManager –> your all-in-one solution for impactful online operations."
+  },
+  "roleList": {
+    "title": "Permissions Management"
+  },
+  "backtoUserList": {
+    "back": "Back to Users List"
   }
 }

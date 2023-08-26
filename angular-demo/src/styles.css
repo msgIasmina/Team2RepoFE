@@ -259,3 +259,14 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
   width: 100%;
   padding: 5px;
 }
+
+@media (max-width: 768px) {
+  /* Adjust styles for smaller screens */
+  .table-wrapper {
+    max-height: none;
+    overflow-y: visible;
+  }
+  thead {
+    position: static;
+  }
+}

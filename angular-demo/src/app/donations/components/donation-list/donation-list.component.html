@@ -5,12 +5,35 @@
       <mat-icon>download</mat-icon>
     </button>
   </div>
-<h2>{{t('donationList.header')}}</h2>
-<div class="filter">
-  <label>{{t('donationList.filters.amountRange')}}</label>
-  <input type="number" [(ngModel)]="minAmount" placeholder="Min Amount">
-  <input type="number" [(ngModel)]="maxAmount" placeholder="Max Amount">
-</div>
+    <h2>{{t('donationList.header')}}</h2>
+
+  <button mat-raised-button  class="addbutton" (click)="onAddDonationClicked()">Add Donation
+    <mat-icon>add</mat-icon>
+  </button>
+
+  <div class="dropdown-container">
+    <button mat-raised-button id="dropdown-button" (click)="toggleDropdown()">Filter</button>
+    <div class="dropdown-content">
+
+      <div class="container">
+
+        <form class="form" [formGroup]="donationForm" (ngSubmit)="applyFilters()">
+
+          <div class="filter">
+            <div class="form__field">
+              <label>{{t('donationList.filters.amountRange')}}</label>
+              <input
+                placeholder="Min Amount"
+                type="number"
+                formControlName="minAmount"
+              />
+              <input
+                type="number"
+                formControlName="maxAmount"
+                placeholder="Max Amount"
+              >
+            </div>
+          </div>
 
 <div class="filter">
   <label>{{t('donationList.filters.fixedValue')}}</label>

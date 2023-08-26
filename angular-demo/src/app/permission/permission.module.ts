@@ -6,18 +6,20 @@ import {MatSelectModule} from "@angular/material/select";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {MatChipsModule} from "@angular/material/chips";
 import {TranslocoModule} from "@ngneat/transloco";
+import {MatButtonModule} from "@angular/material/button";
 @NgModule({
   declarations: [
     RoleListComponent,
     RoleDetailsComponent
   ],
-    imports: [
-        CommonModule,
-        MatSelectModule,
-        ReactiveFormsModule,
-        MatChipsModule,
-        FormsModule,
-        TranslocoModule
-    ]
+  imports: [
+    CommonModule,
+    MatSelectModule,
+    ReactiveFormsModule,
+    MatChipsModule,
+    FormsModule,
+    TranslocoModule,
+    MatButtonModule
+  ]
 })
 export class PermissionModule { }
