@@ -40,15 +40,18 @@ export class BasePageComponent implements OnInit{
     this.notificationService.getUserRecentNotification().subscribe(
       notifications =>{
         this.notifoication = notifications
+        this.length = notifications.length;
       }
     )
-    this.websocketService.notificationEvent.subscribe(
-      (notification) => {
-        this.length++;
-        this.notifoication.splice(0,1 )
-        this.notifoication.push(notification)
-      }
-    )
+    // this.websocketService.notificationEvent.subscribe(
+    //   (notification) => {
+    //     this.length++;
+    //     if (this.notifoication.length == 3){
+    //       this.notifoication.splice(0,1 )
+    //     }
+    //     this.notifoication.push(notification)
+    //   }
+    // )
   }
 
   seeAllNotifications() {

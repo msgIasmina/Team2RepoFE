@@ -10,6 +10,7 @@ import {DonationService} from "../../services/donation.service";
 import {DonationAction} from "../../models/DonationAction";
 import {User} from "../../../user/models/user";
 import {HttpClient} from "@angular/common/http";
+import { ngxCsv} from "ngx-csv";
 
 @Component({
   selector: 'app-donation-list',
@@ -116,7 +117,6 @@ export class DonationListComponent implements OnInit {
     })
   }
 
-  // TODO - didn't check if it's working
   editDonation(donationToEdit: Donation){
     this.router.navigate(["management/donations/edit/"+donationToEdit.id])
   }
@@ -185,7 +185,6 @@ export class DonationListComponent implements OnInit {
 
   }
 
-  // TODO
   clearAllFilterParamsAndRefresh() {
     this.router.navigate(
       ['/management/donations/list']
@@ -206,48 +205,43 @@ export class DonationListComponent implements OnInit {
     this.minApprovedDateEnd = this.approvedDateStart;
   }
 
-  exportToCSV() {
-    const filteredData: Donation[] = this.filterParams.filteredData;
+  downloadCsvFile(){
+    let exportData:Donation[];
+    delete this.filterParams['offset']
+    this.donationService.loadDonations(this.filterParams).subscribe( () => {
+      this.donationService.getDonationFilterPair().subscribe(donationFilterPair => {
+        exportData = donationFilterPair.donations;
+        console.log(exportData)
+        const selectedFields = [];
+        for (const donation of exportData) {
+          selectedFields.push({
+            Amount: donation.amount,
+            Currency: donation.currency,
+            Campaign: donation.campaign?.name,
+            Creator: `${donation.createdBy?.firstName} ${donation.createdBy?.lastName}`,
+            'Creation Date': donation.createDate,
+            Benefactor: donation.benefactor ? `${donation.benefactor.firstName} ${donation.benefactor.lastName}` : 'Unknown',
+            Approved: donation.approved ? 'Yes' : 'No',
+            'Approved By': donation.approvedBy ? `${donation.approvedBy?.firstName} ${donation.approvedBy?.lastName}` : '',
+            'Approval Date': donation.approvedDate ? donation.approvedDate : '',
+            Notes: donation.notes ? donation.notes : ''
+          });
+        }
 
-    // if (filteredData.length === 0) {
-    //   this._snackBar.open('No data to export.', 'OK', {
-    //     duration: 3000,
-    //     panelClass: 'error-snack',
-    //   });
-    //   return;
-    // }
+        var options = {
+          fieldSeparator: ',',
+          quoteStrings: '"',
+          decimalseparator: '.',
+          showLabels: true,
+          showTitle: true,
+          title: 'Report data',
+          useBom: true,
+          headers: ['Amount, Currency, Campaign, Creator, Creation Date, Benefactor, Approved, Approved By, Approval Date, Notes']
+        };
 
-    const csvData = this.generateCSVData(filteredData);
-    this.downloadCSV(csvData);
-  }
-
-  generateCSVData(data: Donation[]): string {
-    const headers = ['Amount', 'Currency', 'Campaign', 'Creator', 'Creation Date', 'Benefactor', 'Approved', 'Notes'];
-    const rows = data.map(donation => {
-      return [
-        donation.amount.toString(),
-        donation.currency,
-        `${donation.createdBy?.firstName} ${donation.createdBy?.lastName}`,
-        donation.createDate?.toString(),
-        `${donation.benefactor?.firstName || ''} ${donation.benefactor?.lastName || ''}`,
-        donation.approved,
-        `${donation.notes || ''}`
-      ];
-    });
-
-    const csvArray = [headers, ...rows];
-
-    return csvArray.map(row => row.join(',')).join('\n');
-  }
-
-  downloadCSV(csvData: string) {
-    const blob = new Blob([csvData], { type: 'text/csv' });
-    const url = window.URL.createObjectURL(blob);
-    const a = document.createElement('a');
-    a.href = url;
-    a.download = 'donation_data.csv';
-    a.click();
-    window.URL.revokeObjectURL(url);
+        new ngxCsv(selectedFields, "filteredDonations", options);
+      });
+    })
   }
 }
 
