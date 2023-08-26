@@ -27,16 +27,16 @@ h2 {
 }
 
 .table-wrapper{
-  margin: 70px 350px;
+  margin: 75px 375px;
   box-shadow: 0px 35px 50px rgba( 0, 0, 0, 0.2 );
   position: relative;
-  max-height: 300px;
+  max-height: 375px;
   overflow-y: scroll;
   overflow-x: scroll;
 }
 
 .fl-table {
-  border-radius: 5px;
+  border-radius: 8px;
   font-size: 12px;
   font-weight: normal;
   border: none;
@@ -137,7 +137,7 @@ input {
 
 .addbutton {
   background: #4FC3A1;
-  margin-left: 400px;
+  margin-left: 210px;
   color: #ffffff;
   padding: 10px 20px;
   border: none;
@@ -146,7 +146,7 @@ input {
 }
 
 .addbutton:hover {
-  background-color: darkgreen;
+  background-color: darkslategray;
   color: #ffffff;
   outline: none;
 }
@@ -158,11 +158,27 @@ input {
   border: none;
   border-radius: 5px;
   cursor: pointer;
-  margin-left: 200px;
+  margin-left: 300px;
 }
 
 #dropdown-button:hover {
-  background-color: black;
+  background-color: indigo;
+  color: #ffffff;
+  outline: none;
+}
+
+.download-button{
+  background: #4FC3A1;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-left: 350px;
+}
+
+.download-button:hover {
+  background-color: darkslategray;
   color: #ffffff;
   outline: none;
 }

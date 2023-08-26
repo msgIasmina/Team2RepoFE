@@ -1,8 +1,10 @@
 <div *transloco="let t">
 
-    <h2>{{t('donationList.header')}}</h2>
+  <h2>{{t('donationList.header')}}</h2>
 
-  <button mat-raised-button  class="addbutton" (click)="onAddDonationClicked()">Add Donation
+
+
+  <button mat-raised-button class="addbutton" (click)="onAddDonationClicked()">Add Donation
     <mat-icon>add</mat-icon>
   </button>
 
@@ -89,7 +91,7 @@
                   {{ user.firstName }} {{user.lastName}}
                 </option>
               </select>
-              </div>
+            </div>
           </div>
 
           <div class="filter">
@@ -106,7 +108,7 @@
                 formControlName="createDateEnd"
                 [min]="minCreateDateEnd"
               />
-              </div>
+            </div>
           </div>
 
           <div class="filter">
@@ -116,7 +118,7 @@
                 type="checkbox"
                 formControlName="approved"
               />
-              </div>
+            </div>
           </div>
 
           <div class="filter">
@@ -147,47 +149,52 @@
     </div>
   </div>
 
-  <div class="table-container">
-      <div class="table-wrapper">
-        <table class="fl-table">
-          <thead>
-            <tr>
-              <th>{{t('donationList.donationTable.amount')}}</th>
-              <th>{{t('donationList.donationTable.currency')}}</th>
-              <th>{{t('donationList.donationTable.campaign')}}</th>
-              <th>{{t('donationList.donationTable.createdBy')}}</th>
-              <th>{{t('donationList.donationTable.createdDate')}}</th>
-              <th>{{t('donationList.donationTable.benefactor')}}</th>
-              <th>{{t('donationList.donationTable.approved')}}</th>
-              <th>{{t('donationList.donationTable.approvedBy')}}</th>
-              <th>{{t('donationList.donationTable.approvalDate')}}</th>
-              <th>{{t('donationList.donationTable.notes')}}</th>
-              <th>{{t('donationList.donationTable.actions')}}</th>
-            </tr>
-          </thead>
-          <tbody>
-          <tr *ngFor="let donation of donationList">
-            <td>{{ donation.amount }}</td>
-            <td>{{ donation.currency }}</td>
-            <td>{{ donation.campaign?.name}}</td>
-            <td>{{ donation.createdBy?.firstName}} {{ donation.createdBy?.lastName}}</td>
-            <td>{{ donation.createDate}}</td>
-            <td>{{ donation.benefactor?.firstName}} {{ donation.benefactor?.lastName}}</td>
-            <mat-icon class="icon" [ngClass]="{ 'approved-icon': donation.approved, 'not-approved-icon': !donation.approved }">
-              {{ donation.approved ? 'done' : 'pending_actions' }}
-            </mat-icon>
-            <td>{{ donation.approvedBy?.firstName}} {{donation.approvedBy?.lastName}}</td>
-            <td>{{ donation.approvedDate }}</td>
-            <td>{{ donation.notes}}</td>
-            <td>
-              <app-donation [donation]="donation" (donationAction)="handleDonationAction($event)"></app-donation>
-            </td>
-          </tr>
-          </tbody>
-        </table>
-  </div>
+  <button mat-raised-button class="download-button" (click)="downloadFile()">
+    Export Donations
+    <mat-icon>download</mat-icon>
+  </button>
 
+  <div class="table-container">
+    <div class="table-wrapper">
+      <table class="fl-table">
+        <thead>
+        <tr>
+          <th>{{t('donationList.donationTable.amount')}}</th>
+          <th>{{t('donationList.donationTable.currency')}}</th>
+          <th>{{t('donationList.donationTable.campaign')}}</th>
+          <th>{{t('donationList.donationTable.createdBy')}}</th>
+          <th>{{t('donationList.donationTable.createdDate')}}</th>
+          <th>{{t('donationList.donationTable.benefactor')}}</th>
+          <th>{{t('donationList.donationTable.approved')}}</th>
+          <th>{{t('donationList.donationTable.approvedBy')}}</th>
+          <th>{{t('donationList.donationTable.approvalDate')}}</th>
+          <th>{{t('donationList.donationTable.notes')}}</th>
+          <th>{{t('donationList.donationTable.actions')}}</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let donation of donationList">
+          <td>{{ donation.amount }}</td>
+          <td>{{ donation.currency }}</td>
+          <td>{{ donation.campaign?.name}}</td>
+          <td>{{ donation.createdBy?.firstName}} {{ donation.createdBy?.lastName}}</td>
+          <td>{{ donation.createDate}}</td>
+          <td>{{ donation.benefactor?.firstName}} {{ donation.benefactor?.lastName}}</td>
+          <mat-icon class="icon" [ngClass]="{ 'approved-icon': donation.approved, 'not-approved-icon': !donation.approved }">
+            {{ donation.approved ? 'done' : 'pending_actions' }}
+          </mat-icon>
+          <td>{{ donation.approvedBy?.firstName}} {{donation.approvedBy?.lastName}}</td>
+          <td>{{ donation.approvedDate }}</td>
+          <td>{{ donation.notes}}</td>
+          <td>
+            <app-donation [donation]="donation" (donationAction)="handleDonationAction($event)"></app-donation>
+          </td>
+        </tr>
+        </tbody>
+      </table>
     </div>
+
+  </div>
 
   <div class="paginator-container">
     <mat-paginator [length]="totalItems"
@@ -199,4 +206,3 @@
   </div>
 
 </div>
-

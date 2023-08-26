@@ -12,6 +12,8 @@ import {User} from "../../../user/models/user";
 import {HttpClient} from "@angular/common/http";
 import {ToastrService} from "ngx-toastr";
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
+import { ngxCsv} from "ngx-csv";
+import { saveAs } from 'file-saver';
 
 @Component({
   selector: 'app-donation-list',
@@ -54,7 +56,7 @@ export class DonationListComponent implements OnInit {
 
   filterParams: any = {};
 
-  donationForm:FormGroup = this.fb.group({
+  donationForm: FormGroup = this.fb.group({
     minAmount: [''],
     maxAmount: [''],
     Amount: [''],
@@ -77,7 +79,7 @@ export class DonationListComponent implements OnInit {
               private http: HttpClient,
               private toastr: ToastrService,
               private fb: FormBuilder
-              ) {
+  ) {
   }
 
   ngOnInit(): void {
@@ -138,7 +140,6 @@ export class DonationListComponent implements OnInit {
     })
   }
 
-  // TODO - didn't check if it's working
   editDonation(donationToEdit: Donation) {
     this.router.navigate(["management/donations/edit/" + donationToEdit.id])
   }
@@ -207,7 +208,6 @@ export class DonationListComponent implements OnInit {
 
   }
 
-  // TODO
   clearAllFilterParamsAndRefresh() {
     this.donationForm.reset();
   }
@@ -234,11 +234,11 @@ export class DonationListComponent implements OnInit {
     }
   }
 
-  onAddDonationClicked(){
+  onAddDonationClicked() {
     const permissions = JSON.parse(localStorage.getItem('permissions') || '[]');
     const hasBenefPermission = permissions.includes('AUTHORITY_DONATION_MANAGEMENT');
 
-    if(hasBenefPermission){
+    if (hasBenefPermission) {
       this.router.navigate(
         ['/management/donators/register/']
       );
@@ -246,8 +246,60 @@ export class DonationListComponent implements OnInit {
       this.toastr.error("It seems that you don't have the permissions for completing this action.")
     }
   }
-}
 
+  downloadFile() {
+    this.donationService.downloadCsvFile(this.filterParams).subscribe(
+      (response: Blob) => {
+        const file = new Blob([response], { type: 'text/csv' });
+        saveAs(file, 'Donations.csv');
+      },
+      (error) => {
+        this.toastr.error(error.message, 'Error downloading CSV file')
+      }
+    );
+  }
+
+    downloadCsvFile()
+    {
+      console.log("Hello")
+      let exportData: Donation[];
+      delete this.filterParams['offset']
+      this.donationService.loadDonations(this.filterParams).subscribe(() => {
+        this.donationService.getDonationFilterPair().subscribe(donationFilterPair => {
+          exportData = donationFilterPair.donations;
+          const selectedFields = [];
+          for (const donation of exportData) {
+            selectedFields.push({
+              Amount: donation.amount,
+              Currency: donation.currency,
+              Campaign: donation.campaign?.name,
+              Creator: `${donation.createdBy?.firstName} ${donation.createdBy?.lastName}`,
+              'Creation Date': donation.createDate,
+              Benefactor: donation.benefactor ? `${donation.benefactor.firstName} ${donation.benefactor.lastName}` : 'Unknown',
+              Approved: donation.approved ? 'Yes' : 'No',
+              'Approved By': donation.approvedBy ? `${donation.approvedBy?.firstName} ${donation.approvedBy?.lastName}` : '',
+              'Approval Date': donation.approvedDate ? donation.approvedDate : '',
+              Notes: donation.notes ? donation.notes : ''
+            });
+          }
+
+          var options = {
+            fieldSeparator: ',',
+            quoteStrings: '"',
+            decimalseparator: '.',
+            showLabels: true,
+            showTitle: true,
+            title: 'Report data',
+            useBom: true,
+            noDownload: false,
+            headers: ['Amount, Currency, Campaign, Creator, Creation Date, Benefactor, Approved, Approved By, Approval Date, Notes']
+          };
+
+          new ngxCsv(selectedFields, "filteredDonations", options);
+        });
+      })
+    }
+  }
 
 
 
