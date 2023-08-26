@@ -15,8 +15,8 @@ import {MatFormFieldModule} from "@angular/material/form-field";
 import {MatInputModule} from "@angular/material/input";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {MatChipsModule} from "@angular/material/chips";
-import { HomeComponent } from './homePage/components/home/home.component';
 import { TranslocoRootModule } from './transloco-root.module';
+import {PermissionModule} from "./permission/permission.module";
 
 @NgModule({
   declarations: [

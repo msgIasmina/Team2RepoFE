@@ -53,6 +53,8 @@ export class DonationService {
       return this.http.get<DonationFilterPair>(fullUrl, { headers }).pipe(
         tap(donationFilterPair => {
           this.donationFilterPair$.next(donationFilterPair);
+          console.log(fullUrl)
+          console.log(donationFilterPair.totalItems)
         })
       );
   }

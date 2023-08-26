@@ -37,6 +37,8 @@ h2 {
 .table-wrapper{
   margin: 70px 350px;
   box-shadow: 0px 35px 50px rgba( 0, 0, 0, 0.2 );
+  max-height: 300px;
+  overflow-x: scroll;
 }
 
 .fl-table {
@@ -102,6 +104,67 @@ h2 {
 }
 
 .sticky-button:hover {
+  background-color: darkgreen;
+  color: #ffffff;
+  outline: none;
+}
+.dropdown-container {
+  position: relative;
+  display: inline-block;
+}
+
+#dropdown-button {
+  background-color: #3498db;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  cursor: pointer;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: white;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+.container{
+  width: 300px;
+  margin: 0 auto; /* Center the box horizontally */
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.3);
+  background-color:  black;
+}
+
+.form input {
+  outline: 0;
+  padding: 0.5rem 1rem;
+}
+
+input {
+  font: inherit;
+  border: 1px solid #242c37;
+  border-radius: 999px;
+}
+
+.form__field {
+  margin-bottom: 1rem;
+}
+
+.addbutton {
+  background: #4FC3A1;
+  margin-left: 400px;
+  color: #ffffff;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.addbutton:hover {
   background-color: darkgreen;
   color: #ffffff;
   outline: none;

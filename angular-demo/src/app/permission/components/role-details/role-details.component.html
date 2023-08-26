@@ -13,20 +13,22 @@
     </mat-chip-list>
   </div>
   <form [formGroup]="form">
-  <label for="addMultiplePermissions">Add Permissions</label>
+  <label for="addMultiplePermissions">{{t('pForm.add')}}</label>
     <mat-select class="multi-select"  formControlName="permissionsToBeAdded" multiple  id="addMultiplePermissions">
       <mat-option *ngFor="let permission of missingPermissions" [value]="permission">
         {{permission.permission}}
       </mat-option>
     </mat-select>
-  <button class="submit-button" (click)="addPermissions()">Submit added permissions</button>
+  <button mat-raised-button color="accent" class="submit-button" (click)="addPermissions()">{{t('cDetails.addBtn')}}</button>
   <br>
-  <label for="removeMultiplePermissions">Remove Permissions</label>
+  <label for="removeMultiplePermissions">{{t('pForm.delete' )}}</label>
   <mat-select class="multi-select" formControlName="permissionsToBeDeleted" multiple  id="removeMultiplePermissions">
     <mat-option *ngFor="let permission of acquiredPermissions" [value]="permission">
       {{permission.permission}}
     </mat-option>
   </mat-select>
-  <button class="submit-button" (click)="removePermissions()">Submit removed permissions</button>
+  <button  mat-raised-button color="accent" class="submit-button" (click)="removePermissions()">{{t('cDetails.deleteBtn')}}</button>
   </form>
+  <p></p>
+  <button  mat-raised-button color="accent" (click)="backtoUserList()">{{t('backtoUserList.back')}}</button>
 </div>

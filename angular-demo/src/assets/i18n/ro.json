@@ -136,7 +136,8 @@
   },
   "cDetails": {
     "editBtn": "Editează",
-    "deleteBtn": "Șterge"
+    "deleteBtn": "Șterge",
+    "addBtn": "Adaugă"
   },
   "cList": {
     "header": "Lista Campaniilor",
@@ -162,6 +163,10 @@
       "purposeE": "Scopul este obligatoriu"
     }
   },
+  "pForm": {
+    "add": "Adaugă Permisiuni",
+    "delete": "Elimină Permisiuni"
+  },
   "login": {
     "header": "Donation Manager",
     "username": "Utilizator:",
@@ -179,5 +184,11 @@
     "p1": "Aceasta este o aplicație web dinamică concepută pentru a împuternici ONG-urile și organizațiile în supravegherea eficientă a campaniilor, donatorilor și donațiilor.",
     "p2": "Prin interfața sa ușor de utilizat, oferă vizualizări clare ale datelor despre donații, notificări în timp util, capabilități de internaționalizare și generare fără efort de rapoarte financiare.",
     "p3": "Creșteți-vă implicarea comunității și gestionarea financiară cu Donation Manager –> soluția dvs. all-in-one pentru operațiuni online de impact."
+  },
+  "roleList": {
+    "title": "Managementul permisiunilor"
+  },
+  "backtoUserList": {
+    "back": "Înapoi la Lista de utilizatori"
   }
 }

@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {Donation} from "../../models/donation";
 /*import {DonationService} from "../../services/donation.service";*/
 import {ActivatedRoute, Router} from "@angular/router";
@@ -10,6 +10,8 @@ import {DonationService} from "../../services/donation.service";
 import {DonationAction} from "../../models/DonationAction";
 import {User} from "../../../user/models/user";
 import {HttpClient} from "@angular/common/http";
+import {ToastrService} from "ngx-toastr";
+import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 
 @Component({
   selector: 'app-donation-list',
@@ -52,12 +54,31 @@ export class DonationListComponent implements OnInit {
 
   filterParams: any = {};
 
+  donationForm:FormGroup = this.fb.group({
+    minAmount: [''],
+    maxAmount: [''],
+    Amount: [''],
+    currency: [''],
+    searchTerm: [''],
+    campaignId: [''],
+    createdByUserId: [''],
+    createDateStart: [''],
+    createDateEnd: [''],
+    approved: [''],
+    approvedDateStart: [''],
+    approvedDateEnd: ['']
+  })
+
   constructor(private donationService: DonationService,
               private userService: UserService,
               private campaignService: CampaignService,
               private activatedRoute: ActivatedRoute,
               private router: Router,
-              private http: HttpClient) { }
+              private http: HttpClient,
+              private toastr: ToastrService,
+              private fb: FormBuilder
+              ) {
+  }
 
   ngOnInit(): void {
     this.filterParams['offset'] = 0;
@@ -71,15 +92,15 @@ export class DonationListComponent implements OnInit {
 
     this.donationService.getCampaigns().subscribe(campaigns => {
       this.campaignOptions = campaigns;
-      });
+    });
 
     this.donationService.getUsers().subscribe(users => {
       this.userOptions = users;
     })
   }
 
-  private loadDonationsAndRefresh(){
-    this.donationService.loadDonations(this.filterParams).subscribe( () => {
+  private loadDonationsAndRefresh() {
+    this.donationService.loadDonations(this.filterParams).subscribe(() => {
       this.donationService.getDonationFilterPair().subscribe(donationFilterPair => {
         this.donationList = donationFilterPair.donations;
         this.totalItems = donationFilterPair.totalItems;
@@ -90,92 +111,93 @@ export class DonationListComponent implements OnInit {
   handleDonationAction(action: DonationAction) {
     if (action.type === 'edit') {
       this.editDonation(action.donation);
-    } else if (action.type === 'delete'){
+    } else if (action.type === 'delete') {
       this.deleteDonation(action.donation);
-    } else if (action.type === 'approve'){
+    } else if (action.type === 'approve') {
       this.approveDonation(action.donation);
     }
   }
 
   deleteDonation(donationToDelete: Donation) {
     this.activatedRoute.params.subscribe(() => {
-      this.donationService.deleteDonation(donationToDelete).subscribe( () => {},
+      this.donationService.deleteDonation(donationToDelete).subscribe(() => {
+        },
         (error) => {
-        this.loadDonationsAndRefresh();
-      })
+          this.loadDonationsAndRefresh();
+        })
     })
   }
 
   approveDonation(donationToApprove: Donation) {
     this.activatedRoute.params.subscribe(() => {
-      this.donationService.approveDonation(donationToApprove).subscribe( () => {},
-        (error) =>
-      {
-        this.loadDonationsAndRefresh();
-      })
+      this.donationService.approveDonation(donationToApprove).subscribe(() => {
+        },
+        (error) => {
+          this.loadDonationsAndRefresh();
+        })
     })
   }
 
   // TODO - didn't check if it's working
-  editDonation(donationToEdit: Donation){
-    this.router.navigate(["management/donations/edit/"+donationToEdit.id])
+  editDonation(donationToEdit: Donation) {
+    this.router.navigate(["management/donations/edit/" + donationToEdit.id])
   }
 
-  applyFilters(){
+  applyFilters() {
     this.clearFilterParams();
 
-      if (this.minAmount !== null) {
-        this.filterParams['minAmount'] = this.minAmount;
-      }
+    if (this.donationForm.get('minAmount') !== null) {
+      this.filterParams['minAmount'] = this.donationForm.get('minAmount')?.value;
+    }
 
-      if (this.maxAmount !== null) {
-        this.filterParams['maxAmount'] = this.maxAmount;
-      }
+    if (this.donationForm.get('maxAmount') !== null) {
+      this.filterParams['maxAmount'] = this.donationForm.get('maxAmount')?.value;
+    }
 
-      if  (this.value !== null) {
-        this.filterParams['value'] = this.value;
-      }
+    if (this.donationForm.get("Amount") !== null) {
+      this.filterParams['Amount'] = this.donationForm.get("Amount")?.value;
+    }
 
-      if (this.currency) {
-        this.filterParams['currency'] = this.currency;
-      }
+    if (this.donationForm.get('currency')) {
+      this.filterParams['currency'] = this.donationForm.get('currency')?.value;
+    }
 
-      if (this.campaignOptions) {
-        this.filterParams['campaignId'] = this.campaignId;
-      }
+    if (this.donationForm.get("campaignId")) {
+      this.filterParams['campaignId'] = this.donationForm.get('campaignId')?.value;
+    }
 
-      if (this.searchTerm != null) {
-        this.filterParams['searchTerm'] = this.searchTerm;
-      }
+    if (this.donationForm.get('searchTerm') !== null) {
+      this.filterParams['searchTerm'] = this.donationForm.get('searchTerm')?.value;
+    }
 
-      if (this.userOptions) {
-        this.filterParams['createdById'] = this.createdByUserId;
-      }
+    if (this.donationForm.get('createdByUserId')) {
+      this.filterParams['createdByUserId'] = this.donationForm.get('createdByUserId')?.value;
+    }
 
-      if (this.createDateStart) {
-        this.filterParams['createDateStart'] = this.createDateStart;
-      }
+    if (this.donationForm.get('createDateStart')) {
+      this.filterParams['createDateStart'] = this.donationForm.get('createDateStart')?.value;
+    }
 
-      if (this.createDateEnd){
-        this.filterParams['createDateEnd'] = this.createDateEnd;
-      }
+    if (this.donationForm.get('createDateEnd')) {
+      this.filterParams['createDateEnd'] = this.donationForm.get('createDateEnd')?.value;
+    }
 
-      if (this.approved) {
-        this.filterParams['approved'] = this.approved;
-      }
+    if (this.donationForm.get('approved')) {
+      this.filterParams['approved'] = this.donationForm.get('approved')?.value;
+    }
 
-      if (this.approvedDateStart) {
-        this.filterParams['approvedDateStart'] = this.approvedDateStart;
-      }
+    if (this.donationForm.get('approvedDateStart')) {
+      this.filterParams['approvedDateStart'] = this.donationForm.get('approvedDateStart')?.value;
+    }
 
-      if (this.approvedDateStart) {
-        this.filterParams['approvedDateEnd'] = this.approvedDateEnd;
-      }
+    if (this.donationForm.get('approvedDateEnd')) {
+      this.filterParams['approvedDateEnd'] = this.donationForm.get('approvedDateEnd')?.value;
+    }
 
     this.loadDonationsAndRefresh();
   }
 
-  clearFilterParams(){
+  clearFilterParams() {
     for (const prop in this.filterParams) {
       if (prop !== 'pageSize') {
         delete this.filterParams[prop];
@@ -187,9 +209,7 @@ export class DonationListComponent implements OnInit {
 
   // TODO
   clearAllFilterParamsAndRefresh() {
-    this.router.navigate(
-      ['/management/donations/list']
-    );
+    this.donationForm.reset();
   }
 
   pageChanged(event: PageEvent): void {
@@ -206,49 +226,28 @@ export class DonationListComponent implements OnInit {
     this.minApprovedDateEnd = this.approvedDateStart;
   }
 
-  exportToCSV() {
-    const filteredData: Donation[] = this.filterParams.filteredData;
+  toggleDropdown(): void {
+    const dropdownContent = document.querySelector(".dropdown-content");
 
-    // if (filteredData.length === 0) {
-    //   this._snackBar.open('No data to export.', 'OK', {
-    //     duration: 3000,
-    //     panelClass: 'error-snack',
-    //   });
-    //   return;
-    // }
-
-    const csvData = this.generateCSVData(filteredData);
-    this.downloadCSV(csvData);
+    if (dropdownContent instanceof HTMLElement) {
+      dropdownContent.style.display = dropdownContent.style.display === "block" ? "none" : "block";
+    }
   }
 
-  generateCSVData(data: Donation[]): string {
-    const headers = ['Amount', 'Currency', 'Campaign', 'Creator', 'Creation Date', 'Benefactor', 'Approved', 'Notes'];
-    const rows = data.map(donation => {
-      return [
-        donation.amount.toString(),
-        donation.currency,
-        `${donation.createdBy?.firstName} ${donation.createdBy?.lastName}`,
-        donation.createDate?.toString(),
-        `${donation.benefactor?.firstName || ''} ${donation.benefactor?.lastName || ''}`,
-        donation.approved,
-        `${donation.notes || ''}`
-      ];
-    });
+  onAddDonationClicked(){
+    const permissions = JSON.parse(localStorage.getItem('permissions') || '[]');
+    const hasBenefPermission = permissions.includes('AUTHORITY_DONATION_MANAGEMENT');
 
-    const csvArray = [headers, ...rows];
-
-    return csvArray.map(row => row.join(',')).join('\n');
-  }
-
-  downloadCSV(csvData: string) {
-    const blob = new Blob([csvData], { type: 'text/csv' });
-    const url = window.URL.createObjectURL(blob);
-    const a = document.createElement('a');
-    a.href = url;
-    a.download = 'donation_data.csv';
-    a.click();
-    window.URL.revokeObjectURL(url);
+    if(hasBenefPermission){
+      this.router.navigate(
+        ['/management/donators/register/']
+      );
+    } else {
+      this.toastr.error("It seems that you don't have the permissions for completing this action.")
+    }
   }
 }
+
+
 
 

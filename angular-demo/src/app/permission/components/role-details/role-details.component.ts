@@ -3,6 +3,7 @@ import {RolePermission} from "../../models/role-permission";
 import {Permission} from "../../../user/models/permission";
 import {RolePermissionService} from "../../services/role-permission.service";
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-role-details',
@@ -17,7 +18,8 @@ export class RoleDetailsComponent implements OnInit {
     permissionsToBeAdded : [''],
     permissionsToBeDeleted :['']
   })
-  constructor( private rolePermissionService: RolePermissionService,private fb:FormBuilder) {
+  constructor( private rolePermissionService: RolePermissionService,private fb:FormBuilder,
+               private router: Router) {
   }
 
   ngOnInit(): void {
@@ -53,5 +55,9 @@ export class RoleDetailsComponent implements OnInit {
         //window.alert(err);
       }
     )
+  }
+
+  backtoUserList(){
+    this.router.navigate(["/management/users/list"]);
   }
 }
