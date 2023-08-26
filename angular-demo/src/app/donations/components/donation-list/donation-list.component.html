@@ -1,13 +1,10 @@
 <div *transloco="let t">
-  <div>
-    <button (click)="downloadCsvFile()">
-      Export Donations
-      <mat-icon>download</mat-icon>
-    </button>
-  </div>
-    <h2>{{t('donationList.header')}}</h2>
 
-  <button mat-raised-button  class="addbutton" (click)="onAddDonationClicked()">Add Donation
+  <h2>{{t('donationList.header')}}</h2>
+
+
+
+  <button mat-raised-button class="addbutton" (click)="onAddDonationClicked()">Add Donation
     <mat-icon>add</mat-icon>
   </button>
 
@@ -35,122 +32,177 @@
             </div>
           </div>
 
-<div class="filter">
-  <label>{{t('donationList.filters.fixedValue')}}</label>
-  <input type="number" [(ngModel)]="value" placeholder="Value">
+          <div class="filter">
+            <div class="form_field">
+              <label>{{t('donationList.filters.fixedValue' )}}</label>
+              <input
+                type="number"
+                formControlName="Amount"
+                placeholder="Value"
+              />
+            </div>
+          </div>
+
+          <div class="filter">
+            <div class="form__field">
+              <label>{{t('donationList.filters.currency')}}</label>
+              <select formControlName="currency">
+                <option
+                  *ngFor="let currencyOption of currencyOptions"
+                  [value]="currencyOption">
+                  {{ currencyOption }}
+                </option>
+              </select>
+            </div>
+          </div>
+
+
+          <div class="filter">
+            <div class="form__field">
+              <label>{{t('donationList.filters.campaign')}}</label>
+              <select formControlName="campaignId">
+                <option
+                  *ngFor="let campaign of campaignOptions"
+                  [value]="campaign.id">
+                  {{ campaign.name }}
+                </option>
+              </select>
+            </div>
+          </div>
+
+          <div class="filter">
+            <div class="form__field">
+              <label>{{t('donationList.filters.campaignPurpose')}}</label>
+              <input
+                type="text"
+                formControlName="searchTerm"
+                placeholder="Search Term"
+              />
+            </div>
+          </div>
+
+          <div class="filter">
+            <div class="form__field">
+              <label>{{t('donationList.filters.createdBy')}}</label>
+              <select formControlName="createdByUserId">
+                <option
+                  *ngFor="let user of userOptions"
+                  [value]="user.id">
+                  {{ user.firstName }} {{user.lastName}}
+                </option>
+              </select>
+            </div>
+          </div>
+
+          <div class="filter">
+            <div class="form__field">
+              <label>{{t('donationList.filters.createdFrom')}}</label>
+              <input
+                type="date"
+                formControlName="createDateStart"
+                (change)="updateCreateDateEndMin()"
+              />
+              <label>{{t('donationList.filters.createdUntil')}}</label>
+              <input
+                type="date"
+                formControlName="createDateEnd"
+                [min]="minCreateDateEnd"
+              />
+            </div>
+          </div>
+
+          <div class="filter">
+            <div class="form__field">
+              <label>{{t('donationList.filters.approved')}}</label>
+              <input
+                type="checkbox"
+                formControlName="approved"
+              />
+            </div>
+          </div>
+
+          <div class="filter">
+            <div class="form__field">
+              <label>{{t('donationList.filters.approvedFrom')}}</label>
+              <input
+                type="date"
+                formControlName="approvedDateStart"
+                (change)="updateApprovedDateEndMin()"
+              />
+              <label>{{t('donationList.filters.approvedUntil')}}</label>
+              <input
+                type="date"
+                formControlName="approvedDateEnd"
+                [min]="minApprovedDateEnd"
+              />
+            </div>
+          </div>
+
+          <div class="form__field">
+            <button mat-raised-button color="accent" type="submit">{{t('donationList.filters.applyFilters')}}</button>
+            <button mat-raised-button color="primary" (click)="clearAllFilterParamsAndRefresh()">{{t('donationList.filters.clearFilters')}}</button>
+          </div>
+
+        </form>
+      </div>
+
+    </div>
+  </div>
+
+  <button mat-raised-button class="download-button" (click)="downloadFile()">
+    Export Donations
+    <mat-icon>download</mat-icon>
+  </button>
+
+  <div class="table-container">
+    <div class="table-wrapper">
+      <table class="fl-table">
+        <thead>
+        <tr>
+          <th>{{t('donationList.donationTable.amount')}}</th>
+          <th>{{t('donationList.donationTable.currency')}}</th>
+          <th>{{t('donationList.donationTable.campaign')}}</th>
+          <th>{{t('donationList.donationTable.createdBy')}}</th>
+          <th>{{t('donationList.donationTable.createdDate')}}</th>
+          <th>{{t('donationList.donationTable.benefactor')}}</th>
+          <th>{{t('donationList.donationTable.approved')}}</th>
+          <th>{{t('donationList.donationTable.approvedBy')}}</th>
+          <th>{{t('donationList.donationTable.approvalDate')}}</th>
+          <th>{{t('donationList.donationTable.notes')}}</th>
+          <th>{{t('donationList.donationTable.actions')}}</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let donation of donationList">
+          <td>{{ donation.amount }}</td>
+          <td>{{ donation.currency }}</td>
+          <td>{{ donation.campaign?.name}}</td>
+          <td>{{ donation.createdBy?.firstName}} {{ donation.createdBy?.lastName}}</td>
+          <td>{{ donation.createDate}}</td>
+          <td>{{ donation.benefactor?.firstName}} {{ donation.benefactor?.lastName}}</td>
+          <mat-icon class="icon" [ngClass]="{ 'approved-icon': donation.approved, 'not-approved-icon': !donation.approved }">
+            {{ donation.approved ? 'done' : 'pending_actions' }}
+          </mat-icon>
+          <td>{{ donation.approvedBy?.firstName}} {{donation.approvedBy?.lastName}}</td>
+          <td>{{ donation.approvedDate }}</td>
+          <td>{{ donation.notes}}</td>
+          <td>
+            <app-donation [donation]="donation" (donationAction)="handleDonationAction($event)"></app-donation>
+          </td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+
+  </div>
+
+  <div class="paginator-container">
+    <mat-paginator [length]="totalItems"
+                   [pageIndex]="currentPage"
+                   [pageSize]="pageSize"
+                   [pageSizeOptions]="pageSizeOptions"
+                   (page)="pageChanged($event)">
+    </mat-paginator>
+  </div>
+
 </div>
-
-<div class="filter">
-  <label>{{t('donationList.filters.currency')}}</label>
-  <select [(ngModel)]="currency">
-    <option *ngFor="let currencyOption of currencyOptions" [value]="currencyOption">{{ currencyOption }}</option>
-  </select>
-</div>
-
-<div class="filter">
-  <label>{{t('donationList.filters.campaign')}}</label>
-  <select [(ngModel)]="campaignId">
-    <option *ngFor="let campaign of campaignOptions" [value]="campaign.id">{{ campaign.name }}</option>
-  </select>
-</div>
-
-<div class="filter">
-  <label>{{t('donationList.filters.campaignPurpose')}}</label>
-  <input type="text" [(ngModel)]="searchTerm" placeholder="Search Term">
-</div>
-
-<div class="filter">
-  <label>{{t('donationList.filters.createdBy')}}</label>
-  <select [(ngModel)]="createdByUserId">
-    <option *ngFor="let user of userOptions" [value]="user.id">{{ user.firstName }} {{user.lastName}}</option>
-  </select>
-</div>
-
-<div class="filter">
-  <label>{{t('donationList.filters.createdFrom')}}</label>
-  <input type="date" [(ngModel)]="createDateStart" (change)="updateCreateDateEndMin()">
-  <label>{{t('donationList.filters.createdUntil')}}</label>
-  <input type="date" [(ngModel)]="createDateEnd" [min]="minCreateDateEnd">
-</div>
-
-<!--<div class="filter">-->
-<!--  <label>Benefactor ID: </label>-->
-<!--  <input type="number" [(ngModel)]="benefactorId" placeholder="Benefactor ID">-->
-<!--</div>-->
-
-<div class="filter">
-  <label>{{t('donationList.filters.approved')}}</label>
-  <input type="checkbox" [(ngModel)]="approved">
-</div>
-
-<!--<div class="filter">-->
-<!--  <label>Approved By ID: </label>-->
-<!--  <input type="number" [(ngModel)]="approvedById" placeholder="Approved By ID">-->
-<!--</div>-->
-
-<div class="filter">
-  <label>{{t('donationList.filters.approvedFrom')}}</label>
-  <input type="date" [(ngModel)]="approvedDateStart" (change)="updateApprovedDateEndMin()">
-  <label>{{t('donationList.filters.approvedUntil')}}</label>
-  <input type="date" [(ngModel)]="approvedDateEnd" [min]="minApprovedDateEnd">
-</div>
-
-<button (click)="applyFilters()">{{t('donationList.filters.applyFilters')}}</button>
-<button (click)="clearAllFilterParamsAndRefresh()">{{t('donationList.filters.clearFilters')}}</button>
-
-<div class="table-wrapper">
-  <table class="fl-table">
-    <thead>
-    <tr>
-      <th>{{t('donationList.donationTable.amount')}}</th>
-      <th>{{t('donationList.donationTable.currency')}}</th>
-      <th>{{t('donationList.donationTable.campaign')}}</th>
-      <th>{{t('donationList.donationTable.createdBy')}}</th>
-      <th>{{t('donationList.donationTable.createdDate')}}</th>
-      <th>{{t('donationList.donationTable.benefactor')}}</th>
-      <th>{{t('donationList.donationTable.approved')}}</th>
-      <th>{{t('donationList.donationTable.approvedBy')}}</th>
-      <th>{{t('donationList.donationTable.approvalDate')}}</th>
-      <th>{{t('donationList.donationTable.notes')}}</th>
-      <th>{{t('donationList.donationTable.actions')}}</th>
-    </tr>
-    </thead>
-    <tbody>
-    <tr *ngFor="let donation of donationList">
-      <td>{{ donation.amount }}</td>
-      <td>{{ donation.currency }}</td>
-      <td>{{ donation.campaign?.name}}</td>
-      <td>{{ donation.createdBy?.firstName}} {{ donation.createdBy?.lastName}}</td>
-      <td>{{ donation.createDate}}</td>
-      <td>
-        <ng-container *ngIf="donation.benefactor">
-          {{ donation.benefactor.firstName }} {{ donation.benefactor.lastName }}
-        </ng-container>
-        <ng-container *ngIf="!donation.benefactor">
-          <span>Unknown</span>
-        </ng-container>
-      </td>
-      <mat-icon class="icon" [ngClass]="{ 'approved-icon': donation.approved, 'not-approved-icon': !donation.approved }">
-        {{ donation.approved ? 'done' : 'pending_actions' }}
-      </mat-icon>
-      <td>{{ donation.approvedBy?.firstName}} {{donation.approvedBy?.lastName}}</td>
-      <td>{{ donation.approvedDate }}</td>
-      <td>{{ donation.notes}}</td>
-      <td>
-        <app-donation [donation]="donation" (donationAction)="handleDonationAction($event)"></app-donation>
-      </td>
-    </tr>
-    </tbody>
-  </table>
-</div>
-
-<div class="paginator-container">
-  <mat-paginator [length]="totalItems"
-                 [pageIndex]="currentPage"
-                 [pageSize]="pageSize"
-                 [pageSizeOptions]="pageSizeOptions"
-                 (page)="pageChanged($event)">
-  </mat-paginator>
-</div>
-</div>
-

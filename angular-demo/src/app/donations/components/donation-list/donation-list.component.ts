@@ -13,6 +13,7 @@ import {HttpClient} from "@angular/common/http";
 import {ToastrService} from "ngx-toastr";
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import { ngxCsv} from "ngx-csv";
+import { saveAs } from 'file-saver';
 
 @Component({
   selector: 'app-donation-list',
@@ -244,6 +245,20 @@ export class DonationListComponent implements OnInit {
     } else {
       this.toastr.error("It seems that you don't have the permissions for completing this action.")
     }
+  }
+
+  downloadFile() {
+    this.donationService.downloadCsvFile(this.filterParams).subscribe(
+      (response: Blob) => {
+        const file = new Blob([response], { type: 'text/csv' });
+        saveAs(file, 'Donations.csv');
+      },
+      (error) => {
+        this.toastr.error(error.message, 'Error downloading CSV file')
+      }
+    );
+  }
+
     downloadCsvFile()
     {
       console.log("Hello")
@@ -285,7 +300,6 @@ export class DonationListComponent implements OnInit {
       })
     }
   }
-}
 
 
 

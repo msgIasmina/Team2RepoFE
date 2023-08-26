@@ -159,6 +159,7 @@ header{
   z-index: 300;
   background-color: #000000;
 }
+
 .progress-bar{
   height: 4px;
   background: var(--main-color);
