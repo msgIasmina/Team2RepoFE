@@ -120,6 +120,9 @@
   "donationUpdate": {
     "header": "Actualizare Donaţie"
   },
+  "donationDownload": {
+  "header": "Exportă Donaţiile"
+},
   "donationForm": {
     "amount": "Sumă:",
     "currency": "Valută:",
@@ -153,6 +156,12 @@
   },
   "cUpdate": {
     "header": "Actualizare Campanie"
+  },
+  "uAdd": {
+    "header": "Adăugare utilizator"
+  },
+  "cDownload": {
+    "header": "Descarcă Campaniile"
   },
   "cForm": {
     "name": "Nume:",
@@ -190,5 +199,8 @@
   },
   "backtoUserList": {
     "back": "Înapoi la Lista de utilizatori"
+  },
+  "filterBtn": {
+    "name": "Filtrare"
   }
 }

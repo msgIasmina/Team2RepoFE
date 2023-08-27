@@ -6,6 +6,7 @@ import {ToastrService} from "ngx-toastr";
 import {CampaignAction} from "../../models/CampaignAction";
 import {PageEvent} from "@angular/material/paginator";
 import {FormBuilder, FormGroup} from "@angular/forms";
+import {saveAs} from "file-saver";
 
 @Component({
   selector: 'app-campaign-list',
@@ -127,6 +128,18 @@ export class CampaignListComponent implements OnInit {
     if (dropdownContent instanceof HTMLElement) {
       dropdownContent.style.display = dropdownContent.style.display === "block" ? "none" : "block";
     }
+  }
+
+  downloadFile() {
+    this.campaignService.downloadCsvFile(this.params).subscribe(
+      (response: Blob) => {
+        const file = new Blob([response], { type: 'text/csv' });
+        saveAs(file, 'Campaigns.csv');
+      },
+      (error) => {
+        this.toastr.error(error.message, 'Error downloading CSV file')
+      }
+    );
   }
 
 }

@@ -1,12 +1,12 @@
 <div *transloco="let t">
 <p></p>
   <h2>{{t('cList.header')}}</h2>
-  <button mat-raised-button class="addbutton" (click)="onAddCampaignClicked()">Add Campaign
+  <button mat-raised-button class="addbutton" (click)="onAddCampaignClicked()">{{t('cAdd.header')}}
     <mat-icon>add</mat-icon>
     </button>
 
   <div class="dropdown-container">
-    <button mat-raised-button id="dropdown-button" (click)="toggleDropdown()">Filter</button>
+    <button mat-raised-button id="dropdown-button" (click)="toggleDropdown()">{{t('filterBtn.name')}}</button>
     <div class="dropdown-content">
 
       <div class="container">
@@ -43,6 +43,10 @@
 
     </div>
   </div>
+  <button mat-raised-button class="download-button" (click)="downloadFile()">
+    {{t('cDownload.header' )}}
+    <mat-icon>download</mat-icon>
+  </button>
 
       <div class="table-wrapper">
         <table class="fl-table">

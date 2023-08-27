@@ -78,7 +78,7 @@ h2 {
 }
 
 .addbutton:hover {
-  background-color: darkgreen;
+  background-color: darkslategrey;
   color: #ffffff;
   outline: none;
 }

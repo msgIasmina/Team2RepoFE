@@ -219,12 +219,20 @@ export class DonationListComponent implements OnInit {
   }
 
   updateCreateDateEndMin() {
-    this.minCreateDateEnd = this.createDateStart;
+    const createDateStart = this.donationForm.get('createDateStart')?.value;
+    if (createDateStart) {
+      this.minCreateDateEnd = createDateStart;
+    }
   }
 
   updateApprovedDateEndMin() {
-    this.minApprovedDateEnd = this.approvedDateStart;
+    const approvedDateStart = this.donationForm.get('approvedDateStart')?.value;
+
+    if (approvedDateStart) {
+      this.minApprovedDateEnd = approvedDateStart;
+    }
   }
+
 
   toggleDropdown(): void {
     const dropdownContent = document.querySelector(".dropdown-content");

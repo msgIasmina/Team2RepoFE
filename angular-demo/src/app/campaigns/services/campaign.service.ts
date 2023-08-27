@@ -35,6 +35,16 @@ export class CampaignService {
     return this.campaignFilterPair$.asObservable();
   }
 
+  downloadCsvFile(filterParams: any): Observable<Blob> {
+    delete filterParams['pageSize'];
+    delete filterParams['offset'];
+
+    const headers = new HttpHeaders().set("Authorization", localStorage.getItem("token") ?? '');
+    const fullUrl = this.url + '/export-csv' + '?' + this.visualizer.serializeQueryParams(filterParams);
+
+    return this.http.get(fullUrl, { headers, responseType: 'blob' });
+  }
+
   saveCampaign(newCampaign:Campaign):Observable<Campaign>{
     const header = {
       headers: new HttpHeaders()
