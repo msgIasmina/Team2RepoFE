@@ -20,7 +20,6 @@ export class RolePermissionService {
 
 
   loadRolePermissions(id: number): Observable<RolePermission[]> {
-    console.log("hello world")
     var header = {
       headers: new HttpHeaders()
         .set("Authorization", localStorage.getItem("token") ?? '')

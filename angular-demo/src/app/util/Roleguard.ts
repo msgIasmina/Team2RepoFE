@@ -1,10 +1,11 @@
 import {Injectable} from "@angular/core";
 import {ActivatedRouteSnapshot, CanActivate, Router, RouterStateSnapshot, UrlTree} from "@angular/router";
 import {Observable} from "rxjs";
+import {ToastrService} from "ngx-toastr";
 
 @Injectable()
 export class RoleGuard implements CanActivate{
-  constructor(private router:Router){}
+  constructor(private router:Router, private toastr: ToastrService){}
   roles:string[];
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot):
     Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree
@@ -18,7 +19,7 @@ export class RoleGuard implements CanActivate{
       this.roles = userData.roles;
     }
     else {
-      console.log("User data not found in local storage.");
+      this.toastr.error("User data not found in local storage.");
     }
     userRole=this.roles;
     console.log(userRole.find(role=>role===receivedRole))

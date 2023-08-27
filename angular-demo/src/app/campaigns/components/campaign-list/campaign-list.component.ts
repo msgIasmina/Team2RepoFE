@@ -64,14 +64,15 @@ export class CampaignListComponent implements OnInit {
 
   deleteCampaign(campaignToDelete:Campaign){
     this.campaignService.deleteCampaignById(campaignToDelete.id).subscribe(()=>{
-    },
-      error => {
         this.campaignService.loadCampaigns(this.params).subscribe(
           campaignFilterPair => {
             this.campaignList = campaignFilterPair.campaigns
             this.totalItems = campaignFilterPair.totalItems
           }
         )
+    },
+      error => {
+        this.toastr.error(error.message);
       }
     );
   }

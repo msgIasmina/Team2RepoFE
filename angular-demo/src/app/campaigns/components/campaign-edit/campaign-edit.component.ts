@@ -20,10 +20,10 @@ export class CampaignEditComponent implements OnInit {
 
   editCampaign(campaign:Campaign){
     this.campaignService.editCampaign(campaign).subscribe(
-      response=>window.alert(response)
+      (response)=> {this.toastr.success("Campaign edited successfully!")},
+      (err) => {this.toastr.error(err.message)}
     );
-    this.toastr.success("Campaign edited successfully!");
-    window.location.href = '/management/campaigns/listing';
+    window.location.href = '/management/campaigns/list';
   }
 
   ngOnInit(): void {

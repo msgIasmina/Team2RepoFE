@@ -25,7 +25,7 @@ export class UpdateDonatorComponent implements OnInit {
       response => this.toastr.info(response)
     )
     this.toastr.success("Donator edited successfully")
-    window.location.href = '/management/donators/0/10';
+    window.location.href = '/management/donators/list';
   }
 
   ngOnInit(): void {
