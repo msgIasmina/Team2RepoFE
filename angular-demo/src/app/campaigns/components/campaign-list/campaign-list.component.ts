@@ -1,12 +1,12 @@
 import { Component, OnInit } from '@angular/core';
-import {Campaign} from "../../models/campaign";
-import {CampaignService} from "../../services/campaign.service";
-import {Router} from "@angular/router";
-import {ToastrService} from "ngx-toastr";
-import {CampaignAction} from "../../models/CampaignAction";
-import {PageEvent} from "@angular/material/paginator";
-import {FormBuilder, FormGroup} from "@angular/forms";
-import {saveAs} from "file-saver";
+import { Campaign } from '../../models/campaign';
+import { CampaignService } from '../../services/campaign.service';
+import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
+import { CampaignAction } from '../../models/CampaignAction';
+import { PageEvent } from '@angular/material/paginator';
+import { FormBuilder, FormGroup } from '@angular/forms';
+import { saveAs } from 'file-saver';
 
 @Component({
   selector: 'app-campaign-list',
@@ -14,7 +14,6 @@ import {saveAs} from "file-saver";
   styleUrls: ['./campaign-list.component.css'],
 })
 export class CampaignListComponent implements OnInit {
-
   campaignList: Campaign[];
   totalItems: number;
 
@@ -27,13 +26,17 @@ export class CampaignListComponent implements OnInit {
 
   params: any = {};
 
-  campaignForm:FormGroup = this.fb.group({
+  campaignForm: FormGroup = this.fb.group({
     nameTerm: [''],
-    purposeTerm: ['']
-  })
+    purposeTerm: [''],
+  });
 
-  constructor(private campaignService:CampaignService,private router:Router, private toastr: ToastrService,
-              private fb: FormBuilder) { }
+  constructor(
+    private campaignService: CampaignService,
+    private router: Router,
+    private toastr: ToastrService,
+    private fb: FormBuilder,
+  ) {}
 
   ngOnInit(): void {
     this.params['offset'] = 0;
@@ -94,11 +97,11 @@ export class CampaignListComponent implements OnInit {
   applyFilters() {
     this.clearFilterParams();
 
-    if (this.campaignForm.get('nameTerm') != null){
+    if (this.campaignForm.get('nameTerm') != null) {
       this.params['nameTerm'] = this.campaignForm.get('nameTerm')?.value;
     }
 
-    if (this.campaignForm.get('purposeTerm') != null){
+    if (this.campaignForm.get('purposeTerm') != null) {
       this.params['purposeTerm'] = this.campaignForm.get('purposeTerm')?.value;
     }
 
@@ -114,7 +117,7 @@ export class CampaignListComponent implements OnInit {
     this.params['offset'] = 0;
   }
 
-  clearAllFilterParamsAndRefresh(){
+  clearAllFilterParamsAndRefresh() {
     this.campaignForm.reset();
   }
 
@@ -125,10 +128,11 @@ export class CampaignListComponent implements OnInit {
   }
 
   toggleDropdown(): void {
-    const dropdownContent = document.querySelector(".dropdown-content");
+    const dropdownContent = document.querySelector('.dropdown-content');
 
     if (dropdownContent instanceof HTMLElement) {
-      dropdownContent.style.display = dropdownContent.style.display === "block" ? "none" : "block";
+      dropdownContent.style.display =
+        dropdownContent.style.display === 'block' ? 'none' : 'block';
     }
   }
 
@@ -139,9 +143,8 @@ export class CampaignListComponent implements OnInit {
         saveAs(file, 'Campaigns.csv');
       },
       (error) => {
-        this.toastr.error(error.message, 'Error downloading CSV file')
-      }
+        this.toastr.error(error.message, 'Error downloading CSV file');
+      },
     );
   }
-
 }

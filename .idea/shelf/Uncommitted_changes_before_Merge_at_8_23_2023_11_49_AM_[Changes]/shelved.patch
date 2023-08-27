@@ -1,0 +1,176 @@
+Index: .idea/workspace.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<project version=\"4\">\r\n  <component name=\"AutoImportSettings\">\r\n    <option name=\"autoReloadType\" value=\"SELECTIVE\" />\r\n  </component>\r\n  <component name=\"ChangeListManager\">\r\n    <list default=\"true\" id=\"770d2d89-e173-4c19-9235-d14d4ffbfbd8\" name=\"Changes\" comment=\"Listing Donators. Adding Edit button for donators. Delete donator. Creating form componenet for Donator. Rewriting the Donator register.\">\r\n      <change beforePath=\"$PROJECT_DIR$/.idea/workspace.xml\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/.idea/workspace.xml\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/angular-demo/src/app/donator/components/donator-details/donator-details.component.html\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/angular-demo/src/app/donator/components/donator-details/donator-details.component.html\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/angular-demo/src/app/donator/components/donator-details/donator-details.component.ts\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/angular-demo/src/app/donator/components/donator-details/donator-details.component.ts\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/angular-demo/src/app/donator/components/donator-form/donator-form.component.html\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/angular-demo/src/app/donator/components/donator-form/donator-form.component.html\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/angular-demo/src/app/donator/components/donator-form/donator-form.component.ts\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/angular-demo/src/app/donator/components/donator-form/donator-form.component.ts\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/angular-demo/src/app/donator/components/donator-list/donator-list.component.html\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/angular-demo/src/app/donator/components/donator-list/donator-list.component.html\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/angular-demo/src/app/donator/components/donator-list/donator-list.component.ts\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/angular-demo/src/app/donator/components/donator-list/donator-list.component.ts\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/angular-demo/src/app/donator/components/donator-register/donator-register.component.html\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/angular-demo/src/app/donator/components/donator-register/donator-register.component.html\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/angular-demo/src/app/donator/components/donator-register/donator-register.component.ts\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/angular-demo/src/app/donator/components/donator-register/donator-register.component.ts\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/angular-demo/src/app/donator/components/update-donator/update-donator.component.html\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/angular-demo/src/app/donator/components/update-donator/update-donator.component.html\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/angular-demo/src/app/login/components/login/login.component.html\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/angular-demo/src/app/login/components/login/login.component.html\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/angular-demo/src/app/user/components/update-user/update-user.component.spec.ts\" beforeDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/angular-demo/src/app/user/components/user-from/user-from.component.html\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/angular-demo/src/app/user/components/user-from/user-from.component.html\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/angular-demo/src/app/user/components/user-from/user-from.component.spec.ts\" beforeDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/angular-demo/src/app/user/components/user-list/user-list.component.ts\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/angular-demo/src/app/user/components/user-list/user-list.component.ts\" afterDir=\"false\" />\r\n    </list>\r\n    <option name=\"SHOW_DIALOG\" value=\"false\" />\r\n    <option name=\"HIGHLIGHT_CONFLICTS\" value=\"true\" />\r\n    <option name=\"HIGHLIGHT_NON_ACTIVE_CHANGELIST\" value=\"false\" />\r\n    <option name=\"LAST_RESOLUTION\" value=\"IGNORE\" />\r\n  </component>\r\n  <component name=\"FileTemplateManagerImpl\">\r\n    <option name=\"RECENT_TEMPLATES\">\r\n      <list>\r\n        <option value=\"TypeScript File\" />\r\n      </list>\r\n    </option>\r\n  </component>\r\n  <component name=\"Git.Settings\">\r\n    <option name=\"RECENT_BRANCH_BY_REPOSITORY\">\r\n      <map>\r\n        <entry key=\"$PROJECT_DIR$/..\" value=\"featureCreateUser\" />\r\n        <entry key=\"$PROJECT_DIR$\" value=\"main\" />\r\n      </map>\r\n    </option>\r\n    <option name=\"RECENT_GIT_ROOT_PATH\" value=\"$PROJECT_DIR$\" />\r\n  </component>\r\n  <component name=\"MarkdownSettingsMigration\">\r\n    <option name=\"stateVersion\" value=\"1\" />\r\n  </component>\r\n  <component name=\"MavenImportPreferences\">\r\n    <option name=\"generalSettings\">\r\n      <MavenGeneralSettings>\r\n        <option name=\"localRepository\" value=\"T:\\40_MVN_REPO\" />\r\n        <option name=\"mavenHome\" value=\"$USER_HOME$/20_TOOLS/maven\" />\r\n        <option name=\"userSettingsFile\" value=\"T:\\20_TOOLS\\maven\\conf\\settings.xml\" />\r\n      </MavenGeneralSettings>\r\n    </option>\r\n  </component>\r\n  <component name=\"ProjectId\" id=\"2TmdRM3e4rjTjQdRYjRbPhbHMTF\" />\r\n  <component name=\"ProjectLevelVcsManager\">\r\n    <ConfirmationsSetting value=\"2\" id=\"Add\" />\r\n  </component>\r\n  <component name=\"ProjectViewState\">\r\n    <option name=\"hideEmptyMiddlePackages\" value=\"true\" />\r\n    <option name=\"showLibraryContents\" value=\"true\" />\r\n  </component>\r\n  <component name=\"PropertiesComponent\">{\r\n  &quot;keyToString&quot;: {\r\n    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,\r\n    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,\r\n    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,\r\n    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,\r\n    &quot;last_opened_file_path&quot;: &quot;C:/Users/vrencl/Documents/TRAINING/Team2RepoFE&quot;,\r\n    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,\r\n    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,\r\n    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,\r\n    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,\r\n    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,\r\n    &quot;settings.editor.selected.configurable&quot;: &quot;MavenSettings&quot;,\r\n    &quot;ts.external.directory.path&quot;: &quot;C:\\\\Users\\\\vrencl\\\\Documents\\\\TRAINING\\\\Team2RepoFE\\\\angular-demo\\\\node_modules\\\\typescript\\\\lib&quot;,\r\n    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;\r\n  }\r\n}</component>\r\n  <component name=\"RecentsManager\">\r\n    <key name=\"MoveFile.RECENT_KEYS\">\r\n      <recent name=\"C:\\Users\\vrencl\\Documents\\TRAINING\\Team2RepoFE\\angular-demo\\src\\app\\donator\\components\" />\r\n      <recent name=\"C:\\Users\\vrencl\\Documents\\TRAINING\\Team2RepoFE\\angular-demo\\src\\app\\donator\\models\" />\r\n      <recent name=\"C:\\Users\\vrencl\\Documents\\TRAINING\\Team2RepoFE\\angular-demo\\src\\app\\user\\services\" />\r\n    </key>\r\n  </component>\r\n  <component name=\"RunManager\" selected=\"npm.Angular CLI Server\">\r\n    <configuration name=\"Tests (untitled5)\" type=\"JavaScriptTestRunnerKarma\">\r\n      <config-file value=\"$PROJECT_DIR$/angular-demo/karma.conf.js\" />\r\n      <working-directory value=\"$PROJECT_DIR$/angular-demo\" />\r\n      <node-interpreter value=\"project\" />\r\n      <envs />\r\n      <method v=\"2\" />\r\n    </configuration>\r\n    <configuration name=\"Angular Application\" type=\"JavascriptDebugType\" uri=\"http://localhost:4200\">\r\n      <method v=\"2\" />\r\n    </configuration>\r\n    <configuration name=\"Angular CLI Server\" type=\"js.build_tools.npm\">\r\n      <package-json value=\"$PROJECT_DIR$/angular-demo/package.json\" />\r\n      <command value=\"run\" />\r\n      <scripts>\r\n        <script value=\"start\" />\r\n      </scripts>\r\n      <node-interpreter value=\"project\" />\r\n      <envs />\r\n      <method v=\"2\" />\r\n    </configuration>\r\n  </component>\r\n  <component name=\"SpellCheckerSettings\" RuntimeDictionaries=\"0\" Folders=\"0\" CustomDictionaries=\"0\" DefaultDictionary=\"application-level\" UseSingleDictionary=\"true\" transferred=\"true\" />\r\n  <component name=\"TaskManager\">\r\n    <task active=\"true\" id=\"Default\" summary=\"Default task\">\r\n      <changelist id=\"770d2d89-e173-4c19-9235-d14d4ffbfbd8\" name=\"Changes\" comment=\"\" />\r\n      <created>1689757738655</created>\r\n      <option name=\"number\" value=\"Default\" />\r\n      <option name=\"presentableId\" value=\"Default\" />\r\n      <updated>1689757738655</updated>\r\n      <workItem from=\"1691652181509\" duration=\"502000\" />\r\n      <workItem from=\"1691652754260\" duration=\"148000\" />\r\n      <workItem from=\"1691653115518\" duration=\"87000\" />\r\n      <workItem from=\"1691653614606\" duration=\"67000\" />\r\n      <workItem from=\"1691659026457\" duration=\"53000\" />\r\n      <workItem from=\"1691668660006\" duration=\"2124000\" />\r\n      <workItem from=\"1691672187577\" duration=\"3822000\" />\r\n      <workItem from=\"1691735279797\" duration=\"50000\" />\r\n      <workItem from=\"1692339080610\" duration=\"10013000\" />\r\n    </task>\r\n    <task id=\"LOCAL-00001\" summary=\"adding Hello!\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1691669201628</created>\r\n      <option name=\"number\" value=\"00001\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00001\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1691669201628</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00002\" summary=\"adding gitignore file\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1691671274916</created>\r\n      <option name=\"number\" value=\"00002\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00002\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1691671274916</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00003\" summary=\"deleting gitignore file and updating the other gitignore file.\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1691672011665</created>\r\n      <option name=\"number\" value=\"00003\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00003\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1691672011665</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00004\" summary=\"addig another gitignore file\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1691672212343</created>\r\n      <option name=\"number\" value=\"00004\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00004\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1691672212343</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00005\" summary=\"Enhancements have been implemented to improve the visual presentation of the registration and login pages through modifications to their respective HTML and CSS. Additionally, a comprehensive refinement of the application-wide styling has been executed by integrating CSS adjustments within the app component. Notably, the registration &quot;chips&quot; functionality has been rectified, ensuring seamless and accurate operation.\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1691675905855</created>\r\n      <option name=\"number\" value=\"00005\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00005\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1691675905855</updated>\r\n      <workItem from=\"1691670282844\" duration=\"189000\" />\r\n    </task>\r\n    <task id=\"LOCAL-00006\" summary=\"Listing Donators. Adding Edit button for donators. Delete donator. Creating form componenet for Donator. Rewriting the Donator register.\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1692280645188</created>\r\n      <option name=\"number\" value=\"00006\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00006\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1692280645188</updated>\r\n    </task>\r\n    <option name=\"localTasksCounter\" value=\"7\" />\r\n    <servers />\r\n  </component>\r\n  <component name=\"TypeScriptGeneratedFilesManager\">\r\n    <option name=\"version\" value=\"3\" />\r\n  </component>\r\n  <component name=\"Vcs.Log.Tabs.Properties\">\r\n    <option name=\"TAB_STATES\">\r\n      <map>\r\n        <entry key=\"MAIN\">\r\n          <value>\r\n            <State />\r\n          </value>\r\n        </entry>\r\n      </map>\r\n    </option>\r\n  </component>\r\n  <component name=\"VcsManagerConfiguration\">\r\n    <option name=\"ADD_EXTERNAL_FILES_SILENTLY\" value=\"true\" />\r\n    <MESSAGE value=\"adding Hello!\" />\r\n    <MESSAGE value=\"adding gitignore file\" />\r\n    <MESSAGE value=\"deleting gitignore file and updating the other gitignore file.\" />\r\n    <MESSAGE value=\"addig another gitignore file\" />\r\n    <MESSAGE value=\"Enhancements have been implemented to improve the visual presentation of the registration and login pages through modifications to their respective HTML and CSS. Additionally, a comprehensive refinement of the application-wide styling has been executed by integrating CSS adjustments within the app component. Notably, the registration &quot;chips&quot; functionality has been rectified, ensuring seamless and accurate operation.\" />\r\n    <MESSAGE value=\"Introducing DonatorDetailsComponent and DonatorListComponent for enhanced UI functionality. Implemented deleteDonator method and included ID in donator.ts for improved data management. Also, established routing in Donator-Routing to seamlessly navigate through the application paths.\" />\r\n    <MESSAGE value=\"Listing Donators. Adding Edit button for donators. Delete donator. Creating form componenet for Donator. Rewriting the Donator register.\" />\r\n    <option name=\"LAST_COMMIT_MESSAGE\" value=\"Listing Donators. Adding Edit button for donators. Delete donator. Creating form componenet for Donator. Rewriting the Donator register.\" />\r\n  </component>\r\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/workspace.xml b/.idea/workspace.xml
+--- a/.idea/workspace.xml	(revision aa1c1e5f6c0c28fb86bbfc99c1be8b39260c596d)
++++ b/.idea/workspace.xml	(date 1692780557679)
+@@ -4,22 +4,64 @@
+     <option name="autoReloadType" value="SELECTIVE" />
+   </component>
+   <component name="ChangeListManager">
+-    <list default="true" id="770d2d89-e173-4c19-9235-d14d4ffbfbd8" name="Changes" comment="Listing Donators. Adding Edit button for donators. Delete donator. Creating form componenet for Donator. Rewriting the Donator register.">
++    <list default="true" id="770d2d89-e173-4c19-9235-d14d4ffbfbd8" name="Changes" comment="notifications">
+       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/angular-demo/src/app/donator/components/donator-details/donator-details.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/angular-demo/src/app/donator/components/donator-details/donator-details.component.html" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/angular-demo/src/app/donator/components/donator-details/donator-details.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/angular-demo/src/app/donator/components/donator-details/donator-details.component.ts" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/angular-demo/src/app/donator/components/donator-form/donator-form.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/angular-demo/src/app/donator/components/donator-form/donator-form.component.html" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/angular-demo/src/app/donator/components/donator-form/donator-form.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/angular-demo/src/app/donator/components/donator-form/donator-form.component.ts" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/angular-demo/src/app/donator/components/donator-list/donator-list.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/angular-demo/src/app/donator/components/donator-list/donator-list.component.html" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/angular-demo/src/app/donator/components/donator-list/donator-list.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/angular-demo/src/app/donator/components/donator-list/donator-list.component.ts" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/angular-demo/src/app/donator/components/donator-register/donator-register.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/angular-demo/src/app/donator/components/donator-register/donator-register.component.html" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/angular-demo/src/app/donator/components/donator-register/donator-register.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/angular-demo/src/app/donator/components/donator-register/donator-register.component.ts" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/angular-demo/src/app/donator/components/update-donator/update-donator.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/angular-demo/src/app/donator/components/update-donator/update-donator.component.html" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/angular-demo/src/app/login/components/login/login.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/angular-demo/src/app/login/components/login/login.component.html" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/angular-demo/src/app/user/components/update-user/update-user.component.spec.ts" beforeDir="false" />
+-      <change beforePath="$PROJECT_DIR$/angular-demo/src/app/user/components/user-from/user-from.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/angular-demo/src/app/user/components/user-from/user-from.component.html" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/angular-demo/src/app/user/components/user-from/user-from.component.spec.ts" beforeDir="false" />
+-      <change beforePath="$PROJECT_DIR$/angular-demo/src/app/user/components/user-list/user-list.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/angular-demo/src/app/user/components/user-list/user-list.component.ts" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/angular-demo/.angular/cache/13.3.11/angular-webpack/020a0574516b410a962c85c6e622d74a44c04a94/index.pack" beforeDir="false" />
++      <change beforePath="$PROJECT_DIR$/angular-demo/.angular/cache/13.3.11/angular-webpack/020a0574516b410a962c85c6e622d74a44c04a94/index.pack.old" beforeDir="false" />
++      <change beforePath="$PROJECT_DIR$/angular-demo/.angular/cache/13.3.11/angular-webpack/9596e5ea650a681d33b6dd34a28d4385bb488a34/0.pack" beforeDir="false" />
++      <change beforePath="$PROJECT_DIR$/angular-demo/.angular/cache/13.3.11/angular-webpack/9596e5ea650a681d33b6dd34a28d4385bb488a34/1.pack" beforeDir="false" />
++      <change beforePath="$PROJECT_DIR$/angular-demo/.angular/cache/13.3.11/angular-webpack/9596e5ea650a681d33b6dd34a28d4385bb488a34/10.pack" beforeDir="false" />
++      <change beforePath="$PROJECT_DIR$/angular-demo/.angular/cache/13.3.11/angular-webpack/9596e5ea650a681d33b6dd34a28d4385bb488a34/11.pack" beforeDir="false" />
++      <change beforePath="$PROJECT_DIR$/angular-demo/.angular/cache/13.3.11/angular-webpack/9596e5ea650a681d33b6dd34a28d4385bb488a34/12.pack" beforeDir="false" />
++      <change beforePath="$PROJECT_DIR$/angular-demo/.angular/cache/13.3.11/angular-webpack/9596e5ea650a681d33b6dd34a28d4385bb488a34/2.pack" beforeDir="false" />
++      <change beforePath="$PROJECT_DIR$/angular-demo/.angular/cache/13.3.11/angular-webpack/9596e5ea650a681d33b6dd34a28d4385bb488a34/3.pack" beforeDir="false" />
++      <change beforePath="$PROJECT_DIR$/angular-demo/.angular/cache/13.3.11/angular-webpack/9596e5ea650a681d33b6dd34a28d4385bb488a34/4.pack" beforeDir="false" />
++      <change beforePath="$PROJECT_DIR$/angular-demo/.angular/cache/13.3.11/angular-webpack/9596e5ea650a681d33b6dd34a28d4385bb488a34/5.pack" beforeDir="false" />
++      <change beforePath="$PROJECT_DIR$/angular-demo/.angular/cache/13.3.11/angular-webpack/9596e5ea650a681d33b6dd34a28d4385bb488a34/6.pack" beforeDir="false" />
++      <change beforePath="$PROJECT_DIR$/angular-demo/.angular/cache/13.3.11/angular-webpack/9596e5ea650a681d33b6dd34a28d4385bb488a34/7.pack" beforeDir="false" />
++      <change beforePath="$PROJECT_DIR$/angular-demo/.angular/cache/13.3.11/angular-webpack/9596e5ea650a681d33b6dd34a28d4385bb488a34/8.pack" beforeDir="false" />
++      <change beforePath="$PROJECT_DIR$/angular-demo/.angular/cache/13.3.11/angular-webpack/9596e5ea650a681d33b6dd34a28d4385bb488a34/9.pack" beforeDir="false" />
++      <change beforePath="$PROJECT_DIR$/angular-demo/.angular/cache/13.3.11/angular-webpack/9596e5ea650a681d33b6dd34a28d4385bb488a34/index.pack" beforeDir="false" />
++      <change beforePath="$PROJECT_DIR$/angular-demo/.angular/cache/13.3.11/angular-webpack/9596e5ea650a681d33b6dd34a28d4385bb488a34/index.pack.old" beforeDir="false" />
++      <change beforePath="$PROJECT_DIR$/angular-demo/.angular/cache/13.3.11/babel-webpack/008ff06c43dc2c21fdcc4f4198553e8c.json" beforeDir="false" />
++      <change beforePath="$PROJECT_DIR$/angular-demo/.angular/cache/13.3.11/babel-webpack/0428b1fa05c00ecf97eca42b6dcd4bab.json" beforeDir="false" />
++      <change beforePath="$PROJECT_DIR$/angular-demo/.angular/cache/13.3.11/babel-webpack/0496f982a34d945b7cc13000aec64575.json" beforeDir="false" />
++      <change beforePath="$PROJECT_DIR$/angular-demo/.angular/cache/13.3.11/babel-webpack/04eaa461a9340e7f56d8d377df35603d.json" beforeDir="false" />
++      <change beforePath="$PROJECT_DIR$/angular-demo/.angular/cache/13.3.11/babel-webpack/09011ddb72b299d1b698511caaa5bb40.json" beforeDir="false" />
++      <change beforePath="$PROJECT_DIR$/angular-demo/.angular/cache/13.3.11/babel-webpack/0cbc49535c6516ec6b5a8b75e6e9777b.json" beforeDir="false" />
++      <change beforePath="$PROJECT_DIR$/angular-demo/.angular/cache/13.3.11/babel-webpack/17e9c2ee02d2cc3a70c803f32a4962ea.json" beforeDir="false" />
++      <change beforePath="$PROJECT_DIR$/angular-demo/.angular/cache/13.3.11/babel-webpack/1a5ebcd082d7c1137b6db6537873b40b.json" beforeDir="false" />
++      <change beforePath="$PROJECT_DIR$/angular-demo/.angular/cache/13.3.11/babel-webpack/1a8358dd6ffbaf46be832f571daafbe3.json" beforeDir="false" />
++      <change beforePath="$PROJECT_DIR$/angular-demo/.angular/cache/13.3.11/babel-webpack/1c9208b4b6583c6c992cef7df9446e89.json" beforeDir="false" />
++      <change beforePath="$PROJECT_DIR$/angular-demo/.angular/cache/13.3.11/babel-webpack/1d82f5dfd990b2b32e936dee76ffcecb.json" beforeDir="false" />
++      <change beforePath="$PROJECT_DIR$/angular-demo/.angular/cache/13.3.11/babel-webpack/1e1ee7e1359adbc464041ee6a6c45c6e.json" beforeDir="false" />
++      <change beforePath="$PROJECT_DIR$/angular-demo/.angular/cache/13.3.11/babel-webpack/2268390744305e66c0635045def53afd.json" beforeDir="false" />
++      <change beforePath="$PROJECT_DIR$/angular-demo/.angular/cache/13.3.11/babel-webpack/2d44ebdc8b44f3f4816bcdf8223e047f.json" beforeDir="false" />
++      <change beforePath="$PROJECT_DIR$/angular-demo/.angular/cache/13.3.11/babel-webpack/2fd6ff689519f6583ce9788ea9b3b1eb.json" beforeDir="false" />
++      <change beforePath="$PROJECT_DIR$/angular-demo/.angular/cache/13.3.11/babel-webpack/356650e49cdeef37dcc67357334ff3bd.json" beforeDir="false" />
++      <change beforePath="$PROJECT_DIR$/angular-demo/.angular/cache/13.3.11/babel-webpack/363d1db3ecd39bfb85508a7fb17c90f9.json" beforeDir="false" />
++      <change beforePath="$PROJECT_DIR$/angular-demo/.angular/cache/13.3.11/babel-webpack/420099d41c4bacc3e3120dfe2f717d7b.json" beforeDir="false" />
++      <change beforePath="$PROJECT_DIR$/angular-demo/.angular/cache/13.3.11/babel-webpack/5df53f42471b6fdbabe88ccfca48989e.json" beforeDir="false" />
++      <change beforePath="$PROJECT_DIR$/angular-demo/.angular/cache/13.3.11/babel-webpack/69e4023c29105f7f9aa88b2212f5b841.json" beforeDir="false" />
++      <change beforePath="$PROJECT_DIR$/angular-demo/.angular/cache/13.3.11/babel-webpack/69e8cbca3184c81a102d3cf9764b50a8.json" beforeDir="false" />
++      <change beforePath="$PROJECT_DIR$/angular-demo/.angular/cache/13.3.11/babel-webpack/6ae85993e8c41fa922a218441f767b6c.json" beforeDir="false" />
++      <change beforePath="$PROJECT_DIR$/angular-demo/.angular/cache/13.3.11/babel-webpack/6d804e1652cd12d8c3d56376dd086ee6.json" beforeDir="false" />
++      <change beforePath="$PROJECT_DIR$/angular-demo/.angular/cache/13.3.11/babel-webpack/7f93361e33e20be8dd70340af3588fe2.json" beforeDir="false" />
++      <change beforePath="$PROJECT_DIR$/angular-demo/.angular/cache/13.3.11/babel-webpack/82a08528306f569846a443ada31af711.json" beforeDir="false" />
++      <change beforePath="$PROJECT_DIR$/angular-demo/.angular/cache/13.3.11/babel-webpack/9322515ec027ff7ca44daee9d3ccc5ca.json" beforeDir="false" />
++      <change beforePath="$PROJECT_DIR$/angular-demo/.angular/cache/13.3.11/babel-webpack/a9d819c160ae73a8c489e349f97be3e3.json" beforeDir="false" />
++      <change beforePath="$PROJECT_DIR$/angular-demo/.angular/cache/13.3.11/babel-webpack/ac134e700d7fec83b0f5db3db99267f3.json" beforeDir="false" />
++      <change beforePath="$PROJECT_DIR$/angular-demo/.angular/cache/13.3.11/babel-webpack/b281cf72aa77e75b3fdc42512c7889ce.json" beforeDir="false" />
++      <change beforePath="$PROJECT_DIR$/angular-demo/.angular/cache/13.3.11/babel-webpack/b449b5d10ed2203665ceb4c361476e0f.json" beforeDir="false" />
++      <change beforePath="$PROJECT_DIR$/angular-demo/.angular/cache/13.3.11/babel-webpack/d5593fed0bcb6bc92c1649db5074f65a.json" beforeDir="false" />
++      <change beforePath="$PROJECT_DIR$/angular-demo/.angular/cache/13.3.11/babel-webpack/d64ca5cd98e10d3090779583459b108c.json" beforeDir="false" />
++      <change beforePath="$PROJECT_DIR$/angular-demo/.angular/cache/13.3.11/babel-webpack/da52259ed6beab1d3660ad16e18903ec.json" beforeDir="false" />
++      <change beforePath="$PROJECT_DIR$/angular-demo/.angular/cache/13.3.11/babel-webpack/e84b02c9210886430f8abf07b9739e84.json" beforeDir="false" />
++      <change beforePath="$PROJECT_DIR$/angular-demo/.angular/cache/13.3.11/babel-webpack/edc0abfa40b4f83e9385c3049908a833.json" beforeDir="false" />
++      <change beforePath="$PROJECT_DIR$/angular-demo/.angular/cache/13.3.11/babel-webpack/ef8deb7c542659ca1f2a5d143db9b0b6.json" beforeDir="false" />
++      <change beforePath="$PROJECT_DIR$/angular-demo/.angular/cache/13.3.11/babel-webpack/f0cc5e702156a983ed9a71fb38fe7972.json" beforeDir="false" />
++      <change beforePath="$PROJECT_DIR$/angular-demo/.angular/cache/13.3.11/babel-webpack/f12d231b55064e1f2b2faf75fbd8eee2.json" beforeDir="false" />
++      <change beforePath="$PROJECT_DIR$/angular-demo/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/angular-demo/package-lock.json" afterDir="false" />
+     </list>
+     <option name="SHOW_DIALOG" value="false" />
+     <option name="HIGHLIGHT_CONFLICTS" value="true" />
+@@ -53,6 +95,9 @@
+         <option name="userSettingsFile" value="T:\20_TOOLS\maven\conf\settings.xml" />
+       </MavenGeneralSettings>
+     </option>
++  </component>
++  <component name="ProblemsViewState">
++    <option name="selectedTabId" value="ProjectErrors" />
+   </component>
+   <component name="ProjectId" id="2TmdRM3e4rjTjQdRYjRbPhbHMTF" />
+   <component name="ProjectLevelVcsManager">
+@@ -62,23 +107,23 @@
+     <option name="hideEmptyMiddlePackages" value="true" />
+     <option name="showLibraryContents" value="true" />
+   </component>
+-  <component name="PropertiesComponent">{
+-  &quot;keyToString&quot;: {
+-    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
+-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+-    &quot;last_opened_file_path&quot;: &quot;C:/Users/vrencl/Documents/TRAINING/Team2RepoFE&quot;,
+-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+-    &quot;settings.editor.selected.configurable&quot;: &quot;MavenSettings&quot;,
+-    &quot;ts.external.directory.path&quot;: &quot;C:\\Users\\vrencl\\Documents\\TRAINING\\Team2RepoFE\\angular-demo\\node_modules\\typescript\\lib&quot;,
+-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
++  <component name="PropertiesComponent"><![CDATA[{
++  "keyToString": {
++    "ASKED_ADD_EXTERNAL_FILES": "true",
++    "RunOnceActivity.OpenProjectViewOnStart": "true",
++    "RunOnceActivity.ShowReadmeOnStart": "true",
++    "WebServerToolWindowFactoryState": "false",
++    "last_opened_file_path": "C:/Users/vrencl/Documents/TRAINING/Team2RepoFE",
++    "node.js.detected.package.eslint": "true",
++    "node.js.detected.package.tslint": "true",
++    "node.js.selected.package.eslint": "(autodetect)",
++    "node.js.selected.package.tslint": "(autodetect)",
++    "nodejs_package_manager_path": "npm",
++    "settings.editor.selected.configurable": "MavenSettings",
++    "ts.external.directory.path": "T:\\50_WORKSPACES\\final_project\\Team2RepoFE\\angular-demo\\node_modules\\typescript\\lib",
++    "vue.rearranger.settings.migration": "true"
+   }
+-}</component>
++}]]></component>
+   <component name="RecentsManager">
+     <key name="MoveFile.RECENT_KEYS">
+       <recent name="C:\Users\vrencl\Documents\TRAINING\Team2RepoFE\angular-demo\src\app\donator\components" />
+@@ -175,7 +220,23 @@
+       <option name="project" value="LOCAL" />
+       <updated>1692280645188</updated>
+     </task>
+-    <option name="localTasksCounter" value="7" />
++    <task id="LOCAL-00007" summary="donation service">
++      <option name="closed" value="true" />
++      <created>1692621595053</created>
++      <option name="number" value="00007" />
++      <option name="presentableId" value="LOCAL-00007" />
++      <option name="project" value="LOCAL" />
++      <updated>1692621595053</updated>
++    </task>
++    <task id="LOCAL-00008" summary="notifications">
++      <option name="closed" value="true" />
++      <created>1692780373173</created>
++      <option name="number" value="00008" />
++      <option name="presentableId" value="LOCAL-00008" />
++      <option name="project" value="LOCAL" />
++      <updated>1692780373173</updated>
++    </task>
++    <option name="localTasksCounter" value="9" />
+     <servers />
+   </component>
+   <component name="TypeScriptGeneratedFilesManager">
+@@ -201,6 +262,8 @@
+     <MESSAGE value="Enhancements have been implemented to improve the visual presentation of the registration and login pages through modifications to their respective HTML and CSS. Additionally, a comprehensive refinement of the application-wide styling has been executed by integrating CSS adjustments within the app component. Notably, the registration &quot;chips&quot; functionality has been rectified, ensuring seamless and accurate operation." />
+     <MESSAGE value="Introducing DonatorDetailsComponent and DonatorListComponent for enhanced UI functionality. Implemented deleteDonator method and included ID in donator.ts for improved data management. Also, established routing in Donator-Routing to seamlessly navigate through the application paths." />
+     <MESSAGE value="Listing Donators. Adding Edit button for donators. Delete donator. Creating form componenet for Donator. Rewriting the Donator register." />
+-    <option name="LAST_COMMIT_MESSAGE" value="Listing Donators. Adding Edit button for donators. Delete donator. Creating form componenet for Donator. Rewriting the Donator register." />
++    <MESSAGE value="donation service" />
++    <MESSAGE value="notifications" />
++    <option name="LAST_COMMIT_MESSAGE" value="notifications" />
+   </component>
+ </project>
+\ No newline at end of file

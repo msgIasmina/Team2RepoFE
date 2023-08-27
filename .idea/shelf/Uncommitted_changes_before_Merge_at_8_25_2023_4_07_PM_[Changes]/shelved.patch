@@ -1,0 +1,18 @@
+Index: angular-demo/src/app/app.module.ts
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>import {NgModule} from '@angular/core';\r\nimport {BrowserModule} from '@angular/platform-browser';\r\nimport {AppComponent} from './app.component';\r\nimport {AppRoutingModule} from './app-routing.module';\r\nimport {HTTP_INTERCEPTORS, HttpClient, HttpClientModule} from \"@angular/common/http\";\r\nimport {LoginModule} from \"./account/component/login/login.module\";\r\nimport {Interceptor} from \"./util/interceptors/interceptor\";\r\nimport {RoleGuard} from \"./util/Roleguard\";\r\nimport {ManagementModule} from \"./management/management.module\";\r\nimport {AccountService} from \"./account/component/login/services/account.service\";\r\nimport {MatButtonModule} from \"@angular/material/button\";\r\nimport { BrowserAnimationsModule } from '@angular/platform-browser/animations';\r\nimport {MatFormFieldModule} from \"@angular/material/form-field\";\r\nimport {MatInputModule} from \"@angular/material/input\";\r\nimport {FormsModule, ReactiveFormsModule} from \"@angular/forms\";\r\nimport {MatChipsModule} from \"@angular/material/chips\";\r\nimport { HomeComponent } from './homePage/components/home/home.component';\r\nimport { TranslocoRootModule } from './transloco-root.module';\r\nimport {DonationsModule} from \"./donations/donations.module\";\r\n\r\n@NgModule({\r\n  declarations: [\r\n    AppComponent,\r\n  ],\r\n  imports: [\r\n    BrowserModule,\r\n    DonationsModule,\r\n    LoginModule,\r\n    ManagementModule,\r\n    AppRoutingModule,\r\n    HttpClientModule,\r\n    BrowserAnimationsModule,\r\n    MatButtonModule,\r\n    MatFormFieldModule,\r\n    MatInputModule,\r\n    FormsModule,\r\n    MatChipsModule,\r\n    ReactiveFormsModule,\r\n    TranslocoRootModule\r\n  ],\r\n  providers: [\r\n    AccountService, {provide: HTTP_INTERCEPTORS, useClass: Interceptor, multi: true}, RoleGuard\r\n  ],\r\n  bootstrap: [AppComponent]\r\n})\r\nexport class AppModule{}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/angular-demo/src/app/app.module.ts b/angular-demo/src/app/app.module.ts
+--- a/angular-demo/src/app/app.module.ts	(revision b32b016402a2b960a52bdee9eb96ba3deee17b0d)
++++ b/angular-demo/src/app/app.module.ts	(date 1692968807685)
+@@ -16,7 +16,6 @@
+ import {MatChipsModule} from "@angular/material/chips";
+ import { HomeComponent } from './homePage/components/home/home.component';
+ import { TranslocoRootModule } from './transloco-root.module';
+-import {DonationsModule} from "./donations/donations.module";
+ 
+ @NgModule({
+   declarations: [

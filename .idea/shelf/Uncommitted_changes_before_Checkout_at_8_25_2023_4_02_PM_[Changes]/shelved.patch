@@ -1,0 +1,33 @@
+Index: angular-demo/src/app/permission/services/role-permission.service.ts
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>import {Injectable} from '@angular/core';\r\nimport {HttpClient, HttpHeaders} from \"@angular/common/http\";\r\nimport { Observable} from \"rxjs\";\r\nimport {RolePermission} from \"../models/role-permission\";\r\nimport {Permission} from \"../../user/models/permission\";\r\n\r\n@Injectable({\r\n  providedIn: 'root'\r\n})\r\nexport class RolePermissionService {\r\n\r\n\r\n  constructor(\r\n    private http: HttpClient\r\n  ) {\r\n  }\r\n\r\n  url: string = \"http://localhost:8080/roles/permissions/\";\r\n  url2: string = \"http://localhost:8080/roles/\";\r\n\r\n\r\n  loadRolePermissions(id: number): Observable<RolePermission[]> {\r\n    console.log(\"hello world\")\r\n    var header = {\r\n      headers: new HttpHeaders()\r\n        .set(\"Authorization\", localStorage.getItem(\"token\") ?? '')\r\n    }\r\n    return this.http.get<RolePermission[]>(this.url + `${id}`, header);\r\n  }\r\n\r\n  addPermissionsToRole(id: number, permissions: Permission[]): Observable<string> {\r\n    var header = {\r\n      headers: new HttpHeaders()\r\n        .set(\"Authorization\", localStorage.getItem(\"token\") ?? '')\r\n    }\r\n    return this.http.put<string>(this.url2 + `add/` + `${id}`, permissions, header);\r\n  }\r\n\r\n  removePermissionsFromRole(id: number, permissions: Permission[]): Observable<string> {\r\n    var header = {\r\n      headers: new HttpHeaders()\r\n        .set(\"Authorization\", localStorage.getItem(\"token\") ?? '')\r\n    }\r\n    return this.http.put<string>(this.url2 + `remove/` + `${id}`, permissions, header);\r\n  }\r\n}\r\n
+===================================================================
+diff --git a/angular-demo/src/app/permission/services/role-permission.service.ts b/angular-demo/src/app/permission/services/role-permission.service.ts
+--- a/angular-demo/src/app/permission/services/role-permission.service.ts	
++++ b/angular-demo/src/app/permission/services/role-permission.service.ts	
+@@ -20,7 +20,6 @@
+ 
+ 
+   loadRolePermissions(id: number): Observable<RolePermission[]> {
+-    console.log("hello world")
+     var header = {
+       headers: new HttpHeaders()
+         .set("Authorization", localStorage.getItem("token") ?? '')
+Index: angular-demo/src/app/permission/components/role-details/role-details.component.ts
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>import {Component, Input, OnInit} from '@angular/core';\r\nimport {RolePermission} from \"../../models/role-permission\";\r\nimport {Permission} from \"../../../user/models/permission\";\r\nimport {RolePermissionService} from \"../../services/role-permission.service\";\r\nimport {FormBuilder, FormGroup, Validators} from \"@angular/forms\";\r\n\r\n@Component({\r\n  selector: 'app-role-details',\r\n  templateUrl: './role-details.component.html',\r\n  styleUrls: ['./role-details.component.css']\r\n})\r\nexport class RoleDetailsComponent implements OnInit {\r\n  @Input() rolePermission: RolePermission;\r\n  missingPermissions: Permission[] = [];\r\n  acquiredPermissions: Permission[] = [];\r\n  form:FormGroup = this.fb.group({\r\n    permissionsToBeAdded : [''],\r\n    permissionsToBeDeleted :['']\r\n  })\r\n  constructor( private rolePermissionService: RolePermissionService,private fb:FormBuilder) {\r\n  }\r\n\r\n  ngOnInit(): void {\r\n    this.missingPermissions = this.rolePermission.missingPermissions;\r\n    this.acquiredPermissions = this.rolePermission.acquiredPermissions;\r\n  }\r\n\r\n  addPermissions(): void {\r\n    let permissionsToBeAdded = this.form.get('permissionsToBeAdded')?.value\r\n    this.rolePermissionService.addPermissionsToRole(this.rolePermission.id, permissionsToBeAdded).subscribe(\r\n      response => {\r\n        /*this.missingPermissions = this.missingPermissions.filter(permission => permissionsToBeAdded.indexOf(permission)<0);\r\n        this.acquiredPermissions.push(...permissionsToBeAdded);*/\r\n      },\r\n      err =>{\r\n        //window.alert(err)\r\n        this.missingPermissions = this.missingPermissions.filter(permission => permissionsToBeAdded.indexOf(permission)<0);\r\n        this.acquiredPermissions.push(...permissionsToBeAdded);\r\n      }\r\n    )\r\n  }\r\n\r\n\r\n  removePermissions() {\r\n    let permissionsToBeRemoved = this.form.get('permissionsToBeDeleted')?.value\r\n    this.rolePermissionService.removePermissionsFromRole(this.rolePermission.id, permissionsToBeRemoved).subscribe(\r\n      response => {\r\n        /*this.acquiredPermissions = this.acquiredPermissions.filter(permission => permissionsToBeRemoved.indexOf(permission)<0);\r\n        this.missingPermissions.push(...permissionsToBeRemoved);*/\r\n      },\r\n      err =>{\r\n        this.acquiredPermissions = this.acquiredPermissions.filter(permission => permissionsToBeRemoved.indexOf(permission)<0);\r\n        this.missingPermissions.push(...permissionsToBeRemoved);\r\n        //window.alert(err);\r\n      }\r\n    )\r\n  }\r\n}\r\n
+===================================================================
+diff --git a/angular-demo/src/app/permission/components/role-details/role-details.component.ts b/angular-demo/src/app/permission/components/role-details/role-details.component.ts
+--- a/angular-demo/src/app/permission/components/role-details/role-details.component.ts	
++++ b/angular-demo/src/app/permission/components/role-details/role-details.component.ts	
+@@ -2,7 +2,7 @@
+ import {RolePermission} from "../../models/role-permission";
+ import {Permission} from "../../../user/models/permission";
+ import {RolePermissionService} from "../../services/role-permission.service";
+-import {FormBuilder, FormGroup, Validators} from "@angular/forms";
++import {FormBuilder, FormGroup} from "@angular/forms";
+ 
+ @Component({
+   selector: 'app-role-details',

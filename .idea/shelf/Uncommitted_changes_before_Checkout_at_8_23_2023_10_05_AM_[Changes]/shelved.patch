@@ -1,0 +1,26 @@
+Index: angular-demo/src/app/notifications/component/notification/notification.component.spec.ts
+===================================================================
+diff --git a/angular-demo/src/app/notifications/component/notification/notification.component.spec.ts b/angular-demo/src/app/management/components/notification/notification.component.spec.ts
+rename from angular-demo/src/app/notifications/component/notification/notification.component.spec.ts
+rename to angular-demo/src/app/management/components/notification/notification.component.spec.ts
+--- a/angular-demo/src/app/notifications/component/notification/notification.component.spec.ts	
++++ b/angular-demo/src/app/management/components/notification/notification.component.spec.ts	
+@@ -6,10 +6,14 @@
+   let component: NotificationComponent;
+   let fixture: ComponentFixture<NotificationComponent>;
+ 
+-  beforeEach(() => {
+-    TestBed.configureTestingModule({
+-      declarations: [NotificationComponent]
+-    });
++  beforeEach(async () => {
++    await TestBed.configureTestingModule({
++      declarations: [ NotificationComponent ]
++    })
++    .compileComponents();
++  });
++
++  beforeEach(() => {
+     fixture = TestBed.createComponent(NotificationComponent);
+     component = fixture.componentInstance;
+     fixture.detectChanges();

@@ -15,6 +15,7 @@ import {UserService} from "./services/user-service.service";
 import {TranslocoModule} from "@ngneat/transloco";
 import {MatPaginatorModule} from "@angular/material/paginator";
 import {PermissionModule} from "../permission/permission.module";
+import { AddCampignREPComponent } from './components/add-campign-rep/add-campign-rep.component';
 
 
 @NgModule({
@@ -24,6 +25,7 @@ import {PermissionModule} from "../permission/permission.module";
     UserRegisterComponent,
     UpdateUserComponent,
     UserFromComponent,
+    AddCampignREPComponent,
   ],
   providers: [
     UserService

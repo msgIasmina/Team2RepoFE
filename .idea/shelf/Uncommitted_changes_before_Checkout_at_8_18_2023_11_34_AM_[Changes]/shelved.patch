@@ -1,0 +1,15 @@
+Index: angular-demo/src/app/campaigns/components/campaign-list/campaign-list.component.html
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><ul *ngFor=\"let campaign of campaignList\">\r\n  <li>\r\n    <app-campaign-details [campaign]=\"campaign\" (campaignAction)=\"editCampaign($event)\"></app-campaign-details>\r\n  </li>\r\n</ul>\r\n
+===================================================================
+diff --git a/angular-demo/src/app/campaigns/components/campaign-list/campaign-list.component.html b/angular-demo/src/app/campaigns/components/campaign-list/campaign-list.component.html
+--- a/angular-demo/src/app/campaigns/components/campaign-list/campaign-list.component.html	
++++ b/angular-demo/src/app/campaigns/components/campaign-list/campaign-list.component.html	
+@@ -1,5 +1,5 @@
+ <ul *ngFor="let campaign of campaignList">
+   <li>
+-    <app-campaign-details [campaign]="campaign" (campaignAction)="editCampaign($event)"></app-campaign-details>
++    <app-campaign-details [campaign]="campaign"></app-campaign-details>
+   </li>
+ </ul>

@@ -1,8 +1,9 @@
-import {Component, Input, OnInit} from '@angular/core';
-import {RolePermission} from "../../models/role-permission";
-import {Permission} from "../../../user/models/permission";
-import {RolePermissionService} from "../../services/role-permission.service";
-import {FormBuilder, FormGroup, Validators} from "@angular/forms";
+import { Component, Input, OnInit } from '@angular/core';
+import { RolePermission } from '../../models/role-permission';
+import { Permission } from '../../../user/models/permission';
+import { RolePermissionService } from '../../services/role-permission.service';
+import { FormBuilder, FormGroup } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-role-details',
@@ -13,13 +14,16 @@ export class RoleDetailsComponent implements OnInit {
   @Input() rolePermission: RolePermission;
   missingPermissions: Permission[] = [];
   acquiredPermissions: Permission[] = [];
-  form:FormGroup = this.fb.group({
-    permissionsToBeAdded : [''],
-    permissionsToBeDeleted :['']
-  })
-  constructor( private rolePermissionService: RolePermissionService,private fb:FormBuilder,
-               private router: Router) {
-  }
+  form: FormGroup = this.fb.group({
+    permissionsToBeAdded: [''],
+    permissionsToBeDeleted: [''],
+  });
+
+  constructor(
+    private rolePermissionService: RolePermissionService,
+    private fb: FormBuilder,
+    private router: Router,
+  ) {}
 
   ngOnInit(): void {
     this.missingPermissions = this.rolePermission.missingPermissions;
@@ -64,7 +68,7 @@ export class RoleDetailsComponent implements OnInit {
       );
   }
 
-  backtoUserList(){
-    this.router.navigate(["/management/users/list"]);
+  backtoUserList() {
+    this.router.navigate(['/management/users/list']);
   }
 }

@@ -4,137 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="770d2d89-e173-4c19-9235-d14d4ffbfbd8" name="Changes" comment="permission without routing">
-      <change afterPath="$PROJECT_DIR$/angular-demo/src/app/account/component/login/models/renewToken.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/angular-demo/src/app/account/component/utils/interceptors/interceptor.ts" afterDir="false" />
+    <list default="true" id="770d2d89-e173-4c19-9235-d14d4ffbfbd8" name="Changes" comment="code cleaning + security update">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/angular-demo/src/app/account/component/login/components/first-login/first-login.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/angular-demo/src/app/account/component/login/components/first-login/first-login.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/angular-demo/src/app/account/component/login/components/first-login/first-login.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/angular-demo/src/app/account/component/login/components/first-login/first-login.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/angular-demo/src/app/account/component/login/components/login/login.component.css" beforeDir="false" afterPath="$PROJECT_DIR$/angular-demo/src/app/account/component/login/components/login/login.component.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/angular-demo/src/app/account/component/login/components/login/login.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/angular-demo/src/app/account/component/login/components/login/login.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/angular-demo/src/app/account/component/login/components/login/login.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/angular-demo/src/app/account/component/login/components/login/login.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/angular-demo/src/app/account/component/login/login-routing.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/angular-demo/src/app/account/component/login/login-routing.module.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/angular-demo/src/app/account/component/login/login.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/angular-demo/src/app/account/component/login/login.module.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/angular-demo/src/app/account/component/login/models/login-request.ts" beforeDir="false" afterPath="$PROJECT_DIR$/angular-demo/src/app/account/component/login/models/login-request.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/angular-demo/src/app/account/component/login/models/login-response.ts" beforeDir="false" afterPath="$PROJECT_DIR$/angular-demo/src/app/account/component/login/models/login-response.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/angular-demo/src/app/account/component/login/services/account.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/angular-demo/src/app/account/component/login/services/account.service.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/angular-demo/src/app/account/component/login/utils/login-guard.ts" beforeDir="false" afterPath="$PROJECT_DIR$/angular-demo/src/app/account/component/utils/login-guard.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/angular-demo/src/app/app-routing.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/angular-demo/src/app/app-routing.module.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/angular-demo/src/app/app.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/angular-demo/src/app/app.component.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/angular-demo/src/app/app.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/angular-demo/src/app/app.module.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/angular-demo/src/app/campaigns/campaign-routing.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/angular-demo/src/app/campaigns/campaign-routing.module.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/angular-demo/src/app/campaigns/campaigns.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/angular-demo/src/app/campaigns/campaigns.module.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/angular-demo/src/app/campaigns/components/campaign-details/campaign-details.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/angular-demo/src/app/campaigns/components/campaign-details/campaign-details.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/angular-demo/src/app/campaigns/components/campaign-details/campaign-details.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/angular-demo/src/app/campaigns/components/campaign-details/campaign-details.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/angular-demo/src/app/campaigns/components/campaign-edit/campaign-edit.component.css" beforeDir="false" afterPath="$PROJECT_DIR$/angular-demo/src/app/campaigns/components/campaign-edit/campaign-edit.component.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/angular-demo/src/app/campaigns/components/campaign-edit/campaign-edit.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/angular-demo/src/app/campaigns/components/campaign-edit/campaign-edit.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/angular-demo/src/app/campaigns/components/campaign-edit/campaign-edit.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/angular-demo/src/app/campaigns/components/campaign-edit/campaign-edit.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/angular-demo/src/app/campaigns/components/campaign-frm/campaign-frm.component.css" beforeDir="false" afterPath="$PROJECT_DIR$/angular-demo/src/app/campaigns/components/campaign-frm/campaign-frm.component.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/angular-demo/src/app/campaigns/components/campaign-frm/campaign-frm.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/angular-demo/src/app/campaigns/components/campaign-frm/campaign-frm.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/angular-demo/src/app/campaigns/components/campaign-frm/campaign-frm.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/angular-demo/src/app/campaigns/components/campaign-frm/campaign-frm.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/angular-demo/src/app/campaigns/components/campaign-list/campaign-list.component.css" beforeDir="false" afterPath="$PROJECT_DIR$/angular-demo/src/app/campaigns/components/campaign-list/campaign-list.component.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/angular-demo/src/app/campaigns/components/campaign-list/campaign-list.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/angular-demo/src/app/campaigns/components/campaign-list/campaign-list.component.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/angular-demo/src/app/campaigns/components/campaign-list/campaign-list.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/angular-demo/src/app/campaigns/components/campaign-list/campaign-list.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/angular-demo/src/app/campaigns/components/campaign/campaign.component.css" beforeDir="false" afterPath="$PROJECT_DIR$/angular-demo/src/app/campaigns/components/campaign/campaign.component.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/angular-demo/src/app/campaigns/components/campaign/campaign.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/angular-demo/src/app/campaigns/components/campaign/campaign.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/angular-demo/src/app/campaigns/components/campaign/campaign.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/angular-demo/src/app/campaigns/components/campaign/campaign.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/angular-demo/src/app/campaigns/models/CampaignAction.ts" beforeDir="false" afterPath="$PROJECT_DIR$/angular-demo/src/app/campaigns/models/CampaignAction.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/angular-demo/src/app/campaigns/models/CampaignFilterPair.ts" beforeDir="false" afterPath="$PROJECT_DIR$/angular-demo/src/app/campaigns/models/CampaignFilterPair.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/angular-demo/src/app/campaigns/models/campaign.ts" beforeDir="false" afterPath="$PROJECT_DIR$/angular-demo/src/app/campaigns/models/campaign.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/angular-demo/src/app/donations/components/add-donation/add-donation.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/angular-demo/src/app/donations/components/add-donation/add-donation.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/angular-demo/src/app/donations/components/add-donation/add-donation.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/angular-demo/src/app/donations/components/add-donation/add-donation.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/angular-demo/src/app/donations/components/donation-form/donation-form.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/angular-demo/src/app/donations/components/donation-form/donation-form.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/angular-demo/src/app/donations/components/donation-form/donation-form.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/angular-demo/src/app/donations/components/donation-form/donation-form.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/angular-demo/src/app/donations/components/donation-list/donation-list.component.css" beforeDir="false" afterPath="$PROJECT_DIR$/angular-demo/src/app/donations/components/donation-list/donation-list.component.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/angular-demo/src/app/donations/components/donation-list/donation-list.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/angular-demo/src/app/donations/components/donation-list/donation-list.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/angular-demo/src/app/donations/components/donation-list/donation-list.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/angular-demo/src/app/donations/components/donation-list/donation-list.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/angular-demo/src/app/donations/components/donation-update-form/donation-update-form.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/angular-demo/src/app/donations/components/donation-update-form/donation-update-form.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/angular-demo/src/app/donations/components/donation-update-form/donation-update-form.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/angular-demo/src/app/donations/components/donation-update-form/donation-update-form.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/angular-demo/src/app/donations/components/donation/donation.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/angular-demo/src/app/donations/components/donation/donation.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/angular-demo/src/app/donations/components/update-donation/update-donation.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/angular-demo/src/app/donations/components/update-donation/update-donation.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/angular-demo/src/app/donations/components/update-donation/update-donation.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/angular-demo/src/app/donations/components/update-donation/update-donation.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/angular-demo/src/app/donations/donation-routing.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/angular-demo/src/app/donations/donation-routing.module.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/angular-demo/src/app/donations/donations.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/angular-demo/src/app/donations/donations.module.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/angular-demo/src/app/donations/models/Currencies.ts" beforeDir="false" afterPath="$PROJECT_DIR$/angular-demo/src/app/donations/models/Currencies.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/angular-demo/src/app/donations/models/DonationAction.ts" beforeDir="false" afterPath="$PROJECT_DIR$/angular-demo/src/app/donations/models/DonationAction.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/angular-demo/src/app/donations/models/DonationFilterPair.ts" beforeDir="false" afterPath="$PROJECT_DIR$/angular-demo/src/app/donations/models/DonationFilterPair.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/angular-demo/src/app/donations/models/donation.ts" beforeDir="false" afterPath="$PROJECT_DIR$/angular-demo/src/app/donations/models/donation.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/angular-demo/src/app/donator/components/donator-details/donator-details.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/angular-demo/src/app/donator/components/donator-details/donator-details.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/angular-demo/src/app/donator/components/donator-form/donator-form.component.css" beforeDir="false" afterPath="$PROJECT_DIR$/angular-demo/src/app/donator/components/donator-form/donator-form.component.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/angular-demo/src/app/donator/components/donator-form/donator-form.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/angular-demo/src/app/donator/components/donator-form/donator-form.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/angular-demo/src/app/donator/components/donator-form/donator-form.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/angular-demo/src/app/donator/components/donator-form/donator-form.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/angular-demo/src/app/donator/components/donator-list/donator-list.component.css" beforeDir="false" afterPath="$PROJECT_DIR$/angular-demo/src/app/donator/components/donator-list/donator-list.component.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/angular-demo/src/app/donator/components/donator-list/donator-list.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/angular-demo/src/app/donator/components/donator-list/donator-list.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/angular-demo/src/app/donator/components/donator-list/donator-list.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/angular-demo/src/app/donator/components/donator-list/donator-list.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/angular-demo/src/app/donator/components/donator-register/donator-register.component.css" beforeDir="false" afterPath="$PROJECT_DIR$/angular-demo/src/app/donator/components/donator-register/donator-register.component.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/angular-demo/src/app/donator/components/donator-register/donator-register.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/angular-demo/src/app/donator/components/donator-register/donator-register.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/angular-demo/src/app/donator/components/update-donator/update-donator.component.css" beforeDir="false" afterPath="$PROJECT_DIR$/angular-demo/src/app/donator/components/update-donator/update-donator.component.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/angular-demo/src/app/donator/components/update-donator/update-donator.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/angular-demo/src/app/donator/components/update-donator/update-donator.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/angular-demo/src/app/donator/donator-routing.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/angular-demo/src/app/donator/donator-routing.module.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/angular-demo/src/app/donator/donator.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/angular-demo/src/app/donator/donator.module.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/angular-demo/src/app/donator/models/DonatorAction.ts" beforeDir="false" afterPath="$PROJECT_DIR$/angular-demo/src/app/donator/models/DonatorAction.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/angular-demo/src/app/donator/models/DonatorPair.ts" beforeDir="false" afterPath="$PROJECT_DIR$/angular-demo/src/app/donator/models/DonatorPair.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/angular-demo/src/app/donator/models/donator.ts" beforeDir="false" afterPath="$PROJECT_DIR$/angular-demo/src/app/donator/models/donator.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/angular-demo/src/app/donator/services/donator.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/angular-demo/src/app/donator/services/donator.service.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/angular-demo/src/app/homePage/components/home/home.component.css" beforeDir="false" afterPath="$PROJECT_DIR$/angular-demo/src/app/homePage/components/home/home.component.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/angular-demo/src/app/homePage/components/home/home.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/angular-demo/src/app/homePage/components/home/home.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/angular-demo/src/app/homePage/components/home/home.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/angular-demo/src/app/homePage/components/home/home.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/angular-demo/src/app/homePage/home-routing.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/angular-demo/src/app/homePage/home-routing.module.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/angular-demo/src/app/homePage/home.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/angular-demo/src/app/homePage/home.module.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/angular-demo/src/app/management/components/base-page/base-page.component.css" beforeDir="false" afterPath="$PROJECT_DIR$/angular-demo/src/app/management/components/base-page/base-page.component.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/angular-demo/src/app/management/components/base-page/base-page.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/angular-demo/src/app/management/components/base-page/base-page.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/angular-demo/src/app/management/components/base-page/base-page.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/angular-demo/src/app/management/components/base-page/base-page.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/angular-demo/src/app/management/components/notification/notification.component.css" beforeDir="false" afterPath="$PROJECT_DIR$/angular-demo/src/app/management/components/notification/notification.component.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/angular-demo/src/app/management/components/notification/notification.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/angular-demo/src/app/management/components/notification/notification.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/angular-demo/src/app/management/components/notification/notification.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/angular-demo/src/app/management/components/notification/notification.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/angular-demo/src/app/management/components/notifications-list/notifications-list.component.css" beforeDir="false" afterPath="$PROJECT_DIR$/angular-demo/src/app/management/components/notifications-list/notifications-list.component.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/angular-demo/src/app/management/components/notifications-list/notifications-list.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/angular-demo/src/app/management/components/notifications-list/notifications-list.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/angular-demo/src/app/management/components/notifications-list/notifications-list.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/angular-demo/src/app/management/components/notifications-list/notifications-list.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/angular-demo/src/app/management/management-routing.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/angular-demo/src/app/management/management-routing.module.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/angular-demo/src/app/management/management.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/angular-demo/src/app/management/management.module.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/angular-demo/src/app/management/model/notification-pagination.ts" beforeDir="false" afterPath="$PROJECT_DIR$/angular-demo/src/app/management/model/notification-pagination.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/angular-demo/src/app/management/model/notification.ts" beforeDir="false" afterPath="$PROJECT_DIR$/angular-demo/src/app/management/model/notification.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/angular-demo/src/app/models/text-response.ts" beforeDir="false" afterPath="$PROJECT_DIR$/angular-demo/src/app/models/text-response.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/angular-demo/src/app/permission/components/role-details/role-details.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/angular-demo/src/app/permission/components/role-details/role-details.component.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/angular-demo/src/app/permission/components/role-details/role-details.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/angular-demo/src/app/permission/components/role-details/role-details.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/angular-demo/src/app/permission/components/role-list/role-list.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/angular-demo/src/app/permission/components/role-list/role-list.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/angular-demo/src/app/permission/models/role-permission.ts" beforeDir="false" afterPath="$PROJECT_DIR$/angular-demo/src/app/permission/models/role-permission.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/angular-demo/src/app/permission/permission.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/angular-demo/src/app/permission/permission.module.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/angular-demo/src/app/permission/services/role-permission.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/angular-demo/src/app/permission/services/role-permission.service.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/angular-demo/src/app/transloco-root.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/angular-demo/src/app/transloco-root.module.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/angular-demo/src/app/user/components/update-user/update-user.component.css" beforeDir="false" afterPath="$PROJECT_DIR$/angular-demo/src/app/user/components/update-user/update-user.component.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/angular-demo/src/app/user/components/update-user/update-user.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/angular-demo/src/app/user/components/update-user/update-user.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/angular-demo/src/app/user/components/user-details/user-details.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/angular-demo/src/app/user/components/user-details/user-details.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/angular-demo/src/app/user/components/user-details/user-details.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/angular-demo/src/app/user/components/user-details/user-details.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/angular-demo/src/app/user/components/user-from/user-from.component.css" beforeDir="false" afterPath="$PROJECT_DIR$/angular-demo/src/app/user/components/user-from/user-from.component.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/angular-demo/src/app/user/components/user-from/user-from.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/angular-demo/src/app/user/components/user-from/user-from.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/angular-demo/src/app/user/components/user-from/user-from.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/angular-demo/src/app/user/components/user-from/user-from.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/angular-demo/src/app/user/components/user-list/user-list.component.css" beforeDir="false" afterPath="$PROJECT_DIR$/angular-demo/src/app/user/components/user-list/user-list.component.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/angular-demo/src/app/user/components/user-list/user-list.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/angular-demo/src/app/user/components/user-list/user-list.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/angular-demo/src/app/user/components/user-list/user-list.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/angular-demo/src/app/user/components/user-list/user-list.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/angular-demo/src/app/user/components/user-register/user-register.component.css" beforeDir="false" afterPath="$PROJECT_DIR$/angular-demo/src/app/user/components/user-register/user-register.component.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/angular-demo/src/app/user/components/user-register/user-register.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/angular-demo/src/app/user/components/user-register/user-register.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/angular-demo/src/app/user/components/user-register/user-register.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/angular-demo/src/app/user/components/user-register/user-register.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/angular-demo/src/app/user/models/EPermission.ts" beforeDir="false" afterPath="$PROJECT_DIR$/angular-demo/src/app/user/models/EPermission.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/angular-demo/src/app/user/models/ERole.ts" beforeDir="false" afterPath="$PROJECT_DIR$/angular-demo/src/app/user/models/ERole.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/angular-demo/src/app/user/models/UserAction.ts" beforeDir="false" afterPath="$PROJECT_DIR$/angular-demo/src/app/user/models/UserAction.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/angular-demo/src/app/user/models/UserPlaceholder.ts" beforeDir="false" afterPath="$PROJECT_DIR$/angular-demo/src/app/user/models/UserPlaceholder.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/angular-demo/src/app/user/models/permission.ts" beforeDir="false" afterPath="$PROJECT_DIR$/angular-demo/src/app/user/models/permission.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/angular-demo/src/app/user/models/role.ts" beforeDir="false" afterPath="$PROJECT_DIR$/angular-demo/src/app/user/models/role.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/angular-demo/src/app/user/models/user.ts" beforeDir="false" afterPath="$PROJECT_DIR$/angular-demo/src/app/user/models/user.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/angular-demo/src/app/user/services/role.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/angular-demo/src/app/user/services/role.service.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/angular-demo/src/app/user/services/selected-roles.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/angular-demo/src/app/user/services/selected-roles.service.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/angular-demo/src/app/user/services/user-service.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/angular-demo/src/app/user/services/user-service.service.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/angular-demo/src/app/user/user-routing.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/angular-demo/src/app/user/user-routing.module.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/angular-demo/src/app/user/user.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/angular-demo/src/app/user/user.module.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/angular-demo/src/app/util/CampaignPermissionGuard.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/angular-demo/src/app/util/Roleguard.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/angular-demo/src/app/util/SupportedBrowserGuard.ts" beforeDir="false" afterPath="$PROJECT_DIR$/angular-demo/src/app/util/SupportedBrowserGuard.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/angular-demo/src/app/util/interceptors/interceptor.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/angular-demo/src/app/util/visualizer.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/angular-demo/src/app/util/visualizer.service.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/angular-demo/src/environments/environment.prod.ts" beforeDir="false" afterPath="$PROJECT_DIR$/angular-demo/src/environments/environment.prod.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/angular-demo/src/main.ts" beforeDir="false" afterPath="$PROJECT_DIR$/angular-demo/src/main.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/angular-demo/src/styles.css" beforeDir="false" afterPath="$PROJECT_DIR$/angular-demo/src/styles.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -256,7 +131,7 @@
       <workItem from="1693091126524" duration="352000" />
       <workItem from="1693093781857" duration="186000" />
       <workItem from="1693094393919" duration="3770000" />
-      <workItem from="1693121946929" duration="617000" />
+      <workItem from="1693121946929" duration="1523000" />
     </task>
     <task id="LOCAL-00001" summary="adding Hello!">
       <option name="closed" value="true" />
@@ -307,7 +182,15 @@
       <option name="project" value="LOCAL" />
       <updated>1692969080900</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="code cleaning + security update">
+      <option name="closed" value="true" />
+      <created>1693140743942</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1693140743942</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -321,7 +204,8 @@
     <MESSAGE value="addig another gitignore file" />
     <MESSAGE value="Enhancements have been implemented to improve the visual presentation of the registration and login pages through modifications to their respective HTML and CSS. Additionally, a comprehensive refinement of the application-wide styling has been executed by integrating CSS adjustments within the app component. Notably, the registration &quot;chips&quot; functionality has been rectified, ensuring seamless and accurate operation." />
     <MESSAGE value="permission without routing" />
-    <option name="LAST_COMMIT_MESSAGE" value="permission without routing" />
+    <MESSAGE value="code cleaning + security update" />
+    <option name="LAST_COMMIT_MESSAGE" value="code cleaning + security update" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

@@ -1,0 +1,33 @@
+Index: angular-demo/src/app/user/components/user-from/user-from.component.ts
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';\r\nimport {Role} from \"../../models/role\";\r\nimport {MatChip} from \"@angular/material/chips\";\r\nimport {FormBuilder, FormGroup, Validators} from \"@angular/forms\";\r\nimport {User} from \"../../models/user\";\r\nimport {RoleService} from \"../../services/role.service\";\r\nimport {ToastrService} from \"ngx-toastr\";\r\n\r\n@Component({\r\n  selector: 'app-user-from',\r\n  templateUrl: './user-from.component.html',\r\n  styleUrls: ['./user-from.component.css']\r\n})\r\n\r\nexport class UserFromComponent implements OnInit {\r\n\r\n  @Output()\r\n  submitEvent:EventEmitter<User> = new EventEmitter<User>();\r\n  @Input()\r\n  user:User;\r\n  @Input()\r\n  functionality:string\r\n  submitted = false;\r\n  roleList: Role[] =[];\r\n  selectedRoles: Role[] = [];\r\n  registerForm:FormGroup = this.fb.group({\r\n    firstName: ['', Validators.required],\r\n    lastName: ['', Validators.required],\r\n    email: ['', [Validators.required, Validators.email]],\r\n    mobileNumber: ['', Validators.pattern(/^(00407|07|\\+407)\\d{8}$/)]\r\n  })\r\n\r\n  constructor(private fb: FormBuilder,\r\n              private roleService: RoleService,\r\n              private toastr:ToastrService) {\r\n  }\r\n\r\n  toggleSelection(chip: MatChip, role: Role) {\r\n    chip.toggleSelected();\r\n    const index = this.selectedRoles.indexOf(role);\r\n    if (chip.selected && index === -1) {\r\n      this.selectedRoles.push(role);\r\n    } else if (!chip.selected && index !== -1) {\r\n      this.selectedRoles.splice(index, 1);\r\n    }\r\n  }\r\n\r\n  showFirstNameError(): boolean {\r\n    const firstNameControl = this.registerForm.get('firstName');\r\n    if (this.functionality === \"register\"){\r\n      return this.submitted && firstNameControl?.hasError('required') || false;\r\n    } else if (this.functionality === \"update\"){\r\n      return firstNameControl?.hasError('required') || false;\r\n    }\r\n    return false;\r\n  }\r\n\r\n  showLastNameError(): boolean {\r\n    const lastNameControl = this.registerForm.get('lastName');\r\n    if (this.functionality === \"register\"){\r\n      return this.submitted && lastNameControl?.hasError('required') || false;\r\n    } else if (this.functionality === \"update\"){\r\n      return lastNameControl?.hasError('required') || false;\r\n    }\r\n    return false;\r\n  }\r\n\r\n  showEmailError(): boolean {\r\n    const emailControl = this.registerForm.get('email');\r\n    if(this.functionality===\"register\"){\r\n      return this.submitted && emailControl?.hasError('required') || false;\r\n    }else if (this.functionality === \"update\"){\r\n      return emailControl?.hasError('required') || false;\r\n    }\r\n    return false;\r\n  }\r\n\r\n  showRolesError(): boolean {\r\n    if (this.functionality === \"register\"){\r\n      return this.submitted && this.selectedRoles.length === 0;\r\n    } else if (this.functionality === \"update\") {\r\n      return this.selectedRoles.length === 0;\r\n    }\r\n    return false;\r\n  }\r\n\r\n  getFilteredRole(role:Role){\r\n   return  this.selectedRoles.filter(selectedRole => selectedRole.name===role.name)\r\n  }\r\n  isSelected(chip: MatChip, role: Role): boolean {\r\n    let filteredRole = this.getFilteredRole(role);\r\n    if(filteredRole.length > 0){\r\n      chip.toggleSelected();\r\n    }\r\n    return (filteredRole.length > 0)\r\n  }\r\n\r\n  onSave() {\r\n    this.submitted = true;\r\n    const firstName = this.registerForm.get('firstName')?.value;\r\n    const lastName = this.registerForm.get('lastName')?.value;\r\n    const email = this.registerForm.get('email')?.value;\r\n    const mobileNumber = this.registerForm.get('mobileNumber')?.value;\r\n    const roles = this.selectedRoles;\r\n    let newUser:User ={\r\n      firstName,\r\n      lastName,\r\n      email,\r\n      mobileNumber,\r\n      roles\r\n    };\r\n    if (this.functionality === \"update\"){\r\n        newUser.id=this.user.id;\r\n        newUser.active = this.user.active;\r\n        newUser.newUser = this.user.newUser;\r\n        newUser.roles = this.selectedRoles\r\n    }\r\n        if(this.registerForm.valid && this.selectedRoles.length !== 0){\r\n          this.submitEvent.emit(newUser)\r\n          } else{\r\n          this.toastr.show(\"You must select at last one role and one fill in all the  required fields\");\r\n        }\r\n\r\n  }\r\n\r\n  ngOnInit(): void {\r\n    this.roleService.getRoles().subscribe((roles) => {\r\n      this.roleList = roles;\r\n      this.selectedRoles = this.user.roles as Role[];\r\n      for (var role of this.selectedRoles){\r\n        console.log(role.name.toString())\r\n        console.log(this.selectedRoles)\r\n        let myChip = <HTMLElement>document.getElementsByClassName(role.name.toString())[0] as unknown as MatChip\r\n        console.log(myChip)\r\n        //myChip.toggleSelected()\r\n      }\r\n\r\n    });\r\n    if(this.functionality===\"update\") {\r\n      this.registerForm.setValue({\r\n        'firstName': this.user.firstName,\r\n        'lastName': this.user.lastName,\r\n        'email': this.user.email,\r\n        'mobileNumber': this.user.mobileNumber,\r\n      })\r\n    }\r\n\r\n\r\n\r\n  }\r\n\r\n}\r\n
+===================================================================
+diff --git a/angular-demo/src/app/user/components/user-from/user-from.component.ts b/angular-demo/src/app/user/components/user-from/user-from.component.ts
+--- a/angular-demo/src/app/user/components/user-from/user-from.component.ts	
++++ b/angular-demo/src/app/user/components/user-from/user-from.component.ts	
+@@ -127,14 +127,6 @@
+     this.roleService.getRoles().subscribe((roles) => {
+       this.roleList = roles;
+       this.selectedRoles = this.user.roles as Role[];
+-      for (var role of this.selectedRoles){
+-        console.log(role.name.toString())
+-        console.log(this.selectedRoles)
+-        let myChip = <HTMLElement>document.getElementsByClassName(role.name.toString())[0] as unknown as MatChip
+-        console.log(myChip)
+-        //myChip.toggleSelected()
+-      }
+-
+     });
+     if(this.functionality==="update") {
+       this.registerForm.setValue({
+@@ -144,9 +136,6 @@
+         'mobileNumber': this.user.mobileNumber,
+       })
+     }
+-
+-
+-
+   }
+ 
+ }

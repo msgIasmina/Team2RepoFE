@@ -1,0 +1,40 @@
+Index: angular-demo/src/app/permission/components/role-details/role-details.component.spec.ts
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>import { ComponentFixture, TestBed } from '@angular/core/testing';\r\n\r\nimport { RoleDetailsComponent } from './role-details.component';\r\n\r\ndescribe('RoleDetailsComponent', () => {\r\n  let component: RoleDetailsComponent;\r\n  let fixture: ComponentFixture<RoleDetailsComponent>;\r\n\r\n  beforeEach(async () => {\r\n    await TestBed.configureTestingModule({\r\n      declarations: [ RoleDetailsComponent ]\r\n    })\r\n    .compileComponents();\r\n  });\r\n\r\n  beforeEach(() => {\r\n    fixture = TestBed.createComponent(RoleDetailsComponent);\r\n    component = fixture.componentInstance;\r\n    fixture.detectChanges();\r\n  });\r\n\r\n  it('should create', () => {\r\n    expect(component).toBeTruthy();\r\n  });\r\n});\r\n
+===================================================================
+diff --git a/angular-demo/src/app/permission/components/role-details/role-details.component.spec.ts b/angular-demo/src/app/permission/components/role-details/role-details.component.spec.ts
+--- a/angular-demo/src/app/permission/components/role-details/role-details.component.spec.ts	
++++ b/angular-demo/src/app/permission/components/role-details/role-details.component.spec.ts	
+@@ -8,9 +8,8 @@
+ 
+   beforeEach(async () => {
+     await TestBed.configureTestingModule({
+-      declarations: [ RoleDetailsComponent ]
+-    })
+-    .compileComponents();
++      declarations: [RoleDetailsComponent],
++    }).compileComponents();
+   });
+ 
+   beforeEach(() => {
+Index: angular-demo/src/app/permission/components/role-list/role-list.component.spec.ts
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>import { ComponentFixture, TestBed } from '@angular/core/testing';\r\n\r\nimport { RoleListComponent } from './role-list.component';\r\n\r\ndescribe('RoleListComponent', () => {\r\n  let component: RoleListComponent;\r\n  let fixture: ComponentFixture<RoleListComponent>;\r\n\r\n  beforeEach(async () => {\r\n    await TestBed.configureTestingModule({\r\n      declarations: [ RoleListComponent ]\r\n    })\r\n    .compileComponents();\r\n  });\r\n\r\n  beforeEach(() => {\r\n    fixture = TestBed.createComponent(RoleListComponent);\r\n    component = fixture.componentInstance;\r\n    fixture.detectChanges();\r\n  });\r\n\r\n  it('should create', () => {\r\n    expect(component).toBeTruthy();\r\n  });\r\n});\r\n
+===================================================================
+diff --git a/angular-demo/src/app/permission/components/role-list/role-list.component.spec.ts b/angular-demo/src/app/permission/components/role-list/role-list.component.spec.ts
+--- a/angular-demo/src/app/permission/components/role-list/role-list.component.spec.ts	
++++ b/angular-demo/src/app/permission/components/role-list/role-list.component.spec.ts	
+@@ -8,9 +8,8 @@
+ 
+   beforeEach(async () => {
+     await TestBed.configureTestingModule({
+-      declarations: [ RoleListComponent ]
+-    })
+-    .compileComponents();
++      declarations: [RoleListComponent],
++    }).compileComponents();
+   });
+ 
+   beforeEach(() => {

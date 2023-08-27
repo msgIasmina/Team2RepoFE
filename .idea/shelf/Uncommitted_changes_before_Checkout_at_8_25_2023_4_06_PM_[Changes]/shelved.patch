@@ -1,0 +1,37 @@
+Index: angular-demo/src/app/app.module.ts
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>import {NgModule} from '@angular/core';\r\nimport {BrowserModule} from '@angular/platform-browser';\r\nimport {AppComponent} from './app.component';\r\nimport {DonationsModule} from \"./donations/donations.module\";\r\nimport {AppRoutingModule} from './app-routing.module';\r\nimport {HTTP_INTERCEPTORS, HttpClientModule} from \"@angular/common/http\";\r\nimport {LoginModule} from \"./account/component/login/login.module\";\r\nimport {Interceptor} from \"./util/interceptors/interceptor\";\r\nimport {RoleGuard} from \"./util/Roleguard\";\r\nimport {ManagementModule} from \"./management/management.module\";\r\nimport {AccountService} from \"./account/component/login/services/account.service\";\r\nimport {MatButtonModule} from \"@angular/material/button\";\r\nimport {BrowserAnimationsModule} from '@angular/platform-browser/animations';\r\nimport {MatFormFieldModule} from \"@angular/material/form-field\";\r\nimport {MatInputModule} from \"@angular/material/input\";\r\nimport {FormsModule, ReactiveFormsModule} from \"@angular/forms\";\r\nimport {MatChipsModule} from \"@angular/material/chips\";\r\nimport { HomeComponent } from './homePage/components/home/home.component';\r\nimport { TranslocoRootModule } from './transloco-root.module';\r\nimport {DonationsModule} from \"./donations/donations.module\";\r\n\r\n@NgModule({\r\n  declarations: [\r\n    AppComponent,\r\n  ],\r\n  imports: [\r\n    BrowserModule,\r\n    DonationsModule,\r\n    LoginModule,\r\n    ManagementModule,\r\n    AppRoutingModule,\r\n    HttpClientModule,\r\n    BrowserAnimationsModule,\r\n    MatButtonModule,\r\n    MatFormFieldModule,\r\n    MatInputModule,\r\n    FormsModule,\r\n    MatChipsModule,\r\n    ReactiveFormsModule,\r\n    TranslocoRootModule\r\n  ],\r\n  providers: [\r\n    AccountService, {provide: HTTP_INTERCEPTORS, useClass: Interceptor, multi: true}, RoleGuard\r\n  ],\r\n  bootstrap: [AppComponent]\r\n})\r\nexport class AppModule {\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/angular-demo/src/app/app.module.ts b/angular-demo/src/app/app.module.ts
+--- a/angular-demo/src/app/app.module.ts	(revision 63b4e2503e2d177eb7c873fd8bc22cece0abc761)
++++ b/angular-demo/src/app/app.module.ts	(date 1692968722438)
+@@ -17,7 +17,6 @@
+ import {MatChipsModule} from "@angular/material/chips";
+ import { HomeComponent } from './homePage/components/home/home.component';
+ import { TranslocoRootModule } from './transloco-root.module';
+-import {DonationsModule} from "./donations/donations.module";
+ 
+ @NgModule({
+   declarations: [
+Index: angular-demo/src/app/user/user.module.ts
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>import {NgModule} from '@angular/core';\r\nimport {CommonModule} from '@angular/common';\r\nimport {UserListComponent} from './components/user-list/user-list.component';\r\nimport {FormsModule, ReactiveFormsModule} from '@angular/forms';\r\nimport {HttpClientModule} from '@angular/common/http';\r\nimport {UserDetailsComponent} from './components/user-details/user-details.component';\r\nimport {UserRoutingModule} from \"./user-routing.module\";\r\nimport {UserRegisterComponent} from \"./components/user-register/user-register.component\";\r\nimport {MatChipsModule} from \"@angular/material/chips\";\r\nimport {PermissionModule} from \"../permission/permission.module\";\r\nimport { UpdateUserComponent } from './components/update-user/update-user.component';\r\nimport { UserFromComponent } from './components/user-from/user-from.component';\r\nimport {MatButtonModule} from \"@angular/material/button\";\r\nimport {MatIconModule} from \"@angular/material/icon\";\r\nimport {UserService} from \"./services/user-service.service\";\r\nimport {TranslocoModule} from \"@ngneat/transloco\";\r\nimport {MatPaginatorModule} from \"@angular/material/paginator\";\r\nimport {MatSpinner} from \"@angular/material/progress-spinner\";\r\nimport {PermissionModule} from \"../permission/permission.module\";\r\n\r\n\r\n@NgModule({\r\n  declarations: [\r\n    UserListComponent,\r\n    UserDetailsComponent,\r\n    UserRegisterComponent,\r\n    UpdateUserComponent,\r\n    UserFromComponent\r\n  ],\r\n  providers: [\r\n    UserService\r\n  ],\r\n    imports: [\r\n        CommonModule,\r\n        FormsModule,\r\n        HttpClientModule,\r\n        UserRoutingModule,\r\n        ReactiveFormsModule,\r\n        MatChipsModule,\r\n        MatButtonModule,\r\n        MatIconModule,\r\n        TranslocoModule,\r\n        MatPaginatorModule,\r\n       PermissionModule\r\n    ]\r\n})\r\nexport class UserModule { }\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/angular-demo/src/app/user/user.module.ts b/angular-demo/src/app/user/user.module.ts
+--- a/angular-demo/src/app/user/user.module.ts	(revision 63b4e2503e2d177eb7c873fd8bc22cece0abc761)
++++ b/angular-demo/src/app/user/user.module.ts	(date 1692968783689)
+@@ -15,8 +15,6 @@
+ import {UserService} from "./services/user-service.service";
+ import {TranslocoModule} from "@ngneat/transloco";
+ import {MatPaginatorModule} from "@angular/material/paginator";
+-import {MatSpinner} from "@angular/material/progress-spinner";
+-import {PermissionModule} from "../permission/permission.module";
+ 
+ 
+ @NgModule({
