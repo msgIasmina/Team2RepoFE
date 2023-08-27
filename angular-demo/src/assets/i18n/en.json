@@ -32,6 +32,9 @@
   "uUpdate": {
     "header": "Update User"
   },
+  "uAdd": {
+    "header": "Add User"
+  },
   "uForm": {
     "firstname": "First Name:",
     "lastname": "Last Name:",
@@ -120,6 +123,9 @@
   "donationUpdate": {
     "header": "Update Donation"
   },
+  "donationDownload": {
+    "header": "Export Donations"
+  },
   "donationForm": {
     "amount": "Amount:",
     "currency": "Currency:",
@@ -153,6 +159,9 @@
   },
   "cUpdate": {
     "header": "Update Campaign"
+  },
+  "cDownload": {
+    "header": "Download Campaigns"
   },
   "cForm": {
     "name": "Name:",
@@ -190,5 +199,8 @@
   },
   "backtoUserList": {
     "back": "Back to Users List"
+  },
+  "filterBtn": {
+    "name": "Filter"
   }
 }

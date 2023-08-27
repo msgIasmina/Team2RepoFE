@@ -4,12 +4,12 @@
 
 
 
-  <button mat-raised-button class="addbutton" (click)="onAddDonationClicked()">Add Donation
+  <button mat-raised-button class="addbutton" (click)="onAddDonationClicked()">{{t('donationAdd.header')}}
     <mat-icon>add</mat-icon>
   </button>
 
   <div class="dropdown-container">
-    <button mat-raised-button id="dropdown-button" (click)="toggleDropdown()">Filter</button>
+    <button mat-raised-button id="dropdown-button" (click)="toggleDropdown()">{{t('filterBtn.name')}}</button>
     <div class="dropdown-content">
 
       <div class="container">
@@ -150,7 +150,7 @@
   </div>
 
   <button mat-raised-button class="download-button" (click)="downloadFile()">
-    Export Donations
+    {{t('donationDownload.header')}}
     <mat-icon>download</mat-icon>
   </button>
 
