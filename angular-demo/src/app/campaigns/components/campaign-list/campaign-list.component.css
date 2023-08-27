@@ -115,14 +115,6 @@ h2 {
   display: inline-block;
 }
 
-#dropdown-button {
-  background-color: #3498db;
-  color: white;
-  padding: 10px 20px;
-  border: none;
-  cursor: pointer;
-}
-
 .dropdown-content {
   display: none;
   position: absolute;
@@ -158,7 +150,7 @@ input {
 
 .addbutton {
   background: #4FC3A1;
-  margin-left: 400px;
+  margin-left: 210px;
   color: #ffffff;
   padding: 10px 20px;
   border: none;
@@ -167,7 +159,40 @@ input {
 }
 
 .addbutton:hover {
-  background-color: darkgreen;
+  background-color: darkslategray;
   color: #ffffff;
   outline: none;
 }
+
+#dropdown-button {
+  background-color: rebeccapurple;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  cursor: pointer;
+  margin-left: 300px;
+}
+
+#dropdown-button:hover {
+  background-color: indigo;
+  color: #ffffff;
+  outline: none;
+}
+
+.download-button{
+  background: #4FC3A1;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-left: 350px;
+}
+
+.download-button:hover {
+  background-color: darkslategray;
+  color: #ffffff;
+  outline: none;
+}
+
+

@@ -4,7 +4,7 @@
     {{t('donatorList.header')}}
   </h2>
 
-  <button (click)="onAddDonatorClicked()" class="addbutton" mat-raised-button>Add Donator
+  <button mat-raised-button  class="addbutton" (click)="onAddDonatorClicked()">{{t('donatorList.addBtn')}}
     <mat-icon>add</mat-icon>
   </button>
   <div class="table-wrapper">
@@ -33,11 +33,11 @@
   </div>
 
   <div class="paginator-container">
-    <mat-paginator (page)="pageChanged($event)"
-                   [length]="totalItems"
+    <mat-paginator [length]="totalItems"
                    [pageIndex]="currentPage"
+                   [pageSize]="pageSize"
                    [pageSizeOptions]="pageSizeOptions"
-                   [pageSize]="pageSize">
+                   (page)="pageChanged($event)">
     </mat-paginator>
   </div>
 </div>
