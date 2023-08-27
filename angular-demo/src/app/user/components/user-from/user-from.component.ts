@@ -87,13 +87,6 @@ export class UserFromComponent implements OnInit {
   getFilteredRole(role:Role){
    return  this.selectedRoles.filter(selectedRole => selectedRole.name===role.name)
   }
-  // isSelected(chip: MatChip, role: Role): boolean {
-  //   let filteredRole = this.getFilteredRole(role);
-  //   if(filteredRole.length > 0){
-  //     chip.toggleSelected();
-  //   }
-  //   return (filteredRole.length > 0)
-  // }
 
   onSave() {
     this.submitted = true;

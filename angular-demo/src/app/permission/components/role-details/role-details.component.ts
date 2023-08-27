@@ -4,6 +4,7 @@ import {Permission} from "../../../user/models/permission";
 import {RolePermissionService} from "../../services/role-permission.service";
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {Router} from "@angular/router";
+import {ToastrService} from "ngx-toastr";
 
 @Component({
   selector: 'app-role-details',
@@ -19,7 +20,8 @@ export class RoleDetailsComponent implements OnInit {
     permissionsToBeDeleted :['']
   })
   constructor( private rolePermissionService: RolePermissionService,private fb:FormBuilder,
-               private router: Router) {
+               private router: Router,
+               private toastr: ToastrService) {
   }
 
   ngOnInit(): void {
@@ -33,9 +35,11 @@ export class RoleDetailsComponent implements OnInit {
       response => {
         /*this.missingPermissions = this.missingPermissions.filter(permission => permissionsToBeAdded.indexOf(permission)<0);
         this.acquiredPermissions.push(...permissionsToBeAdded);*/
+        this.toastr.success("Permissions added successfully")
       },
       err =>{
         //window.alert(err)
+        this.toastr.error(err.message);
         this.missingPermissions = this.missingPermissions.filter(permission => permissionsToBeAdded.indexOf(permission)<0);
         this.acquiredPermissions.push(...permissionsToBeAdded);
       }
@@ -48,8 +52,10 @@ export class RoleDetailsComponent implements OnInit {
       response => {
         /*this.acquiredPermissions = this.acquiredPermissions.filter(permission => permissionsToBeRemoved.indexOf(permission)<0);
         this.missingPermissions.push(...permissionsToBeRemoved);*/
+        this.toastr.success("Permissions removed successfully.")
       },
       err =>{
+        this.toastr.error(err.message);
         this.acquiredPermissions = this.acquiredPermissions.filter(permission => permissionsToBeRemoved.indexOf(permission)<0);
         this.missingPermissions.push(...permissionsToBeRemoved);
         //window.alert(err);
