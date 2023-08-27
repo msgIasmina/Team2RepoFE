@@ -3,8 +3,8 @@
     <p>{{t('donatorForm.firstname')}}:<span>*</span></p>
     <input
       [placeholder]="donator.firstName"
-      type="text"
       formControlName="firstName"
+      type="text"
     />
     <div *ngIf="showFirstNameError()">
       <div class="error-message">{{t('donatorForm.errors.firstnameE')}}</div>

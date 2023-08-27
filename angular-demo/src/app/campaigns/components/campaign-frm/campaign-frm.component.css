@@ -88,7 +88,7 @@ a {
   outline: none; /* Remove the default focus outline */
 }
 
-.selectTitle{
+.selectTitle {
   color: #7e8ba3;
 }
 
@@ -99,12 +99,12 @@ a {
   text-align: center;
 }
 
-p{
-  color:black;
+p {
+  color: black;
   text-align: left;
 }
 
-span{
+span {
   color: darkred;
   font-size: 20px;
 }

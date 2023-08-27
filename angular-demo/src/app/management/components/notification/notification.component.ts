@@ -1,19 +1,15 @@
-import {Component, Input, OnInit} from '@angular/core';
-import {Notif} from "../../model/notification";
+import { Component, Input, OnInit } from '@angular/core';
+import { Notif } from '../../model/notification';
 
 @Component({
   selector: 'app-notification',
   templateUrl: './notification.component.html',
-  styleUrls: ['./notification.component.css']
+  styleUrls: ['./notification.component.css'],
 })
 export class NotificationComponent implements OnInit {
+  @Input() notification: Notif;
 
-  @Input()
-  notification:Notif
+  constructor() {}
 
-  constructor() { }
-
-  ngOnInit(): void {
-  }
-
+  ngOnInit(): void {}
 }

@@ -1,4 +1,4 @@
-import {Donation} from "./donation";
+import { Donation } from './donation';
 
 export interface DonationAction {
   donation: Donation;

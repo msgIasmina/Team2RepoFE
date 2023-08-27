@@ -1,6 +1,6 @@
-export class Notif{
+export class Notif {
   constructor(
-    public text:string,
-    public date:string,
+    public text: string,
+    public date: string,
   ) {}
 }

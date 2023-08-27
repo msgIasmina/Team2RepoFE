@@ -1,9 +1,9 @@
-<form class="form" [formGroup]="updateDonationForm" (ngSubmit)="onEdit()" *transloco="let t">
+<form (ngSubmit)="onEdit()" *transloco="let t" [formGroup]="updateDonationForm" class="form">
   <div class="form__field">
     <h4>{{t('donationForm.amount')}}</h4>
     <input
-      type="text"
       formControlName="amount"
+      type="text"
     />
     <div *ngIf="showAmountError()">
       <div class="error-message">{{t('donationForm.errors.amountE')}}</div>
@@ -54,13 +54,14 @@
   <div class="form__field">
     <h4>{{t('donationForm.notes')}}</h4>
     <input
-      type="text"
       formControlName="notes"
+      type="text"
     />
   </div>
 
   <div class="form__field">
-    <button mat-raised-button color="accent" class="btn btn-primary custom-btn" type="submit">{{t('donationForm.submitBtn')}}</button>
+    <button class="btn btn-primary custom-btn" color="accent" mat-raised-button
+            type="submit">{{t('donationForm.submitBtn')}}</button>
   </div>
 </form>
 

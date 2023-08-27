@@ -1,5 +1,4 @@
-import {Donator} from "./donator";
-
+import { Donator } from './donator';
 
 export interface DonatorAction {
   donator: Donator;

@@ -1,24 +1,25 @@
 <div>
-<form class="form" [formGroup]="campaignForm" (ngSubmit)="onSave()" *transloco="let t">
-  <div class="form__field">
-    <p>{{t('cForm.name')}}:<span>*</span></p>
-    <input
-      [placeholder]="campaign.name"
-      type="text"
-      formControlName="name"
-    />
-  </div>
+  <form (ngSubmit)="onSave()" *transloco="let t" [formGroup]="campaignForm" class="form">
+    <div class="form__field">
+      <p>{{t('cForm.name')}}:<span>*</span></p>
+      <input
+        [placeholder]="campaign.name"
+        formControlName="name"
+        type="text"
+      />
+    </div>
 
-  <div class="form__field">
-    <p>{{t('cForm.purpose')}}:<span>*</span></p>
-    <input
-      [placeholder]="campaign.purpose"
-      type="text"
-      formControlName="purpose"/>
-  </div>
+    <div class="form__field">
+      <p>{{t('cForm.purpose')}}:<span>*</span></p>
+      <input
+        [placeholder]="campaign.purpose"
+        formControlName="purpose"
+        type="text"/>
+    </div>
 
-  <div class="form__field">
-    <button mat-raised-button disabled type="submit" [disabled]="!campaignForm.valid" color="accent">{{t('cForm.submitBtn')}}</button>
-  </div>
-</form>
+    <div class="form__field">
+      <button [disabled]="!campaignForm.valid" color="accent" disabled mat-raised-button
+              type="submit">{{t('cForm.submitBtn')}}</button>
+    </div>
+  </form>
 </div>

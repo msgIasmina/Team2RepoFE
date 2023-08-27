@@ -1,12 +1,12 @@
-<div class="grid align__item" *transloco="let t">
+<div *transloco="let t" class="grid align__item">
 
   <div class="register">
-  <h2>{{t('uRegister.header')}}</h2>
+    <h2>{{t('uRegister.header')}}</h2>
     <app-user-from
       (submitEvent)="onSave($event)"
       *ngIf="placeholder"
-      [user]="placeholder"
-      [functionality]="register">
+      [functionality]="register"
+      [user]="placeholder">
     </app-user-from>
   </div>
 </div>

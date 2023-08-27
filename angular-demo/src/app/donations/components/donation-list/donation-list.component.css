@@ -6,6 +6,12 @@ h2 {
   text-align: center;
 }
 
+.grid {
+  margin: 0 auto;
+  max-width: 25rem;
+  width: 100%;
+}
+
 .align {
   align-items: center;
   display: flex;

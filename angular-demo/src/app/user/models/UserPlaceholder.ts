@@ -1,6 +1,6 @@
-import {Role} from "./role";
+import { Role } from './role';
 
-export class UserPlaceholder{
+export class UserPlaceholder {
   constructor(
     public firstName: string,
     public lastName: string,
@@ -10,6 +10,5 @@ export class UserPlaceholder{
     public id?: number,
     public active?: boolean,
     public newUser?: boolean,
-    ){
-  }
+  ) {}
 }

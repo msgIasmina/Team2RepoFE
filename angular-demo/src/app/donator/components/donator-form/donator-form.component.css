@@ -106,7 +106,7 @@ a {
   border-radius: 25px;
 }
 
-.selectTitle{
+.selectTitle {
   color: #7e8ba3;
 }
 
@@ -123,16 +123,16 @@ a {
   background-position: 1rem 50%;
 }
 
-.error-message{
+.error-message {
   color: red;
 }
 
-p{
+p {
   color: black;
   text-align: left;
 }
 
-span{
+span {
   color: darkred;
   font-size: 20px;
 }

@@ -1,4 +1,3 @@
-export  class TextResponse{
-  constructor(public text:string) {
-  }
+export class TextResponse {
+  constructor(public text: string) {}
 }

@@ -1,51 +1,51 @@
-<div class="grid align__item" *transloco="let t">
+<div *transloco="let t" class="grid align__item">
   <div class="login">
-  <h2>{{t('login.header' )}}</h2>
-  <form class="form" [formGroup]="loginForm" (ngSubmit)="onLogin()">
-    <div class="form__field">
-      <p>{{t('login.username' )}}</p>
-      <input
-        type="text"
-        formControlName="username"
-        placeholder="username">
-    </div>
+    <h2>{{t('login.header')}}</h2>
+    <form (ngSubmit)="onLogin()" [formGroup]="loginForm" class="form">
+      <div class="form__field">
+        <p>{{t('login.username')}}</p>
+        <input
+          formControlName="username"
+          placeholder="username"
+          type="text">
+      </div>
 
-    <div class="form__field">
-      <div class="password-container">
+      <div class="form__field">
+        <div class="password-container">
 
-        <div>
-          <p>{{t('login.password' )}}</p>
+          <div>
+            <p>{{t('login.password')}}</p>
             <input
-              type="{{ showPassword ? 'text' : 'password' }}"
               formControlName="password"
               placeholder="•••••••••"
+              type="{{ showPassword ? 'text' : 'password' }}"
             >
-        </div>
+          </div>
 
-        <div class="toggle-password" (click)="togglePassword()">
-          <mat-icon class="icon-eye">{{ showPassword ? 'visibility_off' : 'visibility' }}</mat-icon>
+          <div (click)="togglePassword()" class="toggle-password">
+            <mat-icon class="icon-eye">{{ showPassword ? 'visibility_off' : 'visibility' }}</mat-icon>
+          </div>
+
         </div>
 
       </div>
 
-    </div>
+      <p></p>
 
-    <p></p>
+      <div class="form__field">
+        <button [disabled]="!loginForm.valid" color="accent" disabled mat-raised-button>{{t('login.btn')}}</button>
+      </div>
 
-    <div class="form__field">
-      <button mat-raised-button color="accent" disabled [disabled]="!loginForm.valid">{{t('login.btn')}}</button>
-    </div>
+    </form>
 
-  </form>
-
-    <div class="help-icon" (click)="toggleHelpField()">
+    <div (click)="toggleHelpField()" class="help-icon">
       <mat-icon class="icon-help">help_outline</mat-icon>
     </div>
 
   </div>
 </div>
 
-<div class="help-field" [ngClass]="{'open': isHelpFieldOpen}">
+<div [ngClass]="{'open': isHelpFieldOpen}" class="help-field">
   <h3>Need Help?</h3>
   <p>If you need assistance, feel free to contact our support team:</p>
   <ul>

@@ -1,8 +1,8 @@
-import {Notif} from "./notification";
+import { Notif } from './notification';
 
-export class NotificationPagination{
+export class NotificationPagination {
   constructor(
-    public notifications:Notif[],
-    public maxPages:number
+    public notifications: Notif[],
+    public maxPages: number,
   ) {}
 }

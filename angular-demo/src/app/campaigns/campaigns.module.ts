@@ -1,17 +1,17 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import {CampaignRoutingModule} from "./campaign-routing.module";
-import {CampaignService} from "./services/campaign.service";
-import {FormsModule, ReactiveFormsModule} from "@angular/forms";
-import {MatButtonModule} from "@angular/material/button";
+import { CampaignRoutingModule } from './campaign-routing.module';
+import { CampaignService } from './services/campaign.service';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { MatButtonModule } from '@angular/material/button';
 import { CampaignDetailsComponent } from './components/campaign-details/campaign-details.component';
 import { CampaignListComponent } from './components/campaign-list/campaign-list.component';
 import { CampaignFrmComponent } from './components/campaign-frm/campaign-frm.component';
 import { CampaignEditComponent } from './components/campaign-edit/campaign-edit.component';
-import {CampaignComponent} from "./components/campaign/campaign.component";
-import {MatIconModule} from "@angular/material/icon";
-import {MatPaginatorModule} from "@angular/material/paginator";
-import {TranslocoModule} from "@ngneat/transloco";
+import { CampaignComponent } from './components/campaign/campaign.component';
+import { MatIconModule } from '@angular/material/icon';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { TranslocoModule } from '@ngneat/transloco';
 
 @NgModule({
   declarations: [
@@ -19,7 +19,7 @@ import {TranslocoModule} from "@ngneat/transloco";
     CampaignDetailsComponent,
     CampaignListComponent,
     CampaignFrmComponent,
-    CampaignEditComponent
+    CampaignEditComponent,
   ],
   imports: [
     CommonModule,
@@ -29,13 +29,9 @@ import {TranslocoModule} from "@ngneat/transloco";
     FormsModule,
     MatPaginatorModule,
     TranslocoModule,
-    MatIconModule
+    MatIconModule,
   ],
-  exports: [
-    CampaignComponent
-  ],
-  providers: [
-    CampaignService
-  ]
+  exports: [CampaignComponent],
+  providers: [CampaignService],
 })
-export class CampaignsModule { }
+export class CampaignsModule {}

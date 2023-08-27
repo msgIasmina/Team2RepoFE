@@ -23,7 +23,7 @@ import {PermissionModule} from "../permission/permission.module";
     UserDetailsComponent,
     UserRegisterComponent,
     UpdateUserComponent,
-    UserFromComponent
+    UserFromComponent,
   ],
   providers: [
     UserService
@@ -42,4 +42,4 @@ import {PermissionModule} from "../permission/permission.module";
         PermissionModule
     ]
 })
-export class UserModule { }
+export class UserModule {}

@@ -16,12 +16,9 @@ import {MatInputModule} from "@angular/material/input";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {MatChipsModule} from "@angular/material/chips";
 import { TranslocoRootModule } from './transloco-root.module';
-import {PermissionModule} from "./permission/permission.module";
 
 @NgModule({
-  declarations: [
-    AppComponent,
-  ],
+  declarations: [AppComponent],
   imports: [
     BrowserModule,
     DonationsModule,
@@ -36,12 +33,9 @@ import {PermissionModule} from "./permission/permission.module";
     FormsModule,
     MatChipsModule,
     ReactiveFormsModule,
-    TranslocoRootModule
+    TranslocoRootModule,
   ],
-  providers: [
-    AccountService, {provide: HTTP_INTERCEPTORS, useClass: Interceptor, multi: true}, RoleGuard
-  ],
-  bootstrap: [AppComponent]
+  providers: [AccountService],
+  bootstrap: [AppComponent],
 })
-export class AppModule {
-}
+export class AppModule {}

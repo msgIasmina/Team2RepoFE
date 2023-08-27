@@ -1,7 +1,11 @@
 <div *transloco="let t">
-  <button mat-raised-button color="accent" (click)="onEditClicked(user)"> <mat-icon>edit</mat-icon></button>
-  <button mat-raised-button [color]="user.active ? 'warn' : 'primary'" (click)="onToggleActivationClicked(user)">
+  <button (click)="onEditClicked(user)" color="accent" mat-raised-button>
+    <mat-icon>edit</mat-icon>
+  </button>
+  <button (click)="onToggleActivationClicked(user)" [color]="user.active ? 'warn' : 'primary'" mat-raised-button>
     <mat-icon>{{ user.active ? 'delete' : 'check_circle' }}</mat-icon>
   </button>
-  <button mat-raised-button (click)="onManageRolesClicked()"><mat-icon>lock_open</mat-icon></button>
+  <button (click)="onManageRolesClicked()" mat-raised-button>
+    <mat-icon>lock_open</mat-icon>
+  </button>
 </div>

@@ -3,6 +3,7 @@
   max-width: 25rem;
   width: 100%;
 }
+
 .align__item--start {
   align-self: flex-start;
 }
@@ -28,7 +29,7 @@ h2 {
   color: #1b182b;
 }
 
-input, select{
+input, select {
   border: 1px solid #242c37;
   border-radius: 999px;
   background-color: transparent;

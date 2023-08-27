@@ -3,6 +3,7 @@
   max-width: 25rem;
   width: 100%;
 }
+
 .align__item--start {
   align-self: flex-start;
 }

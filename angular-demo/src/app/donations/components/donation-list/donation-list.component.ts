@@ -18,7 +18,7 @@ import { saveAs } from 'file-saver';
 @Component({
   selector: 'app-donation-list',
   templateUrl: './donation-list.component.html',
-  styleUrls: ['./donation-list.component.css']
+  styleUrls: ['./donation-list.component.css'],
 })
 export class DonationListComponent implements OnInit {
   donationList: Donation[];
@@ -88,17 +88,17 @@ export class DonationListComponent implements OnInit {
 
     this.loadDonationsAndRefresh();
 
-    this.donationService.getCurrencies().subscribe(currencies => {
+    this.donationService.getCurrencies().subscribe((currencies) => {
       this.currencyOptions = currencies;
     });
 
-    this.donationService.getCampaigns().subscribe(campaigns => {
+    this.donationService.getCampaigns().subscribe((campaigns) => {
       this.campaignOptions = campaigns;
     });
 
-    this.donationService.getUsers().subscribe(users => {
+    this.donationService.getUsers().subscribe((users) => {
       this.userOptions = users;
-    })
+    });
   }
 
   private loadDonationsAndRefresh() {
@@ -300,6 +300,5 @@ export class DonationListComponent implements OnInit {
       })
     }
   }
-
 
 

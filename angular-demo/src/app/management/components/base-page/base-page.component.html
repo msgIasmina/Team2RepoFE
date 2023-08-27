@@ -1,19 +1,20 @@
- <!--Nav -->
-  <div class="nav container" *transloco="let t">
-    <!--Logo -->
-    <a class="logo">Donation<span>Manager</span></a>
-    <!--Nav Icons -->
-    <div>
+<!--Nav -->
+<div *transloco="let t" class="nav container">
+  <!--Logo -->
+  <a class="logo">Donation<span>Manager</span></a>
+  <!--Nav Icons -->
+  <div>
 
-      <img *ngIf="isEnglSelected()" src="assets/images/british-flag.jpg" width="80" height="23" (click)="onLanguageChange()">
-      <img *ngIf="!isEnglSelected()" src="assets/images/ro-flag.png" width="80" height="23" (click)="onLanguageChange()">
+    <img (click)="onLanguageChange()" *ngIf="isEnglSelected()" height="23" src="assets/images/british-flag.jpg"
+         width="80">
+    <img (click)="onLanguageChange()" *ngIf="!isEnglSelected()" height="23" src="assets/images/ro-flag.png" width="80">
 
-    </div>
-    <div class="nav-icons">
-      <button  mat-button color="warn" class="btn signInButton" (click)=logout()> {{t('navbar.logout')}} </button>
-    </div>
+  </div>
+  <div class="nav-icons">
+    <button (click)=logout() class="btn signInButton" color="warn" mat-button> {{t('navbar.logout')}} </button>
+  </div>
 
-    <div class="nav-icons">
+  <div class="nav-icons">
 
       <button mat-icon-button [matMenuTriggerFor]="menu">
         <mat-icon *ngIf="length > 0" [matBadge]="length" matBadgePosition="before" matBadgeColor="warn">
@@ -28,30 +29,30 @@
           <app-notification [notification]="notif" ></app-notification>
         </tr>
 
-        <button mat-button color="warn" (click)="seeAllNotifications()">{{t('navbar.notification')}}</button>
+      <button (click)="seeAllNotifications()" color="warn" mat-button>{{t('navbar.notification')}}</button>
 
-      </mat-menu>
+    </mat-menu>
 
-    </div>
-
-    <div class="menu-icon" (click)="toggleMenu()">
-
-      <div class="line1"></div>
-      <div class="line2"></div>
-      <div class="line3"></div>
-
-    </div>
   </div>
-  <!--Menu -->
-  <div class="menu" *transloco="let t">
-    <div class="navbar">
-      <li><a (click)="goToPage('home')">{{t('navbar.home')}}</a></li>
-      <li><a (click)="goToPage('users')">{{t('navbar.users')}}</a></li>
-      <li><a (click)="goToPage('donators')">{{t('navbar.donators')}}</a></li>
-      <li><a (click)="goToPage('campaigns')">{{t('navbar.campaigns')}}</a></li>
-      <li><a (click)="goToPage('donations')">{{t('navbar.donations')}}</a></li>
-    </div>
+
+  <div (click)="toggleMenu()" class="menu-icon">
+
+    <div class="line1"></div>
+    <div class="line2"></div>
+    <div class="line3"></div>
+
   </div>
+</div>
+<!--Menu -->
+<div *transloco="let t" class="menu">
+  <div class="navbar">
+    <li><a (click)="goToPage('home')">{{t('navbar.home')}}</a></li>
+    <li><a (click)="goToPage('users')">{{t('navbar.users')}}</a></li>
+    <li><a (click)="goToPage('donators')">{{t('navbar.donators')}}</a></li>
+    <li><a (click)="goToPage('campaigns')">{{t('navbar.campaigns')}}</a></li>
+    <li><a (click)="goToPage('donations')">{{t('navbar.donations')}}</a></li>
+  </div>
+</div>
 <router-outlet></router-outlet>
 
 

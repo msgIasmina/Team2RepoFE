@@ -10,7 +10,7 @@ import {FormBuilder, FormGroup} from "@angular/forms";
 @Component({
   selector: 'app-campaign-list',
   templateUrl: './campaign-list.component.html',
-  styleUrls: ['./campaign-list.component.css']
+  styleUrls: ['./campaign-list.component.css'],
 })
 export class CampaignListComponent implements OnInit {
 
@@ -40,55 +40,57 @@ export class CampaignListComponent implements OnInit {
     this.loadCampaignsAndRefresh();
   }
 
-  handleCampaignAction(action:CampaignAction){
-    if(action.type==='edit'){
+  handleCampaignAction(action: CampaignAction) {
+    if (action.type === 'edit') {
       this.editCampaign(action.campaign);
-    }else if(action.type==='delete'){
+    } else if (action.type === 'delete') {
       this.deleteCampaign(action.campaign);
     }
   }
 
-  loadCampaignsAndRefresh(){
-    this.campaignService.loadCampaigns(this.params).subscribe(()=>{
-      this.campaignService.getCampaignFilterPair().subscribe(campaignFilterPair=>{
-        this.campaignList = campaignFilterPair.campaigns;
-        this.totalItems = campaignFilterPair.totalItems;
-      })
-    })
+  loadCampaignsAndRefresh() {
+    this.campaignService.loadCampaigns(this.params).subscribe(() => {
+      this.campaignService
+        .getCampaignFilterPair()
+        .subscribe((campaignFilterPair) => {
+          this.campaignList = campaignFilterPair.campaigns;
+          this.totalItems = campaignFilterPair.totalItems;
+        });
+    });
   }
 
-  editCampaign(campaignToEdit:Campaign){
-    this.router.navigate(["/management/campaigns/edit/"+campaignToEdit.id]);
+  editCampaign(campaignToEdit: Campaign) {
+    this.router.navigate(['/management/campaigns/edit/' + campaignToEdit.id]);
   }
 
-  deleteCampaign(campaignToDelete:Campaign){
-    this.campaignService.deleteCampaignById(campaignToDelete.id).subscribe(()=>{
-    },
-      error => {
-        this.campaignService.loadCampaigns(this.params).subscribe(
-          campaignFilterPair => {
-            this.campaignList = campaignFilterPair.campaigns
-            this.totalItems = campaignFilterPair.totalItems
-          }
-        )
-      }
+  deleteCampaign(campaignToDelete: Campaign) {
+    this.campaignService.deleteCampaignById(campaignToDelete.id).subscribe(
+      () => {},
+      (error) => {
+        this.campaignService
+          .loadCampaigns(this.params)
+          .subscribe((campaignFilterPair) => {
+            this.campaignList = campaignFilterPair.campaigns;
+            this.totalItems = campaignFilterPair.totalItems;
+          });
+      },
     );
   }
 
-  onAddCampaignClicked(){
+  onAddCampaignClicked() {
     const permissions = JSON.parse(localStorage.getItem('permissions') || '[]');
     const hasCampPermission = permissions.includes('AUTHORITY_CAMP_MANAGEMENT');
 
-    if(hasCampPermission){
-      this.router.navigate(
-        ['/management/campaigns/add/']
-      );
+    if (hasCampPermission) {
+      this.router.navigate(['/management/campaigns/add/']);
     } else {
-      this.toastr.error("It seems that you don't have the permissions for completing this action.")
+      this.toastr.error(
+        "It seems that you don't have the permissions for completing this action.",
+      );
     }
   }
 
-  applyFilters(){
+  applyFilters() {
     this.clearFilterParams();
 
     if (this.campaignForm.get('nameTerm') != null){
@@ -102,7 +104,7 @@ export class CampaignListComponent implements OnInit {
     this.loadCampaignsAndRefresh();
   }
 
-  clearFilterParams(){
+  clearFilterParams() {
     for (const prop in this.params) {
       if (prop !== 'pageSize') {
         delete this.params[prop];

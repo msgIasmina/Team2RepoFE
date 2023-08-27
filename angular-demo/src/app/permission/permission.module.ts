@@ -22,4 +22,4 @@ import {MatButtonModule} from "@angular/material/button";
     MatButtonModule
   ]
 })
-export class PermissionModule { }
+export class PermissionModule {}

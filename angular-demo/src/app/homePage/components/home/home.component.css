@@ -1,37 +1,38 @@
-.row{
+.row {
   display: flex;
   flex-wrap: wrap;
   margin-top: 3%;
   justify-content: space-between;
 }
-.col-1{
+
+.col-1 {
   flex-basis: 40%;
   min-width: 300px;
   margin-bottom: 30px;
   position: relative;
 }
 
-.col-2{
+.col-2 {
   flex-basis: 55%;
   min-width: 300px;
   margin-bottom: 30px;
 }
 
-.col-1 img{
+.col-1 img {
   width: 80%;
   display: flex;
   margin-left: 300px;
   margin-top: 100px;
 }
 
-.col-2 h1{
+.col-2 h1 {
   font-size: 62px;
   font-weight: 600;
   margin-top: 10%;
   margin-left: 15%
 }
 
-.col-2 p{
+.col-2 p {
   max-width: 600px;
   font-size: 19px;
   display: flex;
@@ -39,11 +40,12 @@
   margin-top: 30px;
   font-family: cursive;
 }
-span{
+
+span {
   color: var(--main-color)
 }
 
-.elements{
+.elements {
   position: absolute;
   top: 0;
   left: 0;
@@ -51,18 +53,21 @@ span{
   max-height: 500px;
   animation: move 2.5s linear infinite;
 }
-@keyframes move{
-  0%{
+
+@keyframes move {
+  0% {
     transform: translate(-15px, 0px);
   }
-  50%{
+  50% {
     transform: translate(0px, -15px);
   }
-  100%{
+  100% {
     transform: translate(-15px, 0px);
   }
 }
 
-.text{
-  width: 50%; min-width: 20em; float: left;
+.text {
+  width: 50%;
+  min-width: 20em;
+  float: left;
 }

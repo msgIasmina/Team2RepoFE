@@ -29,7 +29,7 @@ h2 {
   color: black;
 }
 
-p{
+p {
   color: black;
 }
 
@@ -43,7 +43,7 @@ p{
   width: 100%;
 }
 
-.login input, select{
+.login input, select {
   border: 1px solid #242c37;
   border-radius: 999px;
   background-color: transparent;
@@ -100,14 +100,14 @@ p{
   display: block;
 }
 
-.icon-help{
+.icon-help {
   color: black;
   display: flex;
   margin-top: 25px;
   cursor: pointer;
 }
 
-.icon-eye{
+.icon-eye {
   color: black;
   display: flex;
   margin-top: 30px;
@@ -135,8 +135,7 @@ p{
 /* The default eye password is removed */
 
 input[type=password]::-ms-reveal,
-input[type=password]::-ms-clear
-{
+input[type=password]::-ms-clear {
   display: none;
 }
 

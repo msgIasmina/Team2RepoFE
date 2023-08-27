@@ -1,10 +1,11 @@
 import { Injectable } from '@angular/core';
-import {Role} from "../models/role";
+import { Role } from '../models/role';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class SelectedRolesService {
   selectedRoles: Role[] = [];
-  constructor() { }
+
+  constructor() {}
 }

@@ -11,6 +11,7 @@
 .align__item--end {
   align-self: flex-end;
 }
+
 .update {
   background-color: #ffffff;
   box-shadow: 0 0 250px #f85252;

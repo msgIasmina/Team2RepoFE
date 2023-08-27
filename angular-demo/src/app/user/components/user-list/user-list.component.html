@@ -1,41 +1,42 @@
 <div *transloco="let t">
   <p></p>
   <h2>{{t('uList.header')}}</h2>
-  <button mat-raised-button class="sticky-button" (click)="onAddUserClicked()">Add User
-    <mat-icon>add</mat-icon></button>
+  <button (click)="onAddUserClicked()" class="sticky-button" mat-raised-button>Add User
+    <mat-icon>add</mat-icon>
+  </button>
   <div class="table-wrapper">
     <table class="fl-table">
       <thead>
-        <tr>
-          <th>{{t('uList.uTable.firstname')}}</th>
-          <th>{{t('uList.uTable.lastname')}}</th>
-          <th>{{t('uList.uTable.email')}}</th>
-          <th>{{t('uList.uTable.active')}}</th>
-          <th>{{t('uList.uTable.actions')}}</th>
-        </tr>
+      <tr>
+        <th>{{t('uList.uTable.firstname')}}</th>
+        <th>{{t('uList.uTable.lastname')}}</th>
+        <th>{{t('uList.uTable.email')}}</th>
+        <th>{{t('uList.uTable.active')}}</th>
+        <th>{{t('uList.uTable.actions')}}</th>
+      </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let user of userList">
-          <td>{{ user.firstName }}</td>
-          <td>{{ user.lastName}}</td>
-          <td>{{ user.email }}</td>
-          <mat-icon class="icon" [ngClass]="{ 'active-icon': user.active, 'inactive-icon': !user.active }">
-            {{ user.active ? 'check_circle' : 'cancel' }}
-          </mat-icon>
-          <td>
-            <app-user [user]="user" (userAction)="handleUserAction($event)"></app-user>
-          </td>
-        </tr>
+      <tr *ngFor="let user of userList">
+        <td>{{ user.firstName }}</td>
+        <td>{{ user.lastName}}</td>
+        <td>{{ user.email }}</td>
+        <mat-icon [ngClass]="{ 'active-icon': user.active, 'inactive-icon': !user.active }" class="icon">
+          {{ user.active ? 'check_circle' : 'cancel' }}
+        </mat-icon>
+        <td>
+          <app-user (userAction)="handleUserAction($event)" [user]="user"></app-user>
+        </td>
+      </tr>
       </tbody>
     </table>
   </div>
 
   <div class="paginator-container">
-    <mat-paginator [length]="totalItems"
+    <mat-paginator (page)="pageChanged($event)"
+                   [length]="totalItems"
                    [pageIndex]="currentPage"
-                   [pageSize]="pageSize"
                    [pageSizeOptions]="pageSizeOptions"
-                   (page)="pageChanged($event)">
+                   [pageSize]="pageSize">
     </mat-paginator>
   </div>
 </div>

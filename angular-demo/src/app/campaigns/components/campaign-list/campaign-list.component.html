@@ -1,5 +1,5 @@
 <div *transloco="let t">
-<p></p>
+  <p></p>
   <h2>{{t('cList.header')}}</h2>
   <button mat-raised-button class="addbutton" (click)="onAddCampaignClicked()">Add Campaign
     <mat-icon>add</mat-icon>
@@ -71,6 +71,14 @@
                    [pageSize]="pageSize"
                    [pageSizeOptions]="pageSizeOptions"
                    (page)="pageChanged($event)">
+    </mat-paginator>
+  </div>
+  <div class="paginator-container">
+    <mat-paginator (page)="pageChanged($event)"
+                   [length]="totalItems"
+                   [pageIndex]="currentPage"
+                   [pageSizeOptions]="pageSizeOptions"
+                   [pageSize]="pageSize">
     </mat-paginator>
   </div>
 </div>

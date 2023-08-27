@@ -1,17 +1,17 @@
-<div class="row" *transloco="let t">
+<div *transloco="let t" class="row">
 
-    <div class="col-1">
-      <img src="assets/man.png">
-      <img src="assets/elements.png" class="elements">
-    </div>
+  <div class="col-1">
+    <img src="assets/man.png">
+    <img class="elements" src="assets/elements.png">
+  </div>
 
-    <div class="col-2">
-      <h1>{{t('homepage.welcome')}}<span> {{username}}</span>!</h1>
-         <p class="text">
-           {{t('homepage.p1')}}<br>
-           {{t('homepage.p2')}}<br>
-           {{t('homepage.p3')}}
-        </p>
-    </div>
+  <div class="col-2">
+    <h1>{{t('homepage.welcome')}}<span> {{username}}</span>!</h1>
+    <p class="text">
+      {{t('homepage.p1')}}<br>
+      {{t('homepage.p2')}}<br>
+      {{t('homepage.p3')}}
+    </p>
+  </div>
 </div>
 

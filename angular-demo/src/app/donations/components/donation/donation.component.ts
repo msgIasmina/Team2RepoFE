@@ -1,34 +1,32 @@
-import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
-import {Donation} from "../../models/donation";
-import {DonationAction} from "../../models/DonationAction";
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Donation } from '../../models/donation';
+import { DonationAction } from '../../models/DonationAction';
 
 @Component({
   selector: 'app-donation',
   templateUrl: './donation.component.html',
-  styleUrls: ['./donation.component.css']
+  styleUrls: ['./donation.component.css'],
 })
 export class DonationComponent implements OnInit {
   @Input() donation: Donation;
   @Output() donationAction = new EventEmitter<DonationAction>();
 
-  constructor() { }
+  constructor() {}
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void {}
 
   onEditClicked(donation: Donation) {
-    const action: DonationAction = { donation, type: 'edit'};
+    const action: DonationAction = { donation, type: 'edit' };
     this.donationAction.emit(action);
   }
 
-  onDeleteClicked(donation: Donation){
-    const action: DonationAction = { donation, type: 'delete'};
+  onDeleteClicked(donation: Donation) {
+    const action: DonationAction = { donation, type: 'delete' };
     this.donationAction.emit(action);
   }
 
-  onApproveClicked(donation: Donation){
-    const action: DonationAction = { donation, type: 'approve'};
+  onApproveClicked(donation: Donation) {
+    const action: DonationAction = { donation, type: 'approve' };
     this.donationAction.emit(action);
   }
-
 }

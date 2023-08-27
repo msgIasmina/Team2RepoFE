@@ -1,15 +1,15 @@
-import {Role} from "./role";
+import { Role } from './role';
 
 export class User {
   constructor(
-              public firstName: string,
-              public lastName: string,
-              public email: string,
-              public mobileNumber: string,
-              public roles?:Role[],
-              public id?: number,
-              public active?: boolean,
-              public newUser?: boolean,
-              public username?: string) {
-  }
+    public firstName: string,
+    public lastName: string,
+    public email: string,
+    public mobileNumber: string,
+    public roles?: Role[],
+    public id?: number,
+    public active?: boolean,
+    public newUser?: boolean,
+    public username?: string,
+  ) {}
 }

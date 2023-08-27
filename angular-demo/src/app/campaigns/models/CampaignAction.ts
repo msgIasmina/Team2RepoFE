@@ -1,6 +1,6 @@
-import {Campaign} from "./campaign";
+import { Campaign } from './campaign';
 
-export interface CampaignAction{
-  campaign:Campaign;
-  type: 'delete'|'edit';
+export interface CampaignAction {
+  campaign: Campaign;
+  type: 'delete' | 'edit';
 }

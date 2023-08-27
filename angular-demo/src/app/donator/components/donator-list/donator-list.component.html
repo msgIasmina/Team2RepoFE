@@ -4,19 +4,19 @@
     {{t('donatorList.header')}}
   </h2>
 
-  <button mat-raised-button  class="addbutton" (click)="onAddDonatorClicked()">Add Donator
+  <button (click)="onAddDonatorClicked()" class="addbutton" mat-raised-button>Add Donator
     <mat-icon>add</mat-icon>
   </button>
   <div class="table-wrapper">
     <table class="fl-table">
       <thead>
-        <tr>
-          <th>{{t('donatorList.dTable.firstname')}}</th>
-          <th>{{t('donatorList.dTable.lastname')}}</th>
-          <th>{{t('donatorList.dTable.additionalname')}}</th>
-          <th>{{t('donatorList.dTable.maidenname')}}</th>
-          <th>{{t('donatorList.dTable.actions')}}</th>
-        </tr>
+      <tr>
+        <th>{{t('donatorList.dTable.firstname')}}</th>
+        <th>{{t('donatorList.dTable.lastname')}}</th>
+        <th>{{t('donatorList.dTable.additionalname')}}</th>
+        <th>{{t('donatorList.dTable.maidenname')}}</th>
+        <th>{{t('donatorList.dTable.actions')}}</th>
+      </tr>
       </thead>
       <tbody>
       <tr *ngFor="let donator of donatorList">
@@ -25,19 +25,19 @@
         <td>{{ donator.additionalName }}</td>
         <td>{{ donator.maidenName }}</td>
         <td>
-          <app-donator-details [donator]="donator" (donatorAction)="handleDonatorAction($event)"></app-donator-details>
+          <app-donator-details (donatorAction)="handleDonatorAction($event)" [donator]="donator"></app-donator-details>
         </td>
       </tr>
       </tbody>
-  </table>
-</div>
+    </table>
+  </div>
 
   <div class="paginator-container">
-    <mat-paginator [length]="totalItems"
+    <mat-paginator (page)="pageChanged($event)"
+                   [length]="totalItems"
                    [pageIndex]="currentPage"
-                   [pageSize]="pageSize"
                    [pageSizeOptions]="pageSizeOptions"
-                   (page)="pageChanged($event)">
+                   [pageSize]="pageSize">
     </mat-paginator>
   </div>
 </div>
