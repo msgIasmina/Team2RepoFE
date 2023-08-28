@@ -25,8 +25,4 @@ export class UserDetailsComponent implements OnInit {
     const action: UserAction = { user, type: 'toggleActivation' };
     this.userAction.emit(action);
   }
-
-  onManageRolesClicked() {
-    this.router.navigate(['/management/users/permissions/' + this.user.id]);
-  }
 }

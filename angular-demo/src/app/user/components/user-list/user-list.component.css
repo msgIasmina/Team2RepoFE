@@ -110,4 +110,20 @@ h2 {
   outline: none;
 }
 
+.sticky-button-manage {
+  background: #4FC3A1;
+  margin-left: 10px;
+  color: #ffffff;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.sticky-button-manage:hover {
+  background-color: darkgreen;
+  color: #ffffff;
+  outline: none;
+}
+
 

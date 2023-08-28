@@ -2,7 +2,7 @@
   <h2>{{t('roleList.title')}}</h2>
   <ul *ngFor="let rolePermission of rolePermissionsList">
     <li>
-      <app-role-details [rolePermission]="rolePermission" ></app-role-details>
+      <app-role-details (changesMade)="reloadData()" [rolePermission]="rolePermission"></app-role-details>
     </li>
   </ul>
 </div>

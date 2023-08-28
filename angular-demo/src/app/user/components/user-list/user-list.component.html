@@ -1,8 +1,12 @@
 <div *transloco="let t">
   <p></p>
   <h2>{{t('uList.header')}}</h2>
-  <button mat-raised-button class="sticky-button" (click)="onAddUserClicked()">{{t('uAdd.header')}}
-    <mat-icon>add</mat-icon></button>
+  <button (click)="onAddUserClicked()" class="sticky-button" mat-raised-button>{{t('uAdd.header')}}
+    <mat-icon>add</mat-icon>
+  </button>
+  <button (click)="onManageRolesClicked()" class="sticky-button-manage" mat-raised-button>{{t('uAdd.manager')}}
+    <mat-icon>lock_open</mat-icon>
+  </button>
   <div class="table-wrapper">
     <table class="fl-table">
       <thead>

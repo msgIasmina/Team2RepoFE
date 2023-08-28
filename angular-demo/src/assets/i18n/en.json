@@ -33,7 +33,8 @@
     "header": "Update User"
   },
   "uAdd": {
-    "header": "Add User"
+    "header": "Add User",
+    "manager": "Permission Management"
   },
   "uForm": {
     "firstname": "First Name:",

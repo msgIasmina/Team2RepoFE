@@ -23,11 +23,16 @@ export class RoleListComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.activatedRoute.params.subscribe((params) => {
-      this.id = +params['id'];
-    });
     this.rolePermissionService
-      .loadRolePermissions(this.id)
+      .loadRolePermissions()
+      .subscribe((rolePermissions) => {
+        this.rolePermissionsList = rolePermissions;
+      });
+  }
+
+  reloadData() {
+    this.rolePermissionService
+      .loadRolePermissions()
       .subscribe((rolePermissions) => {
         this.rolePermissionsList = rolePermissions;
       });

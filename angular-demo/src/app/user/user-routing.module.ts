@@ -6,9 +6,15 @@ import { UserDetailsComponent } from './components/user-details/user-details.com
 import { UserRegisterComponent } from './components/user-register/user-register.component';
 import { RoleListComponent } from '../permission/components/role-list/role-list.component';
 import { UpdateUserComponent } from './components/update-user/update-user.component';
+import { AddCampignREPComponent } from './components/add-campign-rep/add-campign-rep.component';
+import { PermissionManagemntGuard } from '../account/component/utils/permission-managemnt-guard';
 
 const routes: Routes = [
-  { path: 'permissions/:id', component: RoleListComponent },
+  {
+    path: 'permissions',
+    component: RoleListComponent,
+    canActivate: [PermissionManagemntGuard],
+  },
   {
     path: 'update/:id',
     component: UpdateUserComponent,
@@ -18,6 +24,10 @@ const routes: Routes = [
   {
     path: 'register',
     component: UserRegisterComponent,
+  },
+  {
+    path: 'campaigns',
+    component: AddCampignREPComponent,
   },
 ];
 

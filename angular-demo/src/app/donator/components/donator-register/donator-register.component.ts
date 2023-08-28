@@ -1,6 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { DonatorService } from '../../services/donator.service';
 import { Donator } from '../../models/donator';
+import { ToastrService } from 'ngx-toastr';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-donator-register',
@@ -16,9 +18,21 @@ export class DonatorRegisterComponent {
   );
   register: string = 'register';
 
-  onSave(newDonator: Donator) {
-    this.donatorService.saveDonator(newDonator).subscribe();
-  }
+  constructor(
+    private donatorService: DonatorService,
+    private toastr: ToastrService,
+    private router: Router,
+  ) {}
 
-  constructor(private donatorService: DonatorService) {}
+  onSave(newDonator: Donator) {
+    this.donatorService.saveDonator(newDonator).subscribe(
+      (response) => {
+        this.toastr.success(response.text);
+      },
+      (error) => {
+        this.toastr.error(error.error);
+      },
+    );
+    this.router.navigate(['/management/donators/list']);
+  }
 }

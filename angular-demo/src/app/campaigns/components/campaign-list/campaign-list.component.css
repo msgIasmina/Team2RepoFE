@@ -110,6 +110,7 @@ h2 {
   color: #ffffff;
   outline: none;
 }
+
 .dropdown-container {
   position: relative;
   display: inline-block;
@@ -119,18 +120,18 @@ h2 {
   display: none;
   position: absolute;
   background-color: white;
-  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
   z-index: 1;
 }
 
-.container{
+.container {
   width: 300px;
   margin: 0 auto; /* Center the box horizontally */
   padding: 20px;
   border: 1px solid #ccc;
   border-radius: 10px;
   box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.3);
-  background-color:  black;
+  background-color: black;
 }
 
 .form input {
@@ -179,7 +180,22 @@ input {
   outline: none;
 }
 
-.download-button{
+#dropdown-button-extra {
+  background-color: rebeccapurple;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  cursor: pointer;
+  margin-left: 20px;
+}
+
+#dropdown-button-extra:hover {
+  background-color: indigo;
+  color: #ffffff;
+  outline: none;
+}
+
+.download-button {
   background: #4FC3A1;
   color: white;
   padding: 10px 20px;

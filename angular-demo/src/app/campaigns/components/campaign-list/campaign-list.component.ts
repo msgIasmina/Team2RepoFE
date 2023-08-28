@@ -69,14 +69,17 @@ export class CampaignListComponent implements OnInit {
 
   deleteCampaign(campaignToDelete: Campaign) {
     this.campaignService.deleteCampaignById(campaignToDelete.id).subscribe(
-      () => {},
+      (response) => {
+        this.toastr.success(response.text),
+          this.campaignService
+            .loadCampaigns(this.params)
+            .subscribe((campaignFilterPair) => {
+              this.campaignList = campaignFilterPair.campaigns;
+              this.totalItems = campaignFilterPair.totalItems;
+            });
+      },
       (error) => {
-        this.campaignService
-          .loadCampaigns(this.params)
-          .subscribe((campaignFilterPair) => {
-            this.campaignList = campaignFilterPair.campaigns;
-            this.totalItems = campaignFilterPair.totalItems;
-          });
+        this.toastr.error(error.error);
       },
     );
   }

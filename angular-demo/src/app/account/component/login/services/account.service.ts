@@ -25,10 +25,6 @@ export class AccountService {
     private router: Router,
   ) {}
 
-  private handleError(error: HttpErrorResponse) {
-    return throwError(() => new Error(error.error));
-  }
-
   login(loginRequest: LoginRequest) {
     return this.http
       .post<LoginResponse>(this.url + '/login', loginRequest, {
@@ -75,7 +71,18 @@ export class AccountService {
         tap((response) => {
           localStorage.removeItem('token');
           localStorage.setItem('token', response.renewedAccesToken);
-        }),
+          this.router.navigate(['/login']);
+        }, catchError(this.handleRefreshTokenError)),
       );
+  }
+
+  private handleError(error: HttpErrorResponse) {
+    return throwError(() => new Error(error.error));
+  }
+
+  private handleRefreshTokenError(error: HttpErrorResponse) {
+    localStorage.clear();
+    this.router.navigate(['/login']);
+    return throwError(() => new Error(error.error));
   }
 }

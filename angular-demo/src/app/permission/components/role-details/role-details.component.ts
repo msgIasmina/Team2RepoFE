@@ -1,9 +1,10 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { RolePermission } from '../../models/role-permission';
 import { Permission } from '../../../user/models/permission';
 import { RolePermissionService } from '../../services/role-permission.service';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-role-details',
@@ -12,6 +13,7 @@ import { Router } from '@angular/router';
 })
 export class RoleDetailsComponent implements OnInit {
   @Input() rolePermission: RolePermission;
+  @Output() changesMade: EventEmitter<any> = new EventEmitter<any>();
   missingPermissions: Permission[] = [];
   acquiredPermissions: Permission[] = [];
   form: FormGroup = this.fb.group({
@@ -23,6 +25,7 @@ export class RoleDetailsComponent implements OnInit {
     private rolePermissionService: RolePermissionService,
     private fb: FormBuilder,
     private router: Router,
+    private toastr: ToastrService,
   ) {}
 
   ngOnInit(): void {
@@ -36,15 +39,12 @@ export class RoleDetailsComponent implements OnInit {
       .addPermissionsToRole(this.rolePermission.id, permissionsToBeAdded)
       .subscribe(
         (response) => {
-          /*this.missingPermissions = this.missingPermissions.filter(permission => permissionsToBeAdded.indexOf(permission)<0);
-      this.acquiredPermissions.push(...permissionsToBeAdded);*/
+          this.toastr.success(response.text);
+          this.changesMade.emit();
         },
         (err) => {
-          //window.alert(err)
-          this.missingPermissions = this.missingPermissions.filter(
-            (permission) => permissionsToBeAdded.indexOf(permission) < 0,
-          );
-          this.acquiredPermissions.push(...permissionsToBeAdded);
+          this.toastr.error(err.error);
+          this.changesMade.emit();
         },
       );
   }
@@ -55,15 +55,10 @@ export class RoleDetailsComponent implements OnInit {
       .removePermissionsFromRole(this.rolePermission.id, permissionsToBeRemoved)
       .subscribe(
         (response) => {
-          /*this.acquiredPermissions = this.acquiredPermissions.filter(permission => permissionsToBeRemoved.indexOf(permission)<0);
-      this.missingPermissions.push(...permissionsToBeRemoved);*/
+          this.toastr.success(response.text);
         },
         (err) => {
-          this.acquiredPermissions = this.acquiredPermissions.filter(
-            (permission) => permissionsToBeRemoved.indexOf(permission) < 0,
-          );
-          this.missingPermissions.push(...permissionsToBeRemoved);
-          //window.alert(err);
+          this.toastr.error(err.error);
         },
       );
   }

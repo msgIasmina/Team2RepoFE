@@ -1,1 +1,44 @@
-<p>add-campign-rep works!</p>
+<div class="row">
+  <div class="column" style="background: #CCCCCC;">
+    <div class="campaign-details">
+      <h1 class="page-text">Current Campaigns</h1>
+      <mat-chip-list multiple selectable>
+        <mat-chip
+          #c="matChip"
+          *ngFor="let campaign of currentCampaign"
+          [ngStyle]="{'background-color': '#Fa5353'}"
+          [value]="campaign.name"
+        >
+          {{campaign.name}}
+        </mat-chip>
+      </mat-chip-list>
+    </div>
+  </div>
+  <div class="column" style="background: #d3d3d3;">
+    <label class="page-text" for="searchText">Search</label>
+    <br>
+    <input id="searchText" matInput placeholder=" campaign name" type="text">
+    <button color="warn" mat-flat-button>Search</button>
+    <table [dataSource]="dataSource" class="mat-elevation-z8 demo-table custom-table" mat-table>
+
+      <ng-container matColumnDef="purpose">
+        <th *matHeaderCellDef mat-header-cell>Purpose</th>
+        <td *matCellDef="let element" mat-cell>{{element.purpose}}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="name">
+        <th *matHeaderCellDef mat-header-cell>Name</th>
+        <td *matCellDef="let element" mat-cell>{{element.name}}</td>
+      </ng-container>
+
+      <tr *matHeaderRowDef="displayedColumns" mat-header-row></tr>
+      <tr
+        (click)="clickedRows.add(row)"
+        *matRowDef="let row; columns: displayedColumns;"
+        [class.demo-row-is-clicked]="clickedRows.has(row)"
+        mat-row
+      ></tr>
+    </table>
+    <button class="addbutton" color="warn" mat-flat-button>Add campaigns</button>
+  </div>
+</div>

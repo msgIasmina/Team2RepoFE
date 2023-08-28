@@ -5,7 +5,4 @@
   <button (click)="onToggleActivationClicked(user)" [color]="user.active ? 'warn' : 'primary'" mat-raised-button>
     <mat-icon>{{ user.active ? 'delete' : 'check_circle' }}</mat-icon>
   </button>
-  <button (click)="onManageRolesClicked()" mat-raised-button>
-    <mat-icon>lock_open</mat-icon>
-  </button>
 </div>

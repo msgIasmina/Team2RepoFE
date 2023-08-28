@@ -1,26 +1,22 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { BehaviorSubject, catchError, Observable, tap, throwError } from 'rxjs';
-import { Role } from '../../user/models/role';
+import { BehaviorSubject, Observable, tap } from 'rxjs';
 import { Donator } from '../models/donator';
-import { User } from '../../user/models/user';
 import { ToastrService } from 'ngx-toastr';
-import { DonatorPair } from '../models/DonatorPair';
-import { Donation } from '../../donations/models/donation';
+import { TextResponse } from '../../models/text-response';
 
 @Injectable({
   providedIn: 'root',
 })
 export class DonatorService {
+  url: string = 'http://localhost:8080/donators';
+  donatorList$: BehaviorSubject<Donator[]> = new BehaviorSubject<Donator[]>([]);
+  totalItems$: BehaviorSubject<number> = new BehaviorSubject<number>(0);
+
   constructor(
     private http: HttpClient,
     private toastr: ToastrService,
   ) {}
-
-  url: string = 'http://localhost:8080/donators';
-
-  donatorList$: BehaviorSubject<Donator[]> = new BehaviorSubject<Donator[]>([]);
-  totalItems$: BehaviorSubject<number> = new BehaviorSubject<number>(0);
 
   loadDonators(page: number, size: number): Observable<Donator[]> {
     const headers = new HttpHeaders().set(
@@ -67,15 +63,14 @@ export class DonatorService {
     return this.donatorList$.asObservable();
   }
 
-  saveDonator(newDonator: Donator): Observable<Donator> {
+  saveDonator(newDonator: Donator): Observable<TextResponse> {
     var header = {
       headers: new HttpHeaders().set(
         'Authorization',
         localStorage.getItem('token') ?? '',
       ),
     };
-    return this.http.post<User>(this.url, newDonator, header);
-    // return this.http.post<User>(this.url2,newDonator,header)
+    return this.http.post<TextResponse>(this.url, newDonator, header);
   }
 
   deleteDonator(donator: Donator) {
@@ -87,7 +82,7 @@ export class DonatorService {
     return this.http.delete(`${this.url}/${donator.id}`, { headers });
   }
 
-  updateDonator(donator: Donator): Observable<string> {
+  updateDonator(donator: Donator): Observable<TextResponse> {
     var header = {
       headers: new HttpHeaders().set(
         'Authorization',
@@ -96,7 +91,7 @@ export class DonatorService {
     };
     let id = donator.id;
     donator.id = undefined;
-    return this.http.put<string>(this.url + `/` + id, donator, header);
+    return this.http.put<TextResponse>(this.url + `/` + id, donator, header);
   }
 
   findDonatorById(id: number): Observable<Donator> {

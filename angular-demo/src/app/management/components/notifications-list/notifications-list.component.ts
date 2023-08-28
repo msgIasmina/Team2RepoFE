@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { NotificationService } from '../../services/notification.service';
-import { NotificationPagination } from '../../model/notification-pagination';
 import { PageEvent } from '@angular/material/paginator';
 import { Notif } from '../../model/notification';
 
@@ -26,27 +25,20 @@ export class NotificationsListComponent implements OnInit {
     this.loadNotificationsAndRefresh();
   }
 
-  // reloadData(pe: PageEvent) {
-  //   this.service.getUsersNotification(pe.pageIndex,pe.pageSize).subscribe(
-  //     notifications => this.notifications = notifications
-  //   )
-  //   this.size= pe.pageSize
-  //   this.load = pe.pageIndex
-  // }
+  pageChanged(event: PageEvent): void {
+    this.currentPage = event.pageIndex;
+    this.pageSize = event.pageSize;
+    this.loadNotificationsAndRefresh();
+  }
 
   private loadNotificationsAndRefresh() {
     this.service
       .loadNotifications(this.currentPage, this.pageSize)
       .subscribe(() =>
         this.service.getNotifications().subscribe((notifications) => {
+          console.log(notifications);
           this.notifList = notifications;
         }),
       );
-  }
-
-  pageChanged(event: PageEvent): void {
-    this.currentPage = event.pageIndex;
-    this.pageSize = event.pageSize;
-    this.loadNotificationsAndRefresh();
   }
 }

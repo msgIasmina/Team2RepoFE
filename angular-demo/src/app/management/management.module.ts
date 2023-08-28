@@ -18,6 +18,7 @@ import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { Interceptor } from '../account/component/utils/interceptors/interceptor';
+import { UserManagemntGuard } from '../account/component/utils/user-managemnt-guard';
 
 @NgModule({
   declarations: [
@@ -42,6 +43,7 @@ import { Interceptor } from '../account/component/utils/interceptors/interceptor
   providers: [
     LoginGuard,
     LogoutService,
+    UserManagemntGuard,
     { provide: HTTP_INTERCEPTORS, useClass: Interceptor, multi: true },
   ],
 })

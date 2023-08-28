@@ -3,6 +3,8 @@ import { RouterModule, Routes } from '@angular/router';
 import { BasePageComponent } from './components/base-page/base-page.component';
 import { NotificationsListComponent } from './components/notifications-list/notifications-list.component';
 import { LoginGuard } from '../account/component/utils/login-guard';
+import { UserManagemntGuard } from '../account/component/utils/user-managemnt-guard';
+import { BenefManagementGuard } from '../account/component/utils/benef-management-guard';
 
 const routes: Routes = [
   {
@@ -18,6 +20,7 @@ const routes: Routes = [
         path: 'users',
         loadChildren: () =>
           import('../user/user.module').then((m) => m.UserModule),
+        canActivate: [UserManagemntGuard],
       },
       {
         path: 'campaigns',
@@ -30,6 +33,7 @@ const routes: Routes = [
         path: 'donators',
         loadChildren: () =>
           import('../donator/donator.module').then((m) => m.DonatorModule),
+        canActivate: [BenefManagementGuard],
       },
       {
         path: 'donations',

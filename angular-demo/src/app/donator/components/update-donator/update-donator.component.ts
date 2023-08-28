@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { User } from '../../../user/models/user';
 import { Donator } from '../../models/donator';
 import { DonatorService } from '../../services/donator.service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 
 @Component({
@@ -19,14 +18,17 @@ export class UpdateDonatorComponent implements OnInit {
     private donatorService: DonatorService,
     private activatedRoute: ActivatedRoute,
     private toastr: ToastrService,
+    private router: Router,
   ) {}
 
   updateDonator(donator: Donator) {
-    this.donatorService
-      .updateDonator(donator)
-      .subscribe((response) => this.toastr.info(response));
-    this.toastr.success('Donator edited successfully');
-    window.location.href = '/management/donators/0/10';
+    this.donatorService.updateDonator(donator).subscribe(
+      (response) => this.toastr.success(response.text),
+      (error) => {
+        this.toastr.error(error.error);
+      },
+    );
+    this.router.navigate(['/management/donators/list']);
   }
 
   ngOnInit(): void {

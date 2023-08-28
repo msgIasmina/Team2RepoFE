@@ -31,16 +31,6 @@ export class UserFromComponent implements OnInit {
     private toastr: ToastrService,
   ) {}
 
-  // toggleSelection(chip: MatChip, role: Role) {
-  //   chip.toggleSelected();
-  //   const index = this.selectedRoles.indexOf(role);
-  //   if (chip.selected && index === -1) {
-  //     this.selectedRoles.push(role);
-  //   } else if (!chip.selected && index !== -1) {
-  //     this.selectedRoles.splice(index, 1);
-  //   }
-  // }
-
   showFirstNameError(): boolean {
     const firstNameControl = this.registerForm.get('firstName');
     if (this.functionality === 'register') {
@@ -87,14 +77,6 @@ export class UserFromComponent implements OnInit {
       (selectedRole) => selectedRole.name === role.name,
     );
   }
-
-  // isSelected(chip: MatChip, role: Role): boolean {
-  //   let filteredRole = this.getFilteredRole(role);
-  //   if(filteredRole.length > 0){
-  //     chip.toggleSelected();
-  //   }
-  //   return (filteredRole.length > 0)
-  // }
 
   onSave() {
     this.submitted = true;

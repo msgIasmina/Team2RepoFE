@@ -67,25 +67,11 @@ export class DonatorFormComponent implements OnInit {
       maidenName,
     };
 
-    const permissions = JSON.parse(localStorage.getItem('permissions') || '[]');
-    const hasBenefPermission = permissions.includes(
-      'AUTHORITY_BENEF_MANAGEMENT',
-    );
     if (this.functionality === 'update') {
       newDonator.id = this.donator.id;
     }
 
     this.submitEvent.emit(newDonator);
-
-    if (this.functionality === 'register' && hasBenefPermission) {
-      this.toastr.success('Donator registered successfully');
-      window.location.href = '/management/donators/0/10';
-    } else {
-      this.toastr.error(
-        "It seems that you don't have the permissions for completing this action.",
-      );
-      return;
-    }
   }
 
   ngOnInit(): void {
@@ -98,5 +84,4 @@ export class DonatorFormComponent implements OnInit {
       });
     }
   }
-
 }

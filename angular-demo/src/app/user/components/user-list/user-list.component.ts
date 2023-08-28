@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { User } from '../../models/user';
 import { UserService } from '../../services/user-service.service';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -42,19 +42,7 @@ export class UserListComponent implements OnInit {
       this.toggleActivation(action.user);
     } else if (action.type === 'edit') {
       this.editUser(action.user);
-    } else if (action.type === 'manageRoles') {
-      this.manageRoles(action.user);
     }
-  }
-
-  private loadUsersAndRefresh() {
-    this.userService
-      .loadUsers(this.currentPage, this.pageSize)
-      .subscribe(() => {
-        this.userService.getUsers().subscribe((users) => {
-          this.userList = users;
-        });
-      });
   }
 
   editUser(userToEdit: User) {
@@ -90,5 +78,17 @@ export class UserListComponent implements OnInit {
     this.loadUsersAndRefresh();
   }
 
-  private manageRoles(user: User) {}
+  onManageRolesClicked() {
+    this.router.navigate(['/management/users/permissions']);
+  }
+
+  private loadUsersAndRefresh() {
+    this.userService
+      .loadUsers(this.currentPage, this.pageSize)
+      .subscribe(() => {
+        this.userService.getUsers().subscribe((users) => {
+          this.userList = users;
+        });
+      });
+  }
 }

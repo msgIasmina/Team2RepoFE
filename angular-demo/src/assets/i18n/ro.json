@@ -121,8 +121,8 @@
     "header": "Actualizare Donaţie"
   },
   "donationDownload": {
-  "header": "Exportă Donaţiile"
-},
+    "header": "Exportă Donaţiile"
+  },
   "donationForm": {
     "amount": "Sumă:",
     "currency": "Valută:",
@@ -158,7 +158,8 @@
     "header": "Actualizare Campanie"
   },
   "uAdd": {
-    "header": "Adăugare utilizator"
+    "header": "Adăugare utilizator",
+    "manager": "Managementul permisiunilor"
   },
   "cDownload": {
     "header": "Descarcă Campaniile"
