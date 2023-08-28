@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { Campaign } from '../../models/campaign';
-import { CampaignService } from '../../services/campaign.service';
-import { ActivatedRoute } from '@angular/router';
-import { ToastrService } from 'ngx-toastr';
+import {Campaign} from "../../models/campaign";
+import {CampaignService} from "../../services/campaign.service";
+import {ActivatedRoute} from "@angular/router";
+import {ToastrService} from "ngx-toastr";
 
 @Component({
   selector: 'app-campaign-edit',
@@ -38,4 +38,5 @@ export class CampaignEditComponent implements OnInit {
         });
     });
   }
+
 }

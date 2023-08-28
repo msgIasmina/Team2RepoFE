@@ -1,19 +1,20 @@
 import { Component, OnInit } from '@angular/core';
-import { Campaign } from '../../models/campaign';
-import { CampaignService } from '../../services/campaign.service';
-import { Router } from '@angular/router';
-import { ToastrService } from 'ngx-toastr';
-import { CampaignAction } from '../../models/CampaignAction';
-import { PageEvent } from '@angular/material/paginator';
-import { FormBuilder, FormGroup } from '@angular/forms';
-import { saveAs } from 'file-saver';
+import {Campaign} from "../../models/campaign";
+import {CampaignService} from "../../services/campaign.service";
+import {Router} from "@angular/router";
+import {ToastrService} from "ngx-toastr";
+import {CampaignAction} from "../../models/CampaignAction";
+import {PageEvent} from "@angular/material/paginator";
+import {FormBuilder, FormGroup} from "@angular/forms";
+import {saveAs} from "file-saver";
 
 @Component({
   selector: 'app-campaign-list',
   templateUrl: './campaign-list.component.html',
-  styleUrls: ['./campaign-list.component.css'],
+  styleUrls: ['./campaign-list.component.css']
 })
 export class CampaignListComponent implements OnInit {
+
   campaignList: Campaign[];
   totalItems: number;
 
@@ -150,4 +151,5 @@ export class CampaignListComponent implements OnInit {
       },
     );
   }
+
 }

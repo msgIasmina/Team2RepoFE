@@ -123,9 +123,11 @@ export class DonationListComponent implements OnInit {
   deleteDonation(donationToDelete: Donation) {
     this.activatedRoute.params.subscribe(() => {
       this.donationService.deleteDonation(donationToDelete).subscribe(() => {
+        this.toastr.success("Donation deleted successfully");
+          this.loadDonationsAndRefresh();
         },
         (error) => {
-          this.loadDonationsAndRefresh();
+          this.toastr.error(error.message);
         })
     })
   }
@@ -266,47 +268,6 @@ export class DonationListComponent implements OnInit {
       }
     );
   }
-
-    downloadCsvFile()
-    {
-      console.log("Hello")
-      let exportData: Donation[];
-      delete this.filterParams['offset']
-      this.donationService.loadDonations(this.filterParams).subscribe(() => {
-        this.donationService.getDonationFilterPair().subscribe(donationFilterPair => {
-          exportData = donationFilterPair.donations;
-          const selectedFields = [];
-          for (const donation of exportData) {
-            selectedFields.push({
-              Amount: donation.amount,
-              Currency: donation.currency,
-              Campaign: donation.campaign?.name,
-              Creator: `${donation.createdBy?.firstName} ${donation.createdBy?.lastName}`,
-              'Creation Date': donation.createDate,
-              Benefactor: donation.benefactor ? `${donation.benefactor.firstName} ${donation.benefactor.lastName}` : 'Unknown',
-              Approved: donation.approved ? 'Yes' : 'No',
-              'Approved By': donation.approvedBy ? `${donation.approvedBy?.firstName} ${donation.approvedBy?.lastName}` : '',
-              'Approval Date': donation.approvedDate ? donation.approvedDate : '',
-              Notes: donation.notes ? donation.notes : ''
-            });
-          }
-
-          var options = {
-            fieldSeparator: ',',
-            quoteStrings: '"',
-            decimalseparator: '.',
-            showLabels: true,
-            showTitle: true,
-            title: 'Report data',
-            useBom: true,
-            noDownload: false,
-            headers: ['Amount, Currency, Campaign, Creator, Creation Date, Benefactor, Approved, Approved By, Approval Date, Notes']
-          };
-
-          new ngxCsv(selectedFields, "filteredDonations", options);
-        });
-      })
-    }
-  }
+}
 
 
