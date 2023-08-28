@@ -16,55 +16,11 @@ import { ToastrService } from 'ngx-toastr';
   styleUrls: ['./donation-form.component.css'],
 })
 export class DonationFormComponent implements OnInit {
-  ngOnInit(): void {
-    this.donatorService.loadDonators2().subscribe(
-      () => {
-        this.donatorService.getDonators().subscribe((donators) => {
-          this.donators = donators;
-        });
-      },
-      (error) => {
-        this.toastr.error(error.message);
-      },
-    );
-
-    this.campaignService.loadCampaigns({}).subscribe(
-      () => {
-        this.campaignService
-          .getCampaignFilterPair()
-          .subscribe((campaignFilterPair) => {
-            this.campaigns = campaignFilterPair.campaigns;
-          });
-      },
-      (error) => {
-        this.toastr.error(error.message);
-      },
-    );
-
-    this.activatedRoute.params.subscribe((params) => {
-      this.id = +params['id'];
-    });
-
-    // if (this.functionality === "update") {
-    //   console.log(this.donation)
-    //
-    //   this.donationForm.setValue({
-    //     amount: this.donation.amount,
-    //     currency: this.donation.currency,
-    //     campaign: this.donation.campaign,
-    //     benefactor: this.donation.benefactor,
-    //     notes: this.donation.notes,
-    //   })
-    // }
-  }
-
   id: number;
-
   @Output() submitEvent: EventEmitter<Donation> = new EventEmitter<Donation>();
   @Input() donation: Donation;
   @Input() functionality: string;
   submitted = false;
-
   donationForm = this.fb.group({
     amount: ['', Validators.required],
     currency: ['', Validators.required],
@@ -78,6 +34,36 @@ export class DonationFormComponent implements OnInit {
   currency: string = 'currency';
   notes: string = 'notes';
   currencies: string[] = currencies;
+
+  constructor(
+    private fb: FormBuilder,
+    private donatorService: DonatorService,
+    private donationService: DonationService,
+    private campaignService: CampaignService,
+    private activatedRoute: ActivatedRoute,
+    private toastr: ToastrService,
+  ) {}
+
+  ngOnInit(): void {
+    this.donatorService.loadDonators2().subscribe(
+      () => {
+        this.donatorService.getDonators().subscribe((donators) => {
+          this.donators = donators;
+        });
+      },
+      (error) => {
+        this.toastr.error(error.message);
+      },
+    );
+
+    this.campaignService
+      .getCampignsforUpdateAndAdd()
+      .subscribe((campaigns) => (this.campaigns = campaigns));
+
+    this.activatedRoute.params.subscribe((params) => {
+      this.id = +params['id'];
+    });
+  }
 
   showAmountError(): boolean {
     const amountControl = this.donationForm.get('amount');
@@ -126,15 +112,6 @@ export class DonationFormComponent implements OnInit {
       // }
     }
   }
-
-  constructor(
-    private fb: FormBuilder,
-    private donatorService: DonatorService,
-    private donationService: DonationService,
-    private campaignService: CampaignService,
-    private activatedRoute: ActivatedRoute,
-    private toastr: ToastrService,
-  ) {}
 
   showCampaignError(): boolean {
     return this.submitted && this.donationForm.get('campaign')?.value == null;

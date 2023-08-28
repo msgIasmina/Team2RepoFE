@@ -1,20 +1,19 @@
 import { Component, OnInit } from '@angular/core';
-import {Campaign} from "../../models/campaign";
-import {CampaignService} from "../../services/campaign.service";
-import {Router} from "@angular/router";
-import {ToastrService} from "ngx-toastr";
-import {CampaignAction} from "../../models/CampaignAction";
-import {PageEvent} from "@angular/material/paginator";
-import {FormBuilder, FormGroup} from "@angular/forms";
-import {saveAs} from "file-saver";
+import { Campaign } from '../../models/campaign';
+import { CampaignService } from '../../services/campaign.service';
+import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
+import { CampaignAction } from '../../models/CampaignAction';
+import { PageEvent } from '@angular/material/paginator';
+import { FormBuilder, FormGroup } from '@angular/forms';
+import { saveAs } from 'file-saver';
 
 @Component({
   selector: 'app-campaign-list',
   templateUrl: './campaign-list.component.html',
-  styleUrls: ['./campaign-list.component.css']
+  styleUrls: ['./campaign-list.component.css'],
 })
 export class CampaignListComponent implements OnInit {
-
   campaignList: Campaign[];
   totalItems: number;
 
@@ -86,16 +85,7 @@ export class CampaignListComponent implements OnInit {
   }
 
   onAddCampaignClicked() {
-    const permissions = JSON.parse(localStorage.getItem('permissions') || '[]');
-    const hasCampPermission = permissions.includes('AUTHORITY_CAMP_MANAGEMENT');
-
-    if (hasCampPermission) {
-      this.router.navigate(['/management/campaigns/add/']);
-    } else {
-      this.toastr.error(
-        "It seems that you don't have the permissions for completing this action.",
-      );
-    }
+    this.router.navigate(['/management/campaigns/add/']);
   }
 
   applyFilters() {
@@ -151,5 +141,4 @@ export class CampaignListComponent implements OnInit {
       },
     );
   }
-
 }

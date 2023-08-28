@@ -55,10 +55,5 @@ export class CampaignFrmComponent implements OnInit {
     }
 
     this.submitEvent.emit(newCampaign);
-
-    if (this.functionality === 'add') {
-      this.toastr.success('Campaign added successfully!');
-      window.location.href = '/management/campaigns/listing';
-    }
   }
 }

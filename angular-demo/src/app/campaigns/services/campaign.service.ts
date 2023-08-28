@@ -43,6 +43,16 @@ export class CampaignService {
     return this.campaignFilterPair$.asObservable();
   }
 
+  getCampignsforUpdateAndAdd() {
+    const header = {
+      headers: new HttpHeaders().set(
+        'Authorization',
+        localStorage.getItem('token') ?? '',
+      ),
+    };
+    return this.http.get<Campaign[]>(this.url + '?offset=0&pageSize=5', header);
+  }
+
   downloadCsvFile(filterParams: any): Observable<Blob> {
     delete filterParams['pageSize'];
     delete filterParams['offset'];
@@ -60,14 +70,14 @@ export class CampaignService {
     return this.http.get(fullUrl, { headers, responseType: 'blob' });
   }
 
-  saveCampaign(newCampaign: Campaign): Observable<Campaign> {
+  saveCampaign(newCampaign: Campaign): Observable<TextResponse> {
     const header = {
       headers: new HttpHeaders().set(
         'Authorization',
         localStorage.getItem('token') ?? '',
       ),
     };
-    return this.http.post<Campaign>(this.url, newCampaign, header);
+    return this.http.post<TextResponse>(this.url, newCampaign, header);
   }
 
   editCampaign(campaignToEdit: Campaign) {

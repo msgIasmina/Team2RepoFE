@@ -5,6 +5,8 @@ import { NotificationsListComponent } from './components/notifications-list/noti
 import { LoginGuard } from '../account/component/utils/login-guard';
 import { UserManagemntGuard } from '../account/component/utils/user-managemnt-guard';
 import { BenefManagementGuard } from '../account/component/utils/benef-management-guard';
+import { DonationManagementGuard } from '../account/component/utils/donation-management-guard';
+import { CampManagementGuard } from '../account/component/utils/camp-management-guard';
 
 const routes: Routes = [
   {
@@ -28,6 +30,7 @@ const routes: Routes = [
           import('../campaigns/campaigns.module').then(
             (m) => m.CampaignsModule,
           ),
+        canActivate: [CampManagementGuard],
       },
       {
         path: 'donators',
@@ -41,6 +44,7 @@ const routes: Routes = [
           import('../donations/donations.module').then(
             (m) => m.DonationsModule,
           ),
+        canActivate: [DonationManagementGuard],
       },
       { path: 'notifications', component: NotificationsListComponent },
     ],

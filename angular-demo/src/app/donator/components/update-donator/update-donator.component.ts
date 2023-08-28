@@ -23,12 +23,14 @@ export class UpdateDonatorComponent implements OnInit {
 
   updateDonator(donator: Donator) {
     this.donatorService.updateDonator(donator).subscribe(
-      (response) => this.toastr.success(response.text),
+      (response) => {
+        this.toastr.success(response.text);
+        this.router.navigate(['/management/donators/list']);
+      },
       (error) => {
         this.toastr.error(error.error);
       },
     );
-    this.router.navigate(['/management/donators/list']);
   }
 
   ngOnInit(): void {
@@ -39,5 +41,4 @@ export class UpdateDonatorComponent implements OnInit {
       });
     });
   }
-
 }
